@@ -9,7 +9,7 @@ android:layout_height="match_parent"
     >
 
 <ImageView
-    android:id="@+id/iv_jump_eb"
+    android:id="@+id/act_set_complete_iv_jump_eb"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -19,7 +19,7 @@ android:layout_height="match_parent"
     app:srcCompat="@drawable/img_jump_eb" />
 
     <TextView
-        android:id="@+id/tv_set_complete_ment"
+        android:id="@+id/act_set_complete_tv_ment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="169dp"
@@ -32,7 +32,7 @@ android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/ll_set_complete_ment"
+        android:id="@+id/set_complete_ll_ment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -40,7 +40,7 @@ android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_jump_eb">
+        app:layout_constraintTop_toBottomOf="@+id/act_set_complete_iv_jump_eb">
 
         <TextView
             android:id="@+id/textView4"
@@ -77,11 +77,11 @@ android:layout_height="match_parent"
         android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_set_complete_ment" />
+        app:layout_constraintTop_toBottomOf="@+id/set_complete_ll_ment" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_set_complete_start"
+        android:id="@+id/set_complete_cl_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -96,7 +96,7 @@ android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/bt_set_complete_start"
+            android:id="@+id/set_complete_bt_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
