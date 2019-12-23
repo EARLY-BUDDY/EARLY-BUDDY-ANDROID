@@ -1,7 +1,8 @@
-package com.devaon.early_buddy_android
+package com.devaon.early_buddy_android.feature
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.devaon.early_buddy_android.R
 
 class MainActivity : AppCompatActivity() {
 

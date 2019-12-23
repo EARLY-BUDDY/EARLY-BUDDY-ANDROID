@@ -3,14 +3,12 @@
     <item
         android:left="20dp"
         android:right="20dp"
-        android:top="90dp"
         android:bottom="20dp">
 
-        <shape xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="wrap_content" android:layout_width="wrap_content">
+        <shape xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="wrap_content" android:layout_width="400dp">
             <solid android:color="#FFFFFF"/>
             <corners
-                android:bottomLeftRadius="10dp"
-                android:bottomRightRadius="10dp"/>
+                android:radius="10dp"/>
         </shape>
     </item>
 </layer-list>
