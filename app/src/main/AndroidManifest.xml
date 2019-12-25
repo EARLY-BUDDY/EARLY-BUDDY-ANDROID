@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".PlaceRegister"></activity>
+        <activity android:name=".feature.SetNicknameActivity"></activity>
         <activity android:name=".feature.place_search_list.PlaceSearchActivity"
             android:windowSoftInputMode="adjustPan"></activity>
 
