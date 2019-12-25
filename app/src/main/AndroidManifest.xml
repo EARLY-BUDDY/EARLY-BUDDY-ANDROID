@@ -3,6 +3,7 @@
     package="com.devaon.early_buddy_android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".feature.RouteActivity"></activity>
+        <activity android:name=".feature.NoScheduleActivity" />
+        <activity android:name=".feature.HomeActivity" />
         <activity android:name=".feature.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
