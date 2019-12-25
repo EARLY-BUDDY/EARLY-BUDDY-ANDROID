@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">EARLY-BUDDY-ANDROID</string>
+    <string name="until">까지</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

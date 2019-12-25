@@ -23,7 +23,7 @@ class PlaceSearchActivity : AppCompatActivity() {
     private fun initPlaceSearchList() {
         placeSearchAdapter = PlaceSearchAdapter(this).apply {
             data = listOf(
-                GetPlaceData("fdf", "fdf", "fdf"),
+                GetPlaceData("만수주공10단지아파트 1001동", "인천 남동구 만수동 1043 만수주공10단지아파트 1001", "장승남로 34"),
                 GetPlaceData("fdf", "fdf", "fdf"),
                 GetPlaceData("fdf", "fdf", "fdf"),
                 GetPlaceData("fdf", "fdf", "fdf"),
