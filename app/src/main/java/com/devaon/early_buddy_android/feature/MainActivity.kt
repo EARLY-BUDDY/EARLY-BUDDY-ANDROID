@@ -8,6 +8,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_set_nickname)
+        setContentView(R.layout.activity_place_search_list)
     }
 }
