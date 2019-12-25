@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="my_array">
+        <item>00까지 20분</item>
+        <item>배차 10분 전</item>
+        <item>배차 20분 전</item>
+        <item>알림없음</item>
+    </string-array>
+</resources>
