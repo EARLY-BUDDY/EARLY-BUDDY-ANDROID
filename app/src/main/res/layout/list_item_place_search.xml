@@ -15,6 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="17sp"
+        android:textColor="@color/black"
         tools:text="만수주공10단지아파트 1001동" />
 
     <TextView
@@ -29,6 +30,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/li_place_search_address"
         android:textSize="15sp"
+        android:textColor="@color/gray"
         tools:text="인천 남동구 만수동 1043 만수주공10단지아파트 1001동" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,13 +53,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="#999999"
+            android:textColor="@color/mid_gray"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="도로명" />
+            android:text="도로명" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -72,6 +74,13 @@
         app:layout_constraintTop_toTopOf="@+id/li_place_search_cl_load"
         app:layout_constraintVertical_bias="0.0"
         android:textSize="15sp"
+        android:textColor="@color/gray"
         tools:text="장승남로 34" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:background="@color/gray"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

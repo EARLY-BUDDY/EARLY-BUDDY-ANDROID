@@ -1,4 +1,4 @@
-package com.devaon.early_buddy_android.feature.place_search_list
+package com.devaon.early_buddy_android.feature.place_select_list
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,31 +9,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.place.GetPlaceData
 
-class PlaceSearchAdapter(
+class PlaceSelectAdapter(
     private val context: Context
-) : RecyclerView.Adapter<PlaceSearchAdapter.PlaceSearchViewHolder>() {
+) : RecyclerView.Adapter<PlaceSelectAdapter.PlaceSelectViewHolder>() {
     var data: List<GetPlaceData> = listOf()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceSearchViewHolder {
-        // list item follower.xml을 객체화 한다(inflate 한다).
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceSelectViewHolder {
         val view: View = LayoutInflater
             .from(context)
             .inflate(R.layout.list_item_place_search, parent, false)
-        return PlaceSearchViewHolder(view)
+        return PlaceSelectViewHolder(view)
     }
 
     override fun getItemCount(): Int {
         return data.size
     }
 
-    override fun onBindViewHolder(holder: PlaceSearchViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PlaceSelectViewHolder, position: Int) {
         holder.onBind(data[position])
         holder.addressDetail.text = data[position].addressDetail
         holder.address.text = data[position].address
         holder.loadAddress.text = data[position].loadAddress
     }
 
-    inner class PlaceSearchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class PlaceSelectViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         val address: TextView = view.findViewById(R.id.li_place_search_address)
         val addressDetail : TextView = view.findViewById(R.id.li_place_search_address_detail)

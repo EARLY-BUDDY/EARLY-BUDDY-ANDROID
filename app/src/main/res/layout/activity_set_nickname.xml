@@ -33,6 +33,7 @@
         android:lineSpacingExtra="9sp"
         android:text="닉네임을 설정해주세요."
         android:textSize="19sp"
+        android:background="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
@@ -63,11 +64,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_nickname_eb">
 
-        <TextView
+        <EditText
             android:id="@+id/tv_set_nickname_write"
+            android:maxLines="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:background="@null"
             android:hint="한글 6글자 이내로 적어주세요."
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -96,7 +99,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="다음"
+            android:text="다음"
+            android:textColor="@color/gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
