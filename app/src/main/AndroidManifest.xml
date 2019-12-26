@@ -15,7 +15,7 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="0b9ceccacfdc1656c985d747c241c30c" />
-        <activity android:name=".feature.MainActivity">
+        <activity android:name=".feature.RouteActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

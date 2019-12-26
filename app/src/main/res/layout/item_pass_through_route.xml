@@ -77,13 +77,13 @@
 
     <ImageView
         android:id="@+id/item_pass_iv_riding_line"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18.3dp"
-        android:layout_marginTop="20.5dp"
-        android:src="@drawable/img_transport_line"
-        app:layout_constraintStart_toEndOf="@id/item_pass_iv_riding_img"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="3dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="56dp"
+        android:src="#33c63c"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/item_pass_tv_riding_number"
+        app:layout_constraintBottom_toBottomOf="@id/item_pass_tv_quit"/>
 
     <TextView
         android:id="@+id/item_pass_tv_dispatch_interval_time"
@@ -132,7 +132,7 @@
         android:textColor="#33c63c"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@id/item_pass_tv_riding_number"
-        app:layout_constraintTop_toBottomOf="@id/item_pass_tv_stop_station_count" />
+        app:layout_constraintTop_toBottomOf="@id/item_pass_rv_riding_info_detail" />
 
     <TextView
         android:id="@+id/item_pass_tv_end_point"
@@ -156,4 +156,13 @@
         app:layout_constraintEnd_toEndOf="@id/item_pass_tv_view_map"
         app:layout_constraintStart_toStartOf="@id/item_pass_iv_riding_line"
         app:layout_constraintTop_toBottomOf="@+id/item_pass_tv_quit" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/item_pass_rv_riding_info_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_pass_iv_dropbox_down"
+        app:layout_constraintBottom_toTopOf="@id/item_pass_tv_quit"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
