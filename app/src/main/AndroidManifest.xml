@@ -12,13 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".PlaceRegister"></activity>
-        <activity android:name=".feature.SetNicknameActivity"></activity>
-        <activity android:name=".feature.place_search_list.PlaceSearchActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".MyPageActivity" />
+        <activity android:name=".PlaceRegister" />
+        <activity android:name=".feature.SetNicknameActivity" />
+        <activity
+            android:name=".feature.place_search_list.PlaceSearchActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".feature.place_select_list.PlaceSelectActivity"
+            android:windowSoftInputMode="adjustPan" />
 
         <activity android:name=".feature.MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
