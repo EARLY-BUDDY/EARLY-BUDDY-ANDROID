@@ -30,7 +30,7 @@
         android:layout_marginStart="35dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="35dp"
-        android:background="@drawable/round_rect_blue"
+        android:background="@drawable/act_place_round_rect_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,7 @@
 
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="76dp"
-        android:background="@drawable/round_rect_gray_full"
+        android:background="@drawable/act_place_round_rect_gray_full"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

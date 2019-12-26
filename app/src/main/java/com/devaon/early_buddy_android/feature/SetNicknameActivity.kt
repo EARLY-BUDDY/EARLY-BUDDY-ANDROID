@@ -38,11 +38,11 @@ class SetNicknameActivity : AppCompatActivity() {
         tv_set_nickname_write.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 if(p0!!.length > 0){
-                    cl_set_nickname_next.setBackgroundResource(R.drawable.round_rect_blue_full)
+                    cl_set_nickname_next.setBackgroundResource(R.drawable.act_place_round_rect_blue_full)
                     //bt_set_nickname_next.setTextColor(Color.GRAY)
                     bt_set_nickname_next.setTextColor(ContextCompat.getColor(this@SetNicknameActivity, R.color.white))
                 }else {
-                    cl_set_nickname_next.setBackgroundResource(R.drawable.round_rect_gray_full)
+                    cl_set_nickname_next.setBackgroundResource(R.drawable.act_place_round_rect_gray_full)
                     bt_set_nickname_next.setTextColor(ContextCompat.getColor(this@SetNicknameActivity, R.color.gray))
                 }
             }
