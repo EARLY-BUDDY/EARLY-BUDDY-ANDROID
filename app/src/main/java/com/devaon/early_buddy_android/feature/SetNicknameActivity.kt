@@ -1,14 +1,9 @@
 package com.devaon.early_buddy_android.feature
 
-import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.Constraints
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
 import kotlinx.android.synthetic.main.activity_set_nickname.*
@@ -47,7 +42,7 @@ class SetNicknameActivity : AppCompatActivity() {
                     //bt_set_nickname_next.setTextColor(Color.GRAY)
                     bt_set_nickname_next.setTextColor(ContextCompat.getColor(this@SetNicknameActivity, R.color.white))
                 }else {
-                    cl_set_nickname_next.setBackgroundResource(R.drawable.round_rect_gray)
+                    cl_set_nickname_next.setBackgroundResource(R.drawable.round_rect_gray_full)
                     bt_set_nickname_next.setTextColor(ContextCompat.getColor(this@SetNicknameActivity, R.color.gray))
                 }
             }

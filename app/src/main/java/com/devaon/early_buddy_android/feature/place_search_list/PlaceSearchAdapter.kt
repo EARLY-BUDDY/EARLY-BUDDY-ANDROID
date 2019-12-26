@@ -15,7 +15,6 @@ class PlaceSearchAdapter(
     var data: List<GetPlaceData> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceSearchViewHolder {
-        // list item follower.xml을 객체화 한다(inflate 한다).
         val view: View = LayoutInflater
             .from(context)
             .inflate(R.layout.list_item_place_search, parent, false)
