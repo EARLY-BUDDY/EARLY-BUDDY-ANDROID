@@ -73,7 +73,6 @@
                 android:id="@+id/act_place_search_iv_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_marginTop="7dp"
                 android:layout_marginEnd="13dp"
                 android:layout_marginBottom="7dp"
@@ -108,6 +107,7 @@
         android:id="@+id/act_place_search_iv_bird"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:src="@drawable/img_blank"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
