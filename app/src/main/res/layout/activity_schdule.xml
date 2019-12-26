@@ -73,6 +73,8 @@
                     android:layout_marginTop="7dp"
                     android:background="@null"
                     android:hint="일정 제목 입력"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="19sp"
                     android:textColorHint="@color/light_gray"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/act_schedule_tv_name"
@@ -290,9 +292,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
+                    android:entries="@array/noti_array"
                     android:layout_centerHorizontal="true"
                     app:layout_constraintStart_toStartOf="@id/act_schedule_tv_noti"
                     app:layout_constraintTop_toBottomOf="@+id/act_schedule_tv_noti" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/gray"
+                    app:layout_constraintStart_toStartOf="@id/act_schedule_sp_noti"
+                    app:layout_constraintTop_toBottomOf="@+id/act_schedule_sp_noti" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -322,9 +333,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:entries="@array/noti_range_array"
                     android:layout_marginTop="7dp"
                     app:layout_constraintStart_toStartOf="@id/act_schedule_tv_noti_range"
                     app:layout_constraintTop_toBottomOf="@+id/act_schedule_tv_noti_range" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/gray"
+                    app:layout_constraintStart_toStartOf="@id/act_schedule_sp_noti_range"
+                    app:layout_constraintTop_toBottomOf="@+id/act_schedule_sp_noti_range" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -349,104 +369,84 @@
                     app:layout_constraintStart_toStartOf="@id/act_schedule_cl_noti_day"
                     app:layout_constraintTop_toTopOf="@id/act_schedule_cl_noti_day" />
 
-                <TextView
-                    android:id="@+id/act_schedule_tv_week_mon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageView
+                    android:id="@+id/act_schedule_iv_mon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="16dp"
-                    android:background="@drawable/act_schedule_gray_circle"
+                    android:src="@drawable/selector_mon"
                     android:gravity="center"
-                    android:text="월"
-                    android:textColor="@color/light_gray"
-                    android:textSize="16sp"
+                    android:clickable="true"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
-                    app:layout_constraintEnd_toStartOf="@id/act_schedule_tv_week_tue"
+                    app:layout_constraintEnd_toStartOf="@id/act_schedule_iv_tue"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/act_schedule_tv_noti_day" />
 
-                <TextView
-                    android:id="@+id/act_schedule_tv_week_tue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/act_schedule_gray_circle"
+                <ImageView
+                    android:id="@+id/act_schedule_iv_tue"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/selector_tue"
                     android:gravity="center"
-                    android:text="화"
-                    android:textColor="@color/light_gray"
-                    android:textSize="16sp"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
-                    app:layout_constraintEnd_toEndOf="@id/act_schedule_tv_week_wed"
-                    app:layout_constraintStart_toEndOf="@+id/act_schedule_tv_week_mon"
-                    app:layout_constraintTop_toTopOf="@id/act_schedule_tv_week_mon" />
+                    app:layout_constraintEnd_toEndOf="@id/act_schedule_iv_wed"
+                    app:layout_constraintStart_toEndOf="@+id/act_schedule_iv_mon"
+                    app:layout_constraintTop_toTopOf="@id/act_schedule_iv_mon" />
 
-                <TextView
-                    android:id="@+id/act_schedule_tv_week_wed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/act_schedule_gray_circle"
+                <ImageView
+                    android:id="@+id/act_schedule_iv_wed"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/selector_wed"
                     android:gravity="center"
-                    android:text="수"
-                    android:textColor="@color/light_gray"
-                    android:textSize="16sp"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
-                    app:layout_constraintEnd_toStartOf="@id/act_schedule_tv_week_thu"
-                    app:layout_constraintStart_toEndOf="@+id/act_schedule_tv_week_tue"
-                    app:layout_constraintTop_toTopOf="@id/act_schedule_tv_week_tue" />
+                    app:layout_constraintEnd_toStartOf="@id/act_schedule_iv_thu"
+                    app:layout_constraintStart_toEndOf="@+id/act_schedule_iv_tue"
+                    app:layout_constraintTop_toTopOf="@id/act_schedule_iv_tue" />
 
-                <TextView
-                    android:id="@+id/act_schedule_tv_week_thu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/act_schedule_gray_circle"
+                <ImageView
+                    android:id="@+id/act_schedule_iv_thu"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/selector_thu"
                     android:gravity="center"
-                    android:text="목"
-                    android:textColor="@color/light_gray"
-                    android:textSize="16sp"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
-                    app:layout_constraintEnd_toStartOf="@id/act_schedule_tv_week_fri"
-                    app:layout_constraintStart_toEndOf="@+id/act_schedule_tv_week_wed"
-                    app:layout_constraintTop_toTopOf="@id/act_schedule_tv_week_wed" />
+                    app:layout_constraintEnd_toStartOf="@id/act_schedule_iv_fri"
+                    app:layout_constraintStart_toEndOf="@+id/act_schedule_iv_wed"
+                    app:layout_constraintTop_toTopOf="@id/act_schedule_iv_wed" />
 
-                <TextView
-                    android:id="@+id/act_schedule_tv_week_fri"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/act_schedule_gray_circle"
+                <ImageView
+                    android:id="@+id/act_schedule_iv_fri"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/selector_fri"
                     android:gravity="center"
-                    android:text="금"
-                    android:textColor="@color/light_gray"
-                    android:textSize="16sp"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
-                    app:layout_constraintEnd_toStartOf="@id/act_schedule_tv_week_sat"
-                    app:layout_constraintStart_toEndOf="@+id/act_schedule_tv_week_thu"
-                    app:layout_constraintTop_toTopOf="@id/act_schedule_tv_week_thu" />
+                    app:layout_constraintEnd_toStartOf="@id/act_schedule_iv_sat"
+                    app:layout_constraintStart_toEndOf="@+id/act_schedule_iv_thu"
+                    app:layout_constraintTop_toTopOf="@id/act_schedule_iv_thu" />
 
-                <TextView
-                    android:id="@+id/act_schedule_tv_week_sat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/act_schedule_gray_circle"
+                <ImageView
+                    android:id="@+id/act_schedule_iv_sat"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/selector_sat"
                     android:gravity="center"
-                    android:text="토"
-                    android:textColor="@color/light_gray"
-                    android:textSize="16sp"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
-                    app:layout_constraintEnd_toStartOf="@+id/act_schedule_tv_week_sun"
-                    app:layout_constraintStart_toEndOf="@+id/act_schedule_tv_week_fri"
-                    app:layout_constraintTop_toTopOf="@id/act_schedule_tv_week_fri" />
+                    app:layout_constraintEnd_toStartOf="@+id/act_schedule_iv_sun"
+                    app:layout_constraintStart_toEndOf="@+id/act_schedule_iv_fri"
+                    app:layout_constraintTop_toTopOf="@id/act_schedule_iv_fri" />
 
-                <TextView
-                    android:id="@+id/act_schedule_tv_week_sun"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/act_schedule_gray_circle"
+                <ImageView
+                    android:id="@+id/act_schedule_iv_sun"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:gravity="center"
-                    android:text="일"
-                    android:textColor="@color/light_gray"
-                    android:textSize="16sp"
+                    android:src="@drawable/selector_sun"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
                     app:layout_constraintEnd_toEndOf="@id/act_schedule_cl_noti_day"
-                    app:layout_constraintStart_toEndOf="@+id/act_schedule_tv_week_sat"
-                    app:layout_constraintTop_toTopOf="@id/act_schedule_tv_week_sat" />
+                    app:layout_constraintStart_toEndOf="@+id/act_schedule_iv_sat"
+                    app:layout_constraintTop_toTopOf="@id/act_schedule_iv_sat" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
