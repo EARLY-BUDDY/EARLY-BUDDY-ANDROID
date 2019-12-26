@@ -105,7 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/rounded"
+        android:background="@drawable/act_home_round_bus_number"
         android:lineSpacingExtra="6sp"
         android:text="2224"
         android:textColor="#ffffff"
