@@ -171,7 +171,7 @@ class ScheduleActivity : AppCompatActivity(){
         val totalTime = 100
         val firstWalkTime = 10
         val secondWalkTime = 10
-        val method1Time = 50
+        val method1Time = 40
         val method2Time = 30
 
         val totalPath = findViewById<ImageView>(R.id.act_schedule_route_iv_gray_path).width
