@@ -182,13 +182,8 @@ class ScheduleActivity : AppCompatActivity(){
         val method2Len = totalPath / (totalTime / method2Time)
 
         Log.e("length", "total: $totalPath 1: $method1Len 2: $method2Len")
+        Log.e("thidthisthis", (totalTime / method2Time).toString())
 
-//        //첫번째 대중교통이 시작될 위치(bias)를 정함
-//        val firstBias = firstWalkTime.toFloat() / totalTime.toFloat()
-//        //두번째 대중교통이 시작될 위치
-//        val secondBias = ((firstWalkTime + method1Time + secondWalkTime).toFloat()) / totalTime.toFloat()
-//
-//        Log.e("bias", "firstBias: $firstBias secondBias: $secondBias")
 
         val log1 = (totalTime / (firstWalkTime+method1Time+secondWalkTime))
         Log.e("plus2", (totalTime / (firstWalkTime+method1Time+secondWalkTime).toFloat()).toString())
@@ -200,14 +195,12 @@ class ScheduleActivity : AppCompatActivity(){
 
         val method1Params = method1.layoutParams  as ConstraintLayout.LayoutParams
         method1Params.width = method1Len
-//        method1Params.horizontalBias = firstBias
         method1Params.marginStart = method1Margin
         method1.layoutParams = method1Params
 
         val method2Params = method2.layoutParams  as ConstraintLayout.LayoutParams
         method2Params.width = method2Len
-        method2Params.marginStart = method2Margin
-//        method2Params.horizontalBias = secondBias
+        method2Params.marginStart = method2Margin-43
         method2.layoutParams = method2Params
 
     }
