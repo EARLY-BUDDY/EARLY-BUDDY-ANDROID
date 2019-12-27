@@ -9,9 +9,12 @@ import kotlinx.android.synthetic.main.activity_calendar.*
 
 class CalendarActivity : AppCompatActivity() {
 
-    lateinit var calendarPagerAdapter: CalendarPagerAdapter
-    private var COUNT_PAGE = 60
-    private var position = COUNT_PAGE
+    object getCalendarAcitivityObject{
+        lateinit var calendarPagerAdapter: CalendarPagerAdapter
+        var COUNT_PAGE = 60
+        var position = COUNT_PAGE
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,12 +24,12 @@ class CalendarActivity : AppCompatActivity() {
     }
 
     fun setCalendarVp(){
-        calendarPagerAdapter = CalendarPagerAdapter(supportFragmentManager).apply { setNumOfMonth(60)}
+        getCalendarAcitivityObject.calendarPagerAdapter = CalendarPagerAdapter(supportFragmentManager).apply { setNumOfMonth(60)}
 
-        act_calendar_tv_month.text = calendarPagerAdapter.getMonthDisplayed(position)
+        act_calendar_tv_month.text = getCalendarAcitivityObject.calendarPagerAdapter.getMonthDisplayed(getCalendarAcitivityObject.position)
         act_calendar_vp.run {
-            adapter = calendarPagerAdapter
-            currentItem = COUNT_PAGE
+            adapter = getCalendarAcitivityObject.calendarPagerAdapter
+            currentItem = getCalendarAcitivityObject.COUNT_PAGE
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
 
@@ -35,16 +38,16 @@ class CalendarActivity : AppCompatActivity() {
                 override fun onPageSelected(position: Int) {
 
                     act_calendar_tv_month.text =
-                        calendarPagerAdapter.getMonthDisplayed(position)
+                        getCalendarAcitivityObject.calendarPagerAdapter.getMonthDisplayed(position)
 
                     if (position == 0) {
-                        calendarPagerAdapter.addPrev()
-                        setCurrentItem(COUNT_PAGE, false)
-                    } else if (position == calendarPagerAdapter.count - 1) {
-                        calendarPagerAdapter.addNext()
-                        setCurrentItem(calendarPagerAdapter.count - (COUNT_PAGE + 1), false)
+                        getCalendarAcitivityObject.calendarPagerAdapter.addPrev()
+                        setCurrentItem(getCalendarAcitivityObject.COUNT_PAGE, false)
+                    } else if (position == getCalendarAcitivityObject.calendarPagerAdapter.count - 1) {
+                        getCalendarAcitivityObject.calendarPagerAdapter.addNext()
+                        setCurrentItem(getCalendarAcitivityObject.calendarPagerAdapter.count - (getCalendarAcitivityObject.COUNT_PAGE + 1), false)
                     }
-                    this@CalendarActivity.position = position
+                    getCalendarAcitivityObject.position = position
                 }
 
                 override fun onPageScrollStateChanged(state: Int) {
