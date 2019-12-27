@@ -64,4 +64,8 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation files('libs\\libDaumMapAndroid.jar')
 
+
+    //FloationgActionButton
+    implementation 'com.github.clans:fab:1.6.4'
+
 }

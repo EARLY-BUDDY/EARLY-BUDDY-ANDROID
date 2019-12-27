@@ -457,7 +457,7 @@
                 android:layout_marginTop="26dp"
                 android:layout_marginEnd="21dp"
                 android:layout_marginBottom="24dp"
-                android:background="@drawable/round_rect_blue_full"
+                android:background="@drawable/act_place_round_rect_blue_full"
                 android:gravity="center"
                 android:text="등록하기"
                 android:textColor="#ffffff"
