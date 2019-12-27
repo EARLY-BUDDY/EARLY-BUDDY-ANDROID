@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".feature.HomeActivity">
 
+    <ImageView
+        android:id="@+id/act_home_iv_bottom_img"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/img_late_bg"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/act_home_cl_top_bar"
         android:layout_width="match_parent"
@@ -105,7 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/rounded"
+        android:background="@drawable/act_home_round_riding_number"
         android:lineSpacingExtra="6sp"
         android:text="2224"
         android:textColor="#ffffff"
@@ -261,4 +272,6 @@
         android:src="@drawable/ic_detail"
         app:layout_constraintEnd_toEndOf="@+id/act_homme_iv_reboot"
         app:layout_constraintTop_toBottomOf="@id/act_home_line" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
