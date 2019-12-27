@@ -5,70 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/textView24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="106dp"
-        android:layout_marginTop="156dp"
-        android:layout_marginEnd="104dp"
-        android:includeFontPadding="false"
-        android:letterSpacing="-0.04"
+        android:layout_width="260dp"
+        android:layout_height="73dp"
+
+        android:layout_marginStart="41dp"
         android:lineSpacingExtra="9sp"
-        android:text="얼리버디와 함께할"
-        android:textSize="19sp"
+        android:text="얼리버디와 함께할\n닉네임을 설정해주세요."
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView29"
-        android:layout_width="192dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="85dp"
-        android:layout_marginEnd="85dp"
-        android:includeFontPadding="false"
-        android:letterSpacing="-0.04"
-        android:lineSpacingExtra="9sp"
-        android:text="닉네임을 설정해주세요."
-        android:textSize="19sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView24" />
-
-    <ImageView
-        android:id="@+id/iv_nickname_eb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="121.8dp"
-        android:layout_marginTop="47.2dp"
-        android:layout_marginEnd="121.6dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView29"
-        app:srcCompat="@drawable/img_eb" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_nickname_write"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="35dp"
         android:background="@drawable/round_rect_blue"
-        android:paddingHorizontal="31dp"
-        android:paddingVertical="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_nickname_eb">
+        app:layout_constraintTop_toBottomOf="@+id/textView24">
 
-        <TextView
+        <EditText
             android:id="@+id/tv_set_nickname_write"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@null"
             android:gravity="center"
             android:hint="한글 6글자 이내로 적어주세요."
+            android:maxLines="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,16 +53,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_set_nickname_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="133dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/round_rect_gray"
-        android:paddingHorizontal="148dp"
-        android:paddingVertical="11dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="50dp"
+
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="76dp"
+        android:background="@drawable/round_rect_gray_full"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_nickname_write">
 
@@ -96,7 +71,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="다음"
+            android:text="등록하기"
+            android:textColor="@color/gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="noti_range_array">
+        <item>1대 전 배차부터</item>
+        <item>2대 전 배차부터</item>
+        <item>3대 전 배차부터</item>
+        <item>마지막 배차만</item>
+    </string-array>
+</resources>

@@ -15,7 +15,19 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="0b9ceccacfdc1656c985d747c241c30c" />
-        <activity android:name=".feature.MainActivity">
+
+        <activity android:name=".feature.place_search_list.PlaceSelectEndActivity"></activity>
+        <activity android:name=".feature.place_search_list.PlaceSelectStartActivity" />
+        <activity android:name=".PlaceRegister" />
+        <activity android:name=".feature.SetNicknameActivity" />
+        <activity
+            android:name=".feature.place_search_list.PlaceSearchActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".feature.place_select_list.PlaceSelectActivity"
+            android:windowSoftInputMode="adjustPan" />
+      <activity android:name=".feature.ScheduleActivity" />      
+          <activity android:name=".feature.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
