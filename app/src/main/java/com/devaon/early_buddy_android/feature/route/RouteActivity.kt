@@ -1,16 +1,15 @@
-package com.devaon.early_buddy_android.feature
+package com.devaon.early_buddy_android.feature.route
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devaon.early_buddy_android.R
-import com.devaon.early_buddy_android.feature.route.RouteAdapter
 import kotlinx.android.synthetic.main.activity_route.*
 
 class RouteActivity : AppCompatActivity() {
 
-    private lateinit var detailList : ArrayList<ArrayList<String>>
-    private lateinit var clicked : ArrayList<Boolean>
+    private lateinit var detailList: ArrayList<ArrayList<String>>
+    private lateinit var clicked: ArrayList<Boolean>
     private lateinit var routeAdapter: RouteAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,9 +27,9 @@ class RouteActivity : AppCompatActivity() {
         clicked.add(false)
         clicked.add(false)
 
-        routeAdapter= RouteAdapter(this,clicked,detailList)
-        act_route_rv_riding_info.adapter=routeAdapter
-        act_route_rv_riding_info.layoutManager=LinearLayoutManager(this)
+        routeAdapter = RouteAdapter(this, clicked, detailList)
+        act_route_rv_riding_info.adapter = routeAdapter
+        act_route_rv_riding_info.layoutManager = LinearLayoutManager(this)
 
     }
 }

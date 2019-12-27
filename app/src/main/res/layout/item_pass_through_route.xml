@@ -21,6 +21,7 @@
         app:layout_constraintStart_toEndOf="@id/item_pass_iv_riding_line"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/item_pass_tv_starting_point"
         android:layout_width="wrap_content"
@@ -49,6 +50,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/item_pass_tv_starting_point"
         app:layout_constraintStart_toEndOf="@id/item_pass_tv_starting_point"
         app:layout_constraintTop_toTopOf="@+id/item_pass_tv_starting_point" />
+
+    <ImageView
+        android:id="@+id/item_pass_iv_top_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/item_pass_tv_riding_number"
+        app:layout_constraintStart_toEndOf="@id/item_pass_tv_view_map"
+        app:layout_constraintTop_toTopOf="@+id/item_pass_tv_riding_number" />
 
     <ImageView
         android:id="@+id/item_pass_iv_riding_img"
@@ -81,9 +91,9 @@
         android:layout_height="0dp"
         android:layout_marginStart="56dp"
         android:src="#33c63c"
+        app:layout_constraintBottom_toBottomOf="@+id/item_pass_iv_bottom_center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/item_pass_tv_riding_number"
-        app:layout_constraintBottom_toBottomOf="@id/item_pass_tv_quit"/>
+        app:layout_constraintTop_toTopOf="@+id/item_pass_iv_top_center" />
 
     <TextView
         android:id="@+id/item_pass_tv_dispatch_interval_time"
@@ -98,33 +108,43 @@
         app:layout_constraintStart_toStartOf="@id/item_pass_tv_riding_number"
         app:layout_constraintTop_toBottomOf="@id/item_pass_tv_riding_number" />
 
-    <TextView
-        android:id="@+id/item_pass_tv_stop_station_count"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_pass_cl_drop_down_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:letterSpacing="-0.02"
-        android:lineSpacingExtra="6sp"
-        android:textColor="@color/gray"
-        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@id/item_pass_tv_riding_number"
-        app:layout_constraintTop_toBottomOf="@id/item_pass_tv_dispatch_interval_time"
-        tools:text="14개 정류장" />
+        app:layout_constraintTop_toBottomOf="@id/item_pass_tv_dispatch_interval_time">
 
-    <ImageView
-        android:id="@+id/item_pass_iv_dropbox_down"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6.8dp"
-        android:layout_marginTop="7.5dp"
-        android:src="@drawable/ic_dropbox_down"
-        app:layout_constraintStart_toEndOf="@id/item_pass_tv_stop_station_count"
-        app:layout_constraintTop_toBottomOf="@id/item_pass_tv_dispatch_interval_time" />
+        <TextView
+            android:id="@+id/item_pass_tv_stop_station_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="6sp"
+            android:text="14개 정류장"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/item_pass_iv_drop_down_up_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6.8dp"
+            android:src="@drawable/ic_dropbox_down"
+            app:layout_constraintBottom_toBottomOf="@+id/item_pass_tv_stop_station_count"
+            app:layout_constraintStart_toEndOf="@id/item_pass_tv_stop_station_count"
+            app:layout_constraintTop_toTopOf="@+id/item_pass_tv_stop_station_count" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/item_pass_tv_quit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/item_pass_through_quit"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="28sp"
@@ -149,6 +169,35 @@
         tools:text="강변역" />
 
     <ImageView
+        android:id="@+id/item_pass_iv_bottom_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/item_pass_tv_quit"
+        app:layout_constraintStart_toStartOf="@id/item_pass_iv_top_center"
+        app:layout_constraintTop_toTopOf="@+id/item_pass_tv_quit" />
+
+    <ImageView
+        android:id="@+id/item_pass_iv_top_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_path_point_transport"
+        app:layout_constraintBottom_toBottomOf="@+id/item_pass_iv_top_center"
+        app:layout_constraintEnd_toEndOf="@+id/item_pass_iv_riding_line"
+        app:layout_constraintStart_toStartOf="@+id/item_pass_iv_riding_line"
+        app:layout_constraintTop_toTopOf="@+id/item_pass_iv_top_center" />
+
+    <ImageView
+        android:id="@+id/item_pass_iv_bottom_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_path_point_transport"
+        app:layout_constraintBottom_toBottomOf="@+id/item_pass_iv_bottom_center"
+        app:layout_constraintEnd_toEndOf="@+id/item_pass_iv_riding_line"
+        app:layout_constraintStart_toStartOf="@+id/item_pass_iv_riding_line"
+        app:layout_constraintTop_toTopOf="@+id/item_pass_iv_bottom_center" />
+
+
+    <ImageView
         android:layout_width="0dp"
         android:layout_height="0.25dp"
         android:layout_marginTop="16.5dp"
@@ -161,8 +210,8 @@
         android:id="@+id/item_pass_rv_riding_info_detail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_pass_iv_dropbox_down"
         app:layout_constraintBottom_toTopOf="@id/item_pass_tv_quit"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_pass_cl_drop_down_up" />
 </androidx.constraintlayout.widget.ConstraintLayout>

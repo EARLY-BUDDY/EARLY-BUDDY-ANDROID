@@ -8,13 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devaon.early_buddy_android.R
 
-class RouteDetailAdapter(var routedetail:ArrayList<String>):RecyclerView.Adapter<RouteDetailViewHolder>(){
+class RouteDetailAdapter(var routeDetail:ArrayList<String>):RecyclerView.Adapter<RouteDetailViewHolder>(){
     override fun getItemCount(): Int {
-        return routedetail.size
+        return routeDetail.size
     }
 
     override fun onBindViewHolder(holder: RouteDetailViewHolder, position: Int) {
-        holder.stopStation.text=routedetail[position]
+        holder.stopStation.text=routeDetail[position]
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RouteDetailViewHolder {
@@ -25,6 +25,7 @@ class RouteDetailAdapter(var routedetail:ArrayList<String>):RecyclerView.Adapter
 
 
 class RouteDetailViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-    var stopStation = itemView.findViewById<TextView>(R.id.item_tv_stop_station_name)
+    var stopStation:TextView = itemView.findViewById(R.id.item_tv_stop_station_name)
+    var stopPoint:ImageView = itemView.findViewById(R.id.item_tv_stop_station_point)
 
 }
