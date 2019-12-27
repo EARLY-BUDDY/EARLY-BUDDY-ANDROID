@@ -40,7 +40,8 @@
         android:id="@+id/item_pass_tv_view_map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/item_pass_through_view_map"
         android:letterSpacing="-0.05"
         android:lineSpacingExtra="5sp"
@@ -48,7 +49,7 @@
         android:textColor="@color/light_gray"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/item_pass_tv_starting_point"
-        app:layout_constraintStart_toEndOf="@id/item_pass_tv_starting_point"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/item_pass_tv_starting_point" />
 
     <ImageView
@@ -112,6 +113,7 @@
         android:id="@+id/item_pass_cl_drop_down_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
         app:layout_constraintStart_toStartOf="@id/item_pass_tv_riding_number"
         app:layout_constraintTop_toBottomOf="@id/item_pass_tv_dispatch_interval_time">
 
@@ -144,7 +146,7 @@
         android:id="@+id/item_pass_tv_quit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="27dp"
         android:background="@drawable/item_pass_through_quit"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="28sp"
@@ -159,14 +161,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginBottom="2dp"
         android:letterSpacing="-0.05"
         android:lineSpacingExtra="8sp"
+        android:text="강변역"
         android:textColor="#5a5a5a"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/item_pass_tv_quit"
         app:layout_constraintStart_toEndOf="@id/item_pass_tv_quit"
-        app:layout_constraintTop_toTopOf="@+id/item_pass_tv_quit"
-        tools:text="강변역" />
+        app:layout_constraintTop_toTopOf="@+id/item_pass_tv_quit" />
 
     <ImageView
         android:id="@+id/item_pass_iv_bottom_center"

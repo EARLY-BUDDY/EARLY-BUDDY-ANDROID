@@ -1,9 +1,11 @@
 package com.devaon.early_buddy_android.feature.route
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.feature.HomeActivity
 import kotlinx.android.synthetic.main.activity_route.*
 
 class RouteActivity : AppCompatActivity() {
@@ -16,6 +18,12 @@ class RouteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_route)
 
+        makeListItem()
+        intent()
+
+    }
+
+    private fun makeListItem() {
         detailList = ArrayList()
         clicked = ArrayList()
 
@@ -30,6 +38,12 @@ class RouteActivity : AppCompatActivity() {
         routeAdapter = RouteAdapter(this, clicked, detailList)
         act_route_rv_riding_info.adapter = routeAdapter
         act_route_rv_riding_info.layoutManager = LinearLayoutManager(this)
+    }
 
+    private fun intent() {
+        act_route_iv_back.setOnClickListener {
+            var goBack = Intent(this, HomeActivity::class.java)
+            startActivity(goBack)
+        }
     }
 }

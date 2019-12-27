@@ -19,17 +19,87 @@
             android:id="@+id/act_route_tv_promise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="16dp"
             android:gravity="center_horizontal"
             android:letterSpacing="-0.02"
-            android:lineSpacingExtra="-9sp"
+            android:lineSpacingExtra="-7sp"
             android:text="SOPT 데모데이 "
             android:textColor="#ffffff"
-            android:textSize="20sp"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/act_route_iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="@+id/act_route_tv_promise"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/act_route_tv_promise" />
+
+        <ImageView
+            android:id="@+id/act_route_iv_time_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            android:src="@drawable/ic_time_white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/act_route_iv_back" />
+
+        <TextView
+            android:id="@+id/act_route_tv_time_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="6sp"
+            android:text="오후 12:20"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/act_route_iv_time_img"
+            app:layout_constraintStart_toEndOf="@id/act_route_iv_time_img"
+            app:layout_constraintTop_toTopOf="@+id/act_route_iv_time_img" />
+
+        <TextView
+            android:id="@+id/act_route_tv_until"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="6sp"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/act_route_iv_time_img"
+            app:layout_constraintStart_toEndOf="@id/act_route_tv_time_value"
+            app:layout_constraintTop_toTopOf="@+id/act_route_iv_time_img"
+            tools:text="까지" />
+
+        <ImageView
+            android:id="@+id/act_route_iv_location_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9.5dp"
+            android:src="@drawable/ic_location_white"
+            app:layout_constraintEnd_toEndOf="@+id/act_route_iv_time_img"
+            app:layout_constraintStart_toStartOf="@+id/act_route_iv_time_img"
+            app:layout_constraintTop_toBottomOf="@+id/act_route_iv_time_img" />
+
+        <TextView
+            android:id="@+id/act_route_tv_location_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="6sp"
+            android:text="오렌지팜 서초센터"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/act_route_iv_location_img"
+            app:layout_constraintStart_toStartOf="@+id/act_route_tv_time_value"
+            app:layout_constraintTop_toTopOf="@+id/act_route_iv_location_img" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <TextView
         android:id="@+id/act_route_tv_start_point"
@@ -50,8 +120,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/act_route_tv_start_point"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/act_route_tv_start_point" />
 </androidx.constraintlayout.widget.ConstraintLayout>
