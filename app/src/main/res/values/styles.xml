@@ -6,4 +6,17 @@
 
     </style>
 
+    <style name="MyDatePickerDialogStyle" parent="@style/ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="showTitle">false</item>
+        <item name="colorControlActivated">#ffea00</item>
+        <item name="android:selectableItemBackgroundBorderless">@color/main_color</item>
+        <item name="colorControlHighlight">#c51162</item>
+        <item name="android:headerBackground">#00c853</item>
+    </style>
+
+    <style name="AppTheme.StatusBar" parent="AppTheme">
+        <item name="android:statusBarColor">@color/main_color</item>
+       <!-- <item name="android:statusBarColor">@color/white</item>-->
+    </style>
+
 </resources>

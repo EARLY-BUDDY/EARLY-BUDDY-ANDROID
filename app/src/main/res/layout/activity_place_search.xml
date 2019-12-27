@@ -22,9 +22,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="17sp"
-            android:text="자주 어디에 있어요?"
-            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:text="자주 가는 장소"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
         android:paddingTop="15dp"
         android:paddingBottom="30dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_left_bottom_rect_blue_full"
+        android:background="@drawable/act_place_round_left_bottom_rect_blue_full"
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toBottomOf="@+id/act_place_search_cl_ment">
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/round_rect_white_full"
+            android:background="@drawable/act_place_round_rect_white_full"
             android:paddingStart="17dp"
             android:paddingTop="6dp"
             android:paddingBottom="8dp"
@@ -57,23 +57,23 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
-                android:id="@+id/act_place_search_tv_search"
+                android:id="@+id/act_place_search_et_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:background="@null"
                 android:ems="10"
-                android:hint="선택해주세요."
+                android:hint="장소검색"
+                android:textColor="@color/light_gray"
                 android:inputType="textPersonName"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/act_place_search_iv_search"
+                android:id="@+id/act_place_search_iv_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_marginTop="7dp"
                 android:layout_marginEnd="13dp"
                 android:layout_marginBottom="7dp"
@@ -84,7 +84,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/act_place_search_iv_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
@@ -95,6 +95,25 @@
             app:layout_constraintTop_toTopOf="@+id/act_place_search_cl_search" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/act_place_search_rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/act_place_search_cl_all"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/act_place_search_iv_bird"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:src="@drawable/img_empty"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/act_place_search_cl_all" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
