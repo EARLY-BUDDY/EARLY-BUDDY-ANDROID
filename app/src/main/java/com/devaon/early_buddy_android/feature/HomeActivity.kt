@@ -8,6 +8,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.feature.calendar.CalendarActivity
 import com.devaon.early_buddy_android.feature.route.RouteActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -43,5 +44,16 @@ class HomeActivity : AppCompatActivity() {
             var goToRoute = Intent(this, RouteActivity::class.java)
             startActivity(goToRoute)
         }
+
+        act_home_iv_planner.setOnClickListener {
+            var goToPlanner = Intent(this, CalendarActivity::class.java)
+            startActivity(goToPlanner)
+        }
+
+        act_home_iv_plus.setOnClickListener {
+            var goToAddSchedule = Intent(this, ScheduleActivity::class.java)
+            startActivity(goToAddSchedule)
+        }
+
     }
 }
