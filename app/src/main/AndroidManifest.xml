@@ -17,7 +17,6 @@
             android:value="0b9ceccacfdc1656c985d747c241c30c" />
         <activity android:name=".feature.route.RouteActivity"/>
         <activity android:name=".feature.HomeActivity"/>
-
         <activity android:name=".PlaceFavoriteActivity" />
         <activity android:name=".feature.SetCompleteActivity"
             android:theme="@style/AppTheme.StatusBar"
