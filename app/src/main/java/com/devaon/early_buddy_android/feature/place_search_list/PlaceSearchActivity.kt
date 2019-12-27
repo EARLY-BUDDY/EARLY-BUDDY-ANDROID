@@ -24,6 +24,7 @@ class PlaceSearchActivity : AppCompatActivity() {
         setContentView(R.layout.activity_place_search)
 
         initPlaceSearchList()
+        clearText()
         //goToSearchStartPlaceActivity()
 
     }
@@ -57,5 +58,11 @@ class PlaceSearchActivity : AppCompatActivity() {
         }
     }
 
+
+    private fun clearText(){
+        act_place_search_iv_delete.setOnClickListener {
+            act_place_search_et_search.text.clear()
+        }
+    }
 
 }

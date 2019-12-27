@@ -12,20 +12,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".feature.place_search_list.PlaceSelectEndActivity"></activity>
-        <activity android:name=".feature.place_search_list.PlaceSelectStartActivity" />
+        <activity android:name=".PlaceFavoriteActivity" />
+        <activity android:name=".feature.SetCompleteActivity"
+            android:theme="@style/AppTheme.StatusBar"
+            />
+        <activity android:name=".feature.place_search_list.PlaceSelectEndActivity"
+            android:theme="@style/AppTheme.StatusBar"/>
+        <activity android:name=".feature.place_search_list.PlaceSelectStartActivity"
+            android:theme="@style/AppTheme.StatusBar"/>
         <activity android:name=".PlaceRegister" />
-        <activity android:name=".feature.SetNicknameActivity" />
+
         <activity
             android:name=".feature.place_search_list.PlaceSearchActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/AppTheme.StatusBar"/>
         <activity
             android:name=".feature.place_select_list.PlaceSelectActivity"
-            android:windowSoftInputMode="adjustPan" />
-  
-      <activity android:name=".feature.ScheduleActivity" />      
-  
-        <activity android:name=".feature.MainActivity">
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/AppTheme.StatusBar"
+            />
+
+        <activity android:name=".feature.ScheduleActivity" />
+
+        <activity android:name=".feature.SetNicknameActivity"
+            android:theme="@style/AppTheme.StatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

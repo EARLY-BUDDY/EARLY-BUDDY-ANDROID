@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/textView24"
-        android:layout_width="260dp"
-        android:layout_height="73dp"
+        android:layout_width="299dp"
+        android:layout_height="88dp"
 
         android:layout_marginStart="41dp"
         android:lineSpacingExtra="9sp"
@@ -72,7 +72,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="등록하기"
-            android:textColor="@color/gray"
+            android:textSize="18dp"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

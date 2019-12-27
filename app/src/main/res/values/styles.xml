@@ -14,4 +14,9 @@
         <item name="android:headerBackground">#00c853</item>
     </style>
 
+    <style name="AppTheme.StatusBar" parent="AppTheme">
+        <item name="android:statusBarColor">@color/main_color</item>
+       <!-- <item name="android:statusBarColor">@color/white</item>-->
+    </style>
+
 </resources>
