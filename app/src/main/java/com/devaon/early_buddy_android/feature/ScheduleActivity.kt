@@ -168,21 +168,24 @@ class ScheduleActivity : AppCompatActivity(){
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
 
-        val totalTime = 100
-        val firstWalkTime = 10
-        val secondWalkTime = 10
-        val method1Time = 40
-        val method2Time = 30
+        val totalTime = 100.0
+        val firstWalkTime = 10.0
+        val secondWalkTime = 10.0
+        val method1Time = 50.0
+        val method2Time = 20.0
 
         val totalPath = findViewById<ImageView>(R.id.act_schedule_route_iv_gray_path).width
         val method1 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_1)
         val method2 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_2)
 
-        val method1Len = totalPath / (totalTime / method1Time) //totalPath에서 (totalTime / method1Time)만큼의 비율을 차지
-        val method2Len = totalPath / (totalTime / method2Time)
+        val method1Len = totalPath / ((totalTime / method1Time).toFloat()) //totalPath에서 (totalTime / method1Time)만큼의 비율을 차지
+        val method2Len = totalPath / ((totalTime / method2Time).toFloat())
+
+//        val method1Len = totalPath * ((method1Time / totalTime).toFloat()) //totalPath에서 (totalTime / method1Time)만큼의 비율을 차지
+//        val method2Len = totalPath * ((method2Time / totalTime).toFloat())
 
         Log.e("length", "total: $totalPath 1: $method1Len 2: $method2Len")
-        Log.e("thidthisthis", (totalTime / method2Time).toString())
+        Log.e("thidthisthis", (method1Time/totalTime).toFloat().toString())
 
 
         val log1 = (totalTime / (firstWalkTime+method1Time+secondWalkTime))
@@ -194,13 +197,13 @@ class ScheduleActivity : AppCompatActivity(){
         Log.e("margin", "method1Margin: $method1Margin method2Margin: $method2Margin")
 
         val method1Params = method1.layoutParams  as ConstraintLayout.LayoutParams
-        method1Params.width = method1Len
-        method1Params.marginStart = method1Margin
+        method1Params.width = method1Len.toInt()
+        method1Params.marginStart = method1Margin.toInt()
         method1.layoutParams = method1Params
 
         val method2Params = method2.layoutParams  as ConstraintLayout.LayoutParams
-        method2Params.width = method2Len
-        method2Params.marginStart = method2Margin-43
+        method2Params.width = method2Len.toInt()
+        method2Params.marginStart = method2Margin-44
         method2.layoutParams = method2Params
 
     }

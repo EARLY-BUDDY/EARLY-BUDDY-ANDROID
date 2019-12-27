@@ -90,7 +90,7 @@
             android:id="@+id/act_schedule_route_iv_gray_path"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/img_path_gray_all"
+            android:src="@drawable/img_gray_line_2"
             app:layout_constraintTop_toTopOf="@id/act_schedule_route_cl_bar"
             app:layout_constraintStart_toStartOf="@id/act_schedule_route_cl_bar"
             app:layout_constraintEnd_toEndOf="@id/act_schedule_route_cl_bar"/>

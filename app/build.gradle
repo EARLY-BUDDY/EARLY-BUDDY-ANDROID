@@ -21,6 +21,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets'] } }
 }
 
 dependencies {
@@ -68,5 +69,7 @@ dependencies {
     //FloationgActionButton
     implementation 'com.github.clans:fab:1.6.4'
 
+    //Lottie Library
+    implementation 'com.airbnb.android:lottie:3.2.2'
 
 }
