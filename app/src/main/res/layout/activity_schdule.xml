@@ -158,76 +158,83 @@
                     app:layout_constraintStart_toStartOf="@id/act_schedule_cl_place"
                     app:layout_constraintTop_toTopOf="@id/act_schedule_cl_place" />
 
-                <TextView
-                    android:id="@+id/act_schedule_tv_place_from"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/act_schedule_cl_place_click"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:letterSpacing="-0.05"
-                    android:lineSpacingExtra="-1sp"
-                    android:text="출발 : "
-                    android:textColor="#3e3e3e"
-                    android:textSize="13sp"
-                    app:layout_constraintStart_toStartOf="@+id/act_schedule_tv_place"
-                    app:layout_constraintTop_toBottomOf="@+id/act_schedule_tv_place" />
+                    app:layout_constraintTop_toBottomOf="@id/act_schedule_tv_place"
+                    app:layout_constraintStart_toStartOf="@id/act_schedule_tv_place">
+                    <TextView
+                        android:id="@+id/act_schedule_tv_place_from"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="-1sp"
+                        android:text="출발 : "
+                        android:layout_marginTop="2.5dp"
+                        android:textColor="#3e3e3e"
+                        android:textSize="13sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="19sp"
-                    android:text="장소검색"
-                    android:textColor="@color/light_gray"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/act_schedule_tv_place_from"
-                    app:layout_constraintStart_toEndOf="@+id/act_schedule_tv_place_from"
-                    app:layout_constraintTop_toTopOf="@+id/act_schedule_tv_place_from" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:letterSpacing="-0.02"
+                        android:lineSpacingExtra="19sp"
+                        android:text="장소검색"
+                        android:textColor="@color/light_gray"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/act_schedule_tv_place_from"
+                        app:layout_constraintStart_toEndOf="@+id/act_schedule_tv_place_from"
+                        app:layout_constraintTop_toTopOf="@+id/act_schedule_tv_place_from" />
 
-                <View
-                    android:id="@+id/act_schedule_vi_from"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.2dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/gray"
-                    app:layout_constraintStart_toStartOf="@id/act_schedule_tv_place_from"
-                    app:layout_constraintTop_toBottomOf="@+id/act_schedule_tv_place_from" />
+                    <View
+                        android:id="@+id/act_schedule_vi_from"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.2dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/gray"
+                        app:layout_constraintStart_toStartOf="@id/act_schedule_tv_place_from"
+                        app:layout_constraintTop_toBottomOf="@+id/act_schedule_tv_place_from" />
 
-                <TextView
-                    android:id="@+id/act_schedule_tv_place_to"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
-                    android:letterSpacing="-0.05"
-                    android:lineSpacingExtra="-1sp"
-                    android:text="도착 : "
-                    android:textColor="#3e3e3e"
-                    android:textSize="13sp"
-                    app:layout_constraintStart_toStartOf="@+id/act_schedule_vi_from"
-                    app:layout_constraintTop_toBottomOf="@+id/act_schedule_vi_from" />
+                    <TextView
+                        android:id="@+id/act_schedule_tv_place_to"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="-1sp"
+                        android:text="도착 : "
+                        android:textColor="#3e3e3e"
+                        android:textSize="13sp"
+                        app:layout_constraintStart_toStartOf="@+id/act_schedule_vi_from"
+                        app:layout_constraintTop_toBottomOf="@+id/act_schedule_vi_from" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="19sp"
-                    android:text="장소검색"
-                    android:textColor="@color/light_gray"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/act_schedule_tv_place_to"
-                    app:layout_constraintStart_toEndOf="@+id/act_schedule_tv_place_to"
-                    app:layout_constraintTop_toTopOf="@+id/act_schedule_tv_place_to" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:letterSpacing="-0.02"
+                        android:lineSpacingExtra="19sp"
+                        android:text="장소검색"
+                        android:textColor="@color/light_gray"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/act_schedule_tv_place_to"
+                        app:layout_constraintStart_toEndOf="@+id/act_schedule_tv_place_to"
+                        app:layout_constraintTop_toTopOf="@+id/act_schedule_tv_place_to" />
 
-                <View
-                    android:id="@+id/act_schedule_vi_to"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.2dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/gray"
-                    app:layout_constraintStart_toStartOf="@id/act_schedule_tv_place_to"
-                    app:layout_constraintTop_toBottomOf="@+id/act_schedule_tv_place_to" />
-
+                    <View
+                        android:id="@+id/act_schedule_vi_to"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.2dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/gray"
+                        app:layout_constraintStart_toStartOf="@id/act_schedule_tv_place_to"
+                        app:layout_constraintTop_toBottomOf="@+id/act_schedule_tv_place_to" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -244,6 +251,7 @@
                     android:id="@+id/act_schedule_tv_route"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/notosans_medium"
                     android:text="경로"
                     android:textColor="@color/main_color"
@@ -252,6 +260,7 @@
                     app:layout_constraintTop_toTopOf="@id/act_schedule_cl_route" />
 
                 <TextView
+                    android:id="@+id/act_schedult_tv_route_selected"
                     android:layout_width="match_parent"
                     android:layout_height="104dp"
                     android:layout_marginTop="10dp"
@@ -262,6 +271,12 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/act_schedule_tv_route" />
+
+                <include
+                    android:id="@+id/act_schedule_route_cl_route"
+                    layout="@layout/activity_schedule_route"
+                    android:layout_width="328dp"
+                    android:layout_height="wrap_content" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

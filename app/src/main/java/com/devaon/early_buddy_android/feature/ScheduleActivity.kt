@@ -2,13 +2,18 @@ package com.devaon.early_buddy_android.feature
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.marginLeft
+import androidx.core.view.marginStart
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.feature.place_select_list.PlaceSelectActivity
 import kotlinx.android.synthetic.main.activity_schdule.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -28,6 +33,14 @@ class ScheduleActivity : AppCompatActivity(){
         showTimePicker()
         setNotiSpinner()
         setWeekPressed()
+        searchRoute()
+
+        //장소 textView가 null이 아니라면 defaut 경로 부분을 안보이게 해줘야함
+        //null이라면 default 경로가 보이게 해야함
+        val route:TextView = findViewById(R.id.act_schedule_tv_route)
+        val routeS:TextView = findViewById(R.id.act_schedult_tv_route_selected)
+        route.setVisibility(View.GONE)
+        routeS.setVisibility(View.GONE)
 
     }
 
@@ -141,6 +154,55 @@ class ScheduleActivity : AppCompatActivity(){
                 sun.setSelected(true)
             }
         }
+    }
+
+    fun searchRoute(){
+        val placeClick = findViewById<ConstraintLayout>(R.id.act_schedule_cl_place_click)
+
+        placeClick.setOnClickListener{
+            val intent = Intent(this@ScheduleActivity, PlaceSelectActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+
+        val totalTime = 100
+        val firstWalkTime = 10
+        val secondWalkTime = 10
+        val method1Time = 50
+        val method2Time = 30
+
+        val totalPath = findViewById<ImageView>(R.id.act_schedule_route_iv_gray_path).width
+        val method1 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_1)
+        val method2 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_2)
+
+        val method1Len = totalPath / (totalTime / method1Time) //totalPath에서 (totalTime / method1Time)만큼의 비율을 차지
+        val method2Len = totalPath / (totalTime / method2Time)
+
+        Log.e("length", "total: $totalPath 1: $method1Len 2: $method2Len")
+        Log.e("thidthisthis", (totalTime / method2Time).toString())
+
+
+        val log1 = (totalTime / (firstWalkTime+method1Time+secondWalkTime))
+        Log.e("plus2", (totalTime / (firstWalkTime+method1Time+secondWalkTime).toFloat()).toString())
+
+        val method1Margin = totalPath / (totalTime / firstWalkTime)
+        val method2Margin = (totalPath / (totalTime / (firstWalkTime+method1Time+secondWalkTime).toFloat())).toInt()
+
+        Log.e("margin", "method1Margin: $method1Margin method2Margin: $method2Margin")
+
+        val method1Params = method1.layoutParams  as ConstraintLayout.LayoutParams
+        method1Params.width = method1Len
+        method1Params.marginStart = method1Margin
+        method1.layoutParams = method1Params
+
+        val method2Params = method2.layoutParams  as ConstraintLayout.LayoutParams
+        method2Params.width = method2Len
+        method2Params.marginStart = method2Margin-43
+        method2.layoutParams = method2Params
+
     }
 
 }
