@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.RouteActivity">
+    tools:context=".feature.route.RouteActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/act_route_cl_top"
@@ -43,7 +43,15 @@
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_route_cl_top"
+        app:layout_constraintTop_toBottomOf="@+id/act_route_cl_top" />
 
-        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/act_route_rv_riding_info"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/act_route_tv_start_point"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
