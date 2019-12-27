@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':SDK_release_v2.0.0'
 rootProject.name='EARLY-BUDDY-ANDROID'

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.HomeActivity">
+
+    <ImageView
+        android:id="@+id/act_home_iv_bottom_img"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/img_bg_twobus"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/act_home_cl_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/act_home_iv_planner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/ic_planner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/act_home_iv_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/img_write"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/act_home_iv_mine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            android:src="@drawable/img_mypage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/act_home_iv_plus"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/act_home_iv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/img_main_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/act_home_cl_top_bar" />
+
+    <TextView
+        android:id="@+id/act_home_tv_arrive_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="82dp"
+        android:letterSpacing="-0.05"
+        android:lineHeight="34sp"
+        android:lineSpacingExtra="11sp"
+        android:text="버스도착까지"
+        android:textColor="#313131"
+        android:textSize="23sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/act_home_iv_text" />
+
+    <TextView
+        android:id="@+id/act_home_tv_before_minute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="12sp"
+        android:text="분전"
+        android:textColor="#313131"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/act_home_tv_arrive_text" />
+
+    <TextView
+        android:id="@+id/act_home_tv_minute_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="41sp"
+        android:text="9"
+        android:textColor="#313131"
+        android:textSize="85sp"
+        app:layout_constraintEnd_toStartOf="@+id/act_home_tv_before_minute"
+        app:layout_constraintTop_toBottomOf="@+id/act_home_iv_text" />
+
+    <TextView
+        android:id="@+id/act_home_tv_bus_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/act_home_round_riding_number"
+        android:lineSpacingExtra="6sp"
+        android:text="2224"
+        android:textColor="#ffffff"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/act_home_tv_arrive_text"
+        app:layout_constraintTop_toBottomOf="@id/act_home_tv_arrive_text" />
+
+    <TextView
+        android:id="@+id/act_home_tv_bus_current_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="6sp"
+        android:text="테크노마트앞. 강변역"
+        android:textColor="#707070"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/act_home_tv_bus_number"
+        app:layout_constraintStart_toEndOf="@+id/act_home_tv_bus_number"
+        app:layout_constraintTop_toTopOf="@+id/act_home_tv_bus_number" />
+
+    <ImageView
+        android:id="@+id/act_homme_iv_reboot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_reboot"
+        app:layout_constraintBottom_toBottomOf="@+id/act_home_tv_bus_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/act_home_tv_bus_number" />
+
+    <TextView
+        android:id="@+id/act_home_tv_next_bus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="6sp"
+        android:text="다음배차까지"
+        android:textColor="#707070"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/act_home_tv_bus_number"
+        app:layout_constraintEnd_toStartOf="@id/act_home_tv_next_bus_var"
+        app:layout_constraintTop_toTopOf="@+id/act_home_tv_bus_number" />
+
+    <TextView
+        android:id="@+id/act_home_tv_next_bus_var"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="6sp"
+        android:text="22분전"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@id/act_homme_iv_reboot"
+        app:layout_constraintTop_toTopOf="@id/act_home_tv_next_bus" />
+
+    <ImageView
+        android:id="@+id/act_home_line"
+        android:layout_width="370dp"
+        android:layout_height="0.25dp"
+        android:layout_marginTop="20.5dp"
+        android:background="#707070"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/act_home_tv_next_bus" />
+
+    <TextView
+        android:id="@+id/act_home_tv_first_promise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="6sp"
+        android:text="SPOT 데모데이"
+        android:textColor="#313131"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/act_home_tv_bus_number"
+        app:layout_constraintTop_toBottomOf="@+id/act_home_line" />
+
+    <ImageView
+        android:id="@+id/act_home_iv_second_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9.3dp"
+        android:src="@drawable/ic_time"
+        app:layout_constraintStart_toStartOf="@+id/act_home_tv_first_promise"
+        app:layout_constraintTop_toBottomOf="@+id/act_home_tv_first_promise" />
+
+    <TextView
+        android:id="@+id/act_home_tv_second_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8.7dp"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="6sp"
+        android:text="오후 12:20"
+        android:textColor="#313131"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/act_home_iv_second_time"
+        app:layout_constraintStart_toEndOf="@+id/act_home_iv_second_time"
+        app:layout_constraintTop_toTopOf="@id/act_home_iv_second_time" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:letterSpacing="-0.03"
+        android:lineSpacingExtra="6sp"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/act_home_tv_second_time"
+        app:layout_constraintTop_toTopOf="@id/act_home_tv_second_time"
+        tools:text="@string/until" />
+
+    <ImageView
+        android:id="@+id/act_home_iv_third_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9.3dp"
+        android:src="@drawable/ic_location"
+        app:layout_constraintStart_toStartOf="@+id/act_home_tv_first_promise"
+        app:layout_constraintTop_toBottomOf="@+id/act_home_iv_second_time" />
+
+    <TextView
+        android:id="@+id/act_home_tv_third_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="6sp"
+        android:text="오렌지팜 서초센터"
+        android:textColor="#313131"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/act_home_iv_third_place"
+        app:layout_constraintStart_toStartOf="@+id/act_home_tv_second_time"
+        app:layout_constraintTop_toTopOf="@id/act_home_iv_third_place" />
+
+    <ImageView
+        android:id="@+id/act_home_iv_go_route"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41.9dp"
+        android:src="@drawable/ic_detail"
+        app:layout_constraintEnd_toEndOf="@+id/act_homme_iv_reboot"
+        app:layout_constraintTop_toBottomOf="@id/act_home_line" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

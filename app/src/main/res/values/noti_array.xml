@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="noti_array">
+        <item>배차 5분 전</item>
+        <item>배차 10분 전</item>
+        <item>배차 20분 전</item>
+        <item>알림 없음</item>
+    </string-array>
+</resources>
