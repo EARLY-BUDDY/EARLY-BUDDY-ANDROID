@@ -34,8 +34,6 @@ class MainActivity : AppCompatActivity() {
                     ContextCompat.getColor(this, R.color.main_color)
             }
         }
-
-        mMapView=findViewById(R.id.map_view)
 //        mMapView.setCurrentLocationEventListener(this)
     }
 }
