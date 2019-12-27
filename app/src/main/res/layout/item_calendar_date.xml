@@ -6,7 +6,9 @@
     android:orientation="vertical"
     android:layout_width="38dp"
     android:layout_height="38dp"
-    android:background="@drawable/selector_item_calendar_date_bg">
+    android:background="@drawable/selector_item_calendar_date_bg"
+    android:layout_marginBottom="2dp"
+    android:layout_marginStart="6dp">
 
     <TextView
         android:id="@+id/item_calendar_date_tv"
