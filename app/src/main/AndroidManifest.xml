@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".feature.place_select_list.PlaceSelectActivity"/>
         <activity android:name=".feature.ScheduleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
