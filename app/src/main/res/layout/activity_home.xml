@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".feature.HomeActivity">
 
+    <ImageView
+        android:id="@+id/act_home_iv_bottom_img"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/img_bg_twobus"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/act_home_cl_top_bar"
         android:layout_width="match_parent"
@@ -105,7 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/rounded"
+        android:background="@drawable/act_home_round_riding_number"
         android:lineSpacingExtra="6sp"
         android:text="2224"
         android:textColor="#ffffff"
@@ -226,7 +237,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="9.3dp"
-        android:src="@drawable/img_title"
+        android:src="@drawable/ic_location"
         app:layout_constraintStart_toStartOf="@+id/act_home_tv_first_promise"
         app:layout_constraintTop_toBottomOf="@+id/act_home_iv_second_time" />
 
@@ -236,29 +247,21 @@
         android:layout_height="wrap_content"
         android:letterSpacing="-0.05"
         android:lineSpacingExtra="6sp"
-        android:text="오후 12:20"
+        android:text="오렌지팜 서초센터"
         android:textColor="#313131"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/act_home_iv_third_place"
         app:layout_constraintStart_toStartOf="@+id/act_home_tv_second_time"
         app:layout_constraintTop_toTopOf="@id/act_home_iv_third_place" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:letterSpacing="-0.03"
-        android:lineSpacingExtra="6sp"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@id/act_home_tv_third_place"
-        app:layout_constraintTop_toTopOf="@id/act_home_tv_third_place"
-        tools:text="@string/until" />
-
     <ImageView
-        android:id="@+id/act_home_iv_go_detail"
+        android:id="@+id/act_home_iv_go_route"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="41.9dp"
         android:src="@drawable/ic_detail"
         app:layout_constraintEnd_toEndOf="@+id/act_homme_iv_reboot"
         app:layout_constraintTop_toBottomOf="@id/act_home_line" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

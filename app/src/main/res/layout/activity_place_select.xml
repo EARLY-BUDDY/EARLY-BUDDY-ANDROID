@@ -16,20 +16,23 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/act_place_select_iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/btn_back"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/act_place_select_tv_ment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
             android:gravity="center"
             android:text="장소선택"
-            android:textColor="#ffffff"
+            android:textColor="@color/white"
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +46,7 @@
         android:id="@+id/act_place_select_cl_all"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_left_bottom_rect_blue_full"
+        android:background="@drawable/act_place_round_left_bottom_rect_blue_full"
         android:paddingTop="15dp"
         android:paddingBottom="30dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +58,7 @@
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
-            android:background="@drawable/round_rect_white_full"
+            android:background="@drawable/act_place_round_rect_white_full"
             android:paddingStart="17dp"
             android:paddingTop="6dp"
             android:paddingBottom="8dp"
@@ -69,6 +72,7 @@
                 android:layout_height="wrap_content"
                 android:text="출발 : "
                 android:textSize="12sp"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -82,6 +86,8 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:textSize="16sp"
+                android:hint="출발지 검색"
+                android:textColor="@color/light_gray"
                 app:layout_constraintBottom_toBottomOf="@+id/act_place_select_tv_search_start"
                 app:layout_constraintStart_toEndOf="@+id/act_place_select_tv_search_start"
                 app:layout_constraintTop_toTopOf="@+id/act_place_select_tv_search_start"
@@ -106,7 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
 
-            android:background="@drawable/round_rect_white_full"
+            android:background="@drawable/act_place_round_rect_white_full"
             android:paddingStart="17dp"
             android:paddingTop="6dp"
             android:paddingBottom="8dp"
@@ -122,6 +128,7 @@
                 android:layout_height="wrap_content"
                 android:text="도착 : "
                 android:textSize="12sp"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -135,6 +142,8 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:textSize="16sp"
+                android:hint="도착지 검색"
+                android:textColor="@color/light_gray"
                 app:layout_constraintBottom_toBottomOf="@+id/act_place_select_tv_search_end"
                 app:layout_constraintStart_toEndOf="@+id/act_place_select_tv_search_end"
                 app:layout_constraintTop_toTopOf="@+id/act_place_select_tv_search_end" />

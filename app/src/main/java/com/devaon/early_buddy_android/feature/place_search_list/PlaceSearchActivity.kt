@@ -1,8 +1,12 @@
 package com.devaon.early_buddy_android.feature.place_search_list
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.place.GetPlaceData
@@ -12,12 +16,17 @@ class PlaceSearchActivity : AppCompatActivity() {
 
     private lateinit var placeSearchAdapter: PlaceSearchAdapter
     private var placeDataList = ArrayList<GetPlaceData>()
+    private lateinit var searchEdit: EditText
+    private  var clearButton: ImageView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place_search)
 
         initPlaceSearchList()
+        clearText()
+        //goToSearchStartPlaceActivity()
+
     }
 
     private fun initPlaceSearchList() {
@@ -48,4 +57,12 @@ class PlaceSearchActivity : AppCompatActivity() {
 
         }
     }
+
+
+    private fun clearText(){
+        act_place_search_iv_delete.setOnClickListener {
+            act_place_search_et_search.text.clear()
+        }
+    }
+
 }
