@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.devaon.early_buddy_android.R
-import com.devaon.early_buddy_android.data.place.calendar.Date
 import com.devaon.early_buddy_android.data.place.calendar.Schedule
 import kotlinx.android.synthetic.main.activity_calendar.*
 
@@ -25,6 +24,7 @@ class CalendarActivity : AppCompatActivity() {
 
         setCalendarVp()
         setScheduleRv()
+        setButton()
     }
 
     fun setCalendarVp(){
@@ -61,7 +61,7 @@ class CalendarActivity : AppCompatActivity() {
         }
     }
 
-    fun setScheduleRv(){
+    private fun setScheduleRv(){
 
         var dummyDataList = ArrayList<Schedule>()
         dummyDataList.add(Schedule("SOPT 데모데이", "오후 12:20", "오렌지팜 서초센터"))
@@ -69,5 +69,11 @@ class CalendarActivity : AppCompatActivity() {
 
         act_calendar_schedule_rv.adapter = CalendarScheduleRecyclerViewAdapter(this, dummyDataList)
         act_calendar_schedule_rv.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun setButton(){
+        act_calendar_iv_back.setOnClickListener {
+            finish()
+        }
     }
 }
