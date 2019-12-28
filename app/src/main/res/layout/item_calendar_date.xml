@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_calendar_date_container"
+    android:orientation="vertical"
+    android:layout_width="38dp"
+    android:layout_height="38dp"
+    android:background="@drawable/selector_item_calendar_date_bg"
+    android:layout_marginBottom="2dp"
+    android:layout_marginStart="6dp">
+
+    <TextView
+        android:id="@+id/item_calendar_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="20"
+        android:textColor="@drawable/selector_item_calendar_date_text_color"
+        android:textSize="18sp"
+        android:lineHeight="24sp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+    <ImageView
+        android:id="@+id/item_Calendar_date_iv_schedule"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:visibility="invisible"
+        android:src="@drawable/circle_3092ff"
+        app:layout_constraintTop_toBottomOf="@+id/item_calendar_date_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="1dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

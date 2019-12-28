@@ -3,40 +3,24 @@ package com.devaon.early_buddy_android.feature
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputFilter
+import android.text.Spanned
 import android.text.TextWatcher
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.PlaceFavoriteActivity
 import com.devaon.early_buddy_android.R
 import kotlinx.android.synthetic.main.activity_set_nickname.*
+import java.util.regex.Pattern
+
 
 class SetNicknameActivity : AppCompatActivity() {
 
 
-//    private var btSetNicknameNext: Constraints? = null
-//    private var etSetNickname: EditText? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_set_nickname)
-
-        makeController()
-    }
-
-
     private fun makeController() {
-//        btSetNicknameNext = findViewById(R.id.cl_set_nickname_next)
-//        etSetNickname = findViewById(R.id.tv_set_nickname_write)
 
-//        var btSetNicknameNext = cl_set_nickname_next
-
-//        tv_set_nickname_write.onFocusChangeListener = object : View.OnFocusChangeListener {
-//            override fun onFocusChange(p0: View?, p1: Boolean) {
-//                if(p1) {
-//                    cl_set_nickname_next.setBackgroundResource(R.drawable.selector_set_nickname_next_bg)
-//                }
-//            }
-//        }
         tv_set_nickname_write.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 if(p0!!.length > 0){
@@ -58,9 +42,23 @@ class SetNicknameActivity : AppCompatActivity() {
 
 
         cl_set_nickname_next?.setOnClickListener {
-            val intent = Intent(this@SetNicknameActivity, PlaceFavoriteActivity::class.java)
-            startActivity(intent)
+            val patternNickName: Pattern = Pattern.compile("^[ㄱ-ㅣ가-힣]*$")
+
+            if (patternNickName.matcher(tv_set_nickname_write.text.toString()).matches()) {
+                val intent = Intent(this@SetNicknameActivity, PlaceFavoriteActivity::class.java)
+                startActivity(intent)
+            }else{
+                Toast.makeText(this@SetNicknameActivity, "한글만 입력해주세요", Toast.LENGTH_SHORT).show()
+            }
+
+
         }
 
     }
+
+
+
+
+
+
 }
