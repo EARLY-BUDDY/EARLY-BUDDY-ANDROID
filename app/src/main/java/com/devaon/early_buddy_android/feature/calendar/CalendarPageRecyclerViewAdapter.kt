@@ -36,6 +36,7 @@ class CalendarPageRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
 
+        // 일요일, 토요일 색상 지정
         if(position % BaseCalendar.DAYS_OF_WEEK == 0)
             holder.date.setTextColor(Color.parseColor("#ff1200"))
         else if(position % BaseCalendar.DAYS_OF_WEEK == 6)
@@ -43,6 +44,8 @@ class CalendarPageRecyclerViewAdapter(
         else
             holder.date.setTextColor(Color.parseColor("#676d6e"))
 
+
+        // 전, 다음 달 처리
         if (position < baseCalendar.prevMonthTailOffset
             || position >= baseCalendar.prevMonthTailOffset + baseCalendar.currentMonthMaxDate) {
             holder.date.alpha = 0.3f
@@ -51,17 +54,22 @@ class CalendarPageRecyclerViewAdapter(
             holder.date.alpha = 1f
         }
 
+        // 스케쥴 visibility 설정
         if(baseCalendar.data[position].hasSchedule){
             holder.schedule.visibility = View.VISIBLE
         }
 
         holder.date.text = baseCalendar.data[position].date
+
+
         if(baseCalendar.data[position].isToDay){
             holder.container.setBackgroundResource(R.drawable.circle_c3c3c3)
             holder.date.setTextColor(Color.parseColor("#ffffff"))
             holder.schedule.visibility = View.INVISIBLE
         }
 
+
+        // 날짜 클릭
         holder.container.setOnClickListener {
 
             var fragmentPosition = calendarFragment.fragmentPosition
