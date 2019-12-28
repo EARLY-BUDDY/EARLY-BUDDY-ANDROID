@@ -1,6 +1,7 @@
 package com.devaon.early_buddy_android.feature.calendar
 
 import android.graphics.Color
+import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
@@ -62,6 +63,11 @@ class CalendarPageRecyclerViewAdapter(
         }
 
         holder.container.setOnClickListener {
+
+            var fragmentPosition = calendarFragment.fragmentPosition
+
+            CalendarActivity.getCalendarAcitivityObject.calendarPagerAdapter.frgMap[fragmentPosition-1]?.calendarPageRecyclerViewAdapter?.clearSelectedItem()
+            CalendarActivity.getCalendarAcitivityObject.calendarPagerAdapter.frgMap[fragmentPosition+1]?.calendarPageRecyclerViewAdapter?.clearSelectedItem()
             clearSelectedItem()
             toggleItemSelected(position)
         }
@@ -101,7 +107,7 @@ class CalendarPageRecyclerViewAdapter(
         return mSelectedItems.get(position, false)
     }
 
-    private fun clearSelectedItem(){
+    fun clearSelectedItem(){
         var position = 0
 
         for(i in  0..mSelectedItems.size()-1){

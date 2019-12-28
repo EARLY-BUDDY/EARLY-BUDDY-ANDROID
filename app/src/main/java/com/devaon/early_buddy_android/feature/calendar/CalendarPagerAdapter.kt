@@ -9,7 +9,7 @@ import java.util.*
 
 
 class CalendarPagerAdapter (fm: FragmentManager): FragmentPagerAdapter(fm){
-    private val frgMap: HashMap<Int, CalendarPageFragment>
+    val frgMap: HashMap<Int, CalendarPageFragment>
     private val listMonthByMillis = ArrayList<Long>()
     private var numOfMonth: Int = 0
 
@@ -43,9 +43,12 @@ class CalendarPagerAdapter (fm: FragmentManager): FragmentPagerAdapter(fm){
             frgMap[position] = frg
         }
         frg.setTimeByMillis(listMonthByMillis[position])
-        Log.e("timeByMillis", listMonthByMillis[position].toString())
 
         return frg
+    }
+
+    override fun getItemPosition(`object`: Any): Int {
+        return super.getItemPosition(`object`)
     }
 
     override fun getCount(): Int {
