@@ -183,7 +183,7 @@
         android:id="@+id/item_pass_iv_top_circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/img_path_point_transport"
+        android:src="@drawable/ic_green_dot"
         app:layout_constraintBottom_toBottomOf="@+id/item_pass_iv_top_center"
         app:layout_constraintEnd_toEndOf="@+id/item_pass_iv_riding_line"
         app:layout_constraintStart_toStartOf="@+id/item_pass_iv_riding_line"
@@ -193,7 +193,7 @@
         android:id="@+id/item_pass_iv_bottom_circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/img_path_point_transport"
+        android:src="@drawable/ic_green_dot"
         app:layout_constraintBottom_toBottomOf="@+id/item_pass_iv_bottom_center"
         app:layout_constraintEnd_toEndOf="@+id/item_pass_iv_riding_line"
         app:layout_constraintStart_toStartOf="@+id/item_pass_iv_riding_line"
@@ -218,5 +218,6 @@
         app:layout_constraintBottom_toTopOf="@id/item_pass_tv_quit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_pass_cl_drop_down_up" />
+        app:layout_constraintTop_toBottomOf="@id/item_pass_cl_drop_down_up"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
