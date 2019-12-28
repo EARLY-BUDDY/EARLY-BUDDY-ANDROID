@@ -7,15 +7,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.data.route.Station
 
-class RouteDetailAdapter(var routeDetail: ArrayList<String>) :
+class RouteDetailAdapter(var routeDetail: ArrayList<Station>) :
     RecyclerView.Adapter<RouteDetailViewHolder>() {
     override fun getItemCount(): Int {
         return routeDetail.size
     }
 
     override fun onBindViewHolder(holder: RouteDetailViewHolder, position: Int) {
-        holder.stopStation.text = routeDetail[position]
+        holder.stopStation.text = routeDetail[position].stationName
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RouteDetailViewHolder {

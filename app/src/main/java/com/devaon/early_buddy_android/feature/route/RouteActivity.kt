@@ -7,12 +7,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.route.Route
+import com.devaon.early_buddy_android.data.route.RouteResponse
+import com.devaon.early_buddy_android.data.route.SubPath
 import com.devaon.early_buddy_android.feature.HomeActivity
+import com.devaon.early_buddy_android.server.EarlyBuddyServiceImpl
 import kotlinx.android.synthetic.main.activity_route.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RouteActivity : AppCompatActivity() {
 
-    private var detailList: ArrayList<Route> = ArrayList()
     private lateinit var routeRecyclerView: RecyclerView
     private lateinit var routeAdapter: RouteAdapter
 
@@ -40,32 +45,32 @@ class RouteActivity : AppCompatActivity() {
     }
 
     private fun makeListItem() {
-        detailList.add(
-            Route(
-                startAddress = "공릉",
-                endAddress = "건대입구",
-                clicked = false,
-                path = arrayListOf("상계역", "노원역", "중계역", "하계역", "공릉역")
-            )
-        )
-        detailList.add(
-            Route(
-                startAddress = "공릉",
-                endAddress = "건대입구",
-                clicked = false,
-                path = arrayListOf("상계역", "노원역", "중계역", "하계역", "공릉역")
-            )
-        )
-        detailList.add(
-            Route(
-                startAddress = "공릉",
-                endAddress = "건대입구",
-                clicked = false,
-                path = arrayListOf("상계역", "노원역", "중계역", "하계역", "공릉역")
-            )
+        val callRoute: Call<RouteResponse> = EarlyBuddyServiceImpl.service.getRoute(
+            127.08282465301149,
+            37.62072502768881,
+            127.03746391719882,
+            37.4720040276288
         )
 
-        routeAdapter.setRouteItem(detailList)
+        callRoute.enqueue(object : Callback<RouteResponse> {
+            override fun onFailure(call: Call<RouteResponse>, t: Throwable) {
+                Log.e("error is ", t.toString())
+            }
+
+            override fun onResponse(call: Call<RouteResponse>, response: Response<RouteResponse>) {
+                if(response.isSuccessful){
+                    Log.e("result is ", response.body().toString())
+                    val route = response.body()!!
+//                    var i  = 0
+//                    var list : ArrayList<SubPath> =ArrayList()
+//                    while (i<route.data.path.size){
+//                        list.add()
+//                    }
+                    routeAdapter.setRouteItem(route.data.path[0].subPath)
+
+                }
+            }
+        })
     }
 
     private fun intent() {
