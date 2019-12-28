@@ -9,8 +9,8 @@
         android:id="@+id/item_tv_stop_station_point"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="51.5dp"
-        android:src="@drawable/img_path_point_transport"
+        android:layout_marginStart="52dp"
+        android:src="@drawable/ic_green_dot"
         app:layout_constraintBottom_toBottomOf="@+id/item_tv_stop_station_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/item_tv_stop_station_name" />

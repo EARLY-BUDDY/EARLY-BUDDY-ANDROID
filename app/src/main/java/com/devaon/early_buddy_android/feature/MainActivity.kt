@@ -4,7 +4,6 @@ import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.airbnb.lottie.LottieAnimationView
 import com.devaon.early_buddy_android.PlaceFavoriteActivity
 import com.devaon.early_buddy_android.R
 import kotlinx.android.synthetic.main.activity_main.*
