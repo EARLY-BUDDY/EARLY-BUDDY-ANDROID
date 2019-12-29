@@ -48,6 +48,7 @@
             android:theme="@style/AppTheme.StatusBar"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".feature.ScheduleActivity" />
+
         <activity android:name=".feature.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

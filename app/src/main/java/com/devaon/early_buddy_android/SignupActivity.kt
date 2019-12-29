@@ -104,38 +104,37 @@ class SignupActivity : AppCompatActivity() {
     private fun passwordCheck() {
         act_signup_et_pw.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                if (p0!!.length > 0) {
+                //if (p0!!.length > 0) {
 
-                    if ((p0!!.length < 6) || !(pwdPattern.matcher(act_signup_et_pw.text.toString()).matches())) {
-                        //6글자 이상 입력해주세요 -예외처리 메시지 띄움
-                        act_signup_tv_pw_ment.showOrInvisible(true)
+                if ((p0!!.length < 6) || !(pwdPattern.matcher(act_signup_et_pw.text.toString()).matches())) {
+                    //6글자 이상 입력해주세요 -예외처리 메시지 띄움
+                    act_signup_tv_pw_ment.showOrInvisible(true)
 
-                        act_signup_cl_pw.setBackgroundResource(R.drawable.act_signup_round_rect_red)
-                        act_signup_et_pw.setTextColor(
-                            ContextCompat.getColor(
-                                this@SignupActivity,
-                                R.color.black
-                            )
+                    act_signup_cl_pw.setBackgroundResource(R.drawable.act_signup_round_rect_red)
+                    act_signup_et_pw.setTextColor(
+                        ContextCompat.getColor(
+                            this@SignupActivity,
+                            R.color.black
                         )
-                        pwFlag = false
-                    } else {
-
-                        act_signup_tv_pw_ment.showOrInvisible(false)
-
-                        act_signup_cl_pw.setBackgroundResource(R.drawable.act_signup_round_rect_blue)
-                        act_signup_et_pw.setTextColor(
-                            ContextCompat.getColor(
-                                this@SignupActivity,
-                                R.color.black
-                            )
-                        )
-                        pwFlag = true
-                    }
-
+                    )
+                    pwFlag = false
                 } else {
+
+                    act_signup_tv_pw_ment.showOrInvisible(false)
+
+                    act_signup_cl_pw.setBackgroundResource(R.drawable.act_signup_round_rect_blue)
+                    act_signup_et_pw.setTextColor(
+                        ContextCompat.getColor(
+                            this@SignupActivity,
+                            R.color.black
+                        )
+                    )
+                    pwFlag = true
+                    //}
+                } /*else {
                     act_signup_cl_pw.setBackgroundResource(R.drawable.act_signup_round_rect_gray)
                     pwFlag = false
-                }
+                }*/
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -165,10 +164,15 @@ class SignupActivity : AppCompatActivity() {
                     act_signup_tv_pw_check_ment.showOrInvisible(true)
                     act_signup_cl_pw_check.setBackgroundResource(R.drawable.act_signup_round_rect_red)
                     pwCheckFlag = false
-                }else {
+                } else {
                     act_signup_tv_pw_check_ment.showOrInvisible(false)
                     act_signup_cl_pw_check.setBackgroundResource(R.drawable.act_signup_round_rect_blue)
-                    act_signup_et_pw_check.setTextColor(ContextCompat.getColor(this@SignupActivity, R.color.black))
+                    act_signup_et_pw_check.setTextColor(
+                        ContextCompat.getColor(
+                            this@SignupActivity,
+                            R.color.black
+                        )
+                    )
                     pwCheckFlag = true
                 }
             }
