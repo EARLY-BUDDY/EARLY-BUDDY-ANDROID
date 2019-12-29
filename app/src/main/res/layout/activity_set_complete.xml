@@ -4,7 +4,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
-android:background="#3092ff"
 android:layout_height="match_parent"
     >
 
@@ -23,61 +22,27 @@ android:layout_height="match_parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="169dp"
-        android:text="이제 이비와\n함께 할 수 있짹!"
-        android:textColor="#ffffff"
-        android:textSize="23sp"
+        android:text="이제 얼리버디와\n함께 할 수 있어요!"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        android:lineHeight="35dp"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/set_complete_ll_ment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_set_complete_iv_jump_eb">
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="#ffffff"
-            android:text="이제 " />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="#ffffff"
-            android:text="얼리버디"
-
-            />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="#ffffff"
-            android:text="와 함께" />
-    </LinearLayout>
-
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="어쩌구저쩌구 해볼까요?"
-        android:textColor="#ffffff"
+        android:text="자주 가는 장소는 마이페이지에서\n 언제든지 바꿀 수 있어요!"
+        android:textColor="@color/light_gray"
+        android:textSize="16sp"
+        android:lineHeight="23sp"
+        android:letterSpacing="-0.05"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/set_complete_ll_ment" />
+        app:layout_constraintTop_toBottomOf="@+id/act_set_complete_iv_jump_eb" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -87,7 +52,7 @@ android:layout_height="match_parent"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/act_place_round_rect_white_full"
+        android:background="@drawable/act_place_round_rect_blue_full"
         android:paddingHorizontal="132dp"
         android:paddingVertical="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -100,8 +65,8 @@ android:layout_height="match_parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="시작하기"
-            android:textColor="#606060"
+            android:text="시작하기"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
