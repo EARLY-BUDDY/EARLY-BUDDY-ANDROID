@@ -7,17 +7,18 @@ import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import com.devaon.early_buddy_android.R
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.marginLeft
 import androidx.core.view.marginStart
-import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.feature.place_select_list.PlaceSelectActivity
 import kotlinx.android.synthetic.main.activity_schdule.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+import android.widget.DatePicker
 
 class ScheduleActivity : AppCompatActivity(){
     var cal = Calendar.getInstance()
@@ -34,6 +35,7 @@ class ScheduleActivity : AppCompatActivity(){
         setNotiSpinner()
         setWeekPressed()
         searchRoute()
+        showPopUp()
 
         //장소 textView가 null이 아니라면 defaut 경로 부분을 안보이게 해줘야함
         //null이라면 default 경로가 보이게 해야함
@@ -56,25 +58,28 @@ class ScheduleActivity : AppCompatActivity(){
     }
 
     fun showDatePicker(){
+
         act_schedule_tv_date_click.setOnClickListener {
-            val dateSetListener = DatePickerDialog.OnDateSetListener{ datePicker, year, monthOfYear, dayOfMonth ->
-                cal.set(Calendar.YEAR, year)
-                cal.set(Calendar.MONTH, monthOfYear)
-                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                act_schedule_tv_date_click.text = SimpleDateFormat("yyyy.MM.dd").format(cal.time)
-            }
-            DatePickerDialog(this, dateSetListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
+            DatePickerDialog(this@ScheduleActivity, R.style.MyDatePickerDialogTheme,
+                DatePickerDialog.OnDateSetListener{ datePicker, year, monthOfYear, dayOfMonth ->
+                    cal.set(Calendar.YEAR, year)
+                    cal.set(Calendar.MONTH, monthOfYear)
+                    cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                    act_schedule_tv_date_click.text = SimpleDateFormat("yyyy.MM.dd").format(cal.time)
+                },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
         }
     }
 
     fun showTimePicker(){
+
         act_schedule_tv_time_click.setOnClickListener {
-            val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-                cal.set(Calendar.HOUR_OF_DAY, hour)
-                cal.set(Calendar.MINUTE, minute)
-                act_schedule_tv_time_click.text = SimpleDateFormat("a hh:mm").format(cal.time)
-            }
-            TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), false).show()
+            TimePickerDialog(this@ScheduleActivity, R.style.MyTimePickerDialogTheme,
+                TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+                    cal.set(Calendar.HOUR_OF_DAY, hour)
+                    cal.set(Calendar.MINUTE, minute)
+                    act_schedule_tv_time_click.text = SimpleDateFormat("a hh:mm").format(cal.time)
+                }
+                ,cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), false).show()
         }
     }
 
@@ -206,6 +211,13 @@ class ScheduleActivity : AppCompatActivity(){
         method2Params.marginStart = method2Margin-44
         method2.layoutParams = method2Params
 
+    }
+
+    fun showPopUp(){
+        act_schedule_tv_register.setOnClickListener {
+            val intent = Intent(this@ScheduleActivity, SchedulePopUpActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 }
