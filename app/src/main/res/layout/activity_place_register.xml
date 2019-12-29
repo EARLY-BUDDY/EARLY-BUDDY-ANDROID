@@ -22,7 +22,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_set_nickname_next"
+        android:id="@+id/act_signin_cl_join"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="133dp"
@@ -34,10 +34,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_nickname_write">
+        app:layout_constraintTop_toBottomOf="@+id/act_signin_cl_id">
 
         <TextView
-            android:id="@+id/bt_set_nickname_next"
+            android:id="@+id/act_signin_bt_join"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"

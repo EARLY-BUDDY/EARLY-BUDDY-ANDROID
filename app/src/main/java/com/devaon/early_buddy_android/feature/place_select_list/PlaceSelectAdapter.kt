@@ -17,7 +17,7 @@ class PlaceSelectAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceSelectViewHolder {
         val view: View = LayoutInflater
             .from(context)
-            .inflate(R.layout.list_item_place_search, parent, false)
+            .inflate(R.layout.item_place_search, parent, false)
         return PlaceSelectViewHolder(view)
     }
 

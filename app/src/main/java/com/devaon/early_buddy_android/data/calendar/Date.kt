@@ -1,4 +1,4 @@
-package com.devaon.early_buddy_android.data.place.calendar
+package com.devaon.early_buddy_android.data.calendar
 
 data class Date(
     var year : String,
