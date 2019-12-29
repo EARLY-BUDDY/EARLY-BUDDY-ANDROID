@@ -25,16 +25,16 @@ class HomeActivity : AppCompatActivity() {
     private fun changeColor() {
         act_home_tv_bus_number.setOnClickListener {
             when (val background = act_home_tv_bus_number.getBackground()) {
-                is ShapeDrawable -> background.paint.color =
-                    ContextCompat.getColor(this, R.color.main_color)
+//                is ShapeDrawable -> background.paint.color =
+//                    ContextCompat.getColor(this, R.color.main_color)
                 is GradientDrawable -> background.setColor(
                     ContextCompat.getColor(
                         this,
                         R.color.main_color
                     )
                 )
-                is ColorDrawable -> background.color =
-                    ContextCompat.getColor(this, R.color.main_color)
+//                is ColorDrawable -> background.color =
+//                    ContextCompat.getColor(this, R.color.main_color)
             }
         }
     }
