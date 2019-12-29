@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.airbnb.lottie.LottieAnimationView
 import com.devaon.early_buddy_android.PlaceFavoriteActivity
 import com.devaon.early_buddy_android.R
 import kotlinx.android.synthetic.main.activity_main.*
@@ -13,7 +14,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
         setContentView(R.layout.activity_main)
 
         home.setOnClickListener{
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, SetNicknameActivity::class.java)
             startActivity(intent)
         }
-//
+
 //        val animationView = findViewById<LottieAnimationView>(R.id.animationView)
 //        animationView.setAnimation("testtt.json")
 //        animationView.loop(true)

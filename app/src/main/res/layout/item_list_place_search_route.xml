@@ -38,40 +38,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/li_place_search_route_tv_method_1"
+            android:id="@+id/li_place_search_route_tv_method"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/notosans_bold"
-            android:text="지하철"
+            android:text="교통수단"
             android:textColor="@color/light_gray"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@id/li_place_search_route_tv_time"
             app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_time"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/li_place_search_route_plus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosans_bold"
-            android:text="+"
-            android:textColor="@color/light_gray"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@id/li_place_search_route_tv_method_1"
-            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_method_1"
-            app:layout_constraintTop_toTopOf="@id/li_place_search_route_tv_method_1" />
-
-        <TextView
-            android:id="@+id/li_place_search_route_method_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosans_bold"
-            android:text="버스"
-            android:textColor="@color/light_gray"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@id/li_place_search_route_plus"
-            app:layout_constraintTop_toTopOf="@id/li_place_search_route_plus" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -95,33 +72,9 @@
             android:textSize="12sp"
             android:textColor="@color/gray"
             android:fontFamily="@font/notosans_medium"
-            android:text="환승 "
+            android:text="환승 1회"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
-
-        <TextView
-            android:id="@+id/li_place_search_route_tv_transfer_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosans_medium"
-            android:text="1"
-            android:textColor="@color/gray"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/li_place_search_route_tv_transfer"
-            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_transfer"
-            app:layout_constraintTop_toTopOf="@+id/li_place_search_route_tv_transfer" />
-
-        <TextView
-            android:id="@+id/li_place_search_route_tv_transfer_count_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosans_medium"
-            android:text="회"
-            android:textColor="@color/gray"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_transfer_count"
-            app:layout_constraintTop_toTopOf="@+id/li_place_search_route_tv_transfer_count" />
 
         <TextView
             android:id="@+id/li_place_search_route_tv_walk"
@@ -131,33 +84,9 @@
             android:textSize="12sp"
             android:textColor="@color/gray"
             android:fontFamily="@font/notosans_medium"
-            android:text="도보 "
+            android:text="도보 3분"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_transfer_count_time"/>
-
-        <TextView
-            android:id="@+id/li_place_search_route_tv_walk_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosans_medium"
-            android:text="9"
-            android:textColor="@color/gray"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/li_place_search_route_tv_walk"
-            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_walk"
-            app:layout_constraintTop_toTopOf="@+id/li_place_search_route_tv_walk" />
-
-        <TextView
-            android:id="@+id/li_place_search_route_tv_walk_count_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosans_medium"
-            android:text="분"
-            android:textColor="@color/gray"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_walk_count"
-            app:layout_constraintTop_toTopOf="@+id/li_place_search_route_tv_walk_count" />
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_transfer"/>
 
         <TextView
             android:id="@+id/li_place_search_route_tv_money"
@@ -167,21 +96,9 @@
             android:textSize="12sp"
             android:textColor="@color/gray"
             android:fontFamily="@font/notosans_medium"
-            android:text="1,200"
+            android:text="1,200원"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_walk_count_time"/>
-
-        <TextView
-            android:id="@+id/li_place_search_route_tv_money_won"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosans_medium"
-            android:text="원"
-            android:textColor="@color/gray"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/li_place_search_route_tv_money"
-            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_money"
-            app:layout_constraintTop_toTopOf="@+id/li_place_search_route_tv_money" />
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_walk"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
