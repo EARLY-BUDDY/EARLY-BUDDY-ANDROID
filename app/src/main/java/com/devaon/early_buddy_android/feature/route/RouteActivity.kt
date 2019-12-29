@@ -1,16 +1,12 @@
 package com.devaon.early_buddy_android.feature.route
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.devaon.early_buddy_android.R
-import com.devaon.early_buddy_android.data.route.Route
 import com.devaon.early_buddy_android.data.route.RouteResponse
-import com.devaon.early_buddy_android.data.route.SubPath
-import com.devaon.early_buddy_android.feature.HomeActivity
-import com.devaon.early_buddy_android.server.EarlyBuddyServiceImpl
+import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
 import kotlinx.android.synthetic.main.activity_route.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -46,10 +42,10 @@ class RouteActivity : AppCompatActivity() {
 
     private fun makeListItem() {
         val callRoute: Call<RouteResponse> = EarlyBuddyServiceImpl.service.getRoute(
-            127.077863,
-            37.625399,
-            126.953504,
-            37.496536
+            127.024754,
+            37.637339,
+            127.067368,
+            37.602024
         )
 
         callRoute.enqueue(object : Callback<RouteResponse> {

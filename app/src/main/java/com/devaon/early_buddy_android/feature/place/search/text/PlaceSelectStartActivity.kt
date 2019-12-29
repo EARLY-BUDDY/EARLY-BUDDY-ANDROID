@@ -1,4 +1,4 @@
-package com.devaon.early_buddy_android.feature.place_search_list
+package com.devaon.early_buddy_android.feature.place.search.text
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

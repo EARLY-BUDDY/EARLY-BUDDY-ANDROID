@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.place_search_list.PlaceSelectStartActivity">
+    tools:context=".feature.place.search.text.PlaceSelectStartActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/act_place_select_start_cl_ment"

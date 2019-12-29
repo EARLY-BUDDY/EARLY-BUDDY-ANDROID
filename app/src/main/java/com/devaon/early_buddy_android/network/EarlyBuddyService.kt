@@ -1,10 +1,8 @@
-package com.devaon.early_buddy_android.server
+package com.devaon.early_buddy_android.network
 
-import com.devaon.early_buddy_android.data.route.Route
 import com.devaon.early_buddy_android.data.route.RouteResponse
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface EarlyBuddyService {

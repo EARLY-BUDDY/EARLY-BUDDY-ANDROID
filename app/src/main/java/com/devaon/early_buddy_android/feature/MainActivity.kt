@@ -1,19 +1,13 @@
 package com.devaon.early_buddy_android.feature
 
-import android.animation.Animator
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Base64
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.airbnb.lottie.LottieAnimationView
-import com.devaon.early_buddy_android.PlaceFavoriteActivity
 import com.devaon.early_buddy_android.R
-import com.devaon.early_buddy_android.SignupActivity
-import com.devaon.early_buddy_android.TestActivity
+import com.devaon.early_buddy_android.feature.user.SignupActivity
+import com.devaon.early_buddy_android.feature.home.HomeActivity
+import com.devaon.early_buddy_android.feature.initial_join.SetNicknameActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import java.security.MessageDigest
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +24,11 @@ class MainActivity : AppCompatActivity() {
 
         setnickname.setOnClickListener{
             val intent = Intent(this@MainActivity, SetNicknameActivity::class.java)
+            startActivity(intent)
+        }
+
+        test.setOnClickListener{
+            val intent = Intent(this@MainActivity, SignupActivity::class.java)
             startActivity(intent)
         }
 
