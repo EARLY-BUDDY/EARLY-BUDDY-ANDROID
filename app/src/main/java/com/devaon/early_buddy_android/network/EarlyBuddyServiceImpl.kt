@@ -1,4 +1,4 @@
-package com.devaon.early_buddy_android.server
+package com.devaon.early_buddy_android.network
 
 import com.devaon.early_buddy_android.intercepter.CookiesIntercepter
 import okhttp3.OkHttpClient

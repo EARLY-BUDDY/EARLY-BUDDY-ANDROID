@@ -28,16 +28,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-<<<<<<< HEAD
-=======
 
         test.setOnClickListener{
             val intent = Intent(this@MainActivity, SignupActivity::class.java)
             startActivity(intent)
         }
 
-
->>>>>>> 116e6349524aa86423af0e11f3f444ada3013d6b
 //        val animationView = findViewById<LottieAnimationView>(R.id.animationView)
 //        animationView.setAnimation("testtt.json")
 //        animationView.loop(true)
