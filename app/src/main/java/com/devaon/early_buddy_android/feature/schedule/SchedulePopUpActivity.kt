@@ -1,4 +1,4 @@
-package com.devaon.early_buddy_android.feature
+package com.devaon.early_buddy_android.feature.schedule
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

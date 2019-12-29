@@ -1,13 +1,13 @@
-package com.devaon.early_buddy_android.feature
+package com.devaon.early_buddy_android.feature.user
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import com.devaon.early_buddy_android.R
 
-class NoScheduleActivity : AppCompatActivity() {
+class SigninActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_no_schedule)
+        setContentView(R.layout.activity_signin)
     }
 }

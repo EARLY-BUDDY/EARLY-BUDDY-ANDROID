@@ -1,19 +1,14 @@
-package com.devaon.early_buddy_android.feature
+package com.devaon.early_buddy_android.feature.initial_join
 
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Base64
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.devaon.early_buddy_android.PlaceFavoriteActivity
 import com.devaon.early_buddy_android.R
 import kotlinx.android.synthetic.main.activity_set_nickname.*
-import java.security.MessageDigest
 import java.util.regex.Pattern
 
 

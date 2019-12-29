@@ -1,4 +1,4 @@
-package com.devaon.early_buddy_android.feature.place_search_route_list
+package com.devaon.early_buddy_android.feature.place.search.route
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -18,7 +18,7 @@ class PlaceSearchRouteAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): PlaceSearchRouteAdapter.PlaceSearchRouteViewHolder {
+    ): PlaceSearchRouteViewHolder {
         val view: View = LayoutInflater
             .from(context)
             .inflate(R.layout.item_list_place_search_route, parent, false)
@@ -26,7 +26,7 @@ class PlaceSearchRouteAdapter(
     }
 
     override fun onBindViewHolder(
-        holder: PlaceSearchRouteAdapter.PlaceSearchRouteViewHolder,
+        holder: PlaceSearchRouteViewHolder,
         position: Int
     ) {
         holder.bind(routeList[position])
