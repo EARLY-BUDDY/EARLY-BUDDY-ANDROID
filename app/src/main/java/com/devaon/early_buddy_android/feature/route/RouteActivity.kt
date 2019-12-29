@@ -46,10 +46,10 @@ class RouteActivity : AppCompatActivity() {
 
     private fun makeListItem() {
         val callRoute: Call<RouteResponse> = EarlyBuddyServiceImpl.service.getRoute(
-            127.08282465301149,
-            37.62072502768881,
-            127.03746391719882,
-            37.4720040276288
+            127.077863,
+            37.625399,
+            126.953504,
+            37.496536
         )
 
         callRoute.enqueue(object : Callback<RouteResponse> {

@@ -34,4 +34,8 @@
     <color name="buSan_line_dongHae">#a2c4e4</color>
     <color name="buSan_line_gimHae">#81469e</color>
     <color name="buSan_line_one">#f35f23</color>
+    <color name="seoul_bus_gan_line">#3469ec</color>
+    <color name="seoul_bus_ji_line">#33c63c</color>
+    <color name="seoul_bus_gwangyuk">#ff574c</color>
+    <color name="seoul_bus_remainder">#85c900</color>
 </resources>

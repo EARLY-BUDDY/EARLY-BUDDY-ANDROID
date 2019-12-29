@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.airbnb.lottie.LottieAnimationView
 import com.devaon.early_buddy_android.PlaceFavoriteActivity
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.SignupActivity
@@ -32,6 +33,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+<<<<<<< HEAD
+=======
 
         test.setOnClickListener{
             val intent = Intent(this@MainActivity, SignupActivity::class.java)
@@ -39,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+>>>>>>> 116e6349524aa86423af0e11f3f444ada3013d6b
 //        val animationView = findViewById<LottieAnimationView>(R.id.animationView)
 //        animationView.setAnimation("testtt.json")
 //        animationView.loop(true)

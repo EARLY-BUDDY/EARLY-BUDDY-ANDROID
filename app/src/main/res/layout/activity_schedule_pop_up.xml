@@ -8,66 +8,26 @@
     tools:context=".feature.SchedulePopUpActivity">
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="182dp"
-        android:scaleType="center"
-        android:src="@drawable/img_eb" />
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="100dp">
+        android:background="@drawable/img_popup_plan">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="26dp"
-            android:layout_marginTop="62dp"
+            android:layout_marginTop="127dp"
             android:layout_marginRight="26dp"
-            android:fontFamily="@font/notosans_bold"
             android:letterSpacing="-0.05"
             android:lineSpacingExtra="12sp"
             android:text="일정 등록이 완료되었어요!"
             android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:textSize="17sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="6dp"
-            android:fontFamily="@font/notosans_regular"
-            android:letterSpacing="-0.05"
-            android:lineSpacingExtra="8sp"
-            android:text="일정 이름"
-            android:textColor="@color/gray"
-            android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/notosans_regular"
-            android:letterSpacing="-0.05"
-            android:lineSpacingExtra="8sp"
-            android:text="일정 장소"
-            android:textColor="@color/gray"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/notosans_regular"
-            android:letterSpacing="-0.05"
-            android:lineSpacingExtra="8sp"
-            android:text="일정 시간"
-            android:textColor="@color/gray"
-            android:textSize="16sp" />
 
         <TextView
             android:layout_width="200dp"

@@ -14,10 +14,10 @@
         android:theme="@style/AppTheme"
         android:networkSecurityConfig="@xml/network_security_config">
         <activity android:name=".feature.SchedulePopUpActivity"></activity>
-  
         <activity android:name=".SignupActivity"></activity>
         <activity android:name=".SigninActivity" />
         <activity android:name=".TestActivity" />
+
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="0b9ceccacfdc1656c985d747c241c30c" />
