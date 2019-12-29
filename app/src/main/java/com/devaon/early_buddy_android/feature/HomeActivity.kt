@@ -1,23 +1,25 @@
 package com.devaon.early_buddy_android.feature
 
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.ShapeDrawable
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.util.TextViewIntAnimation
 import com.devaon.early_buddy_android.feature.calendar.CalendarActivity
 import com.devaon.early_buddy_android.feature.route.RouteActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
 
+    var a = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        act_home_tv_minute_number.setAnimInt(60)
         changeColor()
         intent()
     }
@@ -25,14 +27,15 @@ class HomeActivity : AppCompatActivity() {
     private fun changeColor() {
         act_home_tv_bus_number.setOnClickListener {
             when (val background = act_home_tv_bus_number.getBackground()) {
+                is GradientDrawable ->
+                    if(a==1){
+                    background.setColor(ContextCompat.getColor(this, R.color.main_color))
+                    }else{
+                        background.setColor(ContextCompat.getColor(this, R.color.seoul_line_seven))
+                    }
+
 //                is ShapeDrawable -> background.paint.color =
 //                    ContextCompat.getColor(this, R.color.main_color)
-                is GradientDrawable -> background.setColor(
-                    ContextCompat.getColor(
-                        this,
-                        R.color.main_color
-                    )
-                )
 //                is ColorDrawable -> background.color =
 //                    ContextCompat.getColor(this, R.color.main_color)
             }
@@ -55,5 +58,8 @@ class HomeActivity : AppCompatActivity() {
             startActivity(goToAddSchedule)
         }
 
+    }
+    fun TextView.setAnimInt(value: Int) {
+        startAnimation(TextViewIntAnimation(this, to = value))
     }
 }
