@@ -100,7 +100,7 @@
         android:id="@+id/item_pass_riding_tv_dispatch_interval_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="15dp"
         android:letterSpacing="-0.02"
         android:lineSpacingExtra="6sp"
         android:text="배차간격 매일 6 - 20분"
@@ -113,9 +113,9 @@
         android:id="@+id/item_pass_riding_cl_drop_down_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="1.5dp"
         android:paddingBottom="4dp"
-        android:paddingEnd="10dp"
+        android:paddingEnd="30dp"
         app:layout_constraintStart_toStartOf="@id/item_pass_riding_tv_riding_number"
         app:layout_constraintTop_toBottomOf="@id/item_pass_riding_tv_dispatch_interval_time">
 
@@ -144,17 +144,11 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
+    <ImageView
         android:id="@+id/item_pass_riding_tv_quit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
-        android:background="@drawable/item_pass_through_quit"
-        android:gravity="center_horizontal"
-        android:lineSpacingExtra="28sp"
-        android:text="하차"
-        android:textColor="#33c63c"
-        android:textSize="14sp"
+        android:layout_marginTop="11dp"
         app:layout_constraintStart_toStartOf="@id/item_pass_riding_tv_riding_number"
         app:layout_constraintTop_toBottomOf="@id/item_pass_riding_rv_riding_info_detail" />
 

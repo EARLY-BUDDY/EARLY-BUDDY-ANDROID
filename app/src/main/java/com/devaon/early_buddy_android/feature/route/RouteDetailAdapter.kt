@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.route.Station
 
-class RouteDetailAdapter(var routeDetail: ArrayList<Station>) :
+class RouteDetailAdapter(var routeDetail: ArrayList<Station>, val viewType: Int, val code: Int) :
     RecyclerView.Adapter<RouteDetailViewHolder>() {
     override fun getItemCount(): Int {
         return routeDetail.size
@@ -18,9 +18,50 @@ class RouteDetailAdapter(var routeDetail: ArrayList<Station>) :
 
     override fun onBindViewHolder(holder: RouteDetailViewHolder, position: Int) {
         when (position) {
-            0 -> holder.stopView.visibility=View.GONE
-            routeDetail.size-1 -> holder.stopView.visibility=View.GONE
-            else -> holder.stopStation.text = routeDetail[position].stationName
+            0 -> {
+                holder.stopView.visibility = View.GONE
+            }
+            (routeDetail.size - 1) -> {
+                holder.stopView.visibility = View.GONE
+            }
+            else -> {
+                //역 뒤에 붙이고 말고 결정
+                when (viewType) {
+                    1 -> {
+                        holder.stopStation.text = String.format("%s역", routeDetail[position].stationName)
+                        when(code){
+                            1-> holder.stopPoint.setImageResource(R.drawable.img_path_point_one)
+                            2-> holder.stopPoint.setImageResource(R.drawable.img_path_point_two)
+                            3-> holder.stopPoint.setImageResource(R.drawable.img_path_point_three)
+                            4-> holder.stopPoint.setImageResource(R.drawable.img_path_point_four)
+                            5-> holder.stopPoint.setImageResource(R.drawable.img_path_point_five)
+                            6 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_six)
+                            7 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_seven)
+                            8 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_eight)
+                            9 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_nine)
+                            100 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_bundang)
+                            101 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_airport)
+                            104 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_kyunguijungang)
+                            107 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_everline)
+                            108 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_kyungchun)
+                            102 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_jaki)
+                            109 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_shinbundang)
+                            110 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_uijeongbu)
+                            113 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_ui)
+                        }
+                    }
+                    2 -> {
+                        holder.stopStation.text = routeDetail[position].stationName
+                        when(code){
+                            11 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_ganline)
+                            12 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_jiline)
+                            14 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_gwangyuk)
+                            else -> holder.stopPoint.setImageResource(R.drawable.img_path_point_others)
+                        }
+
+                    }
+                }
+            }
         }
     }
 
@@ -33,7 +74,7 @@ class RouteDetailAdapter(var routeDetail: ArrayList<Station>) :
 
 
 class RouteDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val stopView:ConstraintLayout = itemView.findViewById(R.id.item_cl_stop_station_view)
+    val stopView: ConstraintLayout = itemView.findViewById(R.id.item_cl_stop_station_view)
     val stopStation: TextView = itemView.findViewById(R.id.item_tv_stop_station_name)
     val stopPoint: ImageView = itemView.findViewById(R.id.item_tv_stop_station_point)
 

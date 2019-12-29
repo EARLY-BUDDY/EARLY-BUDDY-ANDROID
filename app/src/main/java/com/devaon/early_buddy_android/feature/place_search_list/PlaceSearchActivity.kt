@@ -1,12 +1,9 @@
 package com.devaon.early_buddy_android.feature.place_search_list
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.place.GetPlaceData
@@ -32,12 +29,36 @@ class PlaceSearchActivity : AppCompatActivity() {
     private fun initPlaceSearchList() {
         placeSearchAdapter = PlaceSearchAdapter(this).apply {
             data = listOf(
-                GetPlaceData("만수주공10단지아파트 1001동", "인천 남동구 만수동 1043 만수주공10단지아파트 1001", "장승남로 34"),
-                GetPlaceData("만수주공10단지아파트 1002동", "인천 남동구 만수동 1043 만수주공10단지아파트 1002", "장승남로 34"),
-                GetPlaceData("만수주공10단지아파트 1003동", "인천 남동구 만수동 1043 만수주공10단지아파트 1003", "장승남로 34"),
-                GetPlaceData("만수주공10단지아파트 1004동", "인천 남동구 만수동 1043 만수주공10단지아파트 1004", "장승남로 34"),
-                GetPlaceData("만수주공10단지아파트 1005동", "인천 남동구 만수동 1043 만수주공10단지아파트 1005", "장승남로 34"),
-                GetPlaceData("만수주공10단지아파트 1006동", "인천 남동구 만수동 1043 만수주공10단지아파트 1006", "장승남로 34")
+                GetPlaceData(
+                    "만수주공10단지아파트 1001동",
+                    "인천 남동구 만수동 1043 만수주공10단지아파트 1001",
+                    "장승남로 34"
+                ),
+                GetPlaceData(
+                    "만수주공10단지아파트 1002동",
+                    "인천 남동구 만수동 1043 만수주공10단지아파트 1002",
+                    "장승남로 34"
+                ),
+                GetPlaceData(
+                    "만수주공10단지아파트 1003동",
+                    "인천 남동구 만수동 1043 만수주공10단지아파트 1003",
+                    "장승남로 34"
+                ),
+                GetPlaceData(
+                    "만수주공10단지아파트 1004동",
+                    "인천 남동구 만수동 1043 만수주공10단지아파트 1004",
+                    "장승남로 34"
+                ),
+                GetPlaceData(
+                    "만수주공10단지아파트 1005동",
+                    "인천 남동구 만수동 1043 만수주공10단지아파트 1005",
+                    "장승남로 34"
+                ),
+                GetPlaceData(
+                    "만수주공10단지아파트 1006동",
+                    "인천 남동구 만수동 1043 만수주공10단지아파트 1006",
+                    "장승남로 34"
+                )
             )
         }
         //test용 데이터

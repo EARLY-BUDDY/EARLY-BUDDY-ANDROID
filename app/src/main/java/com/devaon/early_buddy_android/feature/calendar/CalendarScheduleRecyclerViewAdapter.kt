@@ -1,16 +1,13 @@
 package com.devaon.early_buddy_android.feature.calendar
 
 import android.content.Context
-import android.graphics.Color
-import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.devaon.early_buddy_android.R
-import com.devaon.early_buddy_android.data.place.calendar.Schedule
+import com.devaon.early_buddy_android.data.calendar.Schedule
 import java.util.*
 
 
@@ -38,7 +35,6 @@ class CalendarScheduleRecyclerViewAdapter(
         var title = itemView.findViewById(R.id.item_calendar_date_schedule_tv_title) as TextView
         var place = itemView.findViewById(R.id.item_calendar_date_schedule_tv_place) as TextView
         var time = itemView.findViewById(R.id.item_calendar_date_schedule_tv_time) as TextView
-        //var arrow = itemView.findViewById(R.id.item_calendar_date_schedule_iv_arrow) as ImageView
     }
 
 }
