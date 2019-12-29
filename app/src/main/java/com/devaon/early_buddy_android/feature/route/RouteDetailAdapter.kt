@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.route.Station
 
-class RouteDetailAdapter(var routeDetail: ArrayList<Station>) :
+class RouteDetailAdapter(var routeDetail: ArrayList<Station>,val viewType: Int) :
     RecyclerView.Adapter<RouteDetailViewHolder>() {
     override fun getItemCount(): Int {
         return routeDetail.size
@@ -18,9 +18,19 @@ class RouteDetailAdapter(var routeDetail: ArrayList<Station>) :
 
     override fun onBindViewHolder(holder: RouteDetailViewHolder, position: Int) {
         when (position) {
-            0 -> holder.stopView.visibility=View.GONE
-            routeDetail.size-1 -> holder.stopView.visibility=View.GONE
-            else -> holder.stopStation.text = routeDetail[position].stationName
+            0 -> {
+                holder.stopView.visibility = View.GONE
+            }
+            (routeDetail.size - 1) -> {
+                holder.stopView.visibility = View.GONE
+            }
+            else -> {
+                //역 뒤에 붙이고 말고 결정
+                when(viewType){
+                    1 -> holder.stopStation.text = String.format("%s역",routeDetail[position].stationName)
+                    2 -> holder.stopStation.text = routeDetail[position].stationName
+                }
+            }
         }
     }
 
@@ -33,7 +43,7 @@ class RouteDetailAdapter(var routeDetail: ArrayList<Station>) :
 
 
 class RouteDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val stopView:ConstraintLayout = itemView.findViewById(R.id.item_cl_stop_station_view)
+    val stopView: ConstraintLayout = itemView.findViewById(R.id.item_cl_stop_station_view)
     val stopStation: TextView = itemView.findViewById(R.id.item_tv_stop_station_name)
     val stopPoint: ImageView = itemView.findViewById(R.id.item_tv_stop_station_point)
 
