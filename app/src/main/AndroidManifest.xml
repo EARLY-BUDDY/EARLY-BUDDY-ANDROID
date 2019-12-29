@@ -13,10 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:networkSecurityConfig="@xml/network_security_config">
+        <activity android:name=".feature.SchedulePopUpActivity"></activity>
+  
         <activity android:name=".SignupActivity"></activity>
         <activity android:name=".SigninActivity" />
         <activity android:name=".TestActivity" />
-
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="0b9ceccacfdc1656c985d747c241c30c" />
@@ -28,9 +29,10 @@
             android:name=".feature.SetCompleteActivity"
             android:theme="@style/AppTheme.StatusBar" />
         <activity
+
             android:name=".feature.SetNicknameActivity"
             android:theme="@style/AppTheme.StatusBar" />
-        <activity
+        <activity      
             android:name=".feature.place_search_list.PlaceSelectEndActivity"
             android:theme="@style/AppTheme.StatusBar" />
         <activity
@@ -46,10 +48,9 @@
             android:theme="@style/AppTheme.StatusBar"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".feature.ScheduleActivity" />
-        <!--
-<activity android:name=".feature.SetNicknameActivity"
+        <activity
+            android:name=".feature.SetNicknameActivity"
             android:theme="@style/AppTheme.StatusBar" />
-        -->
         <activity android:name=".feature.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/li_place_search_route_ll"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/li_place_search_route_tv_"
+        android:id="@+id/li_place_search_route_tv_best"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:fontFamily="@font/notosans_medium"
+        android:fontFamily="@font/notosans_bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
         android:text="최적"
         android:textColor="@color/main_color"
         android:textSize="12sp"
@@ -19,8 +23,247 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/li_place_search_route_tv_">
+        app:layout_constraintStart_toStartOf="@id/li_place_search_route_tv_best"
+        app:layout_constraintTop_toBottomOf="@+id/li_place_search_route_tv_best">
+
+        <TextView
+            android:id="@+id/li_place_search_route_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="@font/notosans_bold"
+            android:text="걸리는 시간"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/li_place_search_route_tv_method_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/notosans_bold"
+            android:text="지하철"
+            android:textColor="@color/light_gray"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/li_place_search_route_tv_time"
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_time"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/li_place_search_route_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_bold"
+            android:text="+"
+            android:textColor="@color/light_gray"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/li_place_search_route_tv_method_1"
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_method_1"
+            app:layout_constraintTop_toTopOf="@id/li_place_search_route_tv_method_1" />
+
+        <TextView
+            android:id="@+id/li_place_search_route_method_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_bold"
+            android:text="버스"
+            android:textColor="@color/light_gray"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_plus"
+            app:layout_constraintTop_toTopOf="@id/li_place_search_route_plus" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_arrow"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/li_place_search_route_cl_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/li_place_search_route_tv_transfer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16sp"
+            android:textSize="12sp"
+            android:textColor="@color/gray"
+            android:fontFamily="@font/notosans_medium"
+            android:text="환승 "
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/li_place_search_route_tv_transfer_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_medium"
+            android:text="1"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/li_place_search_route_tv_transfer"
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_transfer"
+            app:layout_constraintTop_toTopOf="@+id/li_place_search_route_tv_transfer" />
+
+        <TextView
+            android:id="@+id/li_place_search_route_tv_transfer_count_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_medium"
+            android:text="회"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_transfer_count"
+            app:layout_constraintTop_toTopOf="@+id/li_place_search_route_tv_transfer_count" />
+
+        <TextView
+            android:id="@+id/li_place_search_route_tv_walk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textSize="12sp"
+            android:textColor="@color/gray"
+            android:fontFamily="@font/notosans_medium"
+            android:text="도보 "
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_transfer_count_time"/>
+
+        <TextView
+            android:id="@+id/li_place_search_route_tv_walk_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_medium"
+            android:text="9"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/li_place_search_route_tv_walk"
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_walk"
+            app:layout_constraintTop_toTopOf="@+id/li_place_search_route_tv_walk" />
+
+        <TextView
+            android:id="@+id/li_place_search_route_tv_walk_count_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_medium"
+            android:text="분"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_walk_count"
+            app:layout_constraintTop_toTopOf="@+id/li_place_search_route_tv_walk_count" />
+
+        <TextView
+            android:id="@+id/li_place_search_route_tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textSize="12sp"
+            android:textColor="@color/gray"
+            android:fontFamily="@font/notosans_medium"
+            android:text="1,200"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_walk_count_time"/>
+
+        <TextView
+            android:id="@+id/li_place_search_route_tv_money_won"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_medium"
+            android:text="원"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/li_place_search_route_tv_money"
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_money"
+            app:layout_constraintTop_toTopOf="@+id/li_place_search_route_tv_money" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/li_place_search_route_cl_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/li_place_search_route_cl_text"
+        app:layout_constraintStart_toStartOf="@id/act_schedule_route_cl_text"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/act_schedule_route_iv_gray_path"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/img_gray_line_2"
+            app:layout_constraintTop_toTopOf="@id/li_place_search_route_cl_bar"
+            app:layout_constraintStart_toStartOf="@id/li_place_search_route_cl_bar"
+            app:layout_constraintEnd_toEndOf="@id/li_place_search_route_cl_bar"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/li_place_search_route_cl_method_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/li_place_search_route_cl_bar"
+            app:layout_constraintTop_toTopOf="@+id/li_place_search_route_cl_bar"
+            app:layout_constraintBottom_toBottomOf="@id/li_place_search_route_cl_bar">
+
+            <ImageView
+                android:id="@+id/li_place_search_route_iv_method_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_green_line"
+                app:layout_constraintTop_toTopOf="@+id/li_place_search_route_cl_method_1"
+                app:layout_constraintStart_toStartOf="@+id/li_place_search_route_cl_method_1"
+                app:layout_constraintEnd_toEndOf="@+id/li_place_search_route_cl_method_1"/>
+            <TextView
+                android:id="@+id/act_schedule_tv_method_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosans_bold"
+                android:textColor="#27c830"
+                android:text="지하철"
+                app:layout_constraintStart_toStartOf="@+id/li_place_search_route_cl_method_1"
+                app:layout_constraintEnd_toEndOf="@+id/li_place_search_route_cl_method_1"
+                app:layout_constraintTop_toBottomOf="@id/li_place_search_route_iv_method_1"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:id="@+id/act_schedule_route_cl_method_2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/act_schedule_route_cl_bar"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/act_schedule_route_cl_bar"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/act_schedule_route_cl_bar">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/act_schedule_iv_method_2"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/img_blue_line"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/act_schedule_route_cl_method_2"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/act_schedule_route_cl_method_2"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/act_schedule_route_cl_method_2"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/act_schedule_tv_method_2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/notosans_bold"-->
+<!--                android:textColor="#2a5ff4"-->
+<!--                android:text="버스"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/act_schedule_route_cl_method_2"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/act_schedule_route_cl_method_2"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/act_schedule_iv_method_2"/>-->
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

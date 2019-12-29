@@ -35,10 +35,10 @@
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/act_schedule_route_cl_text"
             app:layout_constraintTop_toTopOf="@id/act_schedule_route_cl_text"
-            app:layout_constraintEnd_toStartOf="@id/act_schedule_route_method_1"/>
+            app:layout_constraintEnd_toStartOf="@id/li_place_search_route_tv_method_1"/>
 
         <TextView
-            android:id="@+id/act_schedule_route_method_1"
+            android:id="@+id/li_place_search_route_tv_method_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -51,27 +51,27 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/act_schedule_route_plus"
+            android:id="@+id/li_place_search_route_plus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosans_bold"
             android:text="+"
             android:textColor="@color/light_gray"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@id/act_schedule_route_method_1"
-            app:layout_constraintBottom_toBottomOf="@id/act_schedule_route_method_1"
-            app:layout_constraintTop_toTopOf="@id/act_schedule_route_method_1"/>
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_method_1"
+            app:layout_constraintBottom_toBottomOf="@id/li_place_search_route_tv_method_1"
+            app:layout_constraintTop_toTopOf="@id/li_place_search_route_tv_method_1"/>
 
         <TextView
-            android:id="@+id/act_schedule_route_method_2"
+            android:id="@+id/li_place_search_route_method_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosans_bold"
             android:text="버스"
             android:textSize="12sp"
             android:textColor="@color/light_gray"
-            app:layout_constraintStart_toEndOf="@id/act_schedule_route_plus"
-            app:layout_constraintTop_toTopOf="@id/act_schedule_route_plus"/>
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_plus"
+            app:layout_constraintTop_toTopOf="@id/li_place_search_route_plus"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

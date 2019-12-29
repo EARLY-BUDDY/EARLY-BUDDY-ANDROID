@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_main)
         setContentView(R.layout.activity_main)
 
         home.setOnClickListener{
@@ -27,15 +28,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
         test.setOnClickListener{
             val intent = Intent(this@MainActivity, SignupActivity::class.java)
             startActivity(intent)
         }
 
 
-
 //        val animationView = findViewById<LottieAnimationView>(R.id.animationView)
-//        animationView.setAnimation("data.json")
+//        animationView.setAnimation("testtt.json")
 //        animationView.loop(true)
 //        animationView.playAnimation()
 //        animationView.addAnimatorListener(object : Animator.AnimatorListener {
@@ -51,7 +52,6 @@ class MainActivity : AppCompatActivity() {
 //            override fun onAnimationRepeat(animation: Animator) {
 //            }
 //        })
-
 
     }
 }
