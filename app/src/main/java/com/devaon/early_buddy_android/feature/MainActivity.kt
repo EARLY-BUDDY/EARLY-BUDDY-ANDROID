@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         test.setOnClickListener{
             val intent = Intent(this@MainActivity, SignupActivity::class.java)
             startActivity(intent)
