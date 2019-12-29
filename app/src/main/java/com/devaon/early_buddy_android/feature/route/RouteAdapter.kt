@@ -1,12 +1,14 @@
 package com.devaon.early_buddy_android.feature.route
 
 import android.content.Context
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devaon.early_buddy_android.R
@@ -47,20 +49,311 @@ class RouteAdapter(
                     //지하철
                     1 -> {
                         holder.ridingImg.setImageResource(R.drawable.img_subway)
-                        holder.ridingNumber.text =
-                            String.format("%d호선", routeList[position].lane[0].subwayCode)
+                        when(routeList[position].lane[0].subwayCode){
+                            1 -> {
+                                with(holder){
+                                    ridingNumber.text= "1호선"
+                                    ridingLine.setImageResource(R.color.seoul_line_one)
+                                    ridingImg.setImageResource(R.drawable.img_subway_one)
+                                    topPoint.setImageResource(R.drawable.img_path_point_one)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_one)
+                                    quitImg.setImageResource(R.drawable.img_stop_one)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_one))
+                                }
+                            }
+                            2 -> {
+                                with(holder){
+                                    ridingNumber.text= "2호선"
+                                    ridingLine.setImageResource(R.color.seoul_line_two)
+                                    ridingImg.setImageResource(R.drawable.img_subway_two)
+                                    topPoint.setImageResource(R.drawable.img_path_point_two)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_two)
+                                    quitImg.setImageResource(R.drawable.img_stop_two)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_two))
+                                }
+                            }
+                            3 -> {
+                                with(holder){
+                                    ridingNumber.text= "3호선"
+                                    ridingLine.setImageResource(R.color.seoul_line_three)
+                                    ridingImg.setImageResource(R.drawable.img_subway_three)
+                                    topPoint.setImageResource(R.drawable.img_path_point_three)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_three)
+                                    quitImg.setImageResource(R.drawable.img_stop_three)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_three))
+                                }
+                            }
+                            4 -> {
+                                with(holder){
+                                    ridingNumber.text= "4호선"
+                                    ridingLine.setImageResource(R.color.seoul_line_four)
+                                    ridingImg.setImageResource(R.drawable.img_subway_four)
+                                    topPoint.setImageResource(R.drawable.img_path_point_four)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_four)
+                                    quitImg.setImageResource(R.drawable.img_stop_four)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_four))
+                                }
+                            }
+                            5 -> {
+                                with(holder){
+                                    ridingNumber.text= "5호선"
+                                    ridingLine.setImageResource(R.color.seoul_line_five)
+                                    ridingImg.setImageResource(R.drawable.img_subway_five)
+                                    topPoint.setImageResource(R.drawable.img_path_point_five)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_five)
+                                    quitImg.setImageResource(R.drawable.img_stop_five)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_five))
+                                }
+                            }
+                            6 -> {
+                                with(holder){
+                                    ridingNumber.text= "6호선"
+                                    ridingLine.setImageResource(R.color.seoul_line_six)
+                                    ridingImg.setImageResource(R.drawable.img_subway_six)
+                                    topPoint.setImageResource(R.drawable.img_path_point_six)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_six)
+                                    quitImg.setImageResource(R.drawable.img_stop_six)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_six))
+                                }
+                            }
+                            7 -> {
+                                with(holder){
+                                    ridingNumber.text= "7호선"
+                                    ridingLine.setImageResource(R.color.seoul_line_seven)
+                                    ridingImg.setImageResource(R.drawable.img_subway_seven)
+                                    topPoint.setImageResource(R.drawable.img_path_point_seven)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_seven)
+                                    quitImg.setImageResource(R.drawable.img_stop_seven)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_seven))
+                                }
+                            }
+                            8 -> {
+                                with(holder){
+                                    ridingNumber.text= "8호선"
+                                    ridingLine.setImageResource(R.color.seoul_line_eight)
+                                    ridingImg.setImageResource(R.drawable.img_subway_eight)
+                                    topPoint.setImageResource(R.drawable.img_path_point_eight)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_eight)
+                                    quitImg.setImageResource(R.drawable.img_stop_eight)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_eight))
+                                }
+                            }
+                            9 -> {
+                                with(holder){
+                                    ridingNumber.text= "9호선"
+                                    ridingLine.setImageResource(R.color.seoul_line_nine)
+                                    ridingImg.setImageResource(R.drawable.img_subway_nine)
+                                    topPoint.setImageResource(R.drawable.img_path_point_nine)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_nine)
+                                    quitImg.setImageResource(R.drawable.img_stop_nine)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_nine))
+                                }
+                            }
+                            100 -> {
+                                with(holder){
+                                    ridingNumber.text= "분당선"
+                                    ridingLine.setImageResource(R.color.seoul_line_bunDang)
+                                    ridingImg.setImageResource(R.drawable.img_subway_bundang)
+                                    topPoint.setImageResource(R.drawable.img_path_point_bundang)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_bundang)
+                                    quitImg.setImageResource(R.drawable.img_stop_bundang)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_bunDang))
+                                }
+                            }
+                            101 -> {
+                                with(holder){
+                                    ridingNumber.text= "공항철도"
+                                    ridingLine.setImageResource(R.color.seoul_line_gongHang)
+                                    ridingImg.setImageResource(R.drawable.img_subway_airport)
+                                    topPoint.setImageResource(R.drawable.img_path_point_airport)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_airport)
+                                    quitImg.setImageResource(R.drawable.img_stop_airport)
+                                }
+                                holder.ridingNumber.text= "공항철도"
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_gongHang))
+                                }
+                            }
+                            104 -> {
+                                with(holder){
+                                    ridingNumber.text= "경의중앙선"
+                                    ridingLine.setImageResource(R.color.seoul_line_gyungJung)
+                                    ridingImg.setImageResource(R.drawable.img_subway_kyunguijungang)
+                                    topPoint.setImageResource(R.drawable.img_path_point_kyunguijungang)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_kyunguijungang)
+                                    quitImg.setImageResource(R.drawable.img_stop_kyunguijungang)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_gyungJung))
+                                }
+                            }
+                            107 -> {
+                                with(holder){
+                                    ridingNumber.text= "에버라인"
+                                    ridingLine.setImageResource(R.color.seoul_line_ever)
+                                    ridingImg.setImageResource(R.drawable.img_subway_everline)
+                                    topPoint.setImageResource(R.drawable.img_path_point_everline)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_everline)
+                                    quitImg.setImageResource(R.drawable.img_stop_everline)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_ever))
+                                }
+                            }
+                            108 -> {
+                                with(holder){
+                                    ridingNumber.text= "경춘선"
+                                    ridingLine.setImageResource(R.color.seoul_line_gyungChun)
+                                    ridingImg.setImageResource(R.drawable.img_subway_kyungchun)
+                                    topPoint.setImageResource(R.drawable.img_path_point_kyungchun)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_kyungchun)
+                                    quitImg.setImageResource(R.drawable.img_stop_kyungchun)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_gyungChun))
+                                }
+                            }
+                            102 -> {
+                                with(holder){
+                                    ridingNumber.text= "자기부상철도"
+                                    ridingLine.setImageResource(R.color.seoul_line_jaGiBuSang)
+                                    ridingImg.setImageResource(R.drawable.img_subway_jaki)
+                                    topPoint.setImageResource(R.drawable.img_path_point_jaki)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_jaki)
+                                    quitImg.setImageResource(R.drawable.img_stop_jaki)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_jaGiBuSang))
+                                }
+                            }
+                            109 -> {
+                                with(holder){
+                                    ridingNumber.text= "신분당선"
+                                    ridingLine.setImageResource(R.color.seoul_line_sinBunDang)
+                                    ridingImg.setImageResource(R.drawable.img_subway_shinbundang)
+                                    topPoint.setImageResource(R.drawable.img_path_point_shinbundang)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_shinbundang)
+                                    quitImg.setImageResource(R.drawable.img_stop_shinbundang)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_sinBunDang))
+                                }
+                            }
+                            110 -> {
+                                with(holder){
+                                    ridingNumber.text= "의정부경전철"
+                                    ridingLine.setImageResource(R.color.seoul_line_uiJeongBu)
+                                    ridingImg.setImageResource(R.drawable.img_subway_uijeongbu)
+                                    topPoint.setImageResource(R.drawable.img_path_point_uijeongbu)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_uijeongbu)
+                                    quitImg.setImageResource(R.drawable.img_stop_uijeongbu)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_uiJeongBu))
+                                }
+                            }
+                            113 -> {
+                                with(holder){
+                                    ridingNumber.text= "우이신설선"
+                                    ridingLine.setImageResource(R.color.seoul_line_ueeSinSeol)
+                                    ridingImg.setImageResource(R.drawable.img_subway_ui)
+                                    topPoint.setImageResource(R.drawable.img_path_point_ui)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_ui)
+                                    quitImg.setImageResource(R.drawable.img_stop_ui)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_ueeSinSeol))
+                                }
+                            }
+                        }
                         holder.startingText.text = String.format("%s역",routeList[position].startName)
                         holder.endText.text = String.format("%s역",routeList[position].endName)
 
                     }
                     //버스
                     2 -> {
-                        holder.ridingImg.setImageResource(R.drawable.img_bus)
-                        holder.ridingNumber.text =
-                            String.format("%s", routeList[position].lane[0].busNo)
-                        holder.startingText.text = String.format("%s", routeList[position].startName)
-                        holder.endText.text = String.format("%s",routeList[position].endName)
-
+                        when(routeList[position].lane[0].type){
+                            11 -> {     //간선
+                                with(holder){
+                                    ridingNumber.text= String.format("%s", routeList[position].lane[0].busNo)
+                                    startingText.text = String.format("%s", routeList[position].startName)
+                                    endText.text = String.format("%s",routeList[position].endName)
+                                    ridingLine.setImageResource(R.color.seoul_bus_gan_line)
+                                    ridingImg.setImageResource(R.drawable.img_bus_ganline)
+                                    topPoint.setImageResource(R.drawable.img_path_point_ganline)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_ganline)
+                                    quitImg.setImageResource(R.drawable.img_stop_ganline)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_bus_gan_line))
+                                }
+                            }
+                            12 -> {     //지선
+                                with(holder){
+                                    ridingNumber.text= String.format("%s", routeList[position].lane[0].busNo)
+                                    startingText.text = String.format("%s", routeList[position].startName)
+                                    endText.text = String.format("%s",routeList[position].endName)
+                                    ridingLine.setImageResource(R.color.seoul_bus_ji_line)
+                                    ridingImg.setImageResource(R.drawable.img_bus_jiline)
+                                    topPoint.setImageResource(R.drawable.img_path_point_jiline)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_jiline)
+                                    quitImg.setImageResource(R.drawable.img_stop_jiline)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_bus_ji_line))
+                                }
+                            }
+                            14 -> {     //광역
+                                with(holder){
+                                    ridingNumber.text= String.format("%s", routeList[position].lane[0].busNo)
+                                    startingText.text = String.format("%s", routeList[position].startName)
+                                    endText.text = String.format("%s",routeList[position].endName)
+                                    ridingLine.setImageResource(R.color.seoul_bus_gwangyuk)
+                                    ridingImg.setImageResource(R.drawable.img_bus_gwangyuk)
+                                    topPoint.setImageResource(R.drawable.img_path_point_gwangyuk)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_gwangyuk)
+                                    quitImg.setImageResource(R.drawable.img_stop_gwangyuk)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_bus_gwangyuk))
+                                }
+                            }
+                            else -> {       //나머지
+                                with(holder){
+                                    ridingNumber.text= String.format("%s", routeList[position].lane[0].busNo)
+                                    startingText.text = String.format("%s", routeList[position].startName)
+                                    endText.text = String.format("%s",routeList[position].endName)
+                                    ridingLine.setImageResource(R.color.seoul_bus_remainder)
+                                    ridingImg.setImageResource(R.drawable.img_bus_others)
+                                    topPoint.setImageResource(R.drawable.img_path_point_others)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_others)
+                                    quitImg.setImageResource(R.drawable.img_stop_ohters)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_bus_remainder))
+                                }
+                            }
+                        }
                     }
 
                 }
@@ -72,8 +365,17 @@ class RouteAdapter(
                         holder.dropDownUp.setImageResource(R.drawable.ic_dropbox_down)
                         routeList[position].clicked = false
                     } else {
-                        routeDetailAdapter =
-                            RouteDetailAdapter(routeList[position].passStopList.stations,holder.itemViewType)
+                        when(holder.itemViewType){
+                            1 -> {
+                                routeDetailAdapter =
+                                    RouteDetailAdapter(routeList[position].passStopList.stations,holder.itemViewType,routeList[position].lane[0].subwayCode)
+                            }
+                            2 -> {
+                                routeDetailAdapter =
+                                    RouteDetailAdapter(routeList[position].passStopList.stations,holder.itemViewType,routeList[position].lane[0].type)
+                            }
+                        }
+
                         holder.detailList.visibility = View.VISIBLE
                         holder.detailList.adapter = routeDetailAdapter
                         holder.detailList.layoutManager = LinearLayoutManager(context)
@@ -142,8 +444,10 @@ class RouteViewHolder(itemView: View, private val clickListener: ItemClickListen
     val ridingLine: ImageView = itemView.findViewById(R.id.item_pass_riding_iv_riding_line)
     private val stationCount: TextView =
         itemView.findViewById(R.id.item_pass_riding_tv_stop_station_count)
-    val quitImg: TextView = itemView.findViewById(R.id.item_pass_riding_tv_quit)
+    val quitImg: ImageView = itemView.findViewById(R.id.item_pass_riding_tv_quit)
     val endText: TextView = itemView.findViewById(R.id.item_pass_riding_tv_end_point)
+    val topPoint:ImageView = itemView.findViewById(R.id.item_pass_riding_iv_top_circle)
+    val bottomPoint:ImageView = itemView.findViewById(R.id.item_pass_riding_iv_bottom_circle)
 
     init {
         dropDown.setOnClickListener {

@@ -19,7 +19,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        act_home_tv_minute_number.setAnimInt(60)
+        act_home_tv_minute_number.setAnimInt(120)
         changeColor()
         intent()
     }
@@ -27,17 +27,7 @@ class HomeActivity : AppCompatActivity() {
     private fun changeColor() {
         act_home_tv_bus_number.setOnClickListener {
             when (val background = act_home_tv_bus_number.getBackground()) {
-                is GradientDrawable ->
-                    if(a==1){
-                    background.setColor(ContextCompat.getColor(this, R.color.main_color))
-                    }else{
-                        background.setColor(ContextCompat.getColor(this, R.color.seoul_line_seven))
-                    }
-
-//                is ShapeDrawable -> background.paint.color =
-//                    ContextCompat.getColor(this, R.color.main_color)
-//                is ColorDrawable -> background.color =
-//                    ContextCompat.getColor(this, R.color.main_color)
+                is GradientDrawable -> background.setColor(ContextCompat.getColor(this, R.color.main_color))
             }
         }
     }
