@@ -67,7 +67,8 @@ class RouteActivity : AppCompatActivity() {
 //                        list.add()
 //                    }
                     routeAdapter.setRouteItem(route.data.path[0].subPath)
-
+                    routeAdapter.routeList[0].startName="내집은 짹짹이!!"
+                    routeAdapter.notifyDataSetChanged()
                 }
             }
         })
@@ -75,8 +76,7 @@ class RouteActivity : AppCompatActivity() {
 
     private fun intent() {
         act_route_iv_back.setOnClickListener {
-            var goBack = Intent(this, HomeActivity::class.java)
-            startActivity(goBack)
+            finish()
         }
     }
 }

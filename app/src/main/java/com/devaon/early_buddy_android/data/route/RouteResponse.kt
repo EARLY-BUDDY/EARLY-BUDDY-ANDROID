@@ -11,65 +11,74 @@ data class RouteResponse(
 
 data class Route(
     @SerializedName("path")
-    val path:ArrayList<Path>
+    val path: ArrayList<Path>
 )
 
 data class Path(
     @SerializedName("pathType")     // 1 -> 지하철, 2 -> 버스, 3 -> 버스+지하철
-    val pathType:Int,
+    val pathType: Int,
     @SerializedName("totalTime")
-    val totalTime:Int,
+    val totalTime: Int,
     @SerializedName("totalPay")
-    val totalPay:Int,
+    val totalPay: Int,
     @SerializedName("transitCount")
-    val transitCount:Int,
+    val transitCount: Int,
     @SerializedName("totalWalkTime")
-    val totalWalkTime:Int,
+    val totalWalkTime: Int,
     @SerializedName("subPath")
-    val subPath:ArrayList<SubPath>
+    val subPath: ArrayList<SubPath>
 )
 
 data class SubPath(
     @SerializedName("trafficType")  //  1 -> 지하철, 2 -> 버스, 3 -> 걷기
-    val trafficType:Int,
+    val trafficType: Int,
     @SerializedName("distance")
-    val distance:Int,
+    val distance: Int,
     @SerializedName("sectionTime")   //그 구간에 걸리는 시간
-    val sectionTime:Int,
+    val sectionTime: Int,
     @SerializedName("stationCount")
-    val stationCount:Int,
+    val stationCount: Int,
     @SerializedName("lane")
-    val lane:ArrayList<LaneList>,
+    val lane: ArrayList<LaneList>,
     @SerializedName("startName")
-    val startName:String,
+    var startName: String,
     @SerializedName("startX")
-    val startX:Double,
+    val startX: Double,
     @SerializedName("startY")
-    val startY:Double,
+    val startY: Double,
     @SerializedName("endName")
-    val endName:String,
+    val endName: String,
     @SerializedName("endX")
-    val endX:Double,
+    val endX: Double,
     @SerializedName("endY")
-    val endY:Double,
+    val endY: Double,
+    @SerializedName("endExitNo")
+    val endExitNo: Int,
     @SerializedName("passStopList")
-    val passStopList:PassThroughStation,
+    val passStopList: PassThroughStation,
     @SerializedName("clicked")
     var clicked: Boolean
 )
 
 data class LaneList(
     @SerializedName("name")
-    val laneName:String,
+    val laneName: String,
     @SerializedName("subwayCode")
-    val subwayCode:Int
+    val subwayCode: Int,
+    @SerializedName("type")
+    val type: Int,
+    @SerializedName("busNo")
+    val busNo: String
 )
 
 data class PassThroughStation(
     @SerializedName("stations")
-    val stations:ArrayList<Station>
+    val stations: ArrayList<Station>
 )
+
 data class Station(
+    @SerializedName("index")
+    val index: Int,
     @SerializedName("stationName")
-    val stationName:String
+    val stationName: String
 )
