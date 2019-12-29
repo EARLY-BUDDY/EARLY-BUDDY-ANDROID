@@ -94,7 +94,13 @@
             app:layout_constraintTop_toTopOf="@id/act_schedule_route_cl_bar"
             app:layout_constraintStart_toStartOf="@id/act_schedule_route_cl_bar"
             app:layout_constraintEnd_toEndOf="@id/act_schedule_route_cl_bar"/>
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5분"
+            app:layout_constraintTop_toBottomOf="@id/act_schedule_route_iv_gray_path"
+            app:layout_constraintStart_toStartOf="@id/act_schedule_route_iv_gray_path"
+            app:layout_constraintEnd_toStartOf="@id/act_schedule_route_cl_method_1"/>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/act_schedule_route_cl_method_1"
             android:layout_width="wrap_content"
