@@ -49,12 +49,18 @@ class RouteAdapter(
                         holder.ridingImg.setImageResource(R.drawable.img_subway)
                         holder.ridingNumber.text =
                             String.format("%d호선", routeList[position].lane[0].subwayCode)
+                        holder.startingText.text = String.format("%s역",routeList[position].startName)
+                        holder.endText.text = String.format("%s역",routeList[position].endName)
+
                     }
                     //버스
                     2 -> {
                         holder.ridingImg.setImageResource(R.drawable.img_bus)
                         holder.ridingNumber.text =
                             String.format("%s", routeList[position].lane[0].busNo)
+                        holder.startingText.text = String.format("%s", routeList[position].startName)
+                        holder.endText.text = String.format("%s",routeList[position].endName)
+
                     }
 
                 }
@@ -67,7 +73,7 @@ class RouteAdapter(
                         routeList[position].clicked = false
                     } else {
                         routeDetailAdapter =
-                            RouteDetailAdapter(routeList[position].passStopList.stations)
+                            RouteDetailAdapter(routeList[position].passStopList.stations,holder.itemViewType)
                         holder.detailList.visibility = View.VISIBLE
                         holder.detailList.adapter = routeDetailAdapter
                         holder.detailList.layoutManager = LinearLayoutManager(context)
@@ -82,7 +88,7 @@ class RouteAdapter(
                     //첫번째
                     0 -> {
                         holder.walkStartPoint.text = String.format("%s",routeList[position].startName)
-                        holder.walkEndPoint.text = String.format("%s 까지 걷기",routeList[position+1].startName)
+                        holder.walkEndPoint.text = String.format("%s까지 걷기",routeList[position+1].startName)
                     }
                     //마지막
                     routeList.size-1 -> {
@@ -92,7 +98,7 @@ class RouteAdapter(
                     //중간
                     else -> {
                         holder.walkStartPoint.text = String.format("%d번 출구로 나오기",routeList[position+-1].endExitNo)
-                        holder.walkEndPoint.text = String.format("%s 까지 걷기",routeList[position+1].startName)
+                        holder.walkEndPoint.text = String.format("%s까지 걷기",routeList[position+1].startName)
                     }
                 }
             }
@@ -128,7 +134,7 @@ class RouteViewHolder(itemView: View, private val clickListener: ItemClickListen
         itemView.findViewById(R.id.item_pass_riding_rv_riding_info_detail)
     val dropDownUp: ImageView = itemView.findViewById(R.id.item_pass_riding_iv_drop_down_up_icon)
     val ridingNumber: TextView = itemView.findViewById(R.id.item_pass_riding_tv_riding_number)
-    private val startingText: TextView =
+    val startingText: TextView =
         itemView.findViewById(R.id.item_pass_riding_tv_starting_point)
     val viewMap: TextView = itemView.findViewById(R.id.item_pass_riding_tv_view_map)
     val ridingImg: ImageView = itemView.findViewById(R.id.item_pass_riding_iv_riding_img)
@@ -137,7 +143,7 @@ class RouteViewHolder(itemView: View, private val clickListener: ItemClickListen
     private val stationCount: TextView =
         itemView.findViewById(R.id.item_pass_riding_tv_stop_station_count)
     val quitImg: TextView = itemView.findViewById(R.id.item_pass_riding_tv_quit)
-    private val endText: TextView = itemView.findViewById(R.id.item_pass_riding_tv_end_point)
+    val endText: TextView = itemView.findViewById(R.id.item_pass_riding_tv_end_point)
 
     init {
         dropDown.setOnClickListener {
@@ -152,8 +158,6 @@ class RouteViewHolder(itemView: View, private val clickListener: ItemClickListen
     fun bind(data: SubPath) {
         stationCount.text = String.format("%d개 정류장", data.stationCount)
         travelTime.text = String.format("약 %d분", data.sectionTime)
-        startingText.text = String.format("%s", data.startName)
-        endText.text = String.format("%s", data.endName)
     }
 }
 

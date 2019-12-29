@@ -6,6 +6,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.devaon.early_buddy_android.PlaceFavoriteActivity
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.SignupActivity
+import com.devaon.early_buddy_android.TestActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -25,7 +27,14 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, SetNicknameActivity::class.java)
             startActivity(intent)
         }
-//
+
+
+        test.setOnClickListener{
+            val intent = Intent(this@MainActivity, SignupActivity::class.java)
+            startActivity(intent)
+        }
+
+
 //        val animationView = findViewById<LottieAnimationView>(R.id.animationView)
 //        animationView.setAnimation("testtt.json")
 //        animationView.loop(true)

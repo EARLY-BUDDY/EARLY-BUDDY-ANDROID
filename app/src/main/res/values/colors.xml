@@ -2,8 +2,36 @@
 <resources>
     <color name="white">#ffffff</color>
     <color name="main_color">#3092ff</color>
+    <color name="red">#ff6e6e</color>
     <color name="light_gray">#c3c3c3</color>
     <color name="mid_gray">#999999</color>
     <color name="gray">#707070</color>
     <color name="black">#313131</color>
+    <color name="seoul_line_one">#243899</color>
+    <color name="seoul_line_two">#35b645</color>
+    <color name="seoul_line_three">#f36e00</color>
+    <color name="seoul_line_four">#219de2</color>
+    <color name="seoul_line_five">#8828e2</color>
+    <color name="seoul_line_six">#b75000</color>
+    <color name="seoul_line_seven">#697305</color>
+    <color name="seoul_line_eight">#e8146d</color>
+    <color name="seoul_line_nine">#d2a715</color>
+    <color name="seoul_line_bunDang">#eeaa00</color>
+    <color name="seoul_line_gongHang">#70b5e6</color>
+    <color name="seoul_line_jaGiBuSang">#f08d41</color>
+    <color name="seoul_line_gyungJung">#7ac6a4</color>
+    <color name="seoul_line_ever">#75c56e</color>
+    <color name="seoul_line_gyungChun">#00b07a</color>
+    <color name="seoul_line_sinBunDang">#a71b2c</color>
+    <color name="seoul_line_uiJeongBu">#ff9f00</color>
+    <color name="seoul_line_gyungHang">#1e6ff7</color>
+    <color name="seoul_line_ueeSinSeol">#c7c300</color>
+    <color name="inCheon_line_one">#6d98d2</color>
+    <color name="inCheon_line_two">#f7ac2e</color>
+    <color name="buSan_line_two">#2cb83d</color>
+    <color name="buSan_line_three">#d6a64f</color>
+    <color name="buSan_line_four">#3f6db8</color>
+    <color name="buSan_line_dongHae">#a2c4e4</color>
+    <color name="buSan_line_gimHae">#81469e</color>
+    <color name="buSan_line_one">#f35f23</color>
 </resources>

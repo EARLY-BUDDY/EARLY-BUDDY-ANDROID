@@ -1,11 +1,13 @@
 package com.devaon.early_buddy_android.feature.calendar
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.devaon.early_buddy_android.R
-import com.devaon.early_buddy_android.data.place.calendar.Schedule
+import com.devaon.early_buddy_android.data.calendar.Schedule
+import com.devaon.early_buddy_android.feature.calendar.CalendarActivity.getCalendarAcitivityObject.position
 import kotlinx.android.synthetic.main.activity_calendar.*
 
 
@@ -59,6 +61,8 @@ class CalendarActivity : AppCompatActivity() {
                 }
             })
         }
+
+        Handler().postDelayed(Runnable { act_calendar_schedule_rv.scrollToPosition(position) }, 200)
     }
 
     private fun setScheduleRv(){
@@ -66,6 +70,10 @@ class CalendarActivity : AppCompatActivity() {
         var dummyDataList = ArrayList<Schedule>()
         dummyDataList.add(Schedule("SOPT 데모데이", "오후 12:20", "오렌지팜 서초센터"))
         dummyDataList.add(Schedule("SOPT 데모데이2", "오후 12:20", "오렌지팜 서초센터"))
+        dummyDataList.add(Schedule("SOPT 데모데이3", "오후 12:20", "오렌지팜 서초센터"))
+        dummyDataList.add(Schedule("SOPT 데모데이4", "오후 12:20", "오렌지팜 서초센터"))
+        dummyDataList.add(Schedule("SOPT 데모데이5", "오후 12:20", "오렌지팜 서초센터"))
+        dummyDataList.add(Schedule("SOPT 데모데이6", "오후 12:20", "오렌지팜 서초센터"))
 
         act_calendar_schedule_rv.adapter = CalendarScheduleRecyclerViewAdapter(this, dummyDataList)
         act_calendar_schedule_rv.layoutManager = LinearLayoutManager(this)
@@ -76,4 +84,7 @@ class CalendarActivity : AppCompatActivity() {
             finish()
         }
     }
+
+
+
 }
