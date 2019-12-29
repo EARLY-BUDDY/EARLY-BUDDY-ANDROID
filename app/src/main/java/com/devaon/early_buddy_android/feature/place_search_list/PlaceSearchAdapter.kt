@@ -34,7 +34,7 @@ class PlaceSearchAdapter(
 
     inner class PlaceSearchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val address: TextView = view.findViewById(R.id.li_place_search_address)
+        val address: TextView = view.findViewById(R.id.li_place_search_route_tv_time)
         val addressDetail : TextView = view.findViewById(R.id.li_place_search_address_detail)
         val loadAddress : TextView = view.findViewById(R.id.li_place_search_load_address)
 

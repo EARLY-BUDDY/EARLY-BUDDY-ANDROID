@@ -4,9 +4,11 @@
         <shape xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content">
-            <solid android:color="#FFFFFF"/>
+            <solid android:color="#FFFFFF" />
+            <stroke android:color="@color/main_color"
+                android:width="2dp"/>
             <corners
-                android:radius="10dp"/>
+                android:radius="8dp"/>
         </shape>
     </item>
 </layer-list>
