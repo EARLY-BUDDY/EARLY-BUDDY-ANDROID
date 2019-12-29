@@ -1,4 +1,4 @@
-package com.devaon.early_buddy_android.feature
+package com.devaon.early_buddy_android.feature.home
 
 import android.content.Intent
 import android.graphics.drawable.GradientDrawable
@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity
 import com.devaon.early_buddy_android.util.TextViewIntAnimation
 import com.devaon.early_buddy_android.feature.calendar.CalendarActivity
 import com.devaon.early_buddy_android.feature.route.RouteActivity

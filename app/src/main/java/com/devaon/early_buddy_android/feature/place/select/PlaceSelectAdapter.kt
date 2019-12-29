@@ -1,4 +1,4 @@
-package com.devaon.early_buddy_android.feature.place_select_list
+package com.devaon.early_buddy_android.feature.place.select
 
 import android.content.Context
 import android.view.LayoutInflater

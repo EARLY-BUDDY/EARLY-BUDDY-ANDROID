@@ -1,4 +1,4 @@
-package com.devaon.early_buddy_android.feature
+package com.devaon.early_buddy_android.feature.schedule
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -11,14 +11,11 @@ import com.devaon.early_buddy_android.R
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.marginLeft
-import androidx.core.view.marginStart
-import com.devaon.early_buddy_android.feature.place_select_list.PlaceSelectActivity
+import com.devaon.early_buddy_android.feature.place.select.PlaceSelectActivity
 import kotlinx.android.synthetic.main.activity_schdule.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
-import android.widget.DatePicker
 
 class ScheduleActivity : AppCompatActivity(){
     var cal = Calendar.getInstance()

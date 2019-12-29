@@ -1,4 +1,4 @@
-package com.devaon.early_buddy_android.feature.place_search_list
+package com.devaon.early_buddy_android.feature.place.search.text
 
 import android.content.Context
 import android.view.LayoutInflater

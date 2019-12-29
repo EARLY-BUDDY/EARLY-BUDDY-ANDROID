@@ -1,16 +1,15 @@
-package com.devaon.early_buddy_android
+package com.devaon.early_buddy_android.feature.user
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.login.Login
-import kotlinx.android.synthetic.main.activity_set_nickname.*
 import kotlinx.android.synthetic.main.activity_signup.*
 import java.util.regex.Pattern
 

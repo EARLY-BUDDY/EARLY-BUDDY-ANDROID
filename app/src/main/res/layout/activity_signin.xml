@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SigninActivity">
+    tools:context=".feature.user.SigninActivity">
 
     <TextView
         android:id="@+id/act_signin_tv_ment"
