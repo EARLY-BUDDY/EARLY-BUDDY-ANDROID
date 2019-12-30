@@ -49,10 +49,10 @@ class RouteAdapter(
                     //지하철
                     1 -> {
                         holder.ridingImg.setImageResource(R.drawable.img_subway)
-                        when(routeList[position].lane[0].subwayCode){
+                        when (routeList[position].lane[0].subwayCode) {
                             1 -> {
-                                with(holder){
-                                    ridingNumber.text= "1호선"
+                                with(holder) {
+                                    ridingNumber.text = "1호선"
                                     ridingLine.setImageResource(R.color.seoul_line_one)
                                     ridingImg.setImageResource(R.drawable.img_subway_one)
                                     topPoint.setImageResource(R.drawable.img_path_point_one)
@@ -60,12 +60,17 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_one)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_one))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_one
+                                        )
+                                    )
                                 }
                             }
                             2 -> {
-                                with(holder){
-                                    ridingNumber.text= "2호선"
+                                with(holder) {
+                                    ridingNumber.text = "2호선"
                                     ridingLine.setImageResource(R.color.seoul_line_two)
                                     ridingImg.setImageResource(R.drawable.img_subway_two)
                                     topPoint.setImageResource(R.drawable.img_path_point_two)
@@ -73,12 +78,17 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_two)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_two))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_two
+                                        )
+                                    )
                                 }
                             }
                             3 -> {
-                                with(holder){
-                                    ridingNumber.text= "3호선"
+                                with(holder) {
+                                    ridingNumber.text = "3호선"
                                     ridingLine.setImageResource(R.color.seoul_line_three)
                                     ridingImg.setImageResource(R.drawable.img_subway_three)
                                     topPoint.setImageResource(R.drawable.img_path_point_three)
@@ -86,12 +96,17 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_three)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_three))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_three
+                                        )
+                                    )
                                 }
                             }
                             4 -> {
-                                with(holder){
-                                    ridingNumber.text= "4호선"
+                                with(holder) {
+                                    ridingNumber.text = "4호선"
                                     ridingLine.setImageResource(R.color.seoul_line_four)
                                     ridingImg.setImageResource(R.drawable.img_subway_four)
                                     topPoint.setImageResource(R.drawable.img_path_point_four)
@@ -99,12 +114,17 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_four)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_four))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_four
+                                        )
+                                    )
                                 }
                             }
                             5 -> {
-                                with(holder){
-                                    ridingNumber.text= "5호선"
+                                with(holder) {
+                                    ridingNumber.text = "5호선"
                                     ridingLine.setImageResource(R.color.seoul_line_five)
                                     ridingImg.setImageResource(R.drawable.img_subway_five)
                                     topPoint.setImageResource(R.drawable.img_path_point_five)
@@ -112,12 +132,17 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_five)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_five))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_five
+                                        )
+                                    )
                                 }
                             }
                             6 -> {
-                                with(holder){
-                                    ridingNumber.text= "6호선"
+                                with(holder) {
+                                    ridingNumber.text = "6호선"
                                     ridingLine.setImageResource(R.color.seoul_line_six)
                                     ridingImg.setImageResource(R.drawable.img_subway_six)
                                     topPoint.setImageResource(R.drawable.img_path_point_six)
@@ -125,12 +150,17 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_six)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_six))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_six
+                                        )
+                                    )
                                 }
                             }
                             7 -> {
-                                with(holder){
-                                    ridingNumber.text= "7호선"
+                                with(holder) {
+                                    ridingNumber.text = "7호선"
                                     ridingLine.setImageResource(R.color.seoul_line_seven)
                                     ridingImg.setImageResource(R.drawable.img_subway_seven)
                                     topPoint.setImageResource(R.drawable.img_path_point_seven)
@@ -138,12 +168,17 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_seven)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_seven))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_seven
+                                        )
+                                    )
                                 }
                             }
                             8 -> {
-                                with(holder){
-                                    ridingNumber.text= "8호선"
+                                with(holder) {
+                                    ridingNumber.text = "8호선"
                                     ridingLine.setImageResource(R.color.seoul_line_eight)
                                     ridingImg.setImageResource(R.drawable.img_subway_eight)
                                     topPoint.setImageResource(R.drawable.img_path_point_eight)
@@ -151,12 +186,17 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_eight)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_eight))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_eight
+                                        )
+                                    )
                                 }
                             }
                             9 -> {
-                                with(holder){
-                                    ridingNumber.text= "9호선"
+                                with(holder) {
+                                    ridingNumber.text = "9호선"
                                     ridingLine.setImageResource(R.color.seoul_line_nine)
                                     ridingImg.setImageResource(R.drawable.img_subway_nine)
                                     topPoint.setImageResource(R.drawable.img_path_point_nine)
@@ -164,12 +204,17 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_nine)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_nine))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_nine
+                                        )
+                                    )
                                 }
                             }
                             100 -> {
-                                with(holder){
-                                    ridingNumber.text= "분당선"
+                                with(holder) {
+                                    ridingNumber.text = "분당선"
                                     ridingLine.setImageResource(R.color.seoul_line_bunDang)
                                     ridingImg.setImageResource(R.drawable.img_subway_bundang)
                                     topPoint.setImageResource(R.drawable.img_path_point_bundang)
@@ -177,26 +222,36 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_bundang)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_bunDang))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_bunDang
+                                        )
+                                    )
                                 }
                             }
                             101 -> {
-                                with(holder){
-                                    ridingNumber.text= "공항철도"
+                                with(holder) {
+                                    ridingNumber.text = "공항철도"
                                     ridingLine.setImageResource(R.color.seoul_line_gongHang)
                                     ridingImg.setImageResource(R.drawable.img_subway_airport)
                                     topPoint.setImageResource(R.drawable.img_path_point_airport)
                                     bottomPoint.setImageResource(R.drawable.img_path_point_airport)
                                     quitImg.setImageResource(R.drawable.img_stop_airport)
                                 }
-                                holder.ridingNumber.text= "공항철도"
+                                holder.ridingNumber.text = "공항철도"
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_gongHang))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_gongHang
+                                        )
+                                    )
                                 }
                             }
                             104 -> {
-                                with(holder){
-                                    ridingNumber.text= "경의중앙선"
+                                with(holder) {
+                                    ridingNumber.text = "경의중앙선"
                                     ridingLine.setImageResource(R.color.seoul_line_gyungJung)
                                     ridingImg.setImageResource(R.drawable.img_subway_kyunguijungang)
                                     topPoint.setImageResource(R.drawable.img_path_point_kyunguijungang)
@@ -204,12 +259,17 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_kyunguijungang)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_gyungJung))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_gyungJung
+                                        )
+                                    )
                                 }
                             }
                             107 -> {
-                                with(holder){
-                                    ridingNumber.text= "에버라인"
+                                with(holder) {
+                                    ridingNumber.text = "에버라인"
                                     ridingLine.setImageResource(R.color.seoul_line_ever)
                                     ridingImg.setImageResource(R.drawable.img_subway_everline)
                                     topPoint.setImageResource(R.drawable.img_path_point_everline)
@@ -217,12 +277,17 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_everline)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_ever))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_ever
+                                        )
+                                    )
                                 }
                             }
                             108 -> {
-                                with(holder){
-                                    ridingNumber.text= "경춘선"
+                                with(holder) {
+                                    ridingNumber.text = "경춘선"
                                     ridingLine.setImageResource(R.color.seoul_line_gyungChun)
                                     ridingImg.setImageResource(R.drawable.img_subway_kyungchun)
                                     topPoint.setImageResource(R.drawable.img_path_point_kyungchun)
@@ -230,12 +295,17 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_kyungchun)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_gyungChun))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_gyungChun
+                                        )
+                                    )
                                 }
                             }
                             102 -> {
-                                with(holder){
-                                    ridingNumber.text= "자기부상철도"
+                                with(holder) {
+                                    ridingNumber.text = "자기부상철도"
                                     ridingLine.setImageResource(R.color.seoul_line_jaGiBuSang)
                                     ridingImg.setImageResource(R.drawable.img_subway_jaki)
                                     topPoint.setImageResource(R.drawable.img_path_point_jaki)
@@ -243,12 +313,17 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_jaki)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_jaGiBuSang))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_jaGiBuSang
+                                        )
+                                    )
                                 }
                             }
                             109 -> {
-                                with(holder){
-                                    ridingNumber.text= "신분당선"
+                                with(holder) {
+                                    ridingNumber.text = "신분당선"
                                     ridingLine.setImageResource(R.color.seoul_line_sinBunDang)
                                     ridingImg.setImageResource(R.drawable.img_subway_shinbundang)
                                     topPoint.setImageResource(R.drawable.img_path_point_shinbundang)
@@ -256,12 +331,17 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_shinbundang)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_sinBunDang))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_sinBunDang
+                                        )
+                                    )
                                 }
                             }
                             110 -> {
-                                with(holder){
-                                    ridingNumber.text= "의정부경전철"
+                                with(holder) {
+                                    ridingNumber.text = "의정부경전철"
                                     ridingLine.setImageResource(R.color.seoul_line_uiJeongBu)
                                     ridingImg.setImageResource(R.drawable.img_subway_uijeongbu)
                                     topPoint.setImageResource(R.drawable.img_path_point_uijeongbu)
@@ -269,12 +349,17 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_uijeongbu)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_uiJeongBu))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_uiJeongBu
+                                        )
+                                    )
                                 }
                             }
                             113 -> {
-                                with(holder){
-                                    ridingNumber.text= "우이신설선"
+                                with(holder) {
+                                    ridingNumber.text = "우이신설선"
                                     ridingLine.setImageResource(R.color.seoul_line_ueeSinSeol)
                                     ridingImg.setImageResource(R.drawable.img_subway_ui)
                                     topPoint.setImageResource(R.drawable.img_path_point_ui)
@@ -282,22 +367,31 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_ui)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_line_ueeSinSeol))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_ueeSinSeol
+                                        )
+                                    )
                                 }
                             }
                         }
-                        holder.startingText.text = String.format("%s역",routeList[position].startName)
-                        holder.endText.text = String.format("%s역",routeList[position].endName)
+                        holder.direction.text = String.format("%s 방면", routeList[position].way)
+                        holder.startingText.text =
+                            String.format("%s역", routeList[position].startName)
+                        holder.endText.text = String.format("%s역", routeList[position].endName)
 
                     }
                     //버스
                     2 -> {
-                        when(routeList[position].lane[0].type){
+                        when (routeList[position].lane[0].type) {
                             11 -> {     //간선
-                                with(holder){
-                                    ridingNumber.text= String.format("%s", routeList[position].lane[0].busNo)
-                                    startingText.text = String.format("%s", routeList[position].startName)
-                                    endText.text = String.format("%s",routeList[position].endName)
+                                with(holder) {
+                                    ridingNumber.text =
+                                        String.format("%s", routeList[position].lane[0].busNo)
+                                    startingText.text =
+                                        String.format("%s", routeList[position].startName)
+                                    endText.text = String.format("%s", routeList[position].endName)
                                     ridingLine.setImageResource(R.color.seoul_bus_gan_line)
                                     ridingImg.setImageResource(R.drawable.img_bus_ganline)
                                     topPoint.setImageResource(R.drawable.img_path_point_ganline)
@@ -305,14 +399,21 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_ganline)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_bus_gan_line))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_bus_gan_line
+                                        )
+                                    )
                                 }
                             }
                             12 -> {     //지선
-                                with(holder){
-                                    ridingNumber.text= String.format("%s", routeList[position].lane[0].busNo)
-                                    startingText.text = String.format("%s", routeList[position].startName)
-                                    endText.text = String.format("%s",routeList[position].endName)
+                                with(holder) {
+                                    ridingNumber.text =
+                                        String.format("%s", routeList[position].lane[0].busNo)
+                                    startingText.text =
+                                        String.format("%s", routeList[position].startName)
+                                    endText.text = String.format("%s", routeList[position].endName)
                                     ridingLine.setImageResource(R.color.seoul_bus_ji_line)
                                     ridingImg.setImageResource(R.drawable.img_bus_jiline)
                                     topPoint.setImageResource(R.drawable.img_path_point_jiline)
@@ -320,14 +421,21 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_jiline)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_bus_ji_line))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_bus_ji_line
+                                        )
+                                    )
                                 }
                             }
                             14 -> {     //광역
-                                with(holder){
-                                    ridingNumber.text= String.format("%s", routeList[position].lane[0].busNo)
-                                    startingText.text = String.format("%s", routeList[position].startName)
-                                    endText.text = String.format("%s",routeList[position].endName)
+                                with(holder) {
+                                    ridingNumber.text =
+                                        String.format("%s", routeList[position].lane[0].busNo)
+                                    startingText.text =
+                                        String.format("%s", routeList[position].startName)
+                                    endText.text = String.format("%s", routeList[position].endName)
                                     ridingLine.setImageResource(R.color.seoul_bus_gwangyuk)
                                     ridingImg.setImageResource(R.drawable.img_bus_gwangyuk)
                                     topPoint.setImageResource(R.drawable.img_path_point_gwangyuk)
@@ -335,14 +443,21 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_gwangyuk)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_bus_gwangyuk))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_bus_gwangyuk
+                                        )
+                                    )
                                 }
                             }
                             else -> {       //나머지
-                                with(holder){
-                                    ridingNumber.text= String.format("%s", routeList[position].lane[0].busNo)
-                                    startingText.text = String.format("%s", routeList[position].startName)
-                                    endText.text = String.format("%s",routeList[position].endName)
+                                with(holder) {
+                                    ridingNumber.text =
+                                        String.format("%s", routeList[position].lane[0].busNo)
+                                    startingText.text =
+                                        String.format("%s", routeList[position].startName)
+                                    endText.text = String.format("%s", routeList[position].endName)
                                     ridingLine.setImageResource(R.color.seoul_bus_remainder)
                                     ridingImg.setImageResource(R.drawable.img_bus_others)
                                     topPoint.setImageResource(R.drawable.img_path_point_others)
@@ -350,10 +465,16 @@ class RouteAdapter(
                                     quitImg.setImageResource(R.drawable.img_stop_ohters)
                                 }
                                 when (val background = holder.ridingNumber.getBackground()) {
-                                    is GradientDrawable -> background.setColor(ContextCompat.getColor(context, R.color.seoul_bus_remainder))
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_bus_remainder
+                                        )
+                                    )
                                 }
                             }
                         }
+                        holder.direction.text = "방향을 주의하고 탑승하세요"
                     }
 
                 }
@@ -365,14 +486,22 @@ class RouteAdapter(
                         holder.dropDownUp.setImageResource(R.drawable.ic_dropbox_down)
                         routeList[position].clicked = false
                     } else {
-                        when(holder.itemViewType){
+                        when (holder.itemViewType) {
                             1 -> {
                                 routeDetailAdapter =
-                                    RouteDetailAdapter(routeList[position].passStopList.stations,holder.itemViewType,routeList[position].lane[0].subwayCode)
+                                    RouteDetailAdapter(
+                                        routeList[position].passStopList.stations,
+                                        holder.itemViewType,
+                                        routeList[position].lane[0].subwayCode
+                                    )
                             }
                             2 -> {
                                 routeDetailAdapter =
-                                    RouteDetailAdapter(routeList[position].passStopList.stations,holder.itemViewType,routeList[position].lane[0].type)
+                                    RouteDetailAdapter(
+                                        routeList[position].passStopList.stations,
+                                        holder.itemViewType,
+                                        routeList[position].lane[0].type
+                                    )
                             }
                         }
 
@@ -386,21 +515,46 @@ class RouteAdapter(
             }
             is WalkViewHolder -> {
                 holder.bindWalk(routeList[position])
-                when(position){
+                when (position) {
                     //첫번째
                     0 -> {
-                        holder.walkStartPoint.text = String.format("%s",routeList[position].startName)
-                        holder.walkEndPoint.text = String.format("%s까지 걷기",routeList[position+1].startName)
+                        holder.walkStartPoint.text =
+                            String.format("%s", routeList[position].startName)
+                        when (routeList[position + 1].trafficType) {
+                            1 -> holder.walkEndPoint.text =
+                                String.format("%s역까지 걷기", routeList[position + 1].startName)
+                            2 -> holder.walkEndPoint.text =
+                                String.format("%s까지 걷기", routeList[position + 1].startName)
+                        }
                     }
                     //마지막
-                    routeList.size-1 -> {
-                        holder.walkStartPoint.visibility=View.GONE
-
+                    routeList.size - 1 -> {
+                        when (getPreviousTrafficType(position)) {
+                            1 -> {
+                                holder.walkStartPoint.text =
+                                    String.format("%d번 출구로 나오기", routeList[position - 1].endExitNo)
+                            }
+                            2 -> {
+                                holder.walkStartPoint.text =
+                                    String.format("%s 정류장 하차", routeList[position - 1].endName)
+                            }
+                        }
                     }
                     //중간
                     else -> {
-                        holder.walkStartPoint.text = String.format("%d번 출구로 나오기",routeList[position+-1].endExitNo)
-                        holder.walkEndPoint.text = String.format("%s까지 걷기",routeList[position+1].startName)
+                        when (getPreviousTrafficType(position)) {
+                            1 -> {
+                                holder.walkStartPoint.text =
+                                    String.format("%d번 출구로 나오기", routeList[position - 1].endExitNo)
+                            }
+                            2 -> {
+                                holder.walkStartPoint.text =
+                                    String.format("%s 정류장 하차", routeList[position - 1].endName)
+                            }
+                        }
+
+                        holder.walkEndPoint.text =
+                            String.format("%s까지 걷기", routeList[position + 1].startName)
                     }
                 }
             }
@@ -410,6 +564,10 @@ class RouteAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return routeList[position].trafficType
+    }
+
+    fun getPreviousTrafficType(position: Int): Int {
+        return routeList[position - 1].trafficType
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -446,8 +604,9 @@ class RouteViewHolder(itemView: View, private val clickListener: ItemClickListen
         itemView.findViewById(R.id.item_pass_riding_tv_stop_station_count)
     val quitImg: ImageView = itemView.findViewById(R.id.item_pass_riding_tv_quit)
     val endText: TextView = itemView.findViewById(R.id.item_pass_riding_tv_end_point)
-    val topPoint:ImageView = itemView.findViewById(R.id.item_pass_riding_iv_top_circle)
-    val bottomPoint:ImageView = itemView.findViewById(R.id.item_pass_riding_iv_bottom_circle)
+    val topPoint: ImageView = itemView.findViewById(R.id.item_pass_riding_iv_top_circle)
+    val bottomPoint: ImageView = itemView.findViewById(R.id.item_pass_riding_iv_bottom_circle)
+    val direction: TextView = itemView.findViewById(R.id.item_pass_riding_tv_direction)
 
     init {
         dropDown.setOnClickListener {

@@ -52,6 +52,8 @@ data class SubPath(
     val endX: Double,
     @SerializedName("endY")
     val endY: Double,
+    @SerializedName("way")
+    val way: String,
     @SerializedName("endExitNo")
     val endExitNo: Int,
     @SerializedName("passStopList")

@@ -42,11 +42,18 @@ class RouteActivity : AppCompatActivity() {
 
     private fun makeListItem() {
         val callRoute: Call<RouteResponse> = EarlyBuddyServiceImpl.service.getRoute(
-            127.024754,
-            37.637339,
-            127.067368,
-            37.602024
+            127.08282465301149,
+            37.62072502768881,
+            127.03746391719882,
+            37.4720040276288
         )
+
+//        {
+//            "SX" : "127.08282465301149",
+//            "SY" : "37.62072502768881",
+//            "EX" : "127.03746391719882",
+//            "EY" : "37.4720040276288",
+//        }
 
         callRoute.enqueue(object : Callback<RouteResponse> {
             override fun onFailure(call: Call<RouteResponse>, t: Throwable) {
@@ -54,7 +61,7 @@ class RouteActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<RouteResponse>, response: Response<RouteResponse>) {
-                if(response.isSuccessful){
+                if (response.isSuccessful) {
                     Log.e("result is ", response.body().toString())
                     val route = response.body()!!
 //                    var i  = 0
@@ -63,7 +70,7 @@ class RouteActivity : AppCompatActivity() {
 //                        list.add()
 //                    }
                     routeAdapter.setRouteItem(route.data.path[0].subPath)
-                    routeAdapter.routeList[0].startName="내집은 짹짹이!!"
+                    routeAdapter.routeList[0].startName = "내집은 짹짹이!!"
                     routeAdapter.notifyDataSetChanged()
                 }
             }

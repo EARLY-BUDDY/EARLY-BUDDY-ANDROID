@@ -1,4 +1,4 @@
-package com.devaon.early_buddy_android.intercepter
+package com.devaon.early_buddy_android.feature.intercepter
 
 import okhttp3.Interceptor
 import okhttp3.Response
