@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
-import com.devaon.early_buddy_android.feature.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_signup.*
 import java.util.regex.Pattern
 
@@ -46,8 +45,7 @@ class SignupActivity : AppCompatActivity() {
                 return@setOnClickListener
             } else {
                 if (idFlag && pwFlag && pwCheckFlag) {
-                    val intent = Intent(this@SignupActivity, HomeActivity::class.java)
-
+                    val intent = Intent(this@SignupActivity, SigninActivity::class.java)
                     startActivity(intent)
                 }
             }
