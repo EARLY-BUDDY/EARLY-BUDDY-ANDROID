@@ -84,9 +84,9 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/act_place_select_start_tv_search_start"
-                app:layout_constraintStart_toEndOf="@+id/act_place_select_start_tv_search_start"
-                app:layout_constraintTop_toTopOf="@+id/act_place_select_start_tv_search_start"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/act_place_select_end_tv_search_start"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.333" />
 
             <ImageView

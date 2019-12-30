@@ -536,7 +536,7 @@ class RouteAdapter(
                             }
                             2 -> {
                                 holder.walkStartPoint.text =
-                                    String.format("%s 정류장 하차", routeList[position - 1].endName)
+                                    String.format("%s 하차", routeList[position - 1].endName)
                             }
                         }
                     }
@@ -549,7 +549,7 @@ class RouteAdapter(
                             }
                             2 -> {
                                 holder.walkStartPoint.text =
-                                    String.format("%s 정류장 하차", routeList[position - 1].endName)
+                                    String.format("%s 하차", routeList[position - 1].endName)
                             }
                         }
 
