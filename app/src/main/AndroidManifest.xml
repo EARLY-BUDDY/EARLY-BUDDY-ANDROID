@@ -16,7 +16,6 @@
         <activity android:name=".feature.schedule.SchedulePopUpActivity"></activity>
         <activity android:name=".feature.user.SignupActivity"></activity>
         <activity android:name=".feature.user.SigninActivity" />
-        <activity android:name=".TestActivity" />
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
@@ -38,7 +37,6 @@
         <activity
             android:name=".feature.place.search.text.PlaceSelectStartActivity"
             android:theme="@style/AppTheme.StatusBar" />
-        <activity android:name=".PlaceRegister" />
         <activity
             android:name=".feature.place.search.text.PlaceSearchActivity"
             android:theme="@style/AppTheme.StatusBar"

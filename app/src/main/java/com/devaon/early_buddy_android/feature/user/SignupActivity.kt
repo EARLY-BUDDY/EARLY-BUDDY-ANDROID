@@ -27,6 +27,7 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
+
         makeController()
     }
 
@@ -36,8 +37,6 @@ class SignupActivity : AppCompatActivity() {
         passwordCorretCheck()
 
         act_signup_cl_join.setOnClickListener {
-
-            /*val patternPw: Pattern = Pattern.compile("^[a-zA-Z0-9]+$")*/
 
             val id = act_signup_et_id.text.toString()
             val pw = act_signup_et_pw.text.toString()
@@ -178,14 +177,15 @@ class SignupActivity : AppCompatActivity() {
         })
     }
 
-
-    fun View.showOrInvisible(show: Boolean) {
+    private fun View.showOrInvisible(show: Boolean) {
         visibility = if (show) {
             View.VISIBLE
         } else {
             View.INVISIBLE
         }
     }
+
+
 
 }
 

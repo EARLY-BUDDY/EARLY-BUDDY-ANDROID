@@ -15,47 +15,14 @@ class PlaceFavoriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place_favorite)
 
-
-        makeChoiceController()
         selectPlaceController()
         makeRegisterController()
-        (act_place_favorite_floating_first as FloatingActionMenu).bringToFront()
-    }
 
-    private fun makeChoiceController()
-    {
-        fabChoice11.setOnClickListener {
-            Toast.makeText(this@PlaceFavoriteActivity, "You select Choice1", Toast.LENGTH_SHORT).show()
-            (act_place_favorite_floating_first as FloatingActionMenu).menuIconView.setImageResource(
-                R.drawable.ic_reboot
-            )
-        }
-        fabChoice22.setOnClickListener {
-            Toast.makeText(this@PlaceFavoriteActivity, "You select Choice2", Toast.LENGTH_SHORT).show()
-            (act_place_favorite_floating_first as FloatingActionMenu).menuIconView.setImageResource(
-                R.drawable.ic_time
-            )
-        }
-        fabChoice33.setOnClickListener {
-            Toast.makeText(this@PlaceFavoriteActivity, "You select Choice3", Toast.LENGTH_SHORT).show()
-            (act_place_favorite_floating_first as FloatingActionMenu).menuIconView.setImageResource(
-                R.drawable.ic_delete
-            )
-        }
-        fabChoice44.setOnClickListener {
-            Toast.makeText(this@PlaceFavoriteActivity, "You select Choice4", Toast.LENGTH_SHORT).show()
-            (act_place_favorite_floating_first as FloatingActionMenu).menuIconView.setImageResource(
-                R.drawable.ic_detail
-            )
-        }
     }
-
 
 
     private fun makeRegisterController() {
         act_place_favorite_cl_register.setOnClickListener {
-
-
             val intent = Intent(this@PlaceFavoriteActivity, SetCompleteActivity::class.java)
             startActivity(intent)
         }
