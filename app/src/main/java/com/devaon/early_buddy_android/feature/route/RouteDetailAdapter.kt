@@ -53,9 +53,10 @@ class RouteDetailAdapter(var routeDetail: ArrayList<Station>, val viewType: Int,
                     2 -> {
                         holder.stopStation.text = routeDetail[position].stationName
                         when(code){
-                            11 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_ganline)
-                            12 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_jiline)
-                            14 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_gwangyuk)
+                            1,2,11 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_ganline)
+                            10,12 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_jiline)
+                            4,14,15 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_gwangyuk)
+                            5 -> holder.stopPoint.setImageResource(R.drawable.img_path_point_airport)
                             else -> holder.stopPoint.setImageResource(R.drawable.img_path_point_others)
                         }
 

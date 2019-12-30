@@ -385,7 +385,7 @@ class RouteAdapter(
                     //버스
                     2 -> {
                         when (routeList[position].lane[0].type) {
-                            11 -> {     //간선
+                            1,2,11 -> {     //간선,좌석,일반
                                 with(holder) {
                                     ridingNumber.text =
                                         String.format("%s", routeList[position].lane[0].busNo)
@@ -407,7 +407,7 @@ class RouteAdapter(
                                     )
                                 }
                             }
-                            12 -> {     //지선
+                            10,12 -> {     //외곽,지선
                                 with(holder) {
                                     ridingNumber.text =
                                         String.format("%s", routeList[position].lane[0].busNo)
@@ -429,7 +429,7 @@ class RouteAdapter(
                                     )
                                 }
                             }
-                            14 -> {     //광역
+                            4,14,15 -> {     //직행,광역,급행
                                 with(holder) {
                                     ridingNumber.text =
                                         String.format("%s", routeList[position].lane[0].busNo)
@@ -447,6 +447,50 @@ class RouteAdapter(
                                         ContextCompat.getColor(
                                             context,
                                             R.color.seoul_bus_gwangyuk
+                                        )
+                                    )
+                                }
+                            }
+                            5 -> {     //공항
+                                with(holder) {
+                                    ridingNumber.text =
+                                        String.format("%s", routeList[position].lane[0].busNo)
+                                    startingText.text =
+                                        String.format("%s", routeList[position].startName)
+                                    endText.text = String.format("%s", routeList[position].endName)
+                                    ridingLine.setImageResource(R.color.seoul_line_gongHang)
+                                    ridingImg.setImageResource(R.drawable.img_bus_ap)
+                                    topPoint.setImageResource(R.drawable.img_path_point_airport)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_airport)
+                                    quitImg.setImageResource(R.drawable.img_stop_airport)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.seoul_line_gongHang
+                                        )
+                                    )
+                                }
+                            }
+                            13 -> {     //순환
+                                with(holder) {
+                                    ridingNumber.text =
+                                        String.format("%s", routeList[position].lane[0].busNo)
+                                    startingText.text =
+                                        String.format("%s", routeList[position].startName)
+                                    endText.text = String.format("%s", routeList[position].endName)
+                                    ridingLine.setImageResource(R.color.inCheon_line_two)
+                                    ridingImg.setImageResource(R.drawable.img_bus_circula)
+                                    topPoint.setImageResource(R.drawable.img_path_point_incheontwo)
+                                    bottomPoint.setImageResource(R.drawable.img_path_point_incheontwo)
+                                    quitImg.setImageResource(R.drawable.img_stop_incheontwo)
+                                }
+                                when (val background = holder.ridingNumber.getBackground()) {
+                                    is GradientDrawable -> background.setColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            R.color.inCheon_line_two
                                         )
                                     )
                                 }
