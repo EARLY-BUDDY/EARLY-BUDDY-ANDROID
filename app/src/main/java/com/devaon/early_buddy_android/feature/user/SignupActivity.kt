@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
-import com.devaon.early_buddy_android.data.login.Login
 import kotlinx.android.synthetic.main.activity_signup.*
 import java.util.regex.Pattern
 
@@ -22,11 +21,9 @@ class SignupActivity : AppCompatActivity() {
     var pwFlag: Boolean = false
     var pwCheckFlag: Boolean = false
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
-
 
         makeController()
     }
@@ -47,16 +44,8 @@ class SignupActivity : AppCompatActivity() {
                 Toast.makeText(this, "아이디와 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
-
-                //id, pw, pwcheck 모두 입력시에만 활성화 되도록 수정해야함
                 if (idFlag && pwFlag && pwCheckFlag) {
-                    act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_blue_full)
-
-                    Login.setUser(this, id)
-
-                    val intent = Intent(this, SigninActivity::class.java)
-                    intent.putExtra("login", id)
-
+                    val intent = Intent(this@SignupActivity, SigninActivity::class.java)
                     startActivity(intent)
                 }
             }
@@ -69,6 +58,14 @@ class SignupActivity : AppCompatActivity() {
         act_signup_et_id.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 if (p0!!.length > 0) {
+                    /*화면 터치시 화면내려감
+                    이때 서버와 통신
+                        통신했는데 중복된 아이디일 경우
+                                act_signup_tv_id_ment.showOrInvisible(true) //중복된 아이디입니다. 경고메시지 보여줌
+                                act_signup_cl_id.setBackgroundResource(R.drawable.act_signup_round_rect_red)
+                                act_signup_et_id.setTextColor(ContextCompat.getColor(this@SignupActivity, R.color.black))*/
+
+                    act_signup_tv_id_ment.showOrInvisible(false)
                     act_signup_cl_id.setBackgroundResource(R.drawable.act_signup_round_rect_blue)
                     act_signup_et_id.setTextColor(
                         ContextCompat.getColor(
@@ -117,9 +114,7 @@ class SignupActivity : AppCompatActivity() {
                     )
                     pwFlag = false
                 } else {
-
                     act_signup_tv_pw_ment.showOrInvisible(false)
-
                     act_signup_cl_pw.setBackgroundResource(R.drawable.act_signup_round_rect_blue)
                     act_signup_et_pw.setTextColor(
                         ContextCompat.getColor(
@@ -128,11 +123,7 @@ class SignupActivity : AppCompatActivity() {
                         )
                     )
                     pwFlag = true
-                    //}
-                } /*else {
-                    act_signup_cl_pw.setBackgroundResource(R.drawable.act_signup_round_rect_gray)
-                    pwFlag = false
-                }*/
+                }
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -146,8 +137,6 @@ class SignupActivity : AppCompatActivity() {
     }
 
     private fun passwordCorretCheck() {
-        val pw = act_signup_et_pw.text.toString()
-
         act_signup_et_pw_check.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
 
@@ -158,11 +147,7 @@ class SignupActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if (pw !== p0.toString()) {
-                    act_signup_tv_pw_check_ment.showOrInvisible(true)
-                    act_signup_cl_pw_check.setBackgroundResource(R.drawable.act_signup_round_rect_red)
-                    pwCheckFlag = false
-                } else {
+                if(act_signup_et_pw.text.toString().equals(act_signup_et_pw_check.text.toString())){
                     act_signup_tv_pw_check_ment.showOrInvisible(false)
                     act_signup_cl_pw_check.setBackgroundResource(R.drawable.act_signup_round_rect_blue)
                     act_signup_et_pw_check.setTextColor(
@@ -172,6 +157,15 @@ class SignupActivity : AppCompatActivity() {
                         )
                     )
                     pwCheckFlag = true
+                    if (idFlag && pwFlag && pwCheckFlag) {
+                        act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_blue_full)
+                    }
+
+                }else{
+                    act_signup_tv_pw_check_ment.showOrInvisible(true)
+                    act_signup_cl_pw_check.setBackgroundResource(R.drawable.act_signup_round_rect_red)
+                    pwCheckFlag = false
+
                 }
             }
         })
