@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-    >
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.initial_join.SetCompleteActivity">
 
-<ImageView
-    android:id="@+id/act_set_complete_iv_jump_eb"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:srcCompat="@drawable/img_jump_eb" />
+    <ImageView
+        android:id="@+id/act_set_complete_iv_jump_eb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_jump_eb" />
 
     <TextView
         android:id="@+id/act_set_complete_tv_ment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="169dp"
+        android:lineHeight="35dp"
         android:text="이제 얼리버디와\n함께 할 수 있어요!"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="26sp"
-        android:lineHeight="35dp"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,11 +34,11 @@ android:layout_height="match_parent"
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:letterSpacing="-0.05"
+        android:lineHeight="23sp"
         android:text="자주 가는 장소는 마이페이지에서\n 언제든지 바꿀 수 있어요!"
         android:textColor="@color/light_gray"
         android:textSize="16sp"
-        android:lineHeight="23sp"
-        android:letterSpacing="-0.05"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/act_set_complete_iv_jump_eb" />

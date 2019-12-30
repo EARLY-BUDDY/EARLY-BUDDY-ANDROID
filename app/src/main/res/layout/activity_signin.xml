@@ -6,93 +6,134 @@
     android:layout_height="match_parent"
     tools:context=".feature.user.SigninActivity">
 
-    <TextView
-        android:id="@+id/act_signin_tv_ment"
-        android:layout_width="299dp"
-        android:layout_height="88dp"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="30dp"
-        android:lineSpacingExtra="9sp"
-        android:text="로그인화면"
-        android:textColor="@color/black"
-        android:textSize="26sp"
+
+    <LinearLayout
+        android:id="@+id/act_signup_ll_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="51dp"
+        android:layout_marginEnd="46dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.323"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="152dp">
+
+        <TextView
+            android:id="@+id/act_signup_tv_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_bold"
+            android:text="아이디"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/act_signup_tv_id_ment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="중복된 아이디입니다."
+            android:textColor="@color/red"
+            android:textSize="12sp"
+            android:visibility="invisible" />
+
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/act_signin_cl_id"
         android:layout_width="match_parent"
         android:layout_height="49dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="128dp"
-        android:background="@drawable/act_place_round_rect_blue"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/act_signup_round_rect_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_signin_tv_ment">
+        app:layout_constraintTop_toBottomOf="@+id/act_signup_ll_id">
 
         <EditText
             android:id="@+id/act_signin_et_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
             android:background="@null"
             android:gravity="center"
-            android:hint=""
-            android:maxLength="6"
+            android:hint="아이디를 입력해주세요."
+            android:maxLength="20"
             android:singleLine="true"
+            android:textColor="@color/light_gray"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/act_signin_cl_pw"
+
+    <LinearLayout
+        android:id="@+id/act_signup_ll_pw"
         android:layout_width="match_parent"
-        android:layout_height="49dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/act_place_round_rect_blue"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="46dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/act_signin_cl_id">
 
-        <EditText
-            android:id="@+id/act_signin_et_pw"
+        <TextView
+            android:id="@+id/act_signup_tv_pw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:gravity="center"
-            android:hint=""
-            android:maxLength="6"
-            android:singleLine="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:fontFamily="@font/notosans_bold"
+            android:text="비밀번호"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/act_signup_tv_pw_ment"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="6자 이상 입력해주세요."
+            android:textColor="@color/red"
+            android:textSize="12sp"
+            android:visibility="invisible" />
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/act_signin_cl"
         android:layout_width="match_parent"
         android:layout_height="49dp"
-
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/act_place_round_rect_gray_full"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="533dp">
 
         <TextView
             android:id="@+id/act_signin_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_medium"
             android:gravity="center"
-            android:text="로그인"
+            android:text="가입하기"
             android:textColor="@color/white"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -100,5 +141,60 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/act_signin_cl_pw"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/act_signup_round_rect_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/act_signup_ll_pw">
+
+        <EditText
+            android:id="@+id/act_signin_et_pw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="영어+숫자 6자 이상 입력해주세요."
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:singleLine="true"
+            android:textColor="@color/light_gray"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <CheckBox
+        android:id="@+id/act_signin_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="16dp"
+        android:text="자동 로그인"
+        app:layout_constraintCircleRadius="@dimen/fab_size_normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/act_signin_cl_pw" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:text="회원가입"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/act_signin_cl" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
