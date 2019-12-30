@@ -1,6 +1,6 @@
 package com.devaon.early_buddy_android.network
 
-import com.devaon.early_buddy_android.intercepter.CookiesIntercepter
+import com.devaon.early_buddy_android.feature.intercepter.CookiesIntercepter
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

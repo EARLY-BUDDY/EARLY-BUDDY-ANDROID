@@ -1,8 +1,7 @@
-package com.devaon.early_buddy_android.util
+package com.devaon.early_buddy_android.feature.util
 
 import android.view.animation.Animation
 import android.view.animation.Transformation
-import android.widget.ProgressBar
 import android.widget.TextView
 import java.text.DecimalFormat
 

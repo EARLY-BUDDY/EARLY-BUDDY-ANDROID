@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity
-import com.devaon.early_buddy_android.util.TextViewIntAnimation
+import com.devaon.early_buddy_android.feature.util.TextViewIntAnimation
 import com.devaon.early_buddy_android.feature.calendar.CalendarActivity
 import com.devaon.early_buddy_android.feature.route.RouteActivity
 import kotlinx.android.synthetic.main.activity_home.*

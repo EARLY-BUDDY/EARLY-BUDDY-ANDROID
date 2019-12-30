@@ -97,7 +97,7 @@
         app:layout_constraintTop_toTopOf="@+id/item_pass_riding_iv_top_center" />
 
     <TextView
-        android:id="@+id/item_pass_riding_tv_dispatch_interval_time"
+        android:id="@+id/item_pass_riding_tv_direction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -117,7 +117,7 @@
         android:paddingBottom="4dp"
         android:paddingEnd="30dp"
         app:layout_constraintStart_toStartOf="@id/item_pass_riding_tv_riding_number"
-        app:layout_constraintTop_toBottomOf="@id/item_pass_riding_tv_dispatch_interval_time">
+        app:layout_constraintTop_toBottomOf="@id/item_pass_riding_tv_direction">
 
         <TextView
             android:id="@+id/item_pass_riding_tv_stop_station_count"
