@@ -3,7 +3,7 @@ package com.devaon.early_buddy_android.data.login
 import android.content.Context
 
 object Login {
-    private const val LOGIN_KEY = "login"
+    private const val LOGIN_KEY = "id"
     private const val USER_KEY = "user"
 
     fun getUser(context: Context): String {
