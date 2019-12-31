@@ -99,6 +99,9 @@ class CalendarPageRecyclerViewAdapter(
         var container = itemView.findViewById(R.id.item_calendar_date_container) as ConstraintLayout
         var date = itemView.findViewById(R.id.item_calendar_date_tv) as TextView
         var schedule = itemView.findViewById(R.id.item_Calendar_date_iv_schedule) as ImageView
+
+
+
     }
 
     private fun toggleItemSelected(position: Int){

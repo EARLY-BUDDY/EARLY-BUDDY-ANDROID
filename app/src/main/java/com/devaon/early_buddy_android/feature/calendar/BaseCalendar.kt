@@ -1,6 +1,6 @@
 package com.devaon.early_buddy_android.feature.calendar
 
-import com.devaon.early_buddy_android.data.place.calendar.Date
+import com.devaon.early_buddy_android.data.calendar.Date
 import java.text.SimpleDateFormat
 import java.util.*
 

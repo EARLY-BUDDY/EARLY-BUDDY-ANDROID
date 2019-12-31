@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.place_search_list.PlaceSearchListActivity">
+    tools:context=".feature.place.search.text.PlaceSearchActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/act_place_search_cl_ment"
@@ -74,11 +74,9 @@
                 android:id="@+id/act_place_search_iv_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
                 android:layout_marginEnd="13dp"
-                android:layout_marginBottom="7dp"
                 android:src="@drawable/ic_delete"
-                app:layout_constraintBottom_toBottomOf="@+id/act_place_search_tv_search"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -109,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:src="@drawable/img_empty"
+        android:src="@drawable/img_place_search_blank"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

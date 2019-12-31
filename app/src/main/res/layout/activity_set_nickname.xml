@@ -3,47 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".feature.initial_join.SetNicknameActivity"
+    >
 
 
     <TextView
-        android:id="@+id/textView24"
+        android:id="@+id/act_set_nickname_tv_ment"
         android:layout_width="299dp"
         android:layout_height="88dp"
-
         android:layout_marginStart="41dp"
+        android:layout_marginTop="370dp"
         android:lineSpacingExtra="9sp"
         android:text="얼리버디와 함께할\n닉네임을 설정해주세요."
         android:textColor="@color/black"
         android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:lineHeight="35sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_nickname_write"
+        android:id="@+id/act_set_nickname_cl_id"
         android:layout_width="match_parent"
         android:layout_height="49dp"
-        android:layout_marginStart="35dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="35dp"
-        android:background="@drawable/act_place_round_rect_blue"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/act_place_round_rect_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView24">
+        app:layout_constraintTop_toBottomOf="@+id/act_set_nickname_tv_ment">
 
         <EditText
-            android:id="@+id/tv_set_nickname_write"
+            android:id="@+id/act_set_nickname_et_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
             android:gravity="center"
             android:hint="한글 6글자 이내로 적어주세요."
-            android:maxLines="1"
+            android:maxLength="6"
+            android:singleLine="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,28 +52,27 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_set_nickname_next"
+        android:id="@+id/act_set_nickname_cl_join"
         android:layout_width="match_parent"
         android:layout_height="49dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="32dp"
 
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/act_place_round_rect_gray_full"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_nickname_write">
+        app:layout_constraintTop_toBottomOf="@+id/act_set_nickname_cl_id">
 
         <TextView
-            android:id="@+id/bt_set_nickname_next"
+            android:id="@+id/act_set_nickname_bt_join"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="등록하기"
-            android:textSize="18dp"
+            android:text="다음"
             android:textColor="@color/white"
+            android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

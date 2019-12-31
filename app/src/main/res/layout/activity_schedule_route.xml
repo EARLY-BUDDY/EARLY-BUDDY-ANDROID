@@ -35,10 +35,10 @@
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/act_schedule_route_cl_text"
             app:layout_constraintTop_toTopOf="@id/act_schedule_route_cl_text"
-            app:layout_constraintEnd_toStartOf="@id/act_schedule_route_method_1"/>
+            app:layout_constraintEnd_toStartOf="@id/li_place_search_route_tv_subway"/>
 
         <TextView
-            android:id="@+id/act_schedule_route_method_1"
+            android:id="@+id/li_place_search_route_tv_subway"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -51,27 +51,27 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/act_schedule_route_plus"
+            android:id="@+id/li_place_search_route_plus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosans_bold"
             android:text="+"
             android:textColor="@color/light_gray"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@id/act_schedule_route_method_1"
-            app:layout_constraintBottom_toBottomOf="@id/act_schedule_route_method_1"
-            app:layout_constraintTop_toTopOf="@id/act_schedule_route_method_1"/>
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_subway"
+            app:layout_constraintBottom_toBottomOf="@id/li_place_search_route_tv_subway"
+            app:layout_constraintTop_toTopOf="@id/li_place_search_route_tv_subway"/>
 
         <TextView
-            android:id="@+id/act_schedule_route_method_2"
+            android:id="@+id/li_place_search_route_bus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/notosans_bold"
             android:text="버스"
             android:textSize="12sp"
             android:textColor="@color/light_gray"
-            app:layout_constraintStart_toEndOf="@id/act_schedule_route_plus"
-            app:layout_constraintTop_toTopOf="@id/act_schedule_route_plus"/>
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_plus"
+            app:layout_constraintTop_toTopOf="@id/li_place_search_route_plus"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -90,11 +90,17 @@
             android:id="@+id/act_schedule_route_iv_gray_path"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/img_path_gray_all"
+            android:src="@drawable/img_gray_line_2"
             app:layout_constraintTop_toTopOf="@id/act_schedule_route_cl_bar"
             app:layout_constraintStart_toStartOf="@id/act_schedule_route_cl_bar"
             app:layout_constraintEnd_toEndOf="@id/act_schedule_route_cl_bar"/>
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5분"
+            app:layout_constraintTop_toBottomOf="@id/act_schedule_route_iv_gray_path"
+            app:layout_constraintStart_toStartOf="@id/act_schedule_route_iv_gray_path"
+            app:layout_constraintEnd_toStartOf="@id/act_schedule_route_cl_method_1"/>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/act_schedule_route_cl_method_1"
             android:layout_width="wrap_content"

@@ -9,7 +9,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.devaon.early_buddy_android"
-        minSdkVersion 26
+        minSdkVersion 28
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -21,6 +21,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets'] } }
 }
 
 dependencies {
@@ -36,7 +37,7 @@ dependencies {
 
     implementation 'com.google.android.material:material:1.2.0-alpha03'
 
-
+    //리사이클러뷰 라이브러리
     implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha06'
 
     //동그란 이미지 커스텀 뷰 라이브러리 : https://github.com/hdodenhof/CircleImageView
@@ -62,11 +63,15 @@ dependencies {
     implementation 'com.google.code.findbugs:jsr305:2.0.1'
 
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    //카카오맵 라이브러리 적용
     implementation files('libs\\libDaumMapAndroid.jar')
 
 
     //FloationgActionButton
     implementation 'com.github.clans:fab:1.6.4'
 
+    //Lottie Library
+    implementation 'com.airbnb.android:lottie:3.2.2'
 
 }
