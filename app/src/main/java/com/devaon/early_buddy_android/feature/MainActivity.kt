@@ -8,6 +8,7 @@ import com.devaon.early_buddy_android.feature.user.SignupActivity
 import com.devaon.early_buddy_android.feature.home.HomeActivity
 import com.devaon.early_buddy_android.feature.initial_join.SetNicknameActivity
 import com.devaon.early_buddy_android.feature.place.search.route.PlaceSearchRouteActivity
+import com.devaon.early_buddy_android.feature.user.SigninActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
