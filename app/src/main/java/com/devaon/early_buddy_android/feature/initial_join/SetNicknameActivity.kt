@@ -56,8 +56,6 @@ class SetNicknameActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(this@SetNicknameActivity, "한글만 입력해주세요", Toast.LENGTH_SHORT).show()
             }
-
-
         }
 
 
