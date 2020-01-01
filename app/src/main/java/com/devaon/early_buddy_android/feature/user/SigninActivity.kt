@@ -28,7 +28,7 @@ class SigninActivity : AppCompatActivity() {
 
         //자동로그인
         /*val id = Login.getUser(this)
-        if (id.isNotEmpty()) { //통신 한 번 더. 만약 nickname 설정 안되어 있다면, goToNicknameActivity
+        if (id.isNotEmpty()) { // 만약 nickname 설정 안되어 있다면, goToNicknameActivity
             goToHomeActivity(id)
             finish()
         }
@@ -54,13 +54,15 @@ class SigninActivity : AppCompatActivity() {
 
             val response = requestLogin(id, pw)
             if (response) {
-                val checkBox: CheckBox = findViewById(R.id.act_signin_auto_checkbox)
+                /*val checkBox: CheckBox = findViewById(R.id.act_signin_auto_checkbox)
                 if (checkBox.isChecked) {
                     Login.setUser(this, id)
                     goToHomeActivity(id)
-                }
+                }*/
 
-                val intent = Intent(this@SigninActivity, HomeActivity::class.java)
+                val intent = Intent(this@SigninActivity, SetNicknameActivity::class.java).apply {
+                    setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                }
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()

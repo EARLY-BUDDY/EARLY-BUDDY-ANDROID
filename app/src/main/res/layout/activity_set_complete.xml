@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_jump_eb" />
+        app:srcCompat="@drawable/img_party" />
 
     <TextView
         android:id="@+id/act_set_complete_tv_ment"
@@ -31,17 +31,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/act_set_complete_tv_ment_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:letterSpacing="-0.05"
-        android:lineHeight="23sp"
-        android:text="자주 가는 장소는 마이페이지에서\n 언제든지 바꿀 수 있어요!"
+        android:layout_marginTop="27dp"
+        android:text="자주 가는 장소는 마이페이지에서"
         android:textColor="@color/light_gray"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/act_set_complete_iv_jump_eb" />
+
+    <TextView
+        android:id="@+id/act_set_complete_tv_ment_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="언제든지 바꿀 수 있어요!"
+        android:textColor="@color/light_gray"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/act_set_complete_tv_ment_first" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,15 +59,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="83dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/act_place_round_rect_blue_full"
         android:paddingHorizontal="132dp"
         android:paddingVertical="11dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7">
+        app:layout_constraintTop_toBottomOf="@+id/act_set_complete_tv_ment_second">
 
         <TextView
             android:id="@+id/set_complete_bt_start"

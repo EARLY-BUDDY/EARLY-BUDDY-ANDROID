@@ -5,11 +5,15 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.feature.initial_join.SetNicknameActivity
 import kotlinx.android.synthetic.main.activity_signup.*
+import org.w3c.dom.Text
 import java.util.regex.Pattern
 
 
@@ -35,6 +39,10 @@ class SignupActivity : AppCompatActivity() {
 
         act_signup_cl_join.setOnClickListener {
 
+            val signinDialog = SigninDialogFragment()
+            signinDialog.setOnDialogDismissedListener(signInDialogFragmentDismissListener)
+
+
             val id = act_signup_et_id.text.toString()
             val pw = act_signup_et_pw.text.toString()
             val pwCheck = act_signup_et_pw_check.text.toString()
@@ -45,13 +53,20 @@ class SignupActivity : AppCompatActivity() {
                 return@setOnClickListener
             } else {
                 if (idFlag && pwFlag && pwCheckFlag) {
-                    val intent = Intent(this@SignupActivity, SigninActivity::class.java)
-                    startActivity(intent)
+                    signinDialog.show(supportFragmentManager,"signin_fagment")
+
                 }
             }
 
         }
 
+    }
+
+    var signInDialogFragmentDismissListener = object : SigninDialogFragment.OnDialogDismissedListener {
+        override fun onDialogDismissed() {
+            val intent = Intent(this@SignupActivity, SigninActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun idDuplicatedCheck() {
