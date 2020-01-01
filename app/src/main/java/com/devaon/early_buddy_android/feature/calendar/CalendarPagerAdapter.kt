@@ -113,4 +113,30 @@ class CalendarPagerAdapter (fm: FragmentManager): FragmentPagerAdapter(fm){
 
         return "${year}년 ${month}월"
     }
+
+    fun getMonth(position: Int) : String {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = listMonthByMillis[position]
+        val monthFormat = SimpleDateFormat("MM", Locale.KOREA)
+
+        val date = Date()
+        date.time = listMonthByMillis[position]
+        val month = monthFormat.format(date).toString()
+
+        return month
+
+    }
+
+    fun getYear(position: Int) : String {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = listMonthByMillis[position]
+        val yearFormat = SimpleDateFormat("yyyy", Locale.KOREA)
+
+        val date = Date()
+        date.time = listMonthByMillis[position]
+        val year = yearFormat.format(date).toString()
+
+        return year
+
+    }
 }

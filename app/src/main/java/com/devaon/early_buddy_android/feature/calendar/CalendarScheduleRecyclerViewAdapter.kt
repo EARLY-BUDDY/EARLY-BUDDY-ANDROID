@@ -1,10 +1,13 @@
 package com.devaon.early_buddy_android.feature.calendar
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.marginBottom
+import androidx.core.view.marginRight
 import androidx.recyclerview.widget.RecyclerView
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.calendar.Schedule
@@ -21,13 +24,19 @@ class CalendarScheduleRecyclerViewAdapter(
         return Holder(view)
     }
 
-    override fun getItemCount() = 2
+    override fun getItemCount() = dataList.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
+        holder.title.text = dataList[position].scheduleName
+        holder.place.text = dataList[position].endAddress
 
-       holder.title.text = dataList[position].title
-        holder.place.text = dataList[position].place
-        holder.time.text = dataList[position].time
+        var hour = dataList[position].scheduleStartTime.substring(11, 13)
+        if(hour.toInt() > 12) {
+            holder.time.text = "오후 " + dataList[position].scheduleStartTime.substring(11, 16)
+        }else{
+            holder.time.text = "오전 " + dataList[position].scheduleStartTime.substring(11, 16)
+        }
+
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
