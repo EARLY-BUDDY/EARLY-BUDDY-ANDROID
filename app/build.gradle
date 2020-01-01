@@ -57,7 +57,9 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 
-    implementation project(path: ':SDK_release_v2.0.0')
+    //okHttp
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
 
     //ODsay api
     implementation 'com.google.code.findbugs:jsr305:2.0.1'
@@ -73,5 +75,13 @@ dependencies {
 
     //Lottie Library
     implementation 'com.airbnb.android:lottie:3.2.2'
+
+
+    //rx retrofit
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+    //rx android
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.3'
 
 }
