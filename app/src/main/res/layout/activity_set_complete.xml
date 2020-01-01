@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="83dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/act_place_round_rect_blue_full"
         android:paddingHorizontal="132dp"

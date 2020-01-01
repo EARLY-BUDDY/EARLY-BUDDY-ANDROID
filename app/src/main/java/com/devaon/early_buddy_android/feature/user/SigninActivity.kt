@@ -26,13 +26,12 @@ class SigninActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin)
 
-        //자동로그인
-        /*val id = Login.getUser(this)
+        /*//자동로그인
+        val id = Login.getUser(this)
         if (id.isNotEmpty()) { // 만약 nickname 설정 안되어 있다면, goToNicknameActivity
             goToHomeActivity(id)
             finish()
-        }
-*/
+        }*/
         makeController()
 
     }
@@ -54,11 +53,7 @@ class SigninActivity : AppCompatActivity() {
 
             val response = requestLogin(id, pw)
             if (response) {
-                /*val checkBox: CheckBox = findViewById(R.id.act_signin_auto_checkbox)
-                if (checkBox.isChecked) {
-                    Login.setUser(this, id)
-                    goToHomeActivity(id)
-                }*/
+                Login.setUser(this, id)
 
                 val intent = Intent(this@SigninActivity, SetNicknameActivity::class.java).apply {
                     setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -82,7 +77,7 @@ class SigninActivity : AppCompatActivity() {
         return true
     }
 
-    private fun goToHomeActivity(id: String) {
+    /*private fun goToHomeActivity(id: String) {
         val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra("login", id)
 
@@ -94,7 +89,7 @@ class SigninActivity : AppCompatActivity() {
         intent.putExtra("login", id)
 
         startActivity(intent)
-    }
+    }*/
 
 
     private fun idBntActive() {
