@@ -70,7 +70,9 @@ class PlaceSearchRouteAdapter(
         Log.e("adapter", "totalTime:$totalTime firstWalkTime:$firstWalkTime secondWalkTime:$secondWalkTime thirdWalkTime:$thirdWalkTime method1Time:$method1Time method2Time:$method2Time")
 
         val method1Len = holder.totalPath / ((totalTime / method1Time).toFloat()) //totalPath에서 (totalTime / method1Time)만큼의 비율을 차지
-        val method2Len = holder.totalPath / ((totalTime / method2Time).toFloat())
+        var method2Len = 0f
+        if(method2Time != 0f)
+            method2Len = holder.totalPath / ((totalTime / method2Time).toFloat())
         var method3Len = 0f
         if(method3Time != 0f)
             method3Len = holder.totalPath / ((totalTime / method3Time).toFloat())
@@ -112,9 +114,9 @@ class PlaceSearchRouteAdapter(
         holder.method3?.layoutParams = method3Params
 
 
-        Log.e("gray의 width를 내놔라", holder.grayLength.toString())
-        Log.e("gray의 width를 내놔라2", holder.grayView.width.toString())
-        Log.e("gray layout의 width를 내놔라", holder.grayLayout.width.toString())
+//        Log.e("gray의 width를 내놔라", holder.grayLength.toString())
+//        Log.e("gray의 width를 내놔라2", holder.grayView.width.toString())
+//        Log.e("gray layout의 width를 내놔라", holder.grayLayout.width.toString())
     }
 
     inner class PlaceSearchRouteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -125,9 +127,9 @@ class PlaceSearchRouteAdapter(
         val walk: TextView = view.findViewById(R.id.li_place_search_route_tv_walk)
         val money: TextView = view.findViewById(R.id.li_place_search_route_tv_money)
 
-        val grayView :  ImageView = view.findViewById(R.id.li_place_search_route_iv_gray_line)
-        val grayLength = (grayView).getWidth()
-        val grayLayout : ConstraintLayout = view.findViewById(R.id.li_place_search_route_cl_bar)
+//        val grayView :  ImageView = view.findViewById(R.id.li_place_search_route_iv_gray_line)
+//        val grayLength = (grayView).getWidth()
+//        val grayLayout : ConstraintLayout = view.findViewById(R.id.li_place_search_route_cl_bar)
 
 
 //        val totalPath = grayLength
