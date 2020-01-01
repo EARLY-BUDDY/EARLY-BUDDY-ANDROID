@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/act_place_select_cl_ment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:background="#3092ff"
         android:paddingVertical="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +57,6 @@
             android:id="@+id/act_place_select_cl_search_start"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
             android:background="@drawable/act_place_round_rect_white_full"
             android:paddingStart="17dp"
             android:paddingTop="6dp"
