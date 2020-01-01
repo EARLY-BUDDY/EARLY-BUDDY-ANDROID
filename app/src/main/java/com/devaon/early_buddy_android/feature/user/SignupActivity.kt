@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -11,14 +12,23 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.data.user.UserResponse
 import com.devaon.early_buddy_android.feature.initial_join.SetNicknameActivity
+import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_signup.*
+import org.json.JSONObject
 import org.w3c.dom.Text
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.regex.Pattern
 
 
 class SignupActivity : AppCompatActivity() {
 
+    lateinit var signinDialog : SigninDialogFragment
     val pwdPattern = Pattern.compile("^[a-zA-Z0-9]+$", Pattern.CASE_INSENSITIVE)
 
     var idFlag: Boolean = false
@@ -39,7 +49,7 @@ class SignupActivity : AppCompatActivity() {
 
         act_signup_cl_join.setOnClickListener {
 
-            val signinDialog = SigninDialogFragment()
+            signinDialog = SigninDialogFragment()
             signinDialog.setOnDialogDismissedListener(signInDialogFragmentDismissListener)
 
 
@@ -53,8 +63,7 @@ class SignupActivity : AppCompatActivity() {
                 return@setOnClickListener
             } else {
                 if (idFlag && pwFlag && pwCheckFlag) {
-                    signinDialog.show(supportFragmentManager,"signin_fagment")
-
+                    postUserData(id, pw)
                 }
             }
 
@@ -68,6 +77,35 @@ class SignupActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    private fun postUserData(id : String, pw : String) {
+
+        var jsonObject = JSONObject()
+        jsonObject.put("userId", id)
+        jsonObject.put("userPw", pw)
+
+        val body = JsonParser().parse(jsonObject.toString()) as JsonObject
+
+        val callSignUpResponse: Call<UserResponse> = EarlyBuddyServiceImpl.service.postSignupUser(
+            body
+        )
+
+        callSignUpResponse.enqueue(object : Callback<UserResponse> {
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                Log.e("error is ", t.toString())
+            }
+
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                if (response.isSuccessful) {
+                    Log.e("result is ", response.body().toString())
+                    val signupUser = response.body()!!
+                    signinDialog.show(supportFragmentManager,"signin_fagment")
+                }
+            }
+        })
+
+    }
+
 
     private fun idDuplicatedCheck() {
         act_signup_et_id.addTextChangedListener(object : TextWatcher {
