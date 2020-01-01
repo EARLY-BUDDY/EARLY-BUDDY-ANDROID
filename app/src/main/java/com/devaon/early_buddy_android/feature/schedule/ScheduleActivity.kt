@@ -3,10 +3,13 @@ package com.devaon.early_buddy_android.feature.schedule
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import com.devaon.early_buddy_android.R
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -32,7 +35,6 @@ class ScheduleActivity : AppCompatActivity(){
         setNotiSpinner()
         setWeekPressed()
         searchRoute()
-        showPopUp()
 
         //장소 textView가 null이 아니라면 defaut 경로 부분을 안보이게 해줘야함
         //null이라면 default 경로가 보이게 해야함
@@ -41,6 +43,11 @@ class ScheduleActivity : AppCompatActivity(){
         route.setVisibility(View.GONE)
         routeS.setVisibility(View.GONE)
 
+        act_schedule_tv_register.setOnClickListener {
+            ScheduleDialogFragment().apply {
+                show(supportFragmentManager, null)
+            }
+        }
     }
 
     fun setCurrentDate(){
@@ -213,12 +220,4 @@ class ScheduleActivity : AppCompatActivity(){
         method3.layoutParams = method3Params
 
     }
-
-    fun showPopUp(){
-        act_schedule_tv_register.setOnClickListener {
-            val intent = Intent(this@ScheduleActivity, SchedulePopUpActivity::class.java)
-            startActivity(intent)
-        }
-    }
-
 }
