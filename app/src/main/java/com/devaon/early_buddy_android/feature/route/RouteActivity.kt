@@ -45,7 +45,8 @@ class RouteActivity : AppCompatActivity() {
             127.069253,
             37.540635,
             127.072861,
-            37.625918
+            37.625918,
+            0
         )
 
 //        {
@@ -64,11 +65,6 @@ class RouteActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     Log.e("result is ", response.body().toString())
                     val route = response.body()!!
-//                    var i  = 0
-//                    var list : ArrayList<SubPath> =ArrayList()
-//                    while (i<route.data.path.size){
-//                        list.add()
-//                    }
                     routeAdapter.setRouteItem(route.data.path[0].subPath)
                     routeAdapter.routeList[0].startName = "내집은 짹짹이!!"
                     routeAdapter.notifyDataSetChanged()

@@ -32,7 +32,7 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
     }
 
     private fun initPlaceSearchRoute(){
-        rvPlaceSearchRoute = findViewById(R.id.act_place_search_route_cl)
+        rvPlaceSearchRoute = findViewById(R.id.act_place_search_route_rv)
         placeSeachRouteAdapter = PlaceSearchRouteAdapter(this)
         rvPlaceSearchRoute.adapter = placeSeachRouteAdapter
         rvPlaceSearchRoute.layoutManager = LinearLayoutManager(this)
@@ -43,7 +43,8 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
             127.08282465301149,
             37.62072502768881,
             127.03746391719882,
-            37.4720040276288
+            37.4720040276288,
+            0
         )
 
 

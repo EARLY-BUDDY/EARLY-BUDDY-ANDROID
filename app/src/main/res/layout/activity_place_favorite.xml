@@ -194,6 +194,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_" />
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

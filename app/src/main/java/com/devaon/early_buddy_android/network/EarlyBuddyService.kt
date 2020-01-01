@@ -16,18 +16,21 @@ interface EarlyBuddyService {
         @Query("SX") SX: Double,
         @Query("SY") SY: Double,
         @Query("EX") EX: Double,
-        @Query("EY") EY: Double
+        @Query("EY") EY: Double,
+        @Query("SearchPathType") SearchPathType: Int
+
     ): Call<RouteResponse>
 
     @GET(value = "/home")
     fun getHomeSchedule(
         @Query("userIdx") userIdx: Int
     ): Call<HomeScheduleResponse>
+
     @GET(value = "/calenders")
     fun getCalendar(
-        @Query("userIdx") userIdx : Int,
-        @Query("year") year : String,
-        @Query("month") month : String
+        @Query("userIdx") userIdx: Int,
+        @Query("year") year: String,
+        @Query("month") month: String
     ): Call<CalendarResponse>
 
     @GET("/users/{id}")
