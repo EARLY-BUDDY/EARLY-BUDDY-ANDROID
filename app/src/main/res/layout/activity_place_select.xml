@@ -7,7 +7,7 @@
     tools:context=".feature.place.select.PlaceSelectActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/act_place_select_cl_ment"
+        android:id="@+id/act_place_search_route_cl_top"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="#3092ff"
@@ -43,7 +43,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/act_place_select_cl_all"
+        android:id="@+id/act_place_search_route_cl_engine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/act_place_round_left_bottom_rect_blue_full"
@@ -51,10 +51,10 @@
         android:paddingBottom="30dp"
         app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintTop_toBottomOf="@+id/act_place_select_cl_ment">
+        app:layout_constraintTop_toBottomOf="@+id/act_place_search_route_cl_top">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/act_place_select_cl_search_start"
+            android:id="@+id/act_place_search_route_engine_from"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:background="@drawable/act_place_round_rect_white_full"
@@ -66,7 +66,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/act_place_select_tv_search_start"
+                android:id="@+id/act_place_search_route_tv_engine_from"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="출발 : "
@@ -77,7 +77,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/act_place_select_et_search_start"
+                android:id="@+id/act_place_search_route_et_engine_from"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
@@ -87,13 +87,13 @@
                 android:inputType="textPersonName"
                 android:textColor="@color/light_gray"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/act_place_select_tv_search_start"
-                app:layout_constraintStart_toEndOf="@+id/act_place_select_tv_search_start"
-                app:layout_constraintTop_toTopOf="@+id/act_place_select_tv_search_start"
+                app:layout_constraintBottom_toBottomOf="@+id/act_place_search_route_tv_engine_from"
+                app:layout_constraintStart_toEndOf="@+id/act_place_search_route_tv_engine_from"
+                app:layout_constraintTop_toTopOf="@+id/act_place_search_route_tv_engine_from"
                 app:layout_constraintVertical_bias="0.333" />
 
             <ImageView
-                android:id="@+id/act_place_select_iv_search_start"
+                android:id="@+id/act_place_search_route_iv_engine_from"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
@@ -106,7 +106,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/act_place_select_cl_search_end"
+            android:id="@+id/act_place_search_route_cl_engine_to"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
@@ -119,10 +119,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/act_place_select_cl_search_start">
+            app:layout_constraintTop_toBottomOf="@+id/act_place_search_route_engine_from">
 
             <TextView
-                android:id="@+id/act_place_select_tv_search_end"
+                android:id="@+id/act_place_search_route_tv_engine_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="도착 : "
@@ -133,7 +133,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/act_place_select_et_search_end"
+                android:id="@+id/act_place_search_route_et_engine_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
@@ -143,12 +143,12 @@
                 android:inputType="textPersonName"
                 android:textColor="@color/light_gray"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/act_place_select_tv_search_end"
-                app:layout_constraintStart_toEndOf="@+id/act_place_select_tv_search_end"
-                app:layout_constraintTop_toTopOf="@+id/act_place_select_tv_search_end" />
+                app:layout_constraintBottom_toBottomOf="@+id/act_place_search_route_tv_engine_to"
+                app:layout_constraintStart_toEndOf="@+id/act_place_search_route_tv_engine_to"
+                app:layout_constraintTop_toTopOf="@+id/act_place_search_route_tv_engine_to" />
 
             <ImageView
-                android:id="@+id/act_place_select_iv_search_end"
+                android:id="@+id/act_place_search_route_iv_engine_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
@@ -168,7 +168,7 @@
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_place_select_cl_all" />
+        app:layout_constraintTop_toBottomOf="@+id/act_place_search_route_cl_engine" />
 
     <ImageView
         android:id="@+id/act_place_select_iv_bird"
@@ -179,7 +179,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_place_select_cl_all" />
+        app:layout_constraintTop_toBottomOf="@+id/act_place_search_route_cl_engine" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
