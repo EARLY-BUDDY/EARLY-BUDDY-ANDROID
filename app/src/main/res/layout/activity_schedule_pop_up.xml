@@ -27,8 +27,6 @@
             android:textColor="@color/black"
             android:textSize="17sp" />
 
-
-
         <TextView
             android:layout_width="200dp"
             android:layout_height="36dp"

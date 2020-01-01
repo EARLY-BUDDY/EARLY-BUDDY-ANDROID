@@ -279,6 +279,12 @@
                         app:layout_constraintStart_toStartOf="@id/act_schedule_cl_route"
                         app:layout_constraintTop_toTopOf="@id/act_schedule_cl_route" />
 
+                    <include
+                        android:id="@+id/act_schedule_route_cl_route"
+                        layout="@layout/activity_schedule_route"
+                        android:layout_width="328dp"
+                        android:layout_height="wrap_content" />
+
                     <TextView
                         android:id="@+id/act_schedult_tv_route_selected"
                         android:layout_width="match_parent"
@@ -291,12 +297,6 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/act_schedule_tv_route" />
-
-                    <include
-                        android:id="@+id/act_schedule_route_cl_route"
-                        layout="@layout/activity_schedule_route"
-                        android:layout_width="328dp"
-                        android:layout_height="wrap_content" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
