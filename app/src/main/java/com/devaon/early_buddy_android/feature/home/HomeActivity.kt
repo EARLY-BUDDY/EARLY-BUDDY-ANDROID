@@ -50,6 +50,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
     }
+
     fun TextView.setAnimInt(value: Int) {
         startAnimation(TextViewIntAnimation(this, to = value))
     }

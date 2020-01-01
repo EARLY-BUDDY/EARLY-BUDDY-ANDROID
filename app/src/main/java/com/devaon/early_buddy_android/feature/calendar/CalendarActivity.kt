@@ -1,10 +1,13 @@
 package com.devaon.early_buddy_android.feature.calendar
 
+import android.content.Context
 import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.AttributeSet
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
@@ -17,6 +20,9 @@ import kotlinx.android.synthetic.main.activity_calendar.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import java.util.Locale.filter
+import kotlin.collections.ArrayList
 
 
 class CalendarActivity : AppCompatActivity() {
@@ -29,14 +35,16 @@ class CalendarActivity : AppCompatActivity() {
 
     lateinit var calendarScheduleRecyclerViewAdapter : CalendarScheduleRecyclerViewAdapter
     lateinit var scheduleList : ArrayList<Schedule>
+    var check = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
 
+        act_calendar_cl_header.bringToFront()
 
         setCalendarVp()
-        getScheduleList(1)
+        getScheduleList(8)
         setButton()
     }
 
@@ -84,7 +92,6 @@ class CalendarActivity : AppCompatActivity() {
             getCalendarAcitivityObject.calendarPagerAdapter.getMonth(getCalendarAcitivityObject.position)
         )
 
-        Log.e("before enquee", "hi")
         callCalendar.enqueue(object : Callback<CalendarResponse> {
             override fun onFailure(call: Call<CalendarResponse>, t: Throwable) {
                 Log.e("error is ", t.toString())
@@ -106,15 +113,26 @@ class CalendarActivity : AppCompatActivity() {
                     act_calendar_schedule_rv.layoutManager =
                         LinearLayoutManager(this@CalendarActivity)
 
-                    Log.e("schedule List:", scheduleList?.size.toString())
-
                 }
-                Log.e("fail result is ", response.body().toString())
             }
         })
 
     }
 
+    fun setScheduleRv(date: String) {
+
+        var scheduleListInstance : ArrayList<Schedule>
+        scheduleListInstance = scheduleList
+        var list :ArrayList<Schedule> = ArrayList()
+
+        for(i in  0..scheduleListInstance.size-1){
+            if(scheduleListInstance[i].scheduleStartTime.substring(8,10).equals(date)) {
+                list.add(scheduleListInstance[i])
+            }
+        }
+        calendarScheduleRecyclerViewAdapter.replaceAll(list)
+        calendarScheduleRecyclerViewAdapter.notifyDataSetChanged()
+    }
 
     private fun setButton(){
         act_calendar_iv_back.setOnClickListener {

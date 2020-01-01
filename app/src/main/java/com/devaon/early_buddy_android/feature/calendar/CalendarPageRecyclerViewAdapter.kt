@@ -20,6 +20,7 @@ class CalendarPageRecyclerViewAdapter(
 ) : RecyclerView.Adapter<CalendarPageRecyclerViewAdapter.Holder>() {
 
     private var mSelectedItems : SparseBooleanArray = SparseBooleanArray(0)
+    private lateinit var listener : onDateClickListener
 
     init{
         baseCalendar.initBaseCalendar {
@@ -39,8 +40,6 @@ class CalendarPageRecyclerViewAdapter(
         // 일요일, 토요일 색상 지정
         if(position % BaseCalendar.DAYS_OF_WEEK == 0)
             holder.date.setTextColor(Color.parseColor("#ff1200"))
-        else if(position % BaseCalendar.DAYS_OF_WEEK == 6)
-            holder.date.setTextColor(Color.parseColor("#3092ff"))
         else
             holder.date.setTextColor(Color.parseColor("#676d6e"))
 
@@ -59,7 +58,11 @@ class CalendarPageRecyclerViewAdapter(
             holder.schedule.visibility = View.VISIBLE
         }
 
-        holder.date.text = baseCalendar.data[position].date
+        if(baseCalendar.data[position].date[0] == '0'){
+            holder.date.text = baseCalendar.data[position].date[1].toString()
+        }else{
+            holder.date.text = baseCalendar.data[position].date
+        }
 
 
         if(baseCalendar.data[position].isToDay){
@@ -78,6 +81,9 @@ class CalendarPageRecyclerViewAdapter(
             CalendarActivity.getCalendarAcitivityObject.calendarPagerAdapter.frgMap[fragmentPosition+1]?.calendarPageRecyclerViewAdapter?.clearSelectedItem()
             clearSelectedItem()
             toggleItemSelected(position)
+
+            listener.onItemClick(baseCalendar.data[position].date)
+
         }
 
         if(isItemSelected(position)){
@@ -148,5 +154,13 @@ class CalendarPageRecyclerViewAdapter(
 
     private fun refreshView(calendar: Calendar) {
         notifyDataSetChanged()
+    }
+
+    interface onDateClickListener{
+        fun onItemClick(date: String)
+    }
+
+    fun setOnDateClickListener(listener: onDateClickListener){
+        this.listener = listener
     }
 }
