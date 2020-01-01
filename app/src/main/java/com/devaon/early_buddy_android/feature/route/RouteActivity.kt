@@ -45,7 +45,8 @@ class RouteActivity : AppCompatActivity() {
             127.069253,
             37.540635,
             127.072861,
-            37.625918
+            37.625918,
+            0
         )
 
 //        {
