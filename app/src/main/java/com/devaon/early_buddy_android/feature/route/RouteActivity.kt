@@ -42,10 +42,10 @@ class RouteActivity : AppCompatActivity() {
 
     private fun makeListItem() {
         val callRoute: Call<RouteResponse> = EarlyBuddyServiceImpl.service.getRoute(
-            127.08282465301149,
-            37.62072502768881,
-            127.03746391719882,
-            37.4720040276288
+            127.069253,
+            37.540635,
+            127.072861,
+            37.625918
         )
 
 //        {
