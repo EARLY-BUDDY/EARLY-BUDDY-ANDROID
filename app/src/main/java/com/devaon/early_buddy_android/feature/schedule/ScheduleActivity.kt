@@ -14,6 +14,7 @@ import com.devaon.early_buddy_android.R
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat.startActivity
 import com.devaon.early_buddy_android.feature.place.select.PlaceSelectActivity
 import kotlinx.android.synthetic.main.activity_schdule.*
 import java.time.LocalDateTime
@@ -44,7 +45,9 @@ class ScheduleActivity : AppCompatActivity(){
         routeS.setVisibility(View.GONE)
 
         act_schedule_tv_register.setOnClickListener {
-            ScheduleDialogFragment().apply {
+            ScheduleDialogFragment {
+                finish()
+            }.apply {
                 show(supportFragmentManager, null)
             }
         }
