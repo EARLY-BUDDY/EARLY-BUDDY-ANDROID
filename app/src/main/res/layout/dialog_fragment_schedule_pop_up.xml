@@ -46,9 +46,9 @@
             android:layout_marginTop="12dp"
             android:background="@drawable/act_place_round_rect_blue"
             android:gravity="center"
+            android:text="홈으로 가기"
             android:textColor="@color/main_color"
-            android:textSize="16sp"
-            tools:text="홈으로 가기" />
+            android:textSize="16sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
