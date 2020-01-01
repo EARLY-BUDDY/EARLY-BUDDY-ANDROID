@@ -35,10 +35,10 @@
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/act_schedule_route_cl_text"
             app:layout_constraintTop_toTopOf="@id/act_schedule_route_cl_text"
-            app:layout_constraintEnd_toStartOf="@id/li_place_search_route_tv_subway"/>
+            app:layout_constraintEnd_toStartOf="@id/act_schedule_route_tv_method"/>
 
         <TextView
-            android:id="@+id/li_place_search_route_tv_subway"
+            android:id="@+id/act_schedule_route_tv_method"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -50,31 +50,7 @@
             app:layout_constraintStart_toEndOf="@id/act_schedule_route_time"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/li_place_search_route_plus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosans_bold"
-            android:text="+"
-            android:textColor="@color/light_gray"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_subway"
-            app:layout_constraintBottom_toBottomOf="@id/li_place_search_route_tv_subway"
-            app:layout_constraintTop_toTopOf="@id/li_place_search_route_tv_subway"/>
-
-        <TextView
-            android:id="@+id/li_place_search_route_bus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosans_bold"
-            android:text="버스"
-            android:textSize="12sp"
-            android:textColor="@color/light_gray"
-            app:layout_constraintStart_toEndOf="@id/li_place_search_route_plus"
-            app:layout_constraintTop_toTopOf="@id/li_place_search_route_plus"/>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -87,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:id="@+id/act_schedule_route_iv_gray_path"
+            android:id="@+id/act_schedule_route_iv_gray_line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/img_gray_line_2"
@@ -97,10 +73,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:text="5분"
-            app:layout_constraintTop_toBottomOf="@id/act_schedule_route_iv_gray_path"
-            app:layout_constraintStart_toStartOf="@id/act_schedule_route_iv_gray_path"
+            app:layout_constraintTop_toBottomOf="@id/act_schedule_route_iv_gray_line"
+            app:layout_constraintStart_toStartOf="@id/act_schedule_route_iv_gray_line"
             app:layout_constraintEnd_toStartOf="@id/act_schedule_route_cl_method_1"/>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/act_schedule_route_cl_method_1"
             android:layout_width="wrap_content"
@@ -113,7 +91,7 @@
                 android:id="@+id/act_schedule_iv_method_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/img_green_line"
+                android:background="@drawable/img_line_one"
                 app:layout_constraintTop_toTopOf="@+id/act_schedule_route_cl_method_1"
                 app:layout_constraintStart_toStartOf="@+id/act_schedule_route_cl_method_1"
                 app:layout_constraintEnd_toEndOf="@+id/act_schedule_route_cl_method_1"/>
@@ -122,8 +100,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/notosans_bold"
-                android:textColor="#27c830"
-                android:text="지하철"
+                android:textColor="@color/seoul_line_one"
+                android:text="경로1"
                 app:layout_constraintStart_toStartOf="@+id/act_schedule_route_cl_method_1"
                 app:layout_constraintEnd_toEndOf="@+id/act_schedule_route_cl_method_1"
                 app:layout_constraintTop_toBottomOf="@id/act_schedule_iv_method_1"/>
@@ -135,7 +113,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@+id/act_schedule_route_cl_bar"
-            app:layout_constraintEnd_toEndOf="@+id/act_schedule_route_cl_bar"
             app:layout_constraintTop_toTopOf="@+id/act_schedule_route_cl_bar"
             app:layout_constraintBottom_toBottomOf="@id/act_schedule_route_cl_bar">
 
@@ -143,7 +120,7 @@
                 android:id="@+id/act_schedule_iv_method_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/img_blue_line"
+                android:background="@drawable/img_line_two"
                 app:layout_constraintTop_toTopOf="@+id/act_schedule_route_cl_method_2"
                 app:layout_constraintStart_toStartOf="@+id/act_schedule_route_cl_method_2"
                 app:layout_constraintEnd_toEndOf="@+id/act_schedule_route_cl_method_2"/>
@@ -152,11 +129,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/notosans_bold"
-                android:textColor="#2a5ff4"
-                android:text="버스"
+                android:textColor="@color/seoul_line_two"
+                android:text="경로2"
                 app:layout_constraintStart_toStartOf="@+id/act_schedule_route_cl_method_2"
                 app:layout_constraintEnd_toEndOf="@+id/act_schedule_route_cl_method_2"
                 app:layout_constraintTop_toBottomOf="@id/act_schedule_iv_method_2"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/act_schedule_route_cl_method_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/act_schedule_route_cl_bar"
+            app:layout_constraintTop_toTopOf="@+id/act_schedule_route_cl_bar"
+            app:layout_constraintBottom_toBottomOf="@id/act_schedule_route_cl_bar">
+
+            <ImageView
+                android:id="@+id/act_schedule_iv_method_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_bus_kwangyuk_line"
+                app:layout_constraintTop_toTopOf="@+id/act_schedule_route_cl_method_3"
+                app:layout_constraintStart_toStartOf="@+id/act_schedule_route_cl_method_3"
+                app:layout_constraintEnd_toEndOf="@+id/act_schedule_route_cl_method_3"/>
+            <TextView
+                android:id="@+id/act_schedule_tv_method_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosans_bold"
+                android:textColor="@color/seoul_bus_gwangyuk"
+                android:text="경로3"
+                app:layout_constraintStart_toStartOf="@+id/act_schedule_route_cl_method_3"
+                app:layout_constraintEnd_toEndOf="@+id/act_schedule_route_cl_method_3"
+                app:layout_constraintTop_toBottomOf="@id/act_schedule_iv_method_3"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

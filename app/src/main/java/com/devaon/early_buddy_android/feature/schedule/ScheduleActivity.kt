@@ -170,33 +170,32 @@ class ScheduleActivity : AppCompatActivity(){
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
 
-        val totalTime = 140.0
-        val firstWalkTime = 50.0
+        val totalTime = 115.0
+        val firstWalkTime = 10.0
         val secondWalkTime = 10.0
+        val thirdWalkTime = 5.0
         val method1Time = 50.0
         val method2Time = 20.0
+        val method3Time = 18.0
 
-        val totalPath = findViewById<ImageView>(R.id.act_schedule_route_iv_gray_path).width
+        val totalPath = findViewById<ImageView>(R.id.act_schedule_route_iv_gray_line).width
         val method1 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_1)
         val method2 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_2)
+        val method3 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_3)
 
         val method1Len = totalPath / ((totalTime / method1Time).toFloat()) //totalPath에서 (totalTime / method1Time)만큼의 비율을 차지
         val method2Len = totalPath / ((totalTime / method2Time).toFloat())
-
-//        val method1Len = totalPath * ((method1Time / totalTime).toFloat()) //totalPath에서 (totalTime / method1Time)만큼의 비율을 차지
-//        val method2Len = totalPath * ((method2Time / totalTime).toFloat())
+        val method3Len = totalPath / ((totalTime / method3Time).toFloat())
 
         Log.e("length", "total: $totalPath 1: $method1Len 2: $method2Len")
         Log.e("thidthisthis", (method1Time/totalTime).toFloat().toString())
-
-
-        val log1 = (totalTime / (firstWalkTime+method1Time+secondWalkTime))
         Log.e("plus2", (totalTime / (firstWalkTime+method1Time+secondWalkTime).toFloat()).toString())
 
         val method1Margin = totalPath / (totalTime / firstWalkTime)
         val method2Margin = (totalPath / (totalTime / (firstWalkTime+method1Time+secondWalkTime).toFloat())).toInt()
+        val method3Margin = (totalPath / (totalTime / (firstWalkTime+method1Time+secondWalkTime+method2Time+thirdWalkTime).toFloat())).toInt()
 
-        Log.e("margin", "method1Margin: $method1Margin method2Margin: $method2Margin")
+        Log.e("length", "method1Margin: $method1Margin method2Margin: $method2Margin method3Margin: $method3Margin")
 
         val method1Params = method1.layoutParams  as ConstraintLayout.LayoutParams
         method1Params.width = method1Len.toInt()
@@ -205,8 +204,13 @@ class ScheduleActivity : AppCompatActivity(){
 
         val method2Params = method2.layoutParams  as ConstraintLayout.LayoutParams
         method2Params.width = method2Len.toInt()
-        method2Params.marginStart = method2Margin-44
+        method2Params.marginStart = method2Margin
         method2.layoutParams = method2Params
+
+        val method3Params = method3.layoutParams  as ConstraintLayout.LayoutParams
+        method3Params.width = method3Len.toInt()
+        method3Params.marginStart = method3Margin
+        method3.layoutParams = method3Params
 
     }
 

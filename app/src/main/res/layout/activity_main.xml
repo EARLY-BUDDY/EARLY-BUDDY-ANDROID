@@ -29,17 +29,29 @@
         app:layout_constraintTop_toBottomOf="@+id/home" />
 
     <Button
-        android:id="@+id/test"
+    android:id="@+id/test"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="292dp"
+    android:text="회원가입"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.501"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/setnickname" />
+
+    <Button
+        android:id="@+id/route"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="292dp"
-        android:text="회원가입"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="경로리사이클러뷰"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setnickname" />
+        app:layout_constraintTop_toBottomOf="@+id/test" />
 
     <TextView
         android:id="@+id/textView"
@@ -50,6 +62,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
