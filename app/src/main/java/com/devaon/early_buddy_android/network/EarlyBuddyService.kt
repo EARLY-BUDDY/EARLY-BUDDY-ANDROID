@@ -1,9 +1,15 @@
 package com.devaon.early_buddy_android.network
 
+import com.devaon.early_buddy_android.data.calendar.CalendarResponse
 import com.devaon.early_buddy_android.data.route.RouteResponse
+<<<<<<< HEAD
 import com.devaon.early_buddy_android.data.schedule.HomeScheduleResponse
+=======
+import com.devaon.early_buddy_android.data.user.GetUserData
+>>>>>>> 5682ec416f6d9e37051b3a7f64186dca8312d625
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface EarlyBuddyService {
@@ -16,8 +22,22 @@ interface EarlyBuddyService {
         @Query("EY") EY: Double
     ): Call<RouteResponse>
 
+<<<<<<< HEAD
     @GET(value = "/home")
     fun getHomeSchedule(
         @Query("userIdx") userIdx: Int
     ): Call<HomeScheduleResponse>
+=======
+    @GET(value = "/calenders")
+    fun getCalendar(
+        @Query("userIdx") userIdx : Int,
+        @Query("year") year : String,
+        @Query("month") month : String
+    ): Call<CalendarResponse>
+
+    @GET("/users/{id}")
+    fun getUser(
+        @Path("id") id: String
+    ): Call<GetUserData>
+>>>>>>> 5682ec416f6d9e37051b3a7f64186dca8312d625
 }
