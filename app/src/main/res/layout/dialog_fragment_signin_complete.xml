@@ -30,15 +30,16 @@
                 android:layout_marginLeft="26dp"
                 android:layout_marginTop="127dp"
                 android:layout_marginRight="26dp"
+                android:fontFamily="@font/notosans_bold"
                 android:letterSpacing="-0.05"
                 android:lineSpacingExtra="12sp"
                 android:text="회원가입이 완료되었어요!"
                 android:textColor="@color/black"
-                android:textSize="24sp"
-                android:fontFamily="@font/notosans_bold"/>
+                android:textSize="18sp" />
 
 
             <TextView
+                android:id="@+id/dialog_fragment_signin_btn"
                 android:layout_width="200dp"
                 android:layout_height="36dp"
                 android:layout_gravity="center"
