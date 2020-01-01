@@ -35,6 +35,7 @@ class CalendarPageFragment : Fragment(){
         val baseCalendar = BaseCalendar(timeByMillis)
 
         calendarPageRecyclerViewAdapter = CalendarPageRecyclerViewAdapter(baseCalendar, this)
+        calendarPageRecyclerViewAdapter.setOnDateClickListener(onDateClickListener)
         frag_calendar_rv.run{
             adapter = calendarPageRecyclerViewAdapter
             layoutManager = NonScrollGridLayoutManager(activity!!, 7)
@@ -53,6 +54,12 @@ class CalendarPageFragment : Fragment(){
             bundle.putInt("position", position)
             frg.arguments = bundle
             return frg
+        }
+    }
+
+    var onDateClickListener = object : CalendarPageRecyclerViewAdapter.onDateClickListener{
+        override fun onItemClick(date: String) {
+            (activity as CalendarActivity).setScheduleRv(date)
         }
     }
 }
