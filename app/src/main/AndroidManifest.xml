@@ -23,6 +23,7 @@
 
         <activity android:name=".feature.route.RouteActivity" />
         <activity android:name=".feature.home.HomeActivity" />
+        <activity android:name=".feature.place.search.route.PlaceSearchRouteActivity"/>
         <activity android:name=".feature.initial_join.PlaceFavoriteActivity" />
         <activity
             android:name=".feature.initial_join.SetCompleteActivity"

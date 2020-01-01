@@ -156,6 +156,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="43dp"
         android:text="자동 로그인"
+        android:button="@drawable/ic_login_activated"
         android:checked="true"
 
         app:layout_constraintStart_toStartOf="parent"

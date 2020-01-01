@@ -1,12 +1,14 @@
 package com.devaon.early_buddy_android.feature.place.search.text
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.place.GetPlaceData
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_place_search.*
 
 class PlaceSearchActivity : AppCompatActivity() {
@@ -88,4 +90,18 @@ class PlaceSearchActivity : AppCompatActivity() {
         }
     }
 
+    /*private fun getKeywordSearch(keyword: String) {
+        subscription = SearchService.restAPI().keywordSearch(keyword)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { result ->
+                    Log.d("keywordResult", result.documents[0].place_name)
+                },
+                { err ->
+                    Log.e("Error User",err.toString())
+                }
+            )
+    }
+*/
 }
