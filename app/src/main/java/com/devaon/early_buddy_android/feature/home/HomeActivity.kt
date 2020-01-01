@@ -73,7 +73,10 @@ class HomeActivity : AppCompatActivity() {
                     Integer.valueOf(scheduleTime.substring(17, 19))     //초
                 )
 
-                if (date2.dayOfMonth == 0) {  //0일 일때(시간을 표현)
+                if (date2.dayOfMonth-date1.dayOfMonth == 0) {  //0일 일때(시간을 표현)
+                    if(date2.hour-date1.hour == 0){
+
+                    }
                     when(homeScheduleResponse.homeSchedule.ready){
                         false -> {
                             act_home_tv_bus_number.visibility=View.GONE
@@ -97,13 +100,6 @@ class HomeActivity : AppCompatActivity() {
                             act_home_tv_third_place.text = homeScheduleResponse.homeSchedule.scheduleSummaryData.endAddress
                         }
                     }
-                    act_home_tv_minute_number.setAnimInt(59)
-                    act_home_tv_before_minute.text = "시간 전"
-                    act_home_tv_minute_number.text = date2.minusHours(date1.hour.toLong()).hour.toString()
-                    act_home_iv_text.setImageResource(R.drawable.text_daily)
-                    act_home_iv_bottom_img.setImageResource(R.drawable.img_late_bg)
-                    act_home_tv_first_promise.text = homeScheduleResponse.homeSchedule.scheduleSummaryData.scheduleName
-                    act_home_tv_third_place.text = homeScheduleResponse.homeSchedule.scheduleSummaryData.endAddress
                 }
                 else if (date2.minusDays(date1.dayOfMonth.toLong()).dayOfMonth <= 7) {      //7일 이하 일 때
                     act_home_tv_bus_number.visibility=View.GONE
@@ -118,8 +114,6 @@ class HomeActivity : AppCompatActivity() {
                     act_home_tv_first_promise.text = homeScheduleResponse.homeSchedule.scheduleSummaryData.scheduleName
                     act_home_tv_third_place.text = homeScheduleResponse.homeSchedule.scheduleSummaryData.endAddress
                 }
-                Log.e("date1 is", date2.dayOfMonth.toString())
-                Log.e("date2 is", date1.dayOfMonth.toString())
                 Log.e("now is", date2.minusDays(date1.dayOfMonth.toLong()).dayOfMonth.toString())
             }
         }
