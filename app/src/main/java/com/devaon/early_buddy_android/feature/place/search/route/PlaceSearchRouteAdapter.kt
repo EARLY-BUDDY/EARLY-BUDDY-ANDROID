@@ -44,10 +44,41 @@ class PlaceSearchRouteAdapter(
 
     override fun onBindViewHolder(holder: PlaceSearchRouteViewHolder, position: Int) {
         holder.bind(routeList[position])
+
         when(routeList[position].pathType){
             1 -> { holder.method.text = "지하철" }
             2 -> { holder.method.text = "버스" }
             3 -> { holder.method.text = "지하철 + 버스"}
+        }
+
+        var transText = arrayListOf<String>()
+
+        for(i in 1.. routeList[position].subPath.size-1) {
+            if(i % 2 != 0) { // 홀수만 처리
+                when (routeList[position].subPath[i].trafficType) {
+                    1 -> { // 지하철
+                        when(routeList[position].subPath[i].lane.subwayCode){
+                            1, 2, 3, 4, 5, 6, 7, 8, 9 -> transText.add(routeList[position].subPath[i].lane.subwayCode.toString() + "호선")
+                            100 -> transText.add("분당선")
+                            101 -> transText.add("공항철도")
+                            104 -> transText.add("경의중앙선")
+                            107 -> transText.add("에버라인")
+                            108 -> transText.add("경춘선")
+                            102 -> transText.add("자기부상철도")
+                            109 -> transText.add("신분당선")
+                            110 -> transText.add("의정부경전철")
+                            111 -> transText.add("수인선")
+                            112 -> transText.add("경강선")
+                            113 -> transText.add("우이신설선")
+                            114 -> transText.add("서해선")
+                        }
+                    }
+                    2 -> { // 버스
+                        transText.add(routeList[position].subPath[i].lane.busNo)
+                    }
+                }
+            }
+
         }
 
         val walkParam1 = holder.walk1.getLayoutParams() as LinearLayout.LayoutParams
@@ -57,6 +88,7 @@ class PlaceSearchRouteAdapter(
         val methodParam1 = holder.method1.getLayoutParams() as LinearLayout.LayoutParams
         methodParam1.weight = routeList[position].subPath[1].sectionTime.toFloat()
         holder.method1.setLayoutParams(methodParam1)
+        holder.method1Tx.text = transText[0]
 
         val walkParam2 = holder.walk2.getLayoutParams() as LinearLayout.LayoutParams
         walkParam2.weight =  routeList[position].subPath[2].sectionTime.toFloat()
@@ -66,6 +98,7 @@ class PlaceSearchRouteAdapter(
             val methodParam2 = holder.method2.getLayoutParams() as LinearLayout.LayoutParams
             methodParam2.weight = routeList[position].subPath[3].sectionTime.toFloat()
             holder.method2.setLayoutParams(methodParam2)
+            holder.method2Tx.text = transText[1]
         }else{
             holder.method2.visibility = GONE
             holder.walk3.visibility = GONE
@@ -87,6 +120,7 @@ class PlaceSearchRouteAdapter(
             val methodParam3 = holder.method3.getLayoutParams() as LinearLayout.LayoutParams
             methodParam3.weight = routeList[position].subPath[5].sectionTime.toFloat()
             holder.method3.setLayoutParams(methodParam3)
+            holder.method3Tx.text = transText[2]
         }else{
             holder.method3.visibility = GONE
             holder.walk4.visibility = GONE
@@ -108,6 +142,7 @@ class PlaceSearchRouteAdapter(
         val transfer: TextView = view.findViewById(R.id.li_place_search_route_tv_transfer)
         val walk: TextView = view.findViewById(R.id.li_place_search_route_tv_walk)
         val money: TextView = view.findViewById(R.id.li_place_search_route_tv_money)
+        val best : TextView = view.findViewById(R.id.li_place_search_route_tv_best)
 
         val walk1 : RelativeLayout = view.findViewById(R.id.li_place_search_route_rl_walk_1)
         val walk2 : RelativeLayout = view.findViewById(R.id.li_place_search_route_rl_walk_2)
