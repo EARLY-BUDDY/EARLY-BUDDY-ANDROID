@@ -110,7 +110,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/img_path_gray_all"/>
+                android:background="@drawable/img_gray_line"/>
 
         </RelativeLayout>
 
