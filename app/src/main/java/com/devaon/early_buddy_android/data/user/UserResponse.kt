@@ -22,8 +22,8 @@ data class UserSignin(
     val userId: String,
     @SerializedName("userPw")
     val userPw: String,
-    @SerializedName("deviceToken")
-    val deviceToken: String
+    @SerializedName("userIdx")
+    val userIdx: String
 )
 
 data class UserNickname(
