@@ -55,7 +55,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@drawable/ic_arrow"
-            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -105,7 +104,7 @@
         android:layout_marginTop="20dp">
 
         <RelativeLayout
-            android:id="@+id/li_place_search_route_rl_gray"
+            android:id="@+id/act_schedule_route_rl_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
@@ -122,7 +121,7 @@
             android:orientation="horizontal">
 
             <RelativeLayout
-                android:id="@+id/li_place_search_route_rl_walk_1"
+                android:id="@+id/act_schedule_route_rl_walk_1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
@@ -133,17 +132,17 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/li_place_search_route_rl_method_1"
+                android:id="@+id/act_schedule__route_rl_method_1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="28">
                 <ImageView
-                    android:id="@+id/li_place_search_route_iv_method_1"
+                    android:id="@+id/act_schedule_route_iv_method_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/img_line_five"/>
                 <TextView
-                    android:id="@+id/li_place_search_route_tv_method_1"
+                    android:id="@+id/act_schedule_route_tv_method_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5호선"
@@ -156,7 +155,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/li_place_search_route_rl_walk_2"
+                android:id="@+id/act_schedule_route_rl_walk_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2">
@@ -166,17 +165,17 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/li_place_search_route_rl_method_2"
+                android:id="@+id/act_schedule_route_rl_method_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="10">
                 <ImageView
-                    android:id="@+id/li_place_search_route_iv_method_2"
+                    android:id="@+id/act_schedule_route_iv_method_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/img_line_everline"/>
                 <TextView
-                    android:id="@+id/li_place_search_route_tv_method_2"
+                    android:id="@+id/act_schedule_route_tv_method_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5호선"
@@ -189,7 +188,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/li_place_search_route_rl_walk_3"
+                android:id="@+id/act_schedule_route_rl_walk_3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5">
@@ -199,17 +198,17 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/li_place_search_route_rl_method_3"
+                android:id="@+id/act_schedule_route_rl_method_3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="10">
                 <ImageView
-                    android:id="@+id/li_place_search_route_iv_method_3"
+                    android:id="@+id/act_schedule_route_iv_method_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/img_line_bundang"/>
                 <TextView
-                    android:id="@+id/li_place_search_route_tv_method_3"
+                    android:id="@+id/act_schedule_route_tv_method_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5호선"
@@ -222,7 +221,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/li_place_search_route_rl_walk_4"
+                android:id="@+id/act_schedule_route_rl_walk_4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2">

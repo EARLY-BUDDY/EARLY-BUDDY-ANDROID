@@ -243,7 +243,7 @@ class ScheduleActivity : AppCompatActivity(){
         val method3Time = 18.0
 
 
-
+/*
         var totalPath = findViewById<ImageView>(R.id.act_schedule_route_iv_gray_line).width.toDouble()
         val method1 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_1)
         val method2 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_2)
@@ -278,6 +278,8 @@ class ScheduleActivity : AppCompatActivity(){
         method3Params.width = method3Len.toInt()
         method3Params.marginStart = method3Margin
         method3.layoutParams = method3Params
+        */
+
     }
 
     fun checkValue(){
