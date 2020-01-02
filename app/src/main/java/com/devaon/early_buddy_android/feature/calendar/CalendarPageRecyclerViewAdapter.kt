@@ -43,12 +43,10 @@ class CalendarPageRecyclerViewAdapter(
         else
             holder.date.setTextColor(Color.parseColor("#676d6e"))
 
-
         // 전, 다음 달 처리
         if (position < baseCalendar.prevMonthTailOffset
             || position >= baseCalendar.prevMonthTailOffset + baseCalendar.currentMonthMaxDate) {
             holder.date.alpha = 0.3f
-            holder.container.isClickable = false
         } else {
             holder.date.alpha = 1f
         }
@@ -75,14 +73,19 @@ class CalendarPageRecyclerViewAdapter(
         // 날짜 클릭
         holder.container.setOnClickListener {
 
-            var fragmentPosition = calendarFragment.fragmentPosition
+            if (!(position < baseCalendar.prevMonthTailOffset)
+                && !(position >= baseCalendar.prevMonthTailOffset + baseCalendar.currentMonthMaxDate)) {
 
-            CalendarActivity.getCalendarAcitivityObject.calendarPagerAdapter.frgMap[fragmentPosition-1]?.calendarPageRecyclerViewAdapter?.clearSelectedItem()
-            CalendarActivity.getCalendarAcitivityObject.calendarPagerAdapter.frgMap[fragmentPosition+1]?.calendarPageRecyclerViewAdapter?.clearSelectedItem()
-            clearSelectedItem()
-            toggleItemSelected(position)
+                var fragmentPosition = calendarFragment.fragmentPosition
 
-            listener.onItemClick(baseCalendar.data[position].date)
+                CalendarActivity.getCalendarAcitivityObject.calendarPagerAdapter.frgMap[fragmentPosition - 1]?.calendarPageRecyclerViewAdapter?.clearSelectedItem()
+                CalendarActivity.getCalendarAcitivityObject.calendarPagerAdapter.frgMap[fragmentPosition + 1]?.calendarPageRecyclerViewAdapter?.clearSelectedItem()
+                clearSelectedItem()
+                toggleItemSelected(position)
+
+                listener.onItemClick(baseCalendar.data[position].date)
+
+            }
 
         }
 
@@ -105,8 +108,6 @@ class CalendarPageRecyclerViewAdapter(
         var container = itemView.findViewById(R.id.item_calendar_date_container) as ConstraintLayout
         var date = itemView.findViewById(R.id.item_calendar_date_tv) as TextView
         var schedule = itemView.findViewById(R.id.item_Calendar_date_iv_schedule) as ImageView
-
-
 
     }
 
@@ -133,10 +134,6 @@ class CalendarPageRecyclerViewAdapter(
             notifyItemChanged(position)
         }
         mSelectedItems.clear()
-
-    }
-
-    private fun getPrevMonth(){
 
     }
 
