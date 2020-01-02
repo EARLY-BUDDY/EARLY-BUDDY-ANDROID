@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.data.route.Path
 import com.devaon.early_buddy_android.data.route.RouteResponse
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
 import kotlinx.android.synthetic.main.activity_place_search_route.*
@@ -26,15 +27,21 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
 
     private var searchPathType = 0
 
+    lateinit var routes : ArrayList<Path>
+    lateinit var path: Path
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place_search_route)
 
         setRv()
         getRouteResults()
+        setButton()
+
     }
 
     private fun setRv(){
+        placeSearchRouteRecyclerViewAdapter.setOnPlaceSearchRouteClickListener(onPlaceSearchRouteClickListener)
         act_place_search_route_rv.adapter = placeSearchRouteRecyclerViewAdapter
         act_place_search_route_rv.layoutManager = LinearLayoutManager(this)
     }
@@ -55,7 +62,7 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
             override fun onResponse(call: Call<RouteResponse>, response: Response<RouteResponse>) {
                 if (response.isSuccessful) {
                     Log.e("callRoute result : ", response.body().toString())
-                    val routes = response.body()!!.data.path
+                    routes = response.body()!!.data.path
 
                     placeSearchRouteRecyclerViewAdapter.replaceAll(routes)
                     placeSearchRouteRecyclerViewAdapter.notifyDataSetChanged()
@@ -64,6 +71,18 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
         })
     }
 
+    val onPlaceSearchRouteClickListener
+            = object : PlaceSearchRouteAdapter.onPlaceSearchRouteClickListener{
+        override fun onItemClickListener(position: Int) {
+            path = routes[position]
+        }
+    }
+
+    private fun setButton(){
+        act_place_select_iv_back.setOnClickListener {
+            finish()
+        }
+    }
 
     /** address setter **/
     fun setStartAddress(address: String, x: Double, y: Double){
@@ -76,5 +95,9 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
         endAddress = address
         endX = x
         endY = y
+    }
+
+    fun getPathData() : Path{
+        return path
     }
 }

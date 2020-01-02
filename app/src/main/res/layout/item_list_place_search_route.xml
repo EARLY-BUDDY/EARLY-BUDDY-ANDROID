@@ -7,6 +7,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingHorizontal="16dp"
+    android:paddingTop="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
@@ -14,7 +15,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/notosans_bold"
-        android:layout_marginTop="15dp"
         android:text="최적"
         android:textColor="@color/main_color"
         android:textSize="12sp"
@@ -31,9 +31,10 @@
             android:id="@+id/li_place_search_route_tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:fontFamily="@font/noto_sans_kr_bold"
             android:text="걸리는 시간"
             android:textSize="20sp"
+            android:textColor="#3c3c43"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:textStyle="bold"
+            android:fontFamily="@font/noto_sans_kr_bold"
             android:text="교통수단"
             android:textColor="@color/light_gray"
             android:textSize="12sp"
@@ -147,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:text="5호선"
                     android:layout_centerHorizontal="true"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     android:textColor="@color/seoul_line_five"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/noto_sans_kr_bold"
@@ -180,7 +181,7 @@
                     android:layout_height="wrap_content"
                     android:text="5호선"
                     android:layout_centerHorizontal="true"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     android:textColor="@color/seoul_line_ever"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/noto_sans_kr_bold"
@@ -213,7 +214,7 @@
                     android:layout_height="wrap_content"
                     android:text="5호선"
                     android:layout_centerHorizontal="true"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     android:textColor="@color/seoul_line_bunDang"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/noto_sans_kr_bold"
