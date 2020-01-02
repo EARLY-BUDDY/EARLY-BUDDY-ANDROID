@@ -36,7 +36,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.devaon.early_buddy_android.R.layout.activity_home)
+        setContentView(R.layout.activity_home)
 
 
         reboot()
@@ -109,20 +109,20 @@ class HomeActivity : AppCompatActivity() {
                                 Integer.valueOf(nextTransStartTime.substring(14, 16)),    //분
                                 Integer.valueOf(nextTransStartTime.substring(17, 19))     //초
                             )
-                            if(nextTransTime.minusHours(nowDate.hour.toLong()).hour >=1){
-                                if(nextTransTime.minute-nowDate.minute<0){
+                            if (nextTransTime.minusHours(nowDate.hour.toLong()).hour >= 1) {
+                                if (nextTransTime.minute - nowDate.minute < 0) {
                                     act_home_tv_next_bus_var.text = String.format(
                                         "%d분전",
-                                        60+(nextTransTime.minute-nowDate.minute)
+                                        60 + (nextTransTime.minute - nowDate.minute)
+                                    )
+                                } else {
+                                    act_home_tv_next_bus_var.text = String.format(
+                                        "%d시간전",
+                                        nextTransTime.minusHours(nowDate.hour.toLong()).hour
                                     )
                                 }
-                                else{
-                                    act_home_tv_next_bus_var.text = String.format(
-                                    "%d시간전",
-                                    nextTransTime.minusHours(nowDate.hour.toLong()).hour)
-                                }
 
-                            }else{
+                            } else {
                                 act_home_tv_next_bus_var.text = String.format(
                                     "%d분전",
                                     nextTransTime.minusMinutes(nowDate.minute.toLong()).minute
@@ -453,18 +453,21 @@ class HomeActivity : AppCompatActivity() {
                             )
                             time =
                                 firstArriveTime.minusMinutes(nowDate.minute.toLong()).minute * 6000
-                            if(firstArriveTime.minusHours(nowDate.hour.toLong()).hour ==1){
-                                if(firstArriveTime.minute - nowDate.minute <0){
+                            if (firstArriveTime.minusHours(nowDate.hour.toLong()).hour == 1) {
+                                if (firstArriveTime.minute - nowDate.minute < 0) {
                                     if (firstArriveTime.minusMinutes(nowDate.minute.toLong()).minute > 3) {
                                         act_home_tv_minute_number.setAnimInt(
-                                            60+(firstArriveTime.minute - nowDate.minute)
+                                            60 + (firstArriveTime.minute - nowDate.minute)
                                         )
                                     }
                                     act_home_tv_minute_number.start(token++)
                                     act_home_tv_before_minute.text = "분 전"
-                                }
-                                else{
-                                    act_home_tv_minute_number.setAnimInt(firstArriveTime.minusHours(nowDate.hour.toLong()).hour)
+                                } else {
+                                    act_home_tv_minute_number.setAnimInt(
+                                        firstArriveTime.minusHours(
+                                            nowDate.hour.toLong()
+                                        ).hour
+                                    )
                                     act_home_tv_before_minute.text = "시간 전"
                                 }
                             }
@@ -480,8 +483,8 @@ class HomeActivity : AppCompatActivity() {
                     act_home_tv_before_minute.text = "일 전"
                     act_home_tv_minute_number.text =
                         promiseTime.minusDays(nowDate.dayOfMonth.toLong()).dayOfMonth.toString()
-                    act_home_iv_text.setImageResource(com.devaon.early_buddy_android.R.drawable.text_daily)
-                    act_home_iv_bottom_img.setImageResource(com.devaon.early_buddy_android.R.drawable.img_bg_relax)
+                    act_home_iv_text.setImageResource(R.drawable.text_daily)
+                    act_home_iv_bottom_img.setImageResource(R.drawable.img_bg_relax)
                     act_home_tv_first_promise.text =
                         homeScheduleResponse.homeSchedule.scheduleSummaryData.scheduleName
                     act_home_tv_third_place.text =
@@ -582,7 +585,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun viewGone(){
+    private fun viewGone() {
         act_home_tv_bus_number.visibility = View.GONE
         act_home_tv_bus_current_location.visibility = View.GONE
         act_home_tv_next_bus.visibility = View.GONE
