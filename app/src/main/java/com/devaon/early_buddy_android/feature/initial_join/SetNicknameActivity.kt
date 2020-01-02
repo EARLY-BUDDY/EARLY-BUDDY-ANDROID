@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.data.db.Information
+import com.devaon.early_buddy_android.data.user.NickNameResponse
 import com.devaon.early_buddy_android.data.user.UserResponse
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
 import com.google.gson.JsonObject
@@ -88,19 +90,20 @@ class SetNicknameActivity : AppCompatActivity() {
 
         val body = JsonParser().parse(jsonObject.toString()) as JsonObject
 
-        val callUserNicknameResponse: Call<UserResponse> = EarlyBuddyServiceImpl.service.postNicknameUser(
+        val callUserNicknameResponse: Call<NickNameResponse> = EarlyBuddyServiceImpl.service.postNicknameUser(
             body
         )
 
-        callUserNicknameResponse.enqueue(object : Callback<UserResponse> {
-            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+        callUserNicknameResponse.enqueue(object : Callback<NickNameResponse> {
+            override fun onFailure(call: Call<NickNameResponse>, t: Throwable) {
                 Log.e("error is ", t.toString())
             }
 
-            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+            override fun onResponse(call: Call<NickNameResponse>, response: Response<NickNameResponse>) {
                 if (response.isSuccessful) {
                     Log.e("result is ", response.body().toString())
                     val NicknameUser = response.body()!!
+                    Information.nickName = NicknameUser.nickName
                 }
             }
         })

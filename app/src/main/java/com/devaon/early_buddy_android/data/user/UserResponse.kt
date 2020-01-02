@@ -6,9 +6,15 @@ data class UserResponse(
     @SerializedName("success")
     val success: Boolean,
     @SerializedName("data")
-    val data: Int
+    val idx: Int
 )
 
+data class NickNameResponse(
+    @SerializedName("success")
+    val success: Boolean,
+    @SerializedName("data")
+    val nickName: String
+)
 
 data class UserSignup(
     @SerializedName("userId")
