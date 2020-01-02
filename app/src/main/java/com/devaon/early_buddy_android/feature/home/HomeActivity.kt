@@ -15,8 +15,9 @@ import com.devaon.early_buddy_android.data.schedule.HomeScheduleResponse
 import com.devaon.early_buddy_android.feature.calendar.CalendarActivity
 import com.devaon.early_buddy_android.feature.route.RouteActivity
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity
-import com.devaon.early_buddy_android.feature.util.TextViewIntAnimation
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
+import com.devaon.early_buddy_android.util.TextViewIntAnimation
+import com.devaon.early_buddy_android.util.view.setSafeOnClickListener
 import kotlinx.android.synthetic.main.activity_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -528,17 +529,17 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun intent() {
-        act_home_iv_go_route.setOnClickListener {
+        act_home_iv_go_route.setSafeOnClickListener {
             var goToRoute = Intent(this, RouteActivity::class.java)
             startActivity(goToRoute)
         }
 
-        act_home_iv_planner.setOnClickListener {
+        act_home_iv_planner.setSafeOnClickListener {
             var goToPlanner = Intent(this, CalendarActivity::class.java)
             startActivity(goToPlanner)
         }
 
-        act_home_iv_plus.setOnClickListener {
+        act_home_iv_plus.setSafeOnClickListener {
             var goToAddSchedule = Intent(this, ScheduleActivity::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
             }

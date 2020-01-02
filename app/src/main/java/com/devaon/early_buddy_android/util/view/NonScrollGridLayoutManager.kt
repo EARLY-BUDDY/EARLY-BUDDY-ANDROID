@@ -1,4 +1,4 @@
-package com.devaon.early_buddy_android.feature.util.view
+package com.devaon.early_buddy_android.util.view
 
 import android.content.Context
 import androidx.recyclerview.widget.GridLayoutManager
