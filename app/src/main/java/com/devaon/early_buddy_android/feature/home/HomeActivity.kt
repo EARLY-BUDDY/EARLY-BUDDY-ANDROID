@@ -5,6 +5,7 @@ import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -22,23 +23,23 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.concurrent.timer
+
 
 class HomeActivity : AppCompatActivity() {
 
     var time = 0
     private var timerTask: Timer? = null
     var minmin: String = ""
-    var secsec: String = ""
+    var token: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(com.devaon.early_buddy_android.R.layout.activity_home)
 
 
-        changeColor()
+        reboot()
         intent()
         homeNetwork()
     }
@@ -86,11 +87,7 @@ class HomeActivity : AppCompatActivity() {
                             bottomParams?.topMargin = 180
                             act_home_cl_middle_bar.layoutParams = bottomParams
 
-                            act_home_tv_bus_number.visibility = View.GONE
-                            act_home_tv_bus_current_location.visibility = View.GONE
-                            act_home_tv_next_bus.visibility = View.GONE
-                            act_home_tv_next_bus_var.visibility = View.GONE
-                            act_homme_iv_reboot.visibility = View.GONE
+                            viewGone()
                             act_home_tv_minute_number.setAnimInt(promiseTime.minusHours(nowDate.hour.toLong()).hour)
                             act_home_tv_before_minute.text = "시간 전"
                             act_home_iv_text.setImageResource(R.drawable.text_daily)
@@ -112,35 +109,54 @@ class HomeActivity : AppCompatActivity() {
                                 Integer.valueOf(nextTransStartTime.substring(14, 16)),    //분
                                 Integer.valueOf(nextTransStartTime.substring(17, 19))     //초
                             )
-                            act_home_tv_next_bus_var.text = String.format("%d분전",nextTransTime.minusMinutes(nowDate.minute.toLong()).minute)
+                            if(nextTransTime.minusHours(nowDate.hour.toLong()).hour >=1){
+                                if(nextTransTime.minute-nowDate.minute<0){
+                                    act_home_tv_next_bus_var.text = String.format(
+                                        "%d분전",
+                                        60+(nextTransTime.minute-nowDate.minute)
+                                    )
+                                }
+                                else{
+                                    act_home_tv_next_bus_var.text = String.format(
+                                    "%d시간전",
+                                    nextTransTime.minusHours(nowDate.hour.toLong()).hour)
+                                }
+
+                            }else{
+                                act_home_tv_next_bus_var.text = String.format(
+                                    "%d분전",
+                                    nextTransTime.minusMinutes(nowDate.minute.toLong()).minute
+                                )
+                            }
+
                             when (homeScheduleResponse.homeSchedule.firstTrans.trafficType) {
                                 1 -> {      //지하철
                                     when (homeScheduleResponse.homeSchedule.lastTransCount) {
                                         1 -> {
-                                            act_home_iv_bottom_img.setImageResource(R.drawable.img_late_bg)
-                                            act_home_iv_text.setImageResource(R.drawable.img_main_text)
+                                            act_home_iv_bottom_img.setImageResource(com.devaon.early_buddy_android.R.drawable.img_late_bg)
+                                            act_home_iv_text.setImageResource(com.devaon.early_buddy_android.R.drawable.img_main_text)
                                         }
                                         2 -> {
-                                            act_home_iv_bottom_img.setImageResource(R.drawable.img_bg_onebus)
-                                            act_home_iv_text.setImageResource(R.drawable.text_subway_one)
+                                            act_home_iv_bottom_img.setImageResource(com.devaon.early_buddy_android.R.drawable.img_bg_onebus)
+                                            act_home_iv_text.setImageResource(com.devaon.early_buddy_android.R.drawable.text_subway_one)
                                         }
                                         3 -> {
-                                            act_home_iv_bottom_img.setImageResource(R.drawable.img_bg_twobus)
-                                            act_home_iv_text.setImageResource(R.drawable.text_subway_two)
+                                            act_home_iv_bottom_img.setImageResource(com.devaon.early_buddy_android.R.drawable.img_bg_twobus)
+                                            act_home_iv_text.setImageResource(com.devaon.early_buddy_android.R.drawable.text_subway_two)
                                         }
                                         4 -> {
-                                            act_home_iv_bottom_img.setImageResource(R.drawable.img_bg_threebus)
-                                            act_home_iv_text.setImageResource(R.drawable.text_subway_three)
+                                            act_home_iv_bottom_img.setImageResource(com.devaon.early_buddy_android.R.drawable.img_bg_threebus)
+                                            act_home_iv_text.setImageResource(com.devaon.early_buddy_android.R.drawable.text_subway_three)
                                         }
                                     }
-                                    when(homeScheduleResponse.homeSchedule.firstTrans.trafficType){
+                                    when (homeScheduleResponse.homeSchedule.firstTrans.trafficType) {
                                         1 -> {
                                             when (val background =
                                                 act_home_tv_bus_number.getBackground()) {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_one
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_one
                                                     )
                                                 )
                                             }
@@ -151,7 +167,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_two
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_two
                                                     )
                                                 )
                                             }
@@ -162,7 +178,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_three
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_three
                                                     )
                                                 )
                                             }
@@ -173,7 +189,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_four
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_four
                                                     )
                                                 )
                                             }
@@ -184,7 +200,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_five
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_five
                                                     )
                                                 )
                                             }
@@ -195,7 +211,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_six
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_six
                                                     )
                                                 )
                                             }
@@ -206,7 +222,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_seven
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_seven
                                                     )
                                                 )
                                             }
@@ -217,7 +233,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_eight
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_eight
                                                     )
                                                 )
                                             }
@@ -228,7 +244,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_nine
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_nine
                                                     )
                                                 )
                                             }
@@ -239,7 +255,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_bunDang
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_bunDang
                                                     )
                                                 )
                                             }
@@ -250,7 +266,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_gongHang
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_gongHang
                                                     )
                                                 )
                                             }
@@ -261,7 +277,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_gyungJung
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_gyungJung
                                                     )
                                                 )
                                             }
@@ -272,7 +288,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_ever
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_ever
                                                     )
                                                 )
                                             }
@@ -283,7 +299,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_gyungChun
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_gyungChun
                                                     )
                                                 )
                                             }
@@ -294,7 +310,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_jaGiBuSang
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_jaGiBuSang
                                                     )
                                                 )
                                             }
@@ -305,7 +321,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_sinBunDang
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_sinBunDang
                                                     )
                                                 )
                                             }
@@ -316,7 +332,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_uiJeongBu
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_uiJeongBu
                                                     )
                                                 )
                                             }
@@ -327,7 +343,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_ueeSinSeol
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_ueeSinSeol
                                                     )
                                                 )
                                             }
@@ -335,26 +351,29 @@ class HomeActivity : AppCompatActivity() {
                                     }
                                     act_home_tv_bus_current_location.text =
                                         homeScheduleResponse.homeSchedule.firstTrans.detailStartAddress
-                                    act_home_tv_bus_number.text =String.format("%d호선",homeScheduleResponse.homeSchedule.firstTrans.subwayLane)
+                                    act_home_tv_bus_number.text = String.format(
+                                        "%d호선",
+                                        homeScheduleResponse.homeSchedule.firstTrans.subwayLane
+                                    )
                                     act_home_tv_arrive_text.text = "열차 도착까지"
                                 }
                                 2 -> {        //버스
                                     when (homeScheduleResponse.homeSchedule.lastTransCount) {
                                         1 -> {
-                                            act_home_iv_bottom_img.setImageResource(R.drawable.img_late_bg)
-                                            act_home_iv_text.setImageResource(R.drawable.img_main_text)
+                                            act_home_iv_bottom_img.setImageResource(com.devaon.early_buddy_android.R.drawable.img_late_bg)
+                                            act_home_iv_text.setImageResource(com.devaon.early_buddy_android.R.drawable.img_main_text)
                                         }
                                         2 -> {
-                                            act_home_iv_bottom_img.setImageResource(R.drawable.img_bg_onebus)
-                                            act_home_iv_text.setImageResource(R.drawable.text_one)
+                                            act_home_iv_bottom_img.setImageResource(com.devaon.early_buddy_android.R.drawable.img_bg_onebus)
+                                            act_home_iv_text.setImageResource(com.devaon.early_buddy_android.R.drawable.text_one)
                                         }
                                         3 -> {
-                                            act_home_iv_bottom_img.setImageResource(R.drawable.img_bg_twobus)
-                                            act_home_iv_text.setImageResource(R.drawable.text_two)
+                                            act_home_iv_bottom_img.setImageResource(com.devaon.early_buddy_android.R.drawable.img_bg_twobus)
+                                            act_home_iv_text.setImageResource(com.devaon.early_buddy_android.R.drawable.text_two)
                                         }
                                         3 -> {
-                                            act_home_iv_bottom_img.setImageResource(R.drawable.img_bg_threebus)
-                                            act_home_iv_text.setImageResource(R.drawable.text_three)
+                                            act_home_iv_bottom_img.setImageResource(com.devaon.early_buddy_android.R.drawable.img_bg_threebus)
+                                            act_home_iv_text.setImageResource(com.devaon.early_buddy_android.R.drawable.text_three)
                                         }
                                     }
                                     when (homeScheduleResponse.homeSchedule.firstTrans.busType) {
@@ -364,7 +383,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_bus_gan_line
+                                                        com.devaon.early_buddy_android.R.color.seoul_bus_gan_line
                                                     )
                                                 )
                                             }
@@ -375,7 +394,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_bus_ji_line
+                                                        com.devaon.early_buddy_android.R.color.seoul_bus_ji_line
                                                     )
                                                 )
                                             }
@@ -386,7 +405,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_bus_gwangyuk
+                                                        com.devaon.early_buddy_android.R.color.seoul_bus_gwangyuk
                                                     )
                                                 )
                                             }
@@ -397,7 +416,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.seoul_line_gongHang
+                                                        com.devaon.early_buddy_android.R.color.seoul_line_gongHang
                                                     )
                                                 )
                                             }
@@ -408,7 +427,7 @@ class HomeActivity : AppCompatActivity() {
                                                 is GradientDrawable -> background.setColor(
                                                     ContextCompat.getColor(
                                                         this@HomeActivity,
-                                                        R.color.inCheon_line_two
+                                                        com.devaon.early_buddy_android.R.color.inCheon_line_two
                                                     )
                                                 )
                                             }
@@ -434,15 +453,21 @@ class HomeActivity : AppCompatActivity() {
                             )
                             time =
                                 firstArriveTime.minusMinutes(nowDate.minute.toLong()).minute * 6000
-                            if (firstArriveTime.minusMinutes(nowDate.minute.toLong()).minute > 3) {
-                                act_home_tv_minute_number.setAnimInt(
-                                    firstArriveTime.minusMinutes(
-                                        nowDate.minute.toLong()
-                                    ).minute
-                                )
+                            if(firstArriveTime.minusHours(nowDate.hour.toLong()).hour ==1){
+                                if(firstArriveTime.minute - nowDate.minute <0){
+                                    if (firstArriveTime.minusMinutes(nowDate.minute.toLong()).minute > 3) {
+                                        act_home_tv_minute_number.setAnimInt(
+                                            60+(firstArriveTime.minute - nowDate.minute)
+                                        )
+                                    }
+                                    act_home_tv_minute_number.start(token++)
+                                    act_home_tv_before_minute.text = "분 전"
+                                }
+                                else{
+                                    act_home_tv_minute_number.setAnimInt(firstArriveTime.minusHours(nowDate.hour.toLong()).hour)
+                                    act_home_tv_before_minute.text = "시간 전"
+                                }
                             }
-                            start()
-                            act_home_tv_before_minute.text = "분 전"
                             act_home_tv_first_promise.text =
                                 homeScheduleResponse.homeSchedule.scheduleSummaryData.scheduleName
                             act_home_tv_third_place.text =
@@ -451,16 +476,12 @@ class HomeActivity : AppCompatActivity() {
                     }
                 } else if (promiseTime.minusDays(nowDate.dayOfMonth.toLong()).dayOfMonth <= 7) {      //7일 이하 일 때
                     act_home_tv_arrive_text.text = "다음 일정까지"
-                    act_home_tv_bus_number.visibility = View.GONE
-                    act_home_tv_bus_current_location.visibility = View.GONE
-                    act_home_tv_next_bus.visibility = View.GONE
-                    act_home_tv_next_bus_var.visibility = View.GONE
-                    act_homme_iv_reboot.visibility = View.GONE
+                    viewGone()
                     act_home_tv_before_minute.text = "일 전"
                     act_home_tv_minute_number.text =
                         promiseTime.minusDays(nowDate.dayOfMonth.toLong()).dayOfMonth.toString()
-                    act_home_iv_text.setImageResource(R.drawable.text_daily)
-                    act_home_iv_bottom_img.setImageResource(R.drawable.img_bg_relax)
+                    act_home_iv_text.setImageResource(com.devaon.early_buddy_android.R.drawable.text_daily)
+                    act_home_iv_bottom_img.setImageResource(com.devaon.early_buddy_android.R.drawable.img_bg_relax)
                     act_home_tv_first_promise.text =
                         homeScheduleResponse.homeSchedule.scheduleSummaryData.scheduleName
                     act_home_tv_third_place.text =
@@ -488,16 +509,22 @@ class HomeActivity : AppCompatActivity() {
         )
     }
 
-    private fun changeColor() {
-        act_home_tv_bus_number.setOnClickListener {
-            when (val background = act_home_tv_bus_number.getBackground()) {
-                is GradientDrawable -> background.setColor(
-                    ContextCompat.getColor(
-                        this,
-                        R.color.main_color
-                    )
-                )
-            }
+    private fun reboot() {
+        act_homme_iv_reboot.setOnClickListener {
+            homeNetwork()
+            val anim = AnimationUtils.loadAnimation(
+                applicationContext, // 현재 화면의 제어권자
+                R.anim.act_home_animate_rotate
+            )    // 설정한 에니메이션 파일
+            act_homme_iv_reboot.startAnimation(anim)
+        }
+        act_home_tv_next_bus_var.setOnClickListener {
+            homeNetwork()
+            val anim = AnimationUtils.loadAnimation(
+                applicationContext, // 현재 화면의 제어권자
+                R.anim.act_home_animate_rotate
+            )    // 설정한 에니메이션 파일
+            act_homme_iv_reboot.startAnimation(anim)
         }
     }
 
@@ -525,48 +552,42 @@ class HomeActivity : AppCompatActivity() {
         startAnimation(TextViewIntAnimation(this, to = value))
     }
 
-    private fun start() { //타이머 스타트
-        timerTask = timer(period = 10) {
-            // period = 10 0.01초 , period = 1000 면 1초
-            time--
-            // 0.01초마다 변수를 증가시킴
+    private fun TextView.start(token: Int) { //타이머 스타트
+        var a = this
+        if (token == 0) {
+            timerTask = timer(period = 10) {
+                // period = 10 0.01초 , period = 1000 면 1초
+                time--
 
-            val hour = (time / 144000) % 24 // 1시간
-            val min = (time / 6000) % 60 // 1분
-            val sec = (time / 100) % 60 //1초
-            val milli = time % 100 // 0.01 초
-            runOnUiThread {
-                // Ui 를 갱신 시킴.
+                val min = (time / 6000) % 60 // 1분
+                runOnUiThread {
+                    // Ui 를 갱신 시킴.
 
-                if (min < 10) { // 분
-                    minmin = "$min"
-                } else {
-                    minmin = "$min"
+                    if (min < 10) { // 분
+                        minmin = "$min"
+                    } else {
+                        minmin = "$min"
+                    }
+//                    act_home_tv_minute_number.text = String.format("%s", minmin)
+
+                    a.text = String.format("%s", minmin)
+                    if (Integer.valueOf(minmin) <= 3) {
+                        act_home_tv_minute_number.visibility = View.INVISIBLE
+                        act_home_tv_before_minute.visibility = View.INVISIBLE
+                        act_home_tv_soon.visibility = View.VISIBLE
+                    }
+
+
                 }
-//                if (sec < 10) { // 초
-//                    secsec = "0$sec"
-//                } else {
-//                    secsec = "$sec"
-//                }
-
-                act_home_tv_minute_number.text = String.format("%s", minmin)
-                if (Integer.valueOf(minmin) <= 3) {
-                    act_home_tv_minute_number.visibility = View.INVISIBLE
-                    act_home_tv_before_minute.visibility = View.INVISIBLE
-                    act_home_tv_soon.visibility = View.VISIBLE
-                }
-////
-//                if (milli < 10){
-//                    act_home_tv_minute_number.text = "0$milli"
-//                }else {
-//                    act_home_tv_minute_number.text = "$milli"
-//                }
-
-                //$ 를 붙여주면 변하는 값을 계속 덮어준다
-                //ex) $를 붙여주면 기존에 1이라는 값이 잇을때 값이 2로변하면 2로 바꿔준다.
-
             }
         }
     }
 
+    private fun viewGone(){
+        act_home_tv_bus_number.visibility = View.GONE
+        act_home_tv_bus_current_location.visibility = View.GONE
+        act_home_tv_next_bus.visibility = View.GONE
+        act_home_tv_next_bus_var.visibility = View.GONE
+        act_homme_iv_reboot.visibility = View.GONE
+    }
 }

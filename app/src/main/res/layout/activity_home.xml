@@ -140,7 +140,7 @@
         android:background="@drawable/act_home_round_riding_number"
         android:lineSpacingExtra="6sp"
         android:text="2224"
-        android:layout_marginBottom="16.5dp"
+        android:layout_marginBottom="14.5dp"
         android:textColor="#ffffff"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/act_home_line"
@@ -165,6 +165,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_reboot"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/act_home_tv_bus_number"
         app:layout_constraintEnd_toEndOf="@+id/act_home_line"
         app:layout_constraintTop_toTopOf="@+id/act_home_tv_bus_number" />
@@ -190,9 +192,12 @@
         android:layout_marginEnd="5dp"
         android:letterSpacing="-0.05"
         android:lineSpacingExtra="6sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:text="22분전"
         android:textColor="#000000"
         android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/act_home_tv_next_bus"
         app:layout_constraintEnd_toStartOf="@id/act_homme_iv_reboot"
         app:layout_constraintTop_toTopOf="@id/act_home_tv_next_bus" />
 
