@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.devaon.early_buddy_android.R
-import com.devaon.early_buddy_android.feature.util.view.NonScrollGridLayoutManager
+import com.devaon.early_buddy_android.util.view.NonScrollGridLayoutManager
 import kotlinx.android.synthetic.main.fragment_calendar_page.*
 
 
 class CalendarPageFragment : Fragment(){
 
     private var timeByMillis: Long = 0
-    lateinit var calendarPageRecyclerViewAdapter: CalendarPageRecyclerViewAdapter
 
+    lateinit var calendarPageRecyclerViewAdapter: CalendarPageRecyclerViewAdapter
     var fragmentPosition = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -38,7 +38,8 @@ class CalendarPageFragment : Fragment(){
         calendarPageRecyclerViewAdapter.setOnDateClickListener(onDateClickListener)
         frag_calendar_rv.run{
             adapter = calendarPageRecyclerViewAdapter
-            layoutManager = NonScrollGridLayoutManager(activity!!, 7)
+            layoutManager =
+                NonScrollGridLayoutManager(activity!!, 7)
         }
     }
 

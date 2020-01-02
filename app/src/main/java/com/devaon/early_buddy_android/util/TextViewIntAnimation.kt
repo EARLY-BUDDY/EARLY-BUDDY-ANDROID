@@ -1,4 +1,4 @@
-package com.devaon.early_buddy_android.feature.util
+package com.devaon.early_buddy_android.util
 
 import android.view.animation.Animation
 import android.view.animation.Transformation

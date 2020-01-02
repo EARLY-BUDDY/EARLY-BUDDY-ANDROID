@@ -18,6 +18,7 @@ class CalendarPagerAdapter (fm: FragmentManager): FragmentPagerAdapter(fm){
         frgMap = HashMap()
     }
 
+
     fun clearPrevFragments(fm: FragmentManager) {
         val listFragment = fm.fragments
 
