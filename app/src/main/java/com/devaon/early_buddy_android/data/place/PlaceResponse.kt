@@ -6,11 +6,13 @@ data class PlaceResponse(
     @SerializedName("success")
     val success: Boolean,
     @SerializedName("data")
-    val data: Int
+    val data: ArrayList<PlaceSearch>
 )
 
 data class PlaceSearch(
-    @SerializedName("addressName")     // 1 -> 지하철, 2 -> 버스, 3 -> 버스+지하철
+    @SerializedName("placeName")
+    val placeName: String,
+    @SerializedName("addressName")
     val addressName: String,
     @SerializedName("roadAddressName")
     val roadAddressName: String,

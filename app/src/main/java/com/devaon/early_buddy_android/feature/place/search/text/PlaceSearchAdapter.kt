@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devaon.early_buddy_android.R
-import com.devaon.early_buddy_android.data.place.GetPlaceData
+import com.devaon.early_buddy_android.data.place.PlaceSearch
 
 class PlaceSearchAdapter(
     private val context: Context
 ) : RecyclerView.Adapter<PlaceSearchAdapter.PlaceSearchViewHolder>() {
-    var data: List<GetPlaceData> = listOf()
+    var data: ArrayList<PlaceSearch> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceSearchViewHolder {
         val view: View = LayoutInflater
@@ -21,26 +21,31 @@ class PlaceSearchAdapter(
         return PlaceSearchViewHolder(view)
     }
 
+    fun replaceAll(list : ArrayList<PlaceSearch>){
+        data.clear()
+        data.addAll(list)
+    }
+
     override fun getItemCount(): Int {
         return data.size
     }
 
     override fun onBindViewHolder(holder: PlaceSearchViewHolder, position: Int) {
         holder.onBind(data[position])
-        holder.addressDetail.text = data[position].addressDetail
-        holder.address.text = data[position].address
-        holder.loadAddress.text = data[position].loadAddress
+        holder.placeName.text = data[position].placeName
+        holder.addressName.text = data[position].addressName
+        holder.roadAddressName.text = data[position].roadAddressName
     }
 
     inner class PlaceSearchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val address: TextView = view.findViewById(R.id.li_place_search_route_tv_time)
-        val addressDetail : TextView = view.findViewById(R.id.li_place_search_address_detail)
-        val loadAddress : TextView = view.findViewById(R.id.li_place_search_load_address)
+        val placeName: TextView = view.findViewById(R.id.li_place_search_address)
+        val addressName : TextView = view.findViewById(R.id.li_place_search_address_detail)
+        val roadAddressName : TextView = view.findViewById(R.id.li_place_search_load_address)
 
-        fun onBind(placedata: GetPlaceData) {
+        fun onBind(placedata: PlaceSearch ) {
             itemView.setOnClickListener {
-                val context = it.context
+               /* val context = it.context*/
                 //val intent = Intent(context, GitRepoListActivity::class.java)
                 //context.startActivity(intent)
             }

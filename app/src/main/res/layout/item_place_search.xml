@@ -10,41 +10,41 @@
         android:id="@+id/li_place_search_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="17sp"
-        android:textColor="@color/black"
         tools:text="만수주공10단지아파트 1001동" />
 
     <TextView
         android:id="@+id/li_place_search_address_detail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="3dp"
         android:layout_marginEnd="15dp"
+        android:textColor="@color/gray"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/li_place_search_address"
-        android:textSize="15sp"
-        android:textColor="@color/gray"
         tools:text="인천 남동구 만수동 1043 만수주공10단지아파트 1001동" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/li_place_search_cl_load"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="19dp"
         android:background="@drawable/act_place_round_rect_gray"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:paddingHorizontal="8dp"
         android:paddingVertical="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/li_place_search_address_detail">
 
 
@@ -53,13 +53,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:text="도로명"
             android:textColor="@color/mid_gray"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="도로명" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

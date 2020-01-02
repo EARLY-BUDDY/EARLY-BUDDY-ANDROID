@@ -4,23 +4,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.devaon.early_buddy_android.R
-import com.devaon.early_buddy_android.data.place.GetPlaceData
+import com.devaon.early_buddy_android.data.place.PlaceSearch
+import com.devaon.early_buddy_android.feature.place.search.text.PlaceSearchAdapter
 import kotlinx.android.synthetic.main.activity_place_select.*
 
 
-class PlaceSelectActivity : AppCompatActivity() {
+class PlaceDirectionsActivity : AppCompatActivity() {
 
-    private lateinit var placeSelectAdapter: PlaceSelectAdapter
-    private var placeDataList = ArrayList<GetPlaceData>()
+    private lateinit var placeSelectAdapter: PlaceSearchAdapter
+    private var placeDataList = ArrayList<PlaceSearch>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place_select)
 
-        initPlaceSearchList()
+        //initPlaceSearchList()
     }
 
-    private fun initPlaceSearchList() {
+
+    /*private fun initPlaceSearchList() {
         placeSelectAdapter = PlaceSelectAdapter(
             this
         ).apply {
@@ -59,9 +61,9 @@ class PlaceSelectActivity : AppCompatActivity() {
         }
         //test용 데이터
         act_place_select_rv.adapter = placeSelectAdapter
-    }
+    }*/
 
-    private fun setData() {
+   /* private fun setData() {
         //데이터 받아오는 함수
         if (placeDataList.isNullOrEmpty()) {
             act_place_select_iv_bird.visibility = View.VISIBLE
@@ -73,5 +75,7 @@ class PlaceSelectActivity : AppCompatActivity() {
             //통신할 때 데이터 받아와야함  data =
 
         }
-    }
+    }*/
+
+
 }

@@ -47,7 +47,7 @@
             android:theme="@style/AppTheme.StatusBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".feature.place.select.PlaceSelectActivity"
+            android:name=".feature.place.select.PlaceDirectionsActivity"
             android:theme="@style/AppTheme.StatusBar"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".feature.schedule.ScheduleActivity" />

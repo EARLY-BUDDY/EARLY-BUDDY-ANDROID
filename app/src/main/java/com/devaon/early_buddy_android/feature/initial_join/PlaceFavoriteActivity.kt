@@ -30,11 +30,12 @@ class PlaceFavoriteActivity : AppCompatActivity() {
             val intent = Intent(this@PlaceFavoriteActivity, SetCompleteActivity::class.java)
             startActivity(intent)
         }
-/*
-        act_place_favorite_tv_skip.setOnClickListener {
+
+        act_place_favorite_tv.setOnClickListener {
             val intent = Intent(this@PlaceFavoriteActivity, SetCompleteActivity::class.java)
             startActivity(intent)
-        }*/
+        }
+
 
     }
 
@@ -63,15 +64,15 @@ class PlaceFavoriteActivity : AppCompatActivity() {
         val placeFavoriteDialog = PlaceFavoriteDialogFragment()
         placeFavoriteDialog.setOnDialogDismissedListener(PlaceFavoriteDialogFragmentDismissListener)
 
-        act_place_favorite_cl_register_first.setOnClickListener {
+        act_place_favorite_iv_select_one.setOnClickListener {
             placeFavoriteDialog.show(supportFragmentManager,"select_icon_first")
         }
 
-        act_place_favorite_cl_register_second.setOnClickListener {
+        act_place_favorite_iv_select_two.setOnClickListener {
             placeFavoriteDialog.show(supportFragmentManager,"select_icon_second")
         }
 
-        act_place_favorite_cl_register_third.setOnClickListener {
+        act_place_favorite_iv_select_three.setOnClickListener {
             placeFavoriteDialog.show(supportFragmentManager,"select_icon_third")
         }
 
@@ -80,8 +81,9 @@ class PlaceFavoriteActivity : AppCompatActivity() {
     var PlaceFavoriteDialogFragmentDismissListener = object : PlaceFavoriteDialogFragment.OnDialogDismissedListener {
         override fun onDialogDismissed() {
             //dismiss일때 선택한 icon, 장소 PlaceFavoriteActivity 여기에 들어가도록
-            val intent = Intent(this@PlaceFavoriteActivity, SigninActivity::class.java)
-            startActivity(intent)
+            /*val intent = Intent(this@PlaceFavoriteActivity, SigninActivity::class.java)
+            startActivity(intent)*/
+
         }
     }
 
