@@ -35,7 +35,6 @@ class CalendarActivity : AppCompatActivity() {
 
     lateinit var calendarScheduleRecyclerViewAdapter : CalendarScheduleRecyclerViewAdapter
     lateinit var scheduleList : ArrayList<Schedule>
-    var check = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
