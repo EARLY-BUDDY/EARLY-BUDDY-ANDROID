@@ -101,6 +101,32 @@
             app:layout_constraintBottom_toBottomOf="@+id/act_route_iv_location_img"
             app:layout_constraintStart_toStartOf="@+id/act_route_tv_time_value"
             app:layout_constraintTop_toTopOf="@+id/act_route_iv_location_img" />
+
+        <TextView
+            android:id="@+id/act_route_riding_kind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="13sp"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/act_route_tv_until"
+            app:layout_constraintEnd_toEndOf="@+id/act_route_tv_time"
+            android:text="버스 + 지하철" />
+        <TextView
+            android:id="@+id/act_route_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="5sp"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/act_route_tv_location_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="1시간 30분" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
