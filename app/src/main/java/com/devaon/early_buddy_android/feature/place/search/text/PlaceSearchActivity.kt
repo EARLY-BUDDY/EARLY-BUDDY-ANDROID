@@ -6,18 +6,22 @@ import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.place.PlaceResponse
 import com.devaon.early_buddy_android.data.place.PlaceSearch
+import com.devaon.early_buddy_android.feature.initial_join.PlaceFavoriteActivity
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
+import kotlinx.android.synthetic.main.activity_place_favorite.*
 import kotlinx.android.synthetic.main.activity_place_search.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class PlaceSearchActivity : AppCompatActivity() {
+
 
     private lateinit var placeSearchAdapter: PlaceSearchAdapter
     private var placeDataList = ArrayList<PlaceSearch>()
@@ -29,7 +33,6 @@ class PlaceSearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place_search)
 
-        //initPlaceSearchList()
         clearText()
         setRv()
         //getPlaceSearch()
@@ -44,6 +47,7 @@ class PlaceSearchActivity : AppCompatActivity() {
 
     private fun setRv(){
         placeSearchAdapter = PlaceSearchAdapter(this)
+        placeSearchAdapter.setOnPlaceClickListener(onPlaceClickListener)
         act_place_search_rv.adapter = placeSearchAdapter
         act_place_search_rv.layoutManager = LinearLayoutManager(this)
     }
@@ -69,23 +73,8 @@ class PlaceSearchActivity : AppCompatActivity() {
         }
     }
 
-    /*private fun getKeywordSearch(keyword: String) {
-        subscription = SearchService.restAPI().keywordSearch(keyword)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                { result ->
-                    Log.d("keywordResult", result.documents[0].place_name)
-                },
-                { err ->
-                    Log.e("Error User",err.toString())
-                }
-            )
-    }
-*/
 
     private fun getPlaceSearch() {
-
         val place = act_place_search_et_search.text.toString()
 
         val callPlace: Call<PlaceResponse> = EarlyBuddyServiceImpl.service.getSearchAddress(
@@ -107,6 +96,26 @@ class PlaceSearchActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    var onPlaceClickListener
+            = object : PlaceSearchAdapter.onPlaceClickListener {
+        override fun onItemClick(placeName: String, x: Double, y: Double) {
+             if(PlaceFavoriteActivity.placeObject.firstFavoriteName == ""){
+                 PlaceFavoriteActivity.placeObject.firstFavoriteName = placeName
+                 PlaceFavoriteActivity.placeObject.firstX = x
+                 PlaceFavoriteActivity.placeObject.firstY = y
+             }else if(PlaceFavoriteActivity.placeObject.secondFavoriteName == ""){
+                PlaceFavoriteActivity.placeObject.secondFavoriteName = placeName
+                PlaceFavoriteActivity.placeObject.secondX = x
+                PlaceFavoriteActivity.placeObject.secondY = y
+            }else if(PlaceFavoriteActivity.placeObject.thirdFavoriteName == ""){
+                 PlaceFavoriteActivity.placeObject.thirdFavoriteName = placeName
+                 PlaceFavoriteActivity.placeObject.thirdX = x
+                 PlaceFavoriteActivity.placeObject.thirdY = y
+             }
+            finish()
+        }
     }
 
 
