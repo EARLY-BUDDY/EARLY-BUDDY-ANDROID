@@ -42,6 +42,9 @@ class ScheduleActivity : AppCompatActivity(){
     lateinit var sat: ImageView
     lateinit var sun: ImageView
 
+    lateinit var time: TextView
+    lateinit var method: TextView
+
 
     object schedulePlace {
         var startPlaceName = ""
@@ -68,6 +71,8 @@ class ScheduleActivity : AppCompatActivity(){
         sat = findViewById(R.id.act_schedule_iv_sat)
         sun = findViewById(R.id.act_schedule_iv_sun)
 
+        time = findViewById(R.id.act_schedule_route_time)
+        method = findViewById(R.id.act_schedule_route_tv_method)
 
         setCurrentDate()
         showDatePicker()
@@ -233,15 +238,6 @@ class ScheduleActivity : AppCompatActivity(){
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
-
-
-        val totalTime = 115.0
-        val firstWalkTime = 10.0
-        val secondWalkTime = 10.0
-        val thirdWalkTime = 5.0
-        val method1Time = 50.0
-        val method2Time = 20.0
-        val method3Time = 18.0
 
 
 //        val totalTime = 115.0
