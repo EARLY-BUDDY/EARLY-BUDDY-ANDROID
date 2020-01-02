@@ -151,9 +151,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         act_home_iv_plus.setOnClickListener {
-            var goToAddSchedule = Intent(this, ScheduleActivity::class.java).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
-            }
+            var goToAddSchedule = Intent(this, ScheduleActivity::class.java)
             startActivity(goToAddSchedule)
         }
 

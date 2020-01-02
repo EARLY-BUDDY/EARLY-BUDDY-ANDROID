@@ -16,7 +16,8 @@ interface EarlyBuddyService {
         @Query("SX") SX: Double,
         @Query("SY") SY: Double,
         @Query("EX") EX: Double,
-        @Query("EY") EY: Double
+        @Query("EY") EY: Double,
+        @Query("SearchPathType") SearchPathType: Int
     ): Call<RouteResponse>
 
     @GET(value = "/home")

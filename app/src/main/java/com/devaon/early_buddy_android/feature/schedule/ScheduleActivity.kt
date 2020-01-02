@@ -36,6 +36,7 @@ class ScheduleActivity : AppCompatActivity(){
         setNotiSpinner()
         setWeekPressed()
         searchRoute()
+        checkValue()
 
         //장소 textView가 null이 아니라면 defaut 경로 부분을 안보이게 해줘야함
         //null이라면 default 경로가 보이게 해야함
@@ -44,13 +45,13 @@ class ScheduleActivity : AppCompatActivity(){
         route.setVisibility(View.GONE)
         routeS.setVisibility(View.GONE)
 
-        act_schedule_tv_register.setOnClickListener {
-            ScheduleDialogFragment {
-                finish()
-            }.apply {
-                show(supportFragmentManager, null)
-            }
-        }
+//        act_schedule_tv_register.setOnClickListener {
+//            ScheduleDialogFragment {
+//                finish()
+//            }.apply {
+//                show(supportFragmentManager, null)
+//            }
+//        }
     }
 
     fun setCurrentDate(){
@@ -188,10 +189,13 @@ class ScheduleActivity : AppCompatActivity(){
         val method2Time = 20.0
         val method3Time = 18.0
 
-        val totalPath = findViewById<ImageView>(R.id.act_schedule_route_iv_gray_line).width
+
+
+        var totalPath = findViewById<ImageView>(R.id.act_schedule_route_iv_gray_line).width.toDouble()
         val method1 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_1)
         val method2 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_2)
         val method3 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_3)
+
 
         val method1Len = totalPath / ((totalTime / method1Time).toFloat()) //totalPath에서 (totalTime / method1Time)만큼의 비율을 차지
         val method2Len = totalPath / ((totalTime / method2Time).toFloat())
@@ -221,6 +225,23 @@ class ScheduleActivity : AppCompatActivity(){
         method3Params.width = method3Len.toInt()
         method3Params.marginStart = method3Margin
         method3.layoutParams = method3Params
+    }
 
+    fun checkValue(){
+
+        act_schedule_tv_register.setOnClickListener {
+            val scheName = findViewById<EditText>(R.id.act_schedule_et_name).text.toString()
+
+            if (scheName.isEmpty() == true) {
+                Toast.makeText(this, "내용을 모두 입력해주세요", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            } else {
+                ScheduleDialogFragment {
+                    finish()
+                }.apply {
+                    show(supportFragmentManager, null)
+                }
+            }
+        }
     }
 }
