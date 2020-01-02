@@ -47,8 +47,8 @@ class RouteAdapter(
             is RouteViewHolder -> {
                 GG.create(
                     holder.itemViewType, when (holder.itemViewType) {
-                        1 -> routeList[position].lane[0].subwayCode
-                        else -> routeList[position].lane[0].type
+                        1 -> routeList[position].lane.subwayCode
+                        else -> routeList[position].lane.type
                     }
                 )?.let {
                     with(holder) {
@@ -80,7 +80,7 @@ class RouteAdapter(
                     //버스
                     2 -> {
                         holder.ridingNumber.text =
-                            String.format("%s", routeList[position].lane[0].busNo)
+                            String.format("%s", routeList[position].lane.busNo)
                         holder.startingText.text =
                             String.format("%s", routeList[position].startName)
                         holder.endText.text = String.format("%s", routeList[position].endName)
@@ -102,7 +102,7 @@ class RouteAdapter(
                                     RouteDetailAdapter(
                                         routeList[position].passStopList.stations,
                                         holder.itemViewType,
-                                        routeList[position].lane[0].subwayCode
+                                        routeList[position].lane.subwayCode
                                     )
                             }
                             2 -> {
@@ -110,7 +110,7 @@ class RouteAdapter(
                                     RouteDetailAdapter(
                                         routeList[position].passStopList.stations,
                                         holder.itemViewType,
-                                        routeList[position].lane[0].type
+                                        routeList[position].lane.type
                                     )
                             }
                         }

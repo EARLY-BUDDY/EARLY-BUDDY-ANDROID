@@ -80,6 +80,19 @@
         app:layout_constraintTop_toBottomOf="@+id/act_home_iv_text">
 
         <TextView
+            android:id="@+id/act_home_tv_move"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="19sp"
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="@+id/act_home_tv_arrive_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="1시간 30분" />
+        <TextView
             android:id="@+id/act_home_tv_arrive_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

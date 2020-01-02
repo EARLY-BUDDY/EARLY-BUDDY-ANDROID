@@ -3,6 +3,7 @@ package com.devaon.early_buddy_android.feature
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.devaon.early_buddy_android.MapsActivity
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.feature.user.SignupActivity
 import com.devaon.early_buddy_android.feature.home.HomeActivity
@@ -36,6 +37,11 @@ class MainActivity : AppCompatActivity() {
 
         route.setOnClickListener {
             val intent = Intent(this@MainActivity, PlaceSearchRouteActivity::class.java)
+            startActivity(intent)
+        }
+
+        map.setOnClickListener {
+            val intent = Intent(this@MainActivity, MapsActivity::class.java)
             startActivity(intent)
         }
 //        val animationView = findViewById<LottieAnimationView>(R.id.animationView)
