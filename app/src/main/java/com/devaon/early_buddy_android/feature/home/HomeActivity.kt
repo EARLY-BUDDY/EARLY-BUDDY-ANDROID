@@ -44,7 +44,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun homeNetwork() {
 
-        val callRoute: Call<HomeScheduleResponse> = EarlyBuddyServiceImpl.service.getHomeSchedule(7)
+        val callRoute: Call<HomeScheduleResponse> = EarlyBuddyServiceImpl.service.getHomeSchedule(8)
 
         callRoute.enqueue(object : Callback<HomeScheduleResponse> {
             override fun onFailure(call: Call<HomeScheduleResponse>, t: Throwable) {
@@ -58,7 +58,6 @@ class HomeActivity : AppCompatActivity() {
                 var homeScheduleResponse = response.body()!!
 
                 val nowDate = LocalDateTime.now()
-                val nowFormat = DateTimeFormatter.ISO_DATE_TIME
                 val scheduleStartTime =
                     homeScheduleResponse.homeSchedule.scheduleSummaryData.scheduleStartTime
 
@@ -71,17 +70,7 @@ class HomeActivity : AppCompatActivity() {
                     Integer.valueOf(scheduleStartTime.substring(17, 19))     //초
                 )
 
-                val nextTransStartTime =
-                    homeScheduleResponse.homeSchedule.nextTransArriveTime
 
-                val nextTransTime = LocalDateTime.of(
-                    Integer.valueOf(nextTransStartTime.substring(0, 4)),      //년
-                    Integer.valueOf(nextTransStartTime.substring(5, 7)),      //월
-                    Integer.valueOf(nextTransStartTime.substring(8, 10)),      //일
-                    Integer.valueOf(nextTransStartTime.substring(11, 13)),    //시간
-                    Integer.valueOf(nextTransStartTime.substring(14, 16)),    //분
-                    Integer.valueOf(nextTransStartTime.substring(17, 19))     //초
-                )
                 if (promiseTime.dayOfMonth - nowDate.dayOfMonth == 0) {  //0일 일때(시간을 표현)
                     if (promiseTime.hour - nowDate.hour == 0) {
 
@@ -111,6 +100,17 @@ class HomeActivity : AppCompatActivity() {
                                 homeScheduleResponse.homeSchedule.scheduleSummaryData.endAddress
                         }
                         true -> {
+                            val nextTransStartTime =
+                                homeScheduleResponse.homeSchedule.nextTransArriveTime
+
+                            val nextTransTime = LocalDateTime.of(
+                                Integer.valueOf(nextTransStartTime.substring(0, 4)),      //년
+                                Integer.valueOf(nextTransStartTime.substring(5, 7)),      //월
+                                Integer.valueOf(nextTransStartTime.substring(8, 10)),      //일
+                                Integer.valueOf(nextTransStartTime.substring(11, 13)),    //시간
+                                Integer.valueOf(nextTransStartTime.substring(14, 16)),    //분
+                                Integer.valueOf(nextTransStartTime.substring(17, 19))     //초
+                            )
                             act_home_tv_next_bus_var.text = String.format("%d분전",nextTransTime.minusMinutes(nowDate.minute.toLong()).minute)
                             when (homeScheduleResponse.homeSchedule.firstTrans.trafficType) {
                                 1 -> {      //지하철
