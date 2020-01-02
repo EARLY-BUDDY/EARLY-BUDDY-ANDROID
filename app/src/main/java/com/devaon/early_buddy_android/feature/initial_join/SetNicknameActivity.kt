@@ -103,7 +103,11 @@ class SetNicknameActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     Log.e("result is ", response.body().toString())
                     val NicknameUser = response.body()!!
-                    Information.nickName = NicknameUser.nickName
+                    Log.e("respnse message", response.message())
+                    if(NicknameUser.nickName == null) {
+                        Log.e("nickname is null", "!")
+                    }else
+                        Information.nickName = NicknameUser.nickName
                 }
             }
         })
