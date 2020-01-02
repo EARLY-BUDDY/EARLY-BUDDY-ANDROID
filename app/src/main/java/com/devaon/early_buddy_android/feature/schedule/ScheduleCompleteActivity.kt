@@ -2,6 +2,7 @@ package com.devaon.early_buddy_android.feature.schedule
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,8 @@ import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.view.View
+
 
 class ScheduleCompleteActivity: AppCompatActivity(){
 
@@ -24,6 +27,13 @@ class ScheduleCompleteActivity: AppCompatActivity(){
     lateinit var scheTo: TextView
     lateinit var scheNoti: TextView
     lateinit var scheNotiRange: TextView
+    lateinit var mon: ImageView
+    lateinit var tue: ImageView
+    lateinit var wed: ImageView
+    lateinit var thu: ImageView
+    lateinit var fri: ImageView
+    lateinit var sat: ImageView
+    lateinit var sun: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +47,14 @@ class ScheduleCompleteActivity: AppCompatActivity(){
         scheNoti = findViewById(R.id.act_schedule_complete_complete_tv_noti_pick)
         scheNotiRange = findViewById(R.id.act_schedule_complete_tv_noti_range_pick)
 
+        mon = findViewById(R.id.act_schedule_complete_iv_mon)
+        tue = findViewById(R.id.act_schedule_complete_iv_tue)
+        wed = findViewById(R.id.act_schedule_complete_iv_thu)
+        thu = findViewById(R.id.act_schedule_complete_iv_thu)
+        fri = findViewById(R.id.act_schedule_complete_iv_fri)
+        sat = findViewById(R.id.act_schedule_complete_iv_sat)
+        sun = findViewById(R.id.act_schedule_complete_iv_sun)
+
         val scheduleIdx = intent.getIntExtra("scheduleIdx", 0)
         Log.e("schedule", scheduleIdx.toString())
 
@@ -45,7 +63,7 @@ class ScheduleCompleteActivity: AppCompatActivity(){
 
     private fun getSchedule(){
 
-        val callGetSchedule: Call<GetScheduleData> = EarlyBuddyServiceImpl.service.getSchedule(70)
+        val callGetSchedule: Call<GetScheduleData> = EarlyBuddyServiceImpl.service.getSchedule(69)
 
         callGetSchedule.enqueue(object : Callback<GetScheduleData>{
             override fun onFailure(call: Call<GetScheduleData>, t: Throwable) {
@@ -95,6 +113,22 @@ class ScheduleCompleteActivity: AppCompatActivity(){
                     3 -> scheNotiRange.text = "2대 전 배차부터"
                     4 -> scheNotiRange.text = "3대 전 배차부터"
                 }
+
+                var weekArray = getScheduleResponse.data.weekdayInfo
+                if (weekArray.contains(0))
+                    mon.visibility = View.VISIBLE
+                if (weekArray.contains(1) == true)
+                    tue.visibility = View.VISIBLE
+                if (weekArray.contains(2) == true)
+                    wed.visibility = View.VISIBLE
+                if (weekArray.contains(3) == true)
+                    thu.visibility = View.VISIBLE
+                if (weekArray.contains(4) == true)
+                    fri.visibility = View.VISIBLE
+                if (weekArray.contains(5) == true)
+                    sat.visibility = View.VISIBLE
+                if (weekArray.contains(6) == true)
+                    sun.visibility = View.VISIBLE
 
             }
 

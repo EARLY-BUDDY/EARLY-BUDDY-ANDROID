@@ -11,11 +11,12 @@ data class GetScheduleData(
 data class SchedulData(
     @SerializedName("scheduleInfo")
     val scheduleInfo:ScheduleInfo,
+    @SerializedName("weekdayInfo")
+    val weekdayInfo:Array<Int>,
     @SerializedName("pathInfo")
     val pathInfo:PathInfo,
     @SerializedName("detailInfo")
     val detailInfo:ArrayList<DetailInfo>
-
 )
 data class ScheduleInfo(
 
