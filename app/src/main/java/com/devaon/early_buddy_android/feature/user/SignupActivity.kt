@@ -75,6 +75,7 @@ class SignupActivity : AppCompatActivity() {
         override fun onDialogDismissed() {
             val intent = Intent(this@SignupActivity, SigninActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 

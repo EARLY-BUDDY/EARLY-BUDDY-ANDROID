@@ -13,14 +13,13 @@
         android:layout_width="299dp"
         android:layout_height="88dp"
         android:layout_marginStart="41dp"
-        android:layout_marginTop="370dp"
+        android:lineHeight="35sp"
         android:lineSpacingExtra="9sp"
         android:text="얼리버디와 함께할\n닉네임을 설정해주세요."
         android:textColor="@color/black"
         android:textSize="26sp"
-        android:lineHeight="35sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/act_set_nickname_cl_id"
@@ -78,6 +77,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="445dp"
+        android:layout_height="402dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_nickname" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
