@@ -1,49 +1,30 @@
 package com.devaon.early_buddy_android.feature.place.search.text
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.View
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.place.PlaceResponse
-import com.devaon.early_buddy_android.data.place.PlaceSearch
-import com.devaon.early_buddy_android.feature.initial_join.PlaceFavoriteActivity
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
-import kotlinx.android.synthetic.main.activity_place_favorite.*
 import kotlinx.android.synthetic.main.activity_place_search.*
 import kotlinx.android.synthetic.main.activity_place_select_direction.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PlaceSearchActivity : AppCompatActivity() {
 
-
+class PlaceDirectionsActivity : AppCompatActivity() {
     private lateinit var placeSearchAdapter: PlaceSearchAdapter
-    private var placeDataList = ArrayList<PlaceSearch>()
-
-    private lateinit var searchEdit: EditText
-    private  var clearButton: ImageView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_place_search)
+        setContentView(R.layout.activity_place_select_direction)
 
         clearText()
         setRv()
-        //goToSearchStartPlaceActivity()
-//        act_place_search_iv_search.setOnClickListener {
-//           /* val intent = Intent(this@PlaceSearchActivity, PlaceSearchActivity::class.java)
-//            startActivity(intent)*/
-//            getPlaceSearch()
-//        }
 
         act_place_search_et_search.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
@@ -66,18 +47,18 @@ class PlaceSearchActivity : AppCompatActivity() {
 
         })
 
-
     }
 
     private fun setRv(){
         placeSearchAdapter = PlaceSearchAdapter(this)
-        placeSearchAdapter.setOnPlaceClickListener(onPlaceClickListener)
-        act_place_search_rv.adapter = placeSearchAdapter
-        act_place_search_rv.layoutManager = LinearLayoutManager(this)
+       // placeSearchAdapter.setOnPlaceClickListener(onPlaceClickListener)
+        act_place_select_direction_rv.adapter = placeSearchAdapter
+        act_place_select_direction_rv.layoutManager = LinearLayoutManager(this)
     }
 
+
     /*private fun setData() {
-        //데이버 받아오는 함수
+        //데이터 받아오는 함수
         if (placeDataList.isNullOrEmpty()) {
             act_place_search_iv_bird.visibility = View.VISIBLE
             act_place_search_rv.visibility = View.GONE
@@ -88,18 +69,18 @@ class PlaceSearchActivity : AppCompatActivity() {
             //통신할 때 데이터 받아와야함  data =
 
         }
-    }
-*/
+    }*/
 
     private fun clearText(){
-        act_place_search_iv_delete.setOnClickListener {
-            act_place_search_et_search.text.clear()
+        act_place_select_direction_iv_delete.setOnClickListener {
+            act_place_select_direction_et.text.clear()
         }
     }
 
 
     private fun getPlaceSearch() {
-        val place = act_place_search_et_search.text.toString()
+        Log.d("testtest", "getPlaceSearch")
+        val place = act_place_select_direction_et.text.toString()
 
         val callPlace: Call<PlaceResponse> = EarlyBuddyServiceImpl.service.getSearchAddress(
             place
@@ -125,23 +106,24 @@ class PlaceSearchActivity : AppCompatActivity() {
     var onPlaceClickListener
             = object : PlaceSearchAdapter.onPlaceClickListener {
         override fun onItemClick(placeName: String, x: Double, y: Double) {
-             if(PlaceFavoriteActivity.placeObject.firstFavoriteName == ""){
-                 PlaceFavoriteActivity.placeObject.firstFavoriteName = placeName
-                 PlaceFavoriteActivity.placeObject.firstX = x
-                 PlaceFavoriteActivity.placeObject.firstY = y
-             }else if(PlaceFavoriteActivity.placeObject.secondFavoriteName == ""){
+
+
+           /* if(PlaceFavoriteActivity.placeObject.firstFavoriteName == ""){
+                PlaceFavoriteActivity.placeObject.firstFavoriteName = placeName
+                PlaceFavoriteActivity.placeObject.firstX = x
+                PlaceFavoriteActivity.placeObject.firstY = y
+            }else if(PlaceFavoriteActivity.placeObject.secondFavoriteName == ""){
                 PlaceFavoriteActivity.placeObject.secondFavoriteName = placeName
                 PlaceFavoriteActivity.placeObject.secondX = x
                 PlaceFavoriteActivity.placeObject.secondY = y
             }else if(PlaceFavoriteActivity.placeObject.thirdFavoriteName == ""){
-                 PlaceFavoriteActivity.placeObject.thirdFavoriteName = placeName
-                 PlaceFavoriteActivity.placeObject.thirdX = x
-                 PlaceFavoriteActivity.placeObject.thirdY = y
-             }
+                PlaceFavoriteActivity.placeObject.thirdFavoriteName = placeName
+                PlaceFavoriteActivity.placeObject.thirdX = x
+                PlaceFavoriteActivity.placeObject.thirdY = y
+            }*/
             finish()
         }
     }
-
 
 
 }

@@ -75,7 +75,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/act_place_select_start_et_search_start"
+                android:id="@+id/act_place_select_direction_et"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
@@ -89,7 +89,7 @@
                 app:layout_constraintVertical_bias="0.333" />
 
             <ImageView
-                android:id="@+id/act_place_select_start_iv_search_start"
+                android:id="@+id/act_place_select_direction_iv_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
@@ -146,14 +146,16 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/act_place_select_start_rv"
+        android:id="@+id/act_place_select_direction_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_place_select_start_cl_icon" />
+        app:layout_constraintTop_toBottomOf="@+id/act_place_select_start_cl_icon"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/act_place_select_start_iv_bird"

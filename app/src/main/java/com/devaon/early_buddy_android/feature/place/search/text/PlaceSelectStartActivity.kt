@@ -8,6 +8,6 @@ class PlaceSelectStartActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_place_select_start)
+        setContentView(R.layout.activity_place_select_direction)
     }
 }

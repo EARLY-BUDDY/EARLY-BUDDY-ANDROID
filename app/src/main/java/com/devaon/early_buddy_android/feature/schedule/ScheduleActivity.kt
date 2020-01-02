@@ -13,8 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.devaon.early_buddy_android.data.schedule.PostScheduleData
 import com.devaon.early_buddy_android.data.schedule.UserPath
-import com.devaon.early_buddy_android.data.user.UserResponse
-import com.devaon.early_buddy_android.feature.place.select.PlaceDirectionsActivity
+import com.devaon.early_buddy_android.feature.place.search.text.PlaceDirectionsActivity
+import com.devaon.early_buddy_android.feature.place.search.text.PlaceSelectActivity
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
@@ -218,7 +218,7 @@ class ScheduleActivity : AppCompatActivity(){
         val placeClick = findViewById<ConstraintLayout>(R.id.act_schedule_cl_place_click)
 
         placeClick.setOnClickListener{
-            val intent = Intent(this@ScheduleActivity, PlaceDirectionsActivity::class.java)
+            val intent = Intent(this@ScheduleActivity, PlaceSelectActivity::class.java)
             startActivity(intent)
         }
     }
