@@ -6,15 +6,15 @@ data class GetScheduleData(
     @SerializedName("success")
     val success :Boolean,
     @SerializedName("data")
-    val data :SchedulData
+    val data :ScheduleData
 )
-data class SchedulData(
+data class ScheduleData(
     @SerializedName("scheduleInfo")
     val scheduleInfo:ScheduleInfo,
-    @SerializedName("pathInfo")
+    @SerializedName("path")
     val pathInfo:PathInfo,
-    @SerializedName("detailInfo")
-    val detailInfo:ArrayList<DetailInfo>
+    @SerializedName("subPath")
+    val subPath:ArrayList<SubPath>
 
 )
 data class ScheduleInfo(
@@ -55,7 +55,7 @@ data class PathInfo(
     val transitCount :Int
 )
 
-data class DetailInfo(
+data class SubPath(
     @SerializedName("detailIdx")
     val detailIdx :Int,
     @SerializedName("trafficType")
@@ -67,5 +67,9 @@ data class DetailInfo(
     @SerializedName("subwayLane")
     val subwayLane : Int?,
     @SerializedName("busNo")
-    val busNo :String?
+    val busNo :String?,
+    @SerializedName("busType")
+    val busType :Int?,
+    @SerializedName("stops")
+    val stops :ArrayList<String>
 )
