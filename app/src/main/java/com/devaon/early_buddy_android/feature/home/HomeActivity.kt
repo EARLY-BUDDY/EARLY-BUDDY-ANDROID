@@ -46,7 +46,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun homeNetwork() {
 
-        val callRoute: Call<HomeScheduleResponse> = EarlyBuddyServiceImpl.service.getHomeSchedule(8)
+        val callRoute: Call<HomeScheduleResponse> = EarlyBuddyServiceImpl.service.getHomeSchedule(7)
 
         callRoute.enqueue(object : Callback<HomeScheduleResponse> {
             override fun onFailure(call: Call<HomeScheduleResponse>, t: Throwable) {
@@ -73,25 +73,53 @@ class HomeActivity : AppCompatActivity() {
                 )
 
 
-                if (promiseTime.dayOfMonth - nowDate.dayOfMonth == 0) {  //0일 일때(시간을 표현)
-                    if (promiseTime.hour - nowDate.hour == 0) {
-
-                    } else {
-
-                    }
+                if (promiseTime.dayOfMonth - nowDate.dayOfMonth == 0) {      //0일 일때(시간을 표현)
                     when (homeScheduleResponse.homeSchedule.ready) {
                         false -> {
                             act_home_tv_arrive_text.text = "오늘 일정까지"
                             var bottomParams =
                                 act_home_cl_middle_bar.layoutParams  as? ConstraintLayout.LayoutParams
-                            bottomParams?.topMargin = 180
+                            bottomParams?.topMargin = 90
                             act_home_cl_middle_bar.layoutParams = bottomParams
 
                             viewGone()
-                            act_home_tv_minute_number.setAnimInt(promiseTime.minusHours(nowDate.hour.toLong()).hour)
-                            act_home_tv_before_minute.text = "시간 전"
-                            act_home_iv_text.setImageResource(R.drawable.text_daily)
-                            act_home_iv_bottom_img.setImageResource(R.drawable.img_late_bg)
+
+                            if (promiseTime.minusHours(nowDate.hour.toLong()).hour == 0) {
+                                act_home_tv_minute_number.setAnimInt(
+                                    promiseTime.minusMinutes(
+                                        nowDate.minute.toLong()
+                                    ).minute
+                                )
+                                act_home_tv_before_minute.text = "분 전"
+                            } else {
+                                act_home_tv_minute_number.setAnimInt(promiseTime.minusHours(nowDate.hour.toLong()).hour)
+                                act_home_tv_before_minute.text = "시간 전"
+                            }
+
+                            if (homeScheduleResponse.homeSchedule.isGoing == 1) {     //가는 중일 때
+                                act_home_tv_move.visibility = View.VISIBLE
+                                var goingHour = 0
+                                var goingMin = 0
+                                if(promiseTime.minute-nowDate.minute < 0){
+                                    goingMin = 60 + (promiseTime.minute-nowDate.minute)
+                                    when {
+                                        promiseTime.hour-nowDate.hour>=1 -> goingHour = promiseTime.hour-nowDate.hour - 1
+                                        else -> goingHour = 0
+                                    }
+                                }else{
+                                    goingMin = promiseTime.minute-nowDate.minute
+                                    goingHour = promiseTime.hour-nowDate.hour
+                                }
+                                act_home_tv_move.text = String.format("%d시간 %d분",goingHour,goingMin)
+                                act_home_tv_arrive_text.text = "약속 시간까지"
+                                act_home_tv_before_minute.visibility = View.INVISIBLE
+                                act_home_tv_minute_number.visibility = View.INVISIBLE
+                                act_home_iv_text.setImageResource(R.drawable.text_move)
+                                act_home_iv_bottom_img.setImageResource(R.drawable.img_going)
+                            } else {       //가는 중이 아닐 때
+                                act_home_iv_text.setImageResource(R.drawable.text_daily)
+                                act_home_iv_bottom_img.setImageResource(R.drawable.img_late_bg)
+                            }
                             act_home_tv_first_promise.text =
                                 homeScheduleResponse.homeSchedule.scheduleSummaryData.scheduleName
                             act_home_tv_third_place.text =
@@ -101,33 +129,39 @@ class HomeActivity : AppCompatActivity() {
                             val nextTransStartTime =
                                 homeScheduleResponse.homeSchedule.nextTransArriveTime
 
-                            val nextTransTime = LocalDateTime.of(
-                                Integer.valueOf(nextTransStartTime.substring(0, 4)),      //년
-                                Integer.valueOf(nextTransStartTime.substring(5, 7)),      //월
-                                Integer.valueOf(nextTransStartTime.substring(8, 10)),      //일
-                                Integer.valueOf(nextTransStartTime.substring(11, 13)),    //시간
-                                Integer.valueOf(nextTransStartTime.substring(14, 16)),    //분
-                                Integer.valueOf(nextTransStartTime.substring(17, 19))     //초
-                            )
-                            if (nextTransTime.minusHours(nowDate.hour.toLong()).hour >= 1) {
-                                if (nextTransTime.minute - nowDate.minute < 0) {
-                                    act_home_tv_next_bus_var.text = String.format(
-                                        "%d분전",
-                                        60 + (nextTransTime.minute - nowDate.minute)
-                                    )
+                            if(nextTransStartTime != null){
+
+                                val nextTransTime = LocalDateTime.of(
+                                    Integer.valueOf(nextTransStartTime.substring(0, 4)),      //년
+                                    Integer.valueOf(nextTransStartTime.substring(5, 7)),      //월
+                                    Integer.valueOf(nextTransStartTime.substring(8, 10)),      //일
+                                    Integer.valueOf(nextTransStartTime.substring(11, 13)),    //시간
+                                    Integer.valueOf(nextTransStartTime.substring(14, 16)),    //분
+                                    Integer.valueOf(nextTransStartTime.substring(17, 19))     //초
+                                )
+
+                                if (nextTransTime.minusHours(nowDate.hour.toLong()).hour >= 1) {
+                                    if (nextTransTime.minute - nowDate.minute < 0) {
+                                        act_home_tv_next_bus_var.text = String.format(
+                                            "%d분전",
+                                            60 + (nextTransTime.minute - nowDate.minute)
+                                        )
+                                    } else {
+                                        act_home_tv_next_bus_var.text = String.format(
+                                            "%d시간전",
+                                            nextTransTime.minusHours(nowDate.hour.toLong()).hour
+                                        )
+                                    }
+
                                 } else {
                                     act_home_tv_next_bus_var.text = String.format(
-                                        "%d시간전",
-                                        nextTransTime.minusHours(nowDate.hour.toLong()).hour
+                                        "%d분전",
+                                        nextTransTime.minusMinutes(nowDate.minute.toLong()).minute
                                     )
                                 }
 
-                            } else {
-                                act_home_tv_next_bus_var.text = String.format(
-                                    "%d분전",
-                                    nextTransTime.minusMinutes(nowDate.minute.toLong()).minute
-                                )
                             }
+
 
                             when (homeScheduleResponse.homeSchedule.firstTrans.trafficType) {
                                 1 -> {      //지하철
@@ -453,23 +487,27 @@ class HomeActivity : AppCompatActivity() {
                             )
                             time =
                                 firstArriveTime.minusMinutes(nowDate.minute.toLong()).minute * 6000
-                            if (firstArriveTime.minusHours(nowDate.hour.toLong()).hour == 1) {
-                                if (firstArriveTime.minute - nowDate.minute < 0) {
-                                    if (firstArriveTime.minusMinutes(nowDate.minute.toLong()).minute > 3) {
-                                        act_home_tv_minute_number.setAnimInt(
-                                            60 + (firstArriveTime.minute - nowDate.minute)
-                                        )
+                            if(firstArriveTime.minusHours(nowDate.hour.toLong()).hour <= 1){
+                                if(firstArriveTime.minusHours(nowDate.hour.toLong()).hour==1){
+                                    if (firstArriveTime.minute - nowDate.minute < 0) {
+                                        if (firstArriveTime.minusMinutes(nowDate.minute.toLong()).minute > 3) {
+                                            act_home_tv_minute_number.setAnimInt(60 + (firstArriveTime.minute - nowDate.minute))
+                                        }
+                                        act_home_tv_minute_number.start(token++)
+                                        act_home_tv_before_minute.text = "분 전"
                                     }
-                                    act_home_tv_minute_number.start(token++)
-                                    act_home_tv_before_minute.text = "분 전"
-                                } else {
-                                    act_home_tv_minute_number.setAnimInt(
-                                        firstArriveTime.minusHours(
-                                            nowDate.hour.toLong()
-                                        ).hour
-                                    )
-                                    act_home_tv_before_minute.text = "시간 전"
+                                    else{
+                                        act_home_tv_minute_number.setAnimInt(1)
+                                        act_home_tv_before_minute.text = "시간 전"
+                                    }
                                 }
+                                else{
+                                    act_home_tv_minute_number.setAnimInt(firstArriveTime.minusMinutes(nowDate.minute.toLong()).minute)
+                                    act_home_tv_before_minute.text = "분 전"
+                                }
+                            }else{
+                                act_home_tv_minute_number.setAnimInt(firstArriveTime.minusHours(nowDate.hour.toLong()).hour)
+                                act_home_tv_before_minute.text = "시간 전"
                             }
                             act_home_tv_first_promise.text =
                                 homeScheduleResponse.homeSchedule.scheduleSummaryData.scheduleName
@@ -478,6 +516,10 @@ class HomeActivity : AppCompatActivity() {
                         }
                     }
                 } else if (promiseTime.minusDays(nowDate.dayOfMonth.toLong()).dayOfMonth <= 7) {      //7일 이하 일 때
+                    var bottomParams =
+                        act_home_cl_middle_bar.layoutParams  as? ConstraintLayout.LayoutParams
+                    bottomParams?.topMargin = 90
+                    act_home_cl_middle_bar.layoutParams = bottomParams
                     act_home_tv_arrive_text.text = "다음 일정까지"
                     viewGone()
                     act_home_tv_before_minute.text = "일 전"
@@ -491,22 +533,22 @@ class HomeActivity : AppCompatActivity() {
                         homeScheduleResponse.homeSchedule.scheduleSummaryData.endAddress
                 }
                 var amPm = ""
-                var promiseHour = 0
-                var promiseMinute = 0
+                var promiseHour = ""
+                var promiseMinute = ""
                 when {
                     Integer.valueOf(scheduleStartTime.substring(11, 13)) >= 12 -> {
                         amPm = "오후"
-                        promiseHour = Integer.valueOf(scheduleStartTime.substring(11, 13))
-                        promiseMinute = Integer.valueOf(scheduleStartTime.substring(14, 16))
+                        promiseHour = scheduleStartTime.substring(11, 13)
+                        promiseMinute = scheduleStartTime.substring(14, 16)
                     }
                     else -> {
                         amPm = "오전"
-                        promiseHour = Integer.valueOf(scheduleStartTime.substring(11, 13))
-                        promiseMinute = Integer.valueOf(scheduleStartTime.substring(14, 16))
+                        promiseHour = scheduleStartTime.substring(11, 13)
+                        promiseMinute = scheduleStartTime.substring(14, 16)
                     }
                 }
                 act_home_tv_second_time.text =
-                    String.format("%s %d : %d", amPm, promiseHour, promiseMinute)
+                    String.format("%s %s : %s", amPm, promiseHour, promiseMinute)
             }
         }
         )

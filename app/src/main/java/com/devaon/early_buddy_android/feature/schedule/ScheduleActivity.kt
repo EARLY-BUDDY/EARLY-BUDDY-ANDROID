@@ -11,25 +11,53 @@ import com.devaon.early_buddy_android.R
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.devaon.early_buddy_android.feature.place.select.PlaceDirectionsActivity
+import com.devaon.early_buddy_android.data.schedule.PostScheduleData
+import com.devaon.early_buddy_android.data.schedule.UserPath
+import com.devaon.early_buddy_android.feature.place.search.text.PlaceDirectionsActivity
+import com.devaon.early_buddy_android.feature.place.search.text.PlaceSelectActivity
+import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_schdule.*
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
+
+
 class ScheduleActivity : AppCompatActivity(){
     var cal = Calendar.getInstance()
+    var arriveCount = 0
+    var noticeMin = 0
+
+    object schedulePlace {
+        var startPlaceName = ""
+        var startPlaceX = 0.0
+        var startPlaceY = 0.0
+        var endPlaceName = ""
+        var endPlaceX = 0.0
+        var endPlaceY = 0.0
+    }
+
+
+    object scheduleUserPath {
+        lateinit var userPath : UserPath
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schdule)
 
-        val actScheduleName: EditText = findViewById(R.id.act_schedule_et_name)
 
         setCurrentDate()
         showDatePicker()
         showTimePicker()
         setNotiSpinner()
+        setNotiRangeSpinner()
         setWeekPressed()
         searchRoute()
         checkValue()
@@ -41,13 +69,6 @@ class ScheduleActivity : AppCompatActivity(){
         route.setVisibility(View.GONE)
         routeS.setVisibility(View.GONE)
 
-//        act_schedule_tv_register.setOnClickListener {
-//            ScheduleDialogFragment {
-//                finish()
-//            }.apply {
-//                show(supportFragmentManager, null)
-//            }
-//        }
     }
 
     fun setCurrentDate(){
@@ -70,6 +91,7 @@ class ScheduleActivity : AppCompatActivity(){
                     cal.set(Calendar.MONTH, monthOfYear)
                     cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
                     act_schedule_tv_date_click.text = SimpleDateFormat("yyyy.MM.dd").format(cal.time)
+
                 },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
         }
     }
@@ -82,8 +104,7 @@ class ScheduleActivity : AppCompatActivity(){
                     cal.set(Calendar.HOUR_OF_DAY, hour)
                     cal.set(Calendar.MINUTE, minute)
                     act_schedule_tv_time_click.text = SimpleDateFormat("a hh:mm").format(cal.time)
-                }
-                ,cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), false).show()
+                },cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), false).show()
         }
     }
 
@@ -96,10 +117,38 @@ class ScheduleActivity : AppCompatActivity(){
             }
         notiSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                var userNoti = notiSpinner.selectedItemPosition
+                when(userNoti){
+                    0 -> arriveCount = 2
+                    1 -> arriveCount = 3
+                    2 -> arriveCount = 4
+                    3 -> arriveCount = 1
+                }
 
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+        }
+    }
 
+    fun setNotiRangeSpinner(){
+        val notiRangeSpinner: Spinner = findViewById(R.id.act_schedule_sp_noti_range)
+        ArrayAdapter.createFromResource(this@ScheduleActivity, R.array.noti_range_array, android.R.layout.simple_spinner_item)
+            .also {
+                    adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                notiRangeSpinner.adapter = adapter
+            }
+        notiRangeSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                var userNotiRange = notiRangeSpinner.selectedItemPosition
+                when(userNotiRange){
+                    0 -> noticeMin = 5
+                    1 -> noticeMin = 10
+                    2 -> noticeMin = 20
+                    3 -> noticeMin = 0
+                }
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
     }
@@ -169,7 +218,7 @@ class ScheduleActivity : AppCompatActivity(){
         val placeClick = findViewById<ConstraintLayout>(R.id.act_schedule_cl_place_click)
 
         placeClick.setOnClickListener{
-            val intent = Intent(this@ScheduleActivity, PlaceDirectionsActivity::class.java)
+            val intent = Intent(this@ScheduleActivity, PlaceSelectActivity::class.java)
             startActivity(intent)
         }
     }
@@ -232,6 +281,7 @@ class ScheduleActivity : AppCompatActivity(){
                 Toast.makeText(this, "내용을 모두 입력해주세요", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
+                postSchedule(scheName)
                 ScheduleDialogFragment {
                     finish()
                 }.apply {
@@ -239,5 +289,35 @@ class ScheduleActivity : AppCompatActivity(){
                 }
             }
         }
+    }
+
+    private fun postSchedule(scheName: String){
+
+        var jsonObject = JSONObject()
+        jsonObject.put("scheduleName", scheName)
+        jsonObject.put("arriveCount", arriveCount)
+        jsonObject.put("noticeMin", noticeMin)
+        jsonObject.put("scheduleStartDay", SimpleDateFormat("yyyy-MM-dd").format(cal.time))
+        jsonObject.put("scheduleStartTime", SimpleDateFormat("HH:mm").format(cal.time))
+
+        val body = JsonParser().parse(jsonObject.toString()) as JsonObject
+
+        Log.e("bodybodybodybody", body.toString())
+        val callPostSchedule: Call<PostScheduleData> = EarlyBuddyServiceImpl.service.postSchedule(body)
+
+        callPostSchedule.enqueue(object : Callback<PostScheduleData> {
+            override fun onFailure(call: Call<PostScheduleData>, t: Throwable) {
+                Log.e("error is ", t.toString())
+            }
+
+            override fun onResponse(call: Call<PostScheduleData>, response: Response<PostScheduleData>) {
+                if (response.isSuccessful) {
+                    Log.e("result is ", response.body().toString())
+                    val signupUser = response.body()!!
+//                    signinDialog.show(supportFragmentManager,"signin_fagment")
+                }
+            }
+        })
+
     }
 }

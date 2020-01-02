@@ -24,7 +24,9 @@ data class HomeSchedule(
     @SerializedName("nextTransArriveTime")
     val nextTransArriveTime:String,
     @SerializedName("scheduleSummaryData")
-    val scheduleSummaryData:ScheduleSummaryData
+    val scheduleSummaryData:ScheduleSummaryData,
+    @SerializedName("isGoing")
+    val isGoing:Int
 )
 
 data class FirstTrans(
