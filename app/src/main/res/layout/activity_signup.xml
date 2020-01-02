@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.user.SignupActivity">
+    tools:context=".feature.user.SignupActivity"
+    android:background="@drawable/img_signupbackground">
 
 
     <TextView
@@ -263,15 +264,7 @@
             android:fontFamily="@font/notosans_medium" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/act_place_favorite_iv_background"
-        android:layout_width="485dp"
-        android:layout_height="224dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_signup" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

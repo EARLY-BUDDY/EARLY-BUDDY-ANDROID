@@ -4,79 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_fininsh"
     tools:context=".feature.initial_join.SetCompleteActivity">
 
     <ImageView
         android:id="@+id/act_set_complete_iv_jump_eb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/act_set_complete_tv_ment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="169dp"
-        android:lineHeight="35dp"
-        android:text="이제 얼리버디와\n함께 할 수 있어요!"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/act_set_complete_tv_ment_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
-        android:text="자주 가는 장소는 마이페이지에서"
-        android:textColor="@color/light_gray"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/notosans_light"
+        android:gravity="center"
+        android:text="자주 가는 장소는 마이페이지에서\n언제든지 바꿀 수 있어요!"
+        android:textColor="@color/gray"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/set_complete_cl_start"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_set_complete_iv_jump_eb" />
-
-    <TextView
-        android:id="@+id/act_set_complete_tv_ment_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="언제든지 바꿀 수 있어요!"
-        android:textColor="@color/light_gray"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_set_complete_tv_ment_first" />
-
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/set_complete_cl_start"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="16dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="51dp"
         android:background="@drawable/act_place_round_rect_blue_full"
         android:paddingHorizontal="132dp"
         android:paddingVertical="11dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_set_complete_tv_ment_second">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/set_complete_bt_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_medium"
             android:gravity="center"
             android:text="시작하기"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

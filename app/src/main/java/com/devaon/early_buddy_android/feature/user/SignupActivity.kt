@@ -1,6 +1,7 @@
 package com.devaon.early_buddy_android.feature.user
 
 import android.content.Intent
+import android.icu.text.IDNA
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.data.db.Information
 import com.devaon.early_buddy_android.data.user.UserResponse
 import com.devaon.early_buddy_android.feature.initial_join.SetNicknameActivity
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
@@ -75,6 +77,7 @@ class SignupActivity : AppCompatActivity() {
         override fun onDialogDismissed() {
             val intent = Intent(this@SignupActivity, SigninActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
@@ -100,6 +103,7 @@ class SignupActivity : AppCompatActivity() {
                     Log.e("result is ", response.body().toString())
                     val signupUser = response.body()!!
                     signinDialog.show(supportFragmentManager,"signin_fagment")
+                    Information.idx = signupUser.idx
                 }
             }
         })
