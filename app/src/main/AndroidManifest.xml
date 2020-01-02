@@ -39,7 +39,7 @@
             android:name=".feature.initial_join.SetNicknameActivity"
             android:theme="@style/AppTheme.StatusBar" />
         <activity
-            android:name=".feature.place.search.text.PlaceSelectEndActivity"
+            android:name=".feature.place.search.text.PlaceSelectActivity"
             android:theme="@style/AppTheme.StatusBar" />
         <activity
             android:name=".feature.place.search.text.PlaceSelectStartActivity"
@@ -49,7 +49,7 @@
             android:theme="@style/AppTheme.StatusBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".feature.place.select.PlaceDirectionsActivity"
+            android:name=".feature.place.search.text.PlaceDirectionsActivity"
             android:theme="@style/AppTheme.StatusBar"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".feature.schedule.ScheduleActivity" />

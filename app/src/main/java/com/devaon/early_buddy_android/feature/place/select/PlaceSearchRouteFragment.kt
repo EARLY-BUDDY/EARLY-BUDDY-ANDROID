@@ -10,7 +10,7 @@ import com.devaon.early_buddy_android.R
 class PlaceSearchRouteFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v : View = inflater.inflate(R.layout.fragment_place_search_root,container,false)
+        val v : View = inflater.inflate(R.layout.fragment_place_select_arrival,container,false)
 
         return v
     }
