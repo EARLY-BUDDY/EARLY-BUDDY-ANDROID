@@ -1,20 +1,27 @@
 package com.devaon.early_buddy_android.feature.place.search.text
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.devaon.early_buddy_android.R
-import com.devaon.early_buddy_android.data.place.GetPlaceData
-import io.reactivex.schedulers.Schedulers
+import com.devaon.early_buddy_android.data.place.PlaceResponse
+import com.devaon.early_buddy_android.data.place.PlaceSearch
+import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
 import kotlinx.android.synthetic.main.activity_place_search.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class PlaceSearchActivity : AppCompatActivity() {
 
     private lateinit var placeSearchAdapter: PlaceSearchAdapter
-    private var placeDataList = ArrayList<GetPlaceData>()
+    private var placeDataList = ArrayList<PlaceSearch>()
+
     private lateinit var searchEdit: EditText
     private  var clearButton: ImageView? = null
 
@@ -22,54 +29,26 @@ class PlaceSearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place_search)
 
-        initPlaceSearchList()
+        //initPlaceSearchList()
         clearText()
+        setRv()
+        //getPlaceSearch()
         //goToSearchStartPlaceActivity()
-
-    }
-
-    private fun initPlaceSearchList() {
-        placeSearchAdapter = PlaceSearchAdapter(
-            this
-        ).apply {
-            data = listOf(
-                GetPlaceData(
-                    "만수주공10단지아파트 1001동",
-                    "인천 남동구 만수동 1043 만수주공10단지아파트 1001",
-                    "장승남로 34"
-                ),
-                GetPlaceData(
-                    "만수주공10단지아파트 1002동",
-                    "인천 남동구 만수동 1043 만수주공10단지아파트 1002",
-                    "장승남로 34"
-                ),
-                GetPlaceData(
-                    "만수주공10단지아파트 1003동",
-                    "인천 남동구 만수동 1043 만수주공10단지아파트 1003",
-                    "장승남로 34"
-                ),
-                GetPlaceData(
-                    "만수주공10단지아파트 1004동",
-                    "인천 남동구 만수동 1043 만수주공10단지아파트 1004",
-                    "장승남로 34"
-                ),
-                GetPlaceData(
-                    "만수주공10단지아파트 1005동",
-                    "인천 남동구 만수동 1043 만수주공10단지아파트 1005",
-                    "장승남로 34"
-                ),
-                GetPlaceData(
-                    "만수주공10단지아파트 1006동",
-                    "인천 남동구 만수동 1043 만수주공10단지아파트 1006",
-                    "장승남로 34"
-                )
-            )
+        act_place_search_iv_search.setOnClickListener {
+           /* val intent = Intent(this@PlaceSearchActivity, PlaceSearchActivity::class.java)
+            startActivity(intent)*/
+            getPlaceSearch()
         }
-        //test용 데이터
-        act_place_search_rv.adapter = placeSearchAdapter
+
     }
 
-    private fun setData() {
+    private fun setRv(){
+        placeSearchAdapter = PlaceSearchAdapter(this)
+        act_place_search_rv.adapter = placeSearchAdapter
+        act_place_search_rv.layoutManager = LinearLayoutManager(this)
+    }
+
+    /*private fun setData() {
         //데이버 받아오는 함수
         if (placeDataList.isNullOrEmpty()) {
             act_place_search_iv_bird.visibility = View.VISIBLE
@@ -82,7 +61,7 @@ class PlaceSearchActivity : AppCompatActivity() {
 
         }
     }
-
+*/
 
     private fun clearText(){
         act_place_search_iv_delete.setOnClickListener {
@@ -104,4 +83,32 @@ class PlaceSearchActivity : AppCompatActivity() {
             )
     }
 */
+
+    private fun getPlaceSearch() {
+
+        val place = act_place_search_et_search.text.toString()
+
+        val callPlace: Call<PlaceResponse> = EarlyBuddyServiceImpl.service.getSearchAddress(
+            place
+        )
+
+        callPlace.enqueue(object : Callback<PlaceResponse> {
+            override fun onFailure(call: Call<PlaceResponse>, t: Throwable) {
+                Log.e("error is ", t.toString())
+            }
+
+            override fun onResponse(call: Call<PlaceResponse>, response: Response<PlaceResponse>) {
+                if (response.isSuccessful) {
+                    Log.e("result is ", response.body().toString())
+                    val place = response.body()!!.data
+
+                    placeSearchAdapter.replaceAll(place)
+                    placeSearchAdapter.notifyDataSetChanged()
+                }
+            }
+        })
+    }
+
+
+
 }

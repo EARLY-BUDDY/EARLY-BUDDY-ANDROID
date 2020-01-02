@@ -3,19 +3,15 @@ package com.devaon.early_buddy_android.feature.schedule
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.WindowManager
 import com.devaon.early_buddy_android.R
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat.startActivity
-import com.devaon.early_buddy_android.feature.place.select.PlaceSelectActivity
+import com.devaon.early_buddy_android.feature.place.select.PlaceDirectionsActivity
 import kotlinx.android.synthetic.main.activity_schdule.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -173,7 +169,7 @@ class ScheduleActivity : AppCompatActivity(){
         val placeClick = findViewById<ConstraintLayout>(R.id.act_schedule_cl_place_click)
 
         placeClick.setOnClickListener{
-            val intent = Intent(this@ScheduleActivity, PlaceSelectActivity::class.java)
+            val intent = Intent(this@ScheduleActivity, PlaceDirectionsActivity::class.java)
             startActivity(intent)
         }
     }

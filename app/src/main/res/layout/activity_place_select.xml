@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.place.select.PlaceSelectActivity">
+    tools:context=".feature.place.select.PlaceDirectionsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/act_place_search_route_cl_top"

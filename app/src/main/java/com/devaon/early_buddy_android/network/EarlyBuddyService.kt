@@ -50,6 +50,6 @@ interface EarlyBuddyService {
 
     @GET("/searchAddress")
     fun getSearchAddress(
-        @Query("addr") addr: Int
+        @Query("addr") addr: String
     ): Call<PlaceResponse>
 }

@@ -54,7 +54,7 @@ class RouteActivity : AppCompatActivity() {
 //            "SY" : "37.62072502768881",
 //            "EX" : "127.03746391719882",
 //            "EY" : "37.4720040276288",
-//        }
+//        }pathType
 
         callRoute.enqueue(object : Callback<RouteResponse> {
             override fun onFailure(call: Call<RouteResponse>, t: Throwable) {

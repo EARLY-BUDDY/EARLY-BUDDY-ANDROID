@@ -58,15 +58,15 @@
 
             <EditText
                 android:id="@+id/act_place_search_et_search"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
                 android:background="@null"
                 android:ems="10"
                 android:hint="장소검색"
-                android:textColor="@color/light_gray"
                 android:inputType="textPersonName"
+                android:textColor="@color/light_gray"
                 android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
