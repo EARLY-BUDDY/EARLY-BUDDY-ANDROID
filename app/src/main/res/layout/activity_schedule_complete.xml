@@ -15,6 +15,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/act_schedule_complete_iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_back"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/act_schedule_complete_tv_title"
+            app:layout_constraintBottom_toBottomOf="@id/act_schedule_complete_tv_title"/>
+
         <TextView
             android:id="@+id/act_schedule_complete_tv_title"
             android:layout_width="wrap_content"
@@ -30,6 +40,27 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/act_schedule_complete_iv_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_edit"
+            android:layout_marginEnd="14dp"
+            app:layout_constraintEnd_toStartOf="@id/act_schedule_complete_iv_delete"
+            app:layout_constraintTop_toTopOf="@+id/act_schedule_complete_tv_title"
+            app:layout_constraintBottom_toBottomOf="@+id/act_schedule_complete_tv_title"/>
+
+        <ImageView
+            android:id="@+id/act_schedule_complete_iv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_delete"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/act_schedule_complete_tv_title"
+            app:layout_constraintBottom_toBottomOf="@id/act_schedule_complete_tv_title"/>
+
         <ImageView
             android:layout_width="370dp"
             android:layout_height="73dp"
@@ -250,7 +281,7 @@
                     <include
                         android:id="@+id/act_schedule_complete_route_cl_route"
                         layout="@layout/activity_schedule_route"
-                        android:layout_width="328dp"
+                        android:layout_width="323dp"
                         android:layout_height="wrap_content" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
