@@ -101,33 +101,39 @@ class HomeActivity : AppCompatActivity() {
                             val nextTransStartTime =
                                 homeScheduleResponse.homeSchedule.nextTransArriveTime
 
-                            val nextTransTime = LocalDateTime.of(
-                                Integer.valueOf(nextTransStartTime.substring(0, 4)),      //년
-                                Integer.valueOf(nextTransStartTime.substring(5, 7)),      //월
-                                Integer.valueOf(nextTransStartTime.substring(8, 10)),      //일
-                                Integer.valueOf(nextTransStartTime.substring(11, 13)),    //시간
-                                Integer.valueOf(nextTransStartTime.substring(14, 16)),    //분
-                                Integer.valueOf(nextTransStartTime.substring(17, 19))     //초
-                            )
-                            if (nextTransTime.minusHours(nowDate.hour.toLong()).hour >= 1) {
-                                if (nextTransTime.minute - nowDate.minute < 0) {
-                                    act_home_tv_next_bus_var.text = String.format(
-                                        "%d분전",
-                                        60 + (nextTransTime.minute - nowDate.minute)
-                                    )
+                            if(nextTransStartTime != null){
+
+                                val nextTransTime = LocalDateTime.of(
+                                    Integer.valueOf(nextTransStartTime.substring(0, 4)),      //년
+                                    Integer.valueOf(nextTransStartTime.substring(5, 7)),      //월
+                                    Integer.valueOf(nextTransStartTime.substring(8, 10)),      //일
+                                    Integer.valueOf(nextTransStartTime.substring(11, 13)),    //시간
+                                    Integer.valueOf(nextTransStartTime.substring(14, 16)),    //분
+                                    Integer.valueOf(nextTransStartTime.substring(17, 19))     //초
+                                )
+
+                                if (nextTransTime.minusHours(nowDate.hour.toLong()).hour >= 1) {
+                                    if (nextTransTime.minute - nowDate.minute < 0) {
+                                        act_home_tv_next_bus_var.text = String.format(
+                                            "%d분전",
+                                            60 + (nextTransTime.minute - nowDate.minute)
+                                        )
+                                    } else {
+                                        act_home_tv_next_bus_var.text = String.format(
+                                            "%d시간전",
+                                            nextTransTime.minusHours(nowDate.hour.toLong()).hour
+                                        )
+                                    }
+
                                 } else {
                                     act_home_tv_next_bus_var.text = String.format(
-                                        "%d시간전",
-                                        nextTransTime.minusHours(nowDate.hour.toLong()).hour
+                                        "%d분전",
+                                        nextTransTime.minusMinutes(nowDate.minute.toLong()).minute
                                     )
                                 }
 
-                            } else {
-                                act_home_tv_next_bus_var.text = String.format(
-                                    "%d분전",
-                                    nextTransTime.minusMinutes(nowDate.minute.toLong()).minute
-                                )
                             }
+
 
                             when (homeScheduleResponse.homeSchedule.firstTrans.trafficType) {
                                 1 -> {      //지하철
