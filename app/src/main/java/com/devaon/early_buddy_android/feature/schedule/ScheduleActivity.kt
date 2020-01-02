@@ -234,6 +234,16 @@ class ScheduleActivity : AppCompatActivity(){
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
 
+
+        val totalTime = 115.0
+        val firstWalkTime = 10.0
+        val secondWalkTime = 10.0
+        val thirdWalkTime = 5.0
+        val method1Time = 50.0
+        val method2Time = 20.0
+        val method3Time = 18.0
+
+
 //        val totalTime = 115.0
 //        val firstWalkTime = 10.0
 //        val secondWalkTime = 10.0
