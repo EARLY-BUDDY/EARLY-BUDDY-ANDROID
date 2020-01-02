@@ -12,10 +12,7 @@ data class ScheduleData(
     @SerializedName("scheduleInfo")
     val scheduleInfo:ScheduleInfo,
     @SerializedName("path")
-    val pathInfo:PathInfo,
-    @SerializedName("subPath")
-    val subPath:ArrayList<SubPath>
-
+    val pathInfo:PathInfo
 )
 data class ScheduleInfo(
 
@@ -52,7 +49,9 @@ data class PathInfo(
     @SerializedName("totalWalkTime")
     val totalWalkTime :Int,
     @SerializedName("transitCount")
-    val transitCount :Int
+    val transitCount :Int,
+    @SerializedName("subPath")
+    val subPath:ArrayList<SubPath>
 )
 
 data class SubPath(
