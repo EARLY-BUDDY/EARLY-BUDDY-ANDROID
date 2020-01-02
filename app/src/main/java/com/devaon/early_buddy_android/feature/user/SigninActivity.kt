@@ -66,6 +66,7 @@ class SigninActivity : AppCompatActivity() {
                 Login.setUser(this, id)
                 val intent = Intent(this@SigninActivity, SetNicknameActivity::class.java).apply {
                     setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    finish()
                 }
                 startActivity(intent)
             } else {

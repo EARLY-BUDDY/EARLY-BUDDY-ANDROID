@@ -53,6 +53,7 @@ class PlaceFavoriteActivity : AppCompatActivity() {
         act_place_favorite_tv_skip.setOnClickListener {
             val intent = Intent(this@PlaceFavoriteActivity, SetCompleteActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         act_place_favorite_tv.setOnClickListener {

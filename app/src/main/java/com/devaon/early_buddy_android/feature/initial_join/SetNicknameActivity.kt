@@ -67,6 +67,7 @@ class SetNicknameActivity : AppCompatActivity() {
             if (patternNickName.matcher(act_set_nickname_et_id.text.toString()).matches()) {
                 val intent = Intent(this@SetNicknameActivity, PlaceFavoriteActivity::class.java)
                 startActivity(intent)
+                finish()
             }else{
                 Toast.makeText(this@SetNicknameActivity, "한글만 입력해주세요", Toast.LENGTH_SHORT).show()
             }
