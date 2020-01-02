@@ -4,6 +4,7 @@ import com.devaon.early_buddy_android.data.calendar.CalendarResponse
 import com.devaon.early_buddy_android.data.place.PlaceResponse
 import com.devaon.early_buddy_android.data.route.RouteResponse
 import com.devaon.early_buddy_android.data.schedule.HomeScheduleResponse
+import com.devaon.early_buddy_android.data.schedule.PostScheduleData
 import com.devaon.early_buddy_android.data.user.UserResponse
 import com.google.gson.JsonObject
 import retrofit2.Call
@@ -52,4 +53,9 @@ interface EarlyBuddyService {
     fun getSearchAddress(
         @Query("addr") addr: String
     ): Call<PlaceResponse>
+
+    @POST("/schedules")
+    fun postSchedule(
+        @Body() body:JsonObject
+    ): Call<PostScheduleData>
 }

@@ -1,12 +1,18 @@
 package com.devaon.early_buddy_android.feature.place.select
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.View
+import androidx.fragment.app.Fragment
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.place.PlaceSearch
 import com.devaon.early_buddy_android.feature.place.search.text.PlaceSearchAdapter
 import kotlinx.android.synthetic.main.activity_place_select.*
+import kotlinx.android.synthetic.main.fragment_place_select.*
 
 
 class PlaceDirectionsActivity : AppCompatActivity() {
@@ -14,11 +20,65 @@ class PlaceDirectionsActivity : AppCompatActivity() {
     private lateinit var placeSelectAdapter: PlaceSearchAdapter
     private var placeDataList = ArrayList<PlaceSearch>()
 
+    lateinit var nowFragment : Fragment
+    val TAG : String = "PlaceDirectionsAct"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place_select)
 
+        // 글자 하나 바뀔 때마다 실행되는 EditText 메서
+        act_place_search_route_et_engine_from.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                getData()
+                Log.v(TAG, "글자 변경")
+            }
+
+        })
+
+        act_place_search_route_tv_engine_from.setOnClickListener {
+            changeFragment("select")
+        }
+
+        act_place_search_route_tv_engine_to.setOnClickListener {
+            changeFragment("search")
+        }
+
         //initPlaceSearchList()
+    }
+
+    fun getData(){
+
+    }
+
+
+    // Fragment Replace 하는 메서드
+    fun changeFragment(frag : String) {
+
+        Log.v("PlaceDetailAct", "프래그먼트 체인지")
+        when(frag){
+            "select" -> {
+                Log.v("PlaceDetailAct", "프래그먼트 select로 체인지")
+
+                nowFragment = PlaceSelectFragment()
+            }
+            "search" -> {
+                Log.v("PlaceDetailAct", "프래그먼트 search로 체인지")
+                nowFragment = PlaceSearchRouteFragment()
+            }
+        }
+
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.act_place_select_fl_content, nowFragment)
+        transaction.commit()
     }
 
 
