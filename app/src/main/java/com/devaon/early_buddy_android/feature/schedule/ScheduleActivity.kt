@@ -33,6 +33,15 @@ class ScheduleActivity : AppCompatActivity(){
     var cal = Calendar.getInstance()
     var arriveCount = 0
     var noticeMin = 0
+    var weekdays = arrayListOf<Int>()
+    lateinit var mon: ImageView
+    lateinit var tue: ImageView
+    lateinit var wed: ImageView
+    lateinit var thu: ImageView
+    lateinit var fri: ImageView
+    lateinit var sat: ImageView
+    lateinit var sun: ImageView
+
 
     object schedulePlace {
         var startPlaceName = ""
@@ -43,7 +52,6 @@ class ScheduleActivity : AppCompatActivity(){
         var endPlaceY = 0.0
     }
 
-
     object scheduleUserPath {
         lateinit var userPath : UserPath
     }
@@ -51,6 +59,14 @@ class ScheduleActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schdule)
+
+        mon = findViewById(R.id.act_schedule_iv_mon)
+        tue = findViewById(R.id.act_schedule_iv_tue)
+        wed = findViewById(R.id.act_schedule_iv_wed)
+        thu = findViewById(R.id.act_schedule_iv_thu)
+        fri = findViewById(R.id.act_schedule_iv_fri)
+        sat = findViewById(R.id.act_schedule_iv_sat)
+        sun = findViewById(R.id.act_schedule_iv_sun)
 
 
         setCurrentDate()
@@ -154,14 +170,6 @@ class ScheduleActivity : AppCompatActivity(){
     }
 
     fun setWeekPressed(){
-
-        val mon: ImageView = findViewById(R.id.act_schedule_iv_mon)
-        val tue: ImageView = findViewById(R.id.act_schedule_iv_tue)
-        val wed: ImageView = findViewById(R.id.act_schedule_iv_wed)
-        val thu: ImageView = findViewById(R.id.act_schedule_iv_thu)
-        val fri: ImageView = findViewById(R.id.act_schedule_iv_fri)
-        val sat: ImageView = findViewById(R.id.act_schedule_iv_sat)
-        val sun: ImageView = findViewById(R.id.act_schedule_iv_sun)
 
         mon.setOnClickListener {
             if(mon.isSelected){
@@ -295,10 +303,19 @@ class ScheduleActivity : AppCompatActivity(){
 
         var jsonObject = JSONObject()
         jsonObject.put("scheduleName", scheName)
+        jsonObject.put("scheduleStartTime", SimpleDateFormat("HH:mm").format(cal.time))
+        jsonObject.put("scheduleStartDay", SimpleDateFormat("yyyy-MM-dd").format(cal.time))
         jsonObject.put("arriveCount", arriveCount)
         jsonObject.put("noticeMin", noticeMin)
-        jsonObject.put("scheduleStartDay", SimpleDateFormat("yyyy-MM-dd").format(cal.time))
-        jsonObject.put("scheduleStartTime", SimpleDateFormat("HH:mm").format(cal.time))
+
+        if (mon.isSelected) weekdays.add(0)
+        if (tue.isSelected) weekdays.add(1)
+        if (wed.isSelected) weekdays.add(2)
+        if (thu.isSelected) weekdays.add(3)
+        if (fri.isSelected) weekdays.add(4)
+        if (sat.isSelected) weekdays.add(5)
+        if (sun.isSelected) weekdays.add(6)
+        jsonObject.put("weekdays", weekdays)
 
         val body = JsonParser().parse(jsonObject.toString()) as JsonObject
 
