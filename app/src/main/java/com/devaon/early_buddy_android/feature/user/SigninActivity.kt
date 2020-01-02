@@ -13,12 +13,21 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.login.Login
+import com.devaon.early_buddy_android.data.user.UserResponse
 import com.devaon.early_buddy_android.feature.home.HomeActivity
 import com.devaon.early_buddy_android.feature.initial_join.SetNicknameActivity
+import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_signin.*
 import kotlinx.android.synthetic.main.activity_signup.*
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SigninActivity : AppCompatActivity() {
+
     private var idFlag: Boolean = false
     private var pwFlag: Boolean = false
 
@@ -31,8 +40,7 @@ class SigninActivity : AppCompatActivity() {
         if (id.isNotEmpty()) { // 만약 nickname 설정 안되어 있다면, goToNicknameActivity
             goToHomeActivity(id)
             finish()
-        }
-*/
+        }*/
         makeController()
 
     }
@@ -54,12 +62,8 @@ class SigninActivity : AppCompatActivity() {
 
             val response = requestLogin(id, pw)
             if (response) {
-                /*val checkBox: CheckBox = findViewById(R.id.act_signin_auto_checkbox)
-                if (checkBox.isChecked) {
-                    Login.setUser(this, id)
-                    goToHomeActivity(id)
-                }*/
-
+                //postUserData(id, pw)
+                Login.setUser(this, id)
                 val intent = Intent(this@SigninActivity, SetNicknameActivity::class.java).apply {
                     setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 }
@@ -70,8 +74,6 @@ class SigninActivity : AppCompatActivity() {
             }
         }
 
-
-
         act_signin_bt_signup?.setOnClickListener {
             val intent = Intent(this@SigninActivity, SignupActivity::class.java)
             startActivity(intent)
@@ -80,6 +82,33 @@ class SigninActivity : AppCompatActivity() {
 
     private fun requestLogin(id: String, pw: String): Boolean {
         return true
+    }
+
+    private fun postUserData(id : String, pw : String) {
+
+        var jsonObject = JSONObject()
+        jsonObject.put("userId", id)
+        jsonObject.put("userPw", pw)
+
+        val body = JsonParser().parse(jsonObject.toString()) as JsonObject
+
+        val callSigninResponse: Call<UserResponse> = EarlyBuddyServiceImpl.service.postSigninUser(
+            body
+        )
+
+        callSigninResponse.enqueue(object : Callback<UserResponse> {
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                Log.e("error is ", t.toString())
+            }
+
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                if (response.isSuccessful) {
+                    Log.e("result is ", response.body().toString())
+                    val signinUser = response.body()!!
+                }
+            }
+        })
+
     }
 
     private fun goToHomeActivity(id: String) {

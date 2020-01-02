@@ -1,5 +1,8 @@
 package com.devaon.early_buddy_android.feature.user
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -35,5 +38,11 @@ class SigninDialogFragment : DialogFragment1(){
     override fun dismiss() {
         listener.onDialogDismissed()
         super.dismiss()
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return super.onCreateDialog(savedInstanceState).apply {
+            window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        }
     }
 }

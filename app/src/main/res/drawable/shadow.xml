@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- Drop Shadow Stack -->
+    <item>
+        <shape>
+            <padding
+                android:bottom="2dp"/>
+
+            <solid android:color="#10999999" />
+
+            <corners
+                android:bottomRightRadius="30dp"
+                android:bottomLeftRadius="30dp"/>
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="2dp"/>
+
+            <solid android:color="#20999999" />
+
+
+            <corners
+                android:bottomRightRadius="30dp"
+                android:bottomLeftRadius="30dp"/>
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="2dp" />
+
+            <solid android:color="#30999999" />
+
+
+            <corners
+                android:bottomRightRadius="30dp"
+                android:bottomLeftRadius="30dp"/>
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding
+                android:bottom="2dp" />
+
+            <solid android:color="#40999999" />
+
+
+            <corners
+                android:bottomRightRadius="30dp"
+                android:bottomLeftRadius="30dp"/>
+        </shape>
+    </item>
+    <item>
+        <shape>
+
+            <solid android:color="#50999999" />
+
+
+            <corners
+                android:bottomRightRadius="30dp"
+                android:bottomLeftRadius="30dp"/>
+        </shape>
+    </item>
+    <item>
+        <shape>
+
+            <solid android:color="#60999999" />
+
+
+            <corners
+                android:bottomRightRadius="30dp"
+                android:bottomLeftRadius="30dp"/>
+        </shape>
+    </item>
+
+
+    <!-- Background -->
+    <item>
+        <shape>
+            <solid android:color="@android:color/white" />
+
+            <corners
+                android:bottomRightRadius="30dp"
+                android:bottomLeftRadius="30dp"/>
+        </shape>
+    </item>
+
+</layer-list>

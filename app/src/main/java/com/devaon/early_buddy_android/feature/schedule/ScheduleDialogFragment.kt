@@ -31,7 +31,7 @@ class ScheduleDialogFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dialog_fragment_sche_pop_up_tv_check.setOnClickListener {
-            var goToCheck = Intent(this@ScheduleDialogFragment.context, ScheduleCompleteActvity::class.java)
+            var goToCheck = Intent(this@ScheduleDialogFragment.context, ScheduleCompleteActivity::class.java)
             startActivity(goToCheck)
         }
         dialog_fragment_sche_pop_up_tv_home.setOnClickListener {

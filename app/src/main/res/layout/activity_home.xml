@@ -70,59 +70,81 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/act_home_cl_top_bar" />
 
-    <TextView
-        android:id="@+id/act_home_tv_arrive_text"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/act_home_cl_middle_bar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:letterSpacing="-0.05"
-        android:layout_marginBottom="42.5dp"
-        android:lineHeight="34sp"
-        android:lineSpacingExtra="11sp"
-        android:text="버스도착까지"
-        android:textColor="#313131"
-        android:textSize="23sp"
-        app:layout_constraintBottom_toTopOf="@+id/act_home_line"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="27dp"
+        app:layout_constraintEnd_toEndOf="@+id/act_home_line"
+        app:layout_constraintStart_toStartOf="@+id/act_home_iv_text"
+        app:layout_constraintTop_toBottomOf="@+id/act_home_iv_text">
 
-    <TextView
-        android:id="@+id/act_home_tv_before_minute"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:letterSpacing="-0.05"
-        android:lineSpacingExtra="12sp"
-        android:text="분전"
-        android:textColor="#313131"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/act_home_tv_arrive_text"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:id="@+id/act_home_tv_arrive_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="19dp"
+            android:letterSpacing="-0.05"
+            android:lineHeight="34sp"
+            android:lineSpacingExtra="11sp"
+            android:text="버스도착까지"
+            android:textColor="#313131"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/act_home_tv_minute_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:letterSpacing="-0.05"
-        android:lineSpacingExtra="41sp"
-        android:text="9"
-        android:layout_marginBottom="25.5dp"
-        android:textColor="#313131"
-        android:textSize="85sp"
-        app:layout_constraintBottom_toTopOf="@+id/act_home_line"
-        app:layout_constraintEnd_toStartOf="@+id/act_home_tv_before_minute" />
+        <TextView
+            android:id="@+id/act_home_tv_before_minute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="12sp"
+            android:text="분전"
+            android:textColor="#313131"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="@+id/act_home_tv_arrive_text"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/act_home_tv_minute_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="41sp"
+            android:text="9"
+            android:textColor="#313131"
+            android:textSize="85sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/act_home_tv_before_minute" />
+
+        <TextView
+            android:id="@+id/act_home_tv_soon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="24sp"
+            android:text="곧 도착"
+            android:textColor="#ff6e6e"
+            android:textSize="50sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/act_home_tv_arrive_text"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <TextView
         android:id="@+id/act_home_tv_bus_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="@drawable/act_home_round_riding_number"
         android:lineSpacingExtra="6sp"
         android:text="2224"
+        android:layout_marginBottom="14.5dp"
         android:textColor="#ffffff"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@id/act_home_tv_arrive_text"
-        app:layout_constraintTop_toBottomOf="@id/act_home_tv_arrive_text" />
+        app:layout_constraintBottom_toBottomOf="@+id/act_home_line"
+        app:layout_constraintStart_toStartOf="@id/act_home_iv_text" />
 
     <TextView
         android:id="@+id/act_home_tv_bus_current_location"
@@ -142,10 +164,11 @@
         android:id="@+id/act_homme_iv_reboot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:src="@drawable/ic_reboot"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/act_home_tv_bus_number"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/act_home_line"
         app:layout_constraintTop_toTopOf="@+id/act_home_tv_bus_number" />
 
     <TextView
@@ -169,9 +192,12 @@
         android:layout_marginEnd="5dp"
         android:letterSpacing="-0.05"
         android:lineSpacingExtra="6sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:text="22분전"
         android:textColor="#000000"
         android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/act_home_tv_next_bus"
         app:layout_constraintEnd_toStartOf="@id/act_homme_iv_reboot"
         app:layout_constraintTop_toTopOf="@id/act_home_tv_next_bus" />
 
@@ -195,7 +221,7 @@
         android:text="SPOT 데모데이"
         android:textColor="#313131"
         android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/act_home_tv_arrive_text"
+        app:layout_constraintStart_toStartOf="@+id/act_home_line"
         app:layout_constraintTop_toBottomOf="@+id/act_home_line" />
 
     <ImageView
@@ -222,6 +248,7 @@
         app:layout_constraintTop_toTopOf="@id/act_home_iv_second_time" />
 
     <TextView
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:letterSpacing="-0.03"
@@ -260,7 +287,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="41.9dp"
         android:src="@drawable/ic_detail"
-        app:layout_constraintEnd_toEndOf="@+id/act_home_tv_before_minute"
+        app:layout_constraintEnd_toEndOf="@+id/act_home_line"
         app:layout_constraintTop_toBottomOf="@id/act_home_line" />
 
 

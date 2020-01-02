@@ -16,11 +16,14 @@ class PlaceFavoriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place_favorite)
 
-        selectPlaceController()
-        makeRegisterController()
-
+        init()
     }
 
+    private fun init(){
+        selectIconController()
+        selectPlaceController()
+        makeRegisterController()
+    }
 
     private fun makeRegisterController() {
         act_place_favorite_tv_skip.setOnClickListener {
@@ -37,7 +40,6 @@ class PlaceFavoriteActivity : AppCompatActivity() {
 
 
     private fun selectPlaceController() {
-
         act_place_favorite_cl_register_first.setOnClickListener {
             val intent = Intent(this@PlaceFavoriteActivity, PlaceSearchActivity::class.java)
             startActivity(intent)
@@ -61,15 +63,15 @@ class PlaceFavoriteActivity : AppCompatActivity() {
         val placeFavoriteDialog = PlaceFavoriteDialogFragment()
         placeFavoriteDialog.setOnDialogDismissedListener(PlaceFavoriteDialogFragmentDismissListener)
 
-        dialog_fragment_place_favorite_iv_select_one.setOnClickListener {
+        act_place_favorite_cl_register_first.setOnClickListener {
             placeFavoriteDialog.show(supportFragmentManager,"select_icon_first")
         }
 
-        dialog_fragment_place_favorite_iv_select_two.setOnClickListener {
+        act_place_favorite_cl_register_second.setOnClickListener {
             placeFavoriteDialog.show(supportFragmentManager,"select_icon_second")
         }
 
-        dialog_fragment_place_favorite_iv_select_three.setOnClickListener {
+        act_place_favorite_cl_register_third.setOnClickListener {
             placeFavoriteDialog.show(supportFragmentManager,"select_icon_third")
         }
 
