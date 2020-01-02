@@ -39,7 +39,7 @@ data class SubPath(
     @SerializedName("stationCount")
     val stationCount: Int,
     @SerializedName("lane")
-    val lane: ArrayList<LaneList>,
+    val lane: Lane,
     @SerializedName("startName")
     var startName: String,
     @SerializedName("startX")
@@ -62,7 +62,7 @@ data class SubPath(
     var clicked: Boolean
 )
 
-data class LaneList(
+data class Lane(
     @SerializedName("name")
     val laneName: String,
     @SerializedName("subwayCode")

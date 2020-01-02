@@ -3,14 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/act_place_search_route_cl_top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
+        android:elevation="5dp"
         android:background="@color/main_color"
-        android:paddingVertical="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -27,10 +28,9 @@
             android:id="@+id/act_place_select_tv_ment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
             android:gravity="center"
             android:text="장소선택"
+            android:fontFamily="@font/noto_sans_kr_bold"
             android:textColor="@color/white"
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -40,69 +40,25 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/act_place_search_route_cl_gray"
-        android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:background="#f8f8f8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_place_search_route_cl_top">
-
-        <TextView
-            android:id="@+id/act_place_search_route_tv_sche_day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="146dp"
-            android:text="일정 날짜"
-            android:textColor="@color/gray"
-            android:textSize="13sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/act_place_search_route_tv_sche_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="일정 시간"
-            android:textColor="@color/main_color"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/act_place_search_route_tv_sche_day"
-            app:layout_constraintTop_toBottomOf="@+id/act_place_search_route_tv_sche_day" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="도착"
-            android:textColor="@color/gray"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/act_place_search_route_tv_sche_time"
-            app:layout_constraintTop_toTopOf="@id/act_place_search_route_tv_sche_time" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+        android:elevation="5dp"
         android:id="@+id/act_place_search_route_cl_engine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/act_place_round_left_bottom_rect_blue_full"
         android:paddingTop="15dp"
-        android:paddingBottom="30dp"
+        android:paddingBottom="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/act_place_search_route_cl_top">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/act_place_search_route_engine_from"
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:background="@drawable/act_place_round_rect_white_full"
-            android:paddingStart="17dp"
-            android:paddingTop="6dp"
-            android:paddingBottom="8dp"
+            android:paddingStart="16dp"
+            android:paddingVertical="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -112,8 +68,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="출발 : "
-                android:textColor="@color/black"
-                android:textSize="12sp"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:textColor="@color/gray"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -126,9 +83,10 @@
                 android:background="@null"
                 android:ems="10"
                 android:hint="출발지 검색"
+                android:fontFamily="@font/noto_sans_kr_regular"
                 android:inputType="textPersonName"
                 android:textColor="@color/light_gray"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@+id/act_place_search_route_tv_engine_from"
                 app:layout_constraintStart_toEndOf="@+id/act_place_search_route_tv_engine_from"
                 app:layout_constraintTop_toTopOf="@+id/act_place_search_route_tv_engine_from"
@@ -139,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
-                android:src="@drawable/ic_delete"
+                android:src="@drawable/ic_cancel_start"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -149,14 +107,13 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/act_place_search_route_cl_engine_to"
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="9dp"
-
             android:background="@drawable/act_place_round_rect_white_full"
-            android:paddingStart="17dp"
-            android:paddingTop="6dp"
-            android:paddingBottom="8dp"
+            android:paddingStart="16dp"
+            android:paddingVertical="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.492"
@@ -168,8 +125,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="도착 : "
-                android:textColor="@color/black"
-                android:textSize="12sp"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:textColor="@color/gray"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -181,10 +139,11 @@
                 android:layout_marginStart="3dp"
                 android:background="@null"
                 android:ems="10"
+                android:fontFamily="@font/noto_sans_kr_regular"
                 android:hint="도착지 검색"
                 android:inputType="textPersonName"
                 android:textColor="@color/light_gray"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@+id/act_place_search_route_tv_engine_to"
                 app:layout_constraintStart_toEndOf="@+id/act_place_search_route_tv_engine_to"
                 app:layout_constraintTop_toTopOf="@+id/act_place_search_route_tv_engine_to" />
@@ -193,16 +152,72 @@
                 android:id="@+id/act_place_search_route_iv_engine_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_marginEnd="12dp"
-                android:src="@drawable/ic_delete"
+                android:src="@drawable/ic_cancel_start"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#f5f5f5"
+        android:elevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/act_place_search_route_cl_gray"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/act_place_search_route_cl_gray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f5f5f5"
+        android:paddingBottom="10dp"
+        android:elevation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/act_place_search_route_cl_engine">
+
+        <TextView
+            android:id="@+id/act_place_search_route_tv_sche_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            android:text="일정 날짜"
+            android:fontFamily="@font/noto_sans_kr_medium"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/act_place_search_route_tv_sche_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="일정 시간"
+            android:fontFamily="@font/noto_sans_kr_medium"
+            android:textColor="@color/main_color"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/act_place_search_route_tv_sche_day"
+            app:layout_constraintTop_toBottomOf="@+id/act_place_search_route_tv_sche_day" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="도착"
+            android:fontFamily="@font/noto_sans_kr_medium"
+            android:textColor="@color/gray"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/act_place_search_route_tv_sche_time"
+            app:layout_constraintTop_toTopOf="@id/act_place_search_route_tv_sche_time" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <ImageView
         android:id="@+id/act_place_select_iv_bird"
@@ -218,9 +233,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/act_place_search_route_rv"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@+id/act_place_search_route_cl_gray"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
