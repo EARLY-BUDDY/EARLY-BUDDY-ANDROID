@@ -46,7 +46,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun homeNetwork() {
 
-        val callRoute: Call<HomeScheduleResponse> = EarlyBuddyServiceImpl.service.getHomeSchedule(8)
+        val callRoute: Call<HomeScheduleResponse> = EarlyBuddyServiceImpl.service.getHomeSchedule(7)
 
         callRoute.enqueue(object : Callback<HomeScheduleResponse> {
             override fun onFailure(call: Call<HomeScheduleResponse>, t: Throwable) {
@@ -79,7 +79,7 @@ class HomeActivity : AppCompatActivity() {
                             act_home_tv_arrive_text.text = "오늘 일정까지"
                             var bottomParams =
                                 act_home_cl_middle_bar.layoutParams  as? ConstraintLayout.LayoutParams
-                            bottomParams?.topMargin = 180
+                            bottomParams?.topMargin = 90
                             act_home_cl_middle_bar.layoutParams = bottomParams
 
                             viewGone()
@@ -516,6 +516,10 @@ class HomeActivity : AppCompatActivity() {
                         }
                     }
                 } else if (promiseTime.minusDays(nowDate.dayOfMonth.toLong()).dayOfMonth <= 7) {      //7일 이하 일 때
+                    var bottomParams =
+                        act_home_cl_middle_bar.layoutParams  as? ConstraintLayout.LayoutParams
+                    bottomParams?.topMargin = 90
+                    act_home_cl_middle_bar.layoutParams = bottomParams
                     act_home_tv_arrive_text.text = "다음 일정까지"
                     viewGone()
                     act_home_tv_before_minute.text = "일 전"
