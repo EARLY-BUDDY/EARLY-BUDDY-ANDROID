@@ -4,11 +4,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.data.user.UserResponse
+import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_set_nickname.*
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.regex.Pattern
 
 
@@ -24,6 +33,10 @@ class SetNicknameActivity : AppCompatActivity() {
     }
 
     private fun makeController() {
+
+        val id = act_set_nickname_et_id.text.toString()
+        postUserNicknameData(id)
+
 
         act_set_nickname_et_id.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
@@ -47,6 +60,7 @@ class SetNicknameActivity : AppCompatActivity() {
         })
 
 
+
         act_set_nickname_cl_join?.setOnClickListener {
             val patternNickName: Pattern = Pattern.compile("^[ㄱ-ㅣ가-힣]*$")
 
@@ -62,9 +76,31 @@ class SetNicknameActivity : AppCompatActivity() {
 
     }
 
+    private fun postUserNicknameData(userName : String) {
 
+        var jsonObject = JSONObject()
+        jsonObject.put("userName", userName)
 
+        val body = JsonParser().parse(jsonObject.toString()) as JsonObject
 
+        val callUserNicknameResponse: Call<UserResponse> = EarlyBuddyServiceImpl.service.postNicknameUser(
+            body
+        )
+
+        callUserNicknameResponse.enqueue(object : Callback<UserResponse> {
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                Log.e("error is ", t.toString())
+            }
+
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                if (response.isSuccessful) {
+                    Log.e("result is ", response.body().toString())
+                    val NicknameUser = response.body()!!
+                }
+            }
+        })
+
+    }
 
 
 
