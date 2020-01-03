@@ -151,6 +151,11 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
             Log.e("path", path)
 
             val intent = Intent(this@PlaceSearchRouteActivity, RouteActivity::class.java)
+            intent.putExtra("totalTime",routes[position].totalTime)
+            intent.putExtra("totalPay",routes[position].totalPay)
+            intent.putExtra("transitCount",routes[position].transitCount)
+            intent.putExtra("totalWalkTime",routes[position].totalWalkTime)
+            intent.putExtra("pathType",routes[position].pathType)
             startActivity(intent)
 
         }

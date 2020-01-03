@@ -25,13 +25,14 @@ class HomeRouteAdapter(
 
     private lateinit var homeRouteDetailAdapter: HomeRouteDetailAdapter
     var routeList: ArrayList<SubPath> = ArrayList()
-
+    var a = ""
     //경로데이터 넣기
-    fun setRouteItem(newRouteList: ArrayList<SubPath>) {
+    fun setRouteItem(newRouteList: ArrayList<SubPath>,endAddress:String) {
         with(routeList) {
             clear()
             addAll(newRouteList)
         }
+        a=endAddress
         notifyDataSetChanged()
     }
 
@@ -165,8 +166,12 @@ class HomeRouteAdapter(
                             2 -> {
                                 holder.walkStartPoint.text =
                                     String.format("%s 하차", routeList[position - 1].detailEndAddress)
+
                             }
+
                         }
+                        holder.walkEndPoint.text =
+                            String.format("%s까지 걷기", a)
                     }
                     //중간
                     else -> {

@@ -151,7 +151,6 @@ class SigninActivity : AppCompatActivity() {
                 Log.e("error is ", t.toString())
             }
 
-]]
             override fun onResponse(call: Call<UserSigninResponse>, response: Response<UserSigninResponse>) {
                 Log.e("result is ", response.body().toString())
                 if(response.body() == null){
@@ -159,7 +158,8 @@ class SigninActivity : AppCompatActivity() {
                     return
                 }
                 val signInUser = response.body()!!
-
+                Information.idx = signInUser.data.Idx
+                Log.e("idsseewaqw",Information.idx.toString())
                 Login.setToken(this@SigninActivity, signInUser.data.jwt)
 
 
@@ -174,7 +174,7 @@ class SigninActivity : AppCompatActivity() {
                 }else {
                     getIntentToken()
                 }
-                Information.idx = signInUser.data.Idx
+
             }
         })
     }
