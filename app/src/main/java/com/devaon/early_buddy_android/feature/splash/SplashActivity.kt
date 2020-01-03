@@ -30,24 +30,26 @@ class SplashActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             //아이디 있을 경우. 자동로그인인 경우
-            if (id.isNotEmpty()) {
-                Log.d("test", "id : "+ id) //자동로그인 됨
-                //통신
-                //닉네임 있으면 --> 체크해야함
-                if(nickName.isNotEmpty()){
-                    //홈
-                    goToHomeActivity()
-                    finish()
-                }else{ //닉네임 없으면 설정하러
-                    goToSetNickNameActivity()
-                    finish()
-                }
-            }
-            //아이디 없을 경우. 자동로그인 아닌 경우
-            else{//회원가입하러
-                goToSigninActivity()
-                finish()
-            }
+//            if (id.isNotEmpty()) {
+//                Log.d("test", "id : "+ id) //자동로그인 됨
+//                //통신
+//                //닉네임 있으면 --> 체크해야함
+//                if(nickName.isNotEmpty()){
+//                    //홈
+//                    goToHomeActivity()
+//                    finish()
+//                }else{ //닉네임 없으면 설정하러
+//                    goToSetNickNameActivity()
+//                    finish()
+//                }
+//            }
+//            //아이디 없을 경우. 자동로그인 아닌 경우
+//            else{//회원가입하러
+//                goToSigninActivity()
+//                finish()
+//            }
+            goToSigninActivity()
+
         }, SPLASH_TIME_OUT)
 
         val animationView = findViewById<LottieAnimationView>(R.id.act_splash_av)

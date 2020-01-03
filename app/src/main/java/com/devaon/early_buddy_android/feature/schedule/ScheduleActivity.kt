@@ -315,7 +315,6 @@ class ScheduleActivity : AppCompatActivity(){
 //        method3Params.marginStart = method3Margin
 //        method3.layoutParams = method3Params
 
-    }
 
     private fun setPostButton(){
         act_schedule_tv_register.setOnClickListener {

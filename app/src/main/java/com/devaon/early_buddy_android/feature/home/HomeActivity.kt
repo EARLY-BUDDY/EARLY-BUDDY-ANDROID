@@ -40,6 +40,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         Log.e("idx ",Information.idx.toString())
+        Log.e("nickname ",Information.nickName.toString())
         reboot()
         intent()
         homeNetwork()
