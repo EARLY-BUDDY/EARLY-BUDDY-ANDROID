@@ -38,7 +38,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class ScheduleActivity : AppCompatActivity(){
+class ScheduleActivity : AppCompatActivity() {
     var cal = Calendar.getInstance()
     var arriveCount = 0
     var noticeMin = 0
@@ -47,7 +47,7 @@ class ScheduleActivity : AppCompatActivity(){
 
     lateinit var route: TextView
     lateinit var routeSelect: TextView
-  
+
     lateinit var mon: ImageView
     lateinit var tue: ImageView
     lateinit var wed: ImageView
@@ -59,10 +59,10 @@ class ScheduleActivity : AppCompatActivity(){
     lateinit var time: TextView
     lateinit var method: TextView
 
-    lateinit var walk1 : RelativeLayout
-    lateinit var walk2 : RelativeLayout
-    lateinit var walk3 : RelativeLayout
-    lateinit var walk4 : RelativeLayout
+    lateinit var walk1: RelativeLayout
+    lateinit var walk2: RelativeLayout
+    lateinit var walk3: RelativeLayout
+    lateinit var walk4: RelativeLayout
 
     lateinit var method1: RelativeLayout
     lateinit var method2: RelativeLayout
@@ -88,7 +88,7 @@ class ScheduleActivity : AppCompatActivity(){
     }
 
     object selectedPath {
-         var path: Path? = null
+        var path: Path? = null
     }
 
     var scheduleIdx = 0
@@ -142,7 +142,7 @@ class ScheduleActivity : AppCompatActivity(){
     override fun onResume() {
         super.onResume()
 
-        if(path !=  null){
+        if (path != null) {
             act_schedule_tv_place_from_result.text = startPlaceName
             act_schedule_tv_place_from_result.setTextColor(Color.parseColor("#3e3e3e"))
             act_schedule_tv_place_to_result.text = endPlaceName
@@ -154,7 +154,7 @@ class ScheduleActivity : AppCompatActivity(){
         }
     }
 
-    fun setCurrentDate(){
+    fun setCurrentDate() {
         val current = LocalDateTime.now()
         val dateFormat = DateTimeFormatter.ofPattern("yyyy.MM.dd")
         val dateFormatted = current.format(dateFormat)
@@ -165,21 +165,23 @@ class ScheduleActivity : AppCompatActivity(){
         act_schedule_tv_time_click.text = timeFormatted
     }
 
-    fun showDatePicker(){
+    fun showDatePicker() {
 
         act_schedule_tv_date_click.setOnClickListener {
             DatePickerDialog(this@ScheduleActivity, R.style.MyDatePickerDialogTheme,
-                DatePickerDialog.OnDateSetListener{ datePicker, year, monthOfYear, dayOfMonth ->
+                DatePickerDialog.OnDateSetListener { datePicker, year, monthOfYear, dayOfMonth ->
                     cal.set(Calendar.YEAR, year)
                     cal.set(Calendar.MONTH, monthOfYear)
                     cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                    act_schedule_tv_date_click.text = SimpleDateFormat("yyyy.MM.dd").format(cal.time)
+                    act_schedule_tv_date_click.text =
+                        SimpleDateFormat("yyyy.MM.dd").format(cal.time)
 
-                },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
+                }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)
+            ).show()
         }
     }
 
-    fun showTimePicker(){
+    fun showTimePicker() {
 
         act_schedule_tv_time_click.setOnClickListener {
             TimePickerDialog(this@ScheduleActivity, R.style.MyTimePickerDialogTheme,
@@ -187,21 +189,31 @@ class ScheduleActivity : AppCompatActivity(){
                     cal.set(Calendar.HOUR_OF_DAY, hour)
                     cal.set(Calendar.MINUTE, minute)
                     act_schedule_tv_time_click.text = SimpleDateFormat("a hh:mm").format(cal.time)
-                },cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), false).show()
+                }, cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), false
+            ).show()
         }
     }
 
-    fun setNotiSpinner(){
+    fun setNotiSpinner() {
         val notiSpinner: Spinner = findViewById(R.id.act_schedule_sp_noti)
-        ArrayAdapter.createFromResource(this@ScheduleActivity, R.array.noti_array, android.R.layout.simple_spinner_item)
-            .also {
-                adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        ArrayAdapter.createFromResource(
+            this@ScheduleActivity,
+            R.array.noti_array,
+            android.R.layout.simple_spinner_item
+        )
+            .also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 notiSpinner.adapter = adapter
             }
-        notiSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        notiSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 var userNoti = notiSpinner.selectedItemPosition
-                when(userNoti){
+                when (userNoti) {
                     0 -> arriveCount = 1
                     1 -> arriveCount = 2
                     2 -> arriveCount = 3
@@ -209,92 +221,103 @@ class ScheduleActivity : AppCompatActivity(){
                 }
 
             }
+
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
     }
 
-    fun setNotiRangeSpinner(){
+    fun setNotiRangeSpinner() {
         val notiRangeSpinner: Spinner = findViewById(R.id.act_schedule_sp_noti_range)
-        ArrayAdapter.createFromResource(this@ScheduleActivity, R.array.noti_range_array, android.R.layout.simple_spinner_item)
-            .also {
-                    adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        ArrayAdapter.createFromResource(
+            this@ScheduleActivity,
+            R.array.noti_range_array,
+            android.R.layout.simple_spinner_item
+        )
+            .also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 notiRangeSpinner.adapter = adapter
             }
-        notiRangeSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        notiRangeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 var userNotiRange = notiRangeSpinner.selectedItemPosition
-                when(userNotiRange){
+                when (userNotiRange) {
                     0 -> noticeMin = 5
                     1 -> noticeMin = 10
                     2 -> noticeMin = 20
                     3 -> noticeMin = 0
                 }
             }
+
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
     }
 
-    private fun setWeekPressed(){
+    private fun setWeekPressed() {
 
         mon.setOnClickListener {
-            if(mon.isSelected){
+            if (mon.isSelected) {
                 mon.isSelected = false
-            }else{
+            } else {
                 mon.isSelected = true
             }
         }
         tue.setOnClickListener {
-            if(tue.isSelected){
+            if (tue.isSelected) {
                 tue.isSelected = false
-            }else{
+            } else {
                 tue.isSelected = true
             }
         }
         wed.setOnClickListener {
-            if(wed.isSelected){
+            if (wed.isSelected) {
                 wed.isSelected = false
-            }else{
+            } else {
                 wed.isSelected = true
             }
         }
         thu.setOnClickListener {
-            if(thu.isSelected){
+            if (thu.isSelected) {
                 thu.isSelected = false
-            }else{
+            } else {
                 thu.isSelected = true
             }
         }
         fri.setOnClickListener {
-            if(fri.isSelected){
+            if (fri.isSelected) {
                 fri.isSelected = false
-            }else{
+            } else {
                 fri.isSelected = true
             }
         }
         sat.setOnClickListener {
-            if(sat.isSelected){
+            if (sat.isSelected) {
                 sat.isSelected = false
-            }else{
+            } else {
                 sat.isSelected = true
             }
         }
         sun.setOnClickListener {
-            if(sun.isSelected){
+            if (sun.isSelected) {
                 sun.isSelected = false
-            }else{
+            } else {
                 sun.isSelected = true
             }
         }
     }
 
-    private fun searchRoute(){
+    private fun searchRoute() {
         val placeClick = findViewById<ConstraintLayout>(R.id.act_schedule_cl_place_click)
 
-        placeClick.setOnClickListener{
+        placeClick.setOnClickListener {
             val intent = Intent(this@ScheduleActivity, PlaceSearchRouteActivity::class.java)
-            intent.putExtra("scheduleDate",SimpleDateFormat("MM월 dd일").format(cal.time))
+            intent.putExtra("scheduleDate", SimpleDateFormat("MM월 dd일").format(cal.time))
             intent.putExtra("scheduleDayOfWeek", cal.get(Calendar.DAY_OF_WEEK))
             intent.putExtra("scheduleTime", SimpleDateFormat("a hh:mm").format(cal.time))
             startActivity(intent)
@@ -302,48 +325,48 @@ class ScheduleActivity : AppCompatActivity(){
         }
     }
 
-    private fun setRouteView(){
+    private fun setRouteView() {
         var transText = arrayListOf<String>()
         var transColor = arrayListOf<String>()
 
-        for(i in 1.. selectedPath.path!!.subPath.size-1) {
-            if(i % 2 != 0) { // 홀수만 처리
+        for (i in 1..selectedPath.path!!.subPath.size - 1) {
+            if (i % 2 != 0) { // 홀수만 처리
                 when (selectedPath.path!!.subPath[i].trafficType) {
                     1 -> { // 지하철
-                        when(selectedPath.path!!.subPath[i].lane.subwayCode){
-                            1-> {
+                        when (selectedPath.path!!.subPath[i].lane.subwayCode) {
+                            1 -> {
                                 transText.add("1호선")
                                 transColor.add("#243899")
                             }
-                            2->{
+                            2 -> {
                                 transText.add("2호선")
                                 transColor.add("#35b645")
                             }
-                            3->{
+                            3 -> {
                                 transText.add("3호선")
                                 transColor.add("#f36e00")
                             }
-                            4->{
+                            4 -> {
                                 transText.add("4호선")
                                 transColor.add("#219de2")
                             }
-                            5->{
+                            5 -> {
                                 transText.add("5호선")
                                 transColor.add("#8828e2")
                             }
-                            6->{
+                            6 -> {
                                 transText.add("6호선")
                                 transColor.add("#b75000")
                             }
-                            7->{
+                            7 -> {
                                 transText.add("7호선")
                                 transColor.add("#697305")
                             }
-                            8->{
+                            8 -> {
                                 transText.add("8호선")
                                 transColor.add("#e8146d")
                             }
-                            9->{
+                            9 -> {
                                 transText.add("9호선")
                                 transColor.add("#d2a715")
                             }
@@ -400,9 +423,9 @@ class ScheduleActivity : AppCompatActivity(){
                     }
                     2 -> { // 일반
                         transText.add(selectedPath.path!!.subPath[i].lane.type.toString())
-                        when(selectedPath.path!!.subPath[i].lane.type){
+                        when (selectedPath.path!!.subPath[i].lane.type) {
                             1, 2, 11 -> transColor.add("#3469ec")
-                            10,12 -> transColor.add("#33c63c")
+                            10, 12 -> transColor.add("#33c63c")
                             4, 14, 15 -> transColor.add("#ff574c")
                             5 -> transColor.add("#70b5e5")
                             else -> transColor.add("#85c900")
@@ -424,11 +447,11 @@ class ScheduleActivity : AppCompatActivity(){
         method1Tx.setTextColor(Color.parseColor(transColor[0]))
         method1Img.backgroundTintList = ColorStateList.valueOf(Color.parseColor(transColor[0]))
 
-        if(selectedPath.path!!.subPath.size > 2) {
+        if (selectedPath.path!!.subPath.size > 2) {
             val walkParam2 = walk2.layoutParams as LinearLayout.LayoutParams
             walkParam2.weight = selectedPath.path!!.subPath[2].sectionTime.toFloat()
             walk2.layoutParams = walkParam2
-        }else{
+        } else {
             walk2.visibility = View.GONE
             method2.visibility = View.GONE
             walk3.visibility = View.GONE
@@ -436,123 +459,127 @@ class ScheduleActivity : AppCompatActivity(){
             walk4.visibility = View.GONE
         }
 
-        if(selectedPath.path!!.subPath.size > 3) {
+        if (selectedPath.path!!.subPath.size > 3) {
             val methodParam2 = method2.layoutParams as LinearLayout.LayoutParams
             methodParam2.weight = selectedPath.path!!.subPath[3].sectionTime.toFloat()
             method2.layoutParams = methodParam2
             method2Tx.text = transText[1]
             method2Tx.setTextColor(Color.parseColor(transColor[1]))
             method2Img.backgroundTintList = ColorStateList.valueOf(Color.parseColor(transColor[1]))
-        }else{
+        } else {
             method2.visibility = View.GONE
             walk3.visibility = View.GONE
             method3.visibility = View.GONE
             walk4.visibility = View.GONE
         }
 
-        if(selectedPath.path!!.subPath.size > 4){
+        if (selectedPath.path!!.subPath.size > 4) {
             val walkParam3 = walk3.layoutParams as LinearLayout.LayoutParams
             walkParam3.weight = selectedPath.path!!.subPath[4].sectionTime.toFloat()
             walk3.layoutParams = walkParam3
-        }else{
+        } else {
             walk3.visibility = View.GONE
             method3.visibility = View.GONE
             walk4.visibility = View.GONE
         }
 
-        if(selectedPath.path!!.subPath.size > 5) {
+        if (selectedPath.path!!.subPath.size > 5) {
             val methodParam3 = method3.layoutParams as LinearLayout.LayoutParams
             methodParam3.weight = selectedPath.path!!.subPath[5].sectionTime.toFloat()
             method3.layoutParams = methodParam3
             method3Tx.text = transText[2]
             method3Tx.setTextColor(Color.parseColor(transColor[2]))
             method3Img.backgroundTintList = ColorStateList.valueOf(Color.parseColor(transColor[2]))
-        }else{
+        } else {
             method3.visibility = View.GONE
             walk4.visibility = View.GONE
         }
 
-        if(selectedPath.path!!.subPath.size > 6) {
+        if (selectedPath.path!!.subPath.size > 6) {
             val walkParam4 = walk4.layoutParams as LinearLayout.LayoutParams
             walkParam4.weight = selectedPath.path!!.subPath[6].sectionTime.toFloat()
             walk4.layoutParams = walkParam4
-        }else{
+        } else {
             walk4.visibility = View.GONE
         }
 
+    }
 
-    private fun setPostButton(){
-        act_schedule_tv_register.setOnClickListener {
+        private fun setPostButton() {
+            act_schedule_tv_register.setOnClickListener {
 
-            val scheName = findViewById<EditText>(R.id.act_schedule_et_name).text.toString()
-            if (scheName.isEmpty()) {
-                Toast.makeText(this, "내용을 모두 입력해주세요", Toast.LENGTH_SHORT).show()
-            } else {
-                postSchedule(scheName)
+                val scheName = findViewById<EditText>(R.id.act_schedule_et_name).text.toString()
+                if (scheName.isEmpty()) {
+                    Toast.makeText(this, "내용을 모두 입력해주세요", Toast.LENGTH_SHORT).show()
+                } else {
+                    postSchedule(scheName)
+                }
             }
         }
-    }
 
-    private fun postSchedule(scheName: String){
+        private fun postSchedule(scheName: String) {
 
-        var jsonObject = JSONObject()
-        jsonObject.put("scheduleName", scheName)
-        jsonObject.put("scheduleStartTime", SimpleDateFormat("HH:mm").format(cal.time))
-        jsonObject.put("scheduleStartDay", SimpleDateFormat("yyyy-MM-dd").format(cal.time))
+            var jsonObject = JSONObject()
+            jsonObject.put("scheduleName", scheName)
+            jsonObject.put("scheduleStartTime", SimpleDateFormat("HH:mm").format(cal.time))
+            jsonObject.put("scheduleStartDay", SimpleDateFormat("yyyy-MM-dd").format(cal.time))
 
-        jsonObject.put("startAddress", startPlaceName)
-        jsonObject.put("startLongitude", startPlaceX)
-        jsonObject.put("startLatitude", startPlaceY)
-        jsonObject.put("endAddress", endPlaceName)
-        jsonObject.put("endLongitude", endPlaceX)
-        jsonObject.put("endLatitude", endPlaceY)
-
-
-        jsonObject.put("arriveCount", arriveCount)
-        jsonObject.put("noticeMin", noticeMin)
-        jsonObject.put("userIdx", 7)
-
-        val gson = Gson()
-        val path = gson.toJson(path!!)
-
-        jsonObject.put("path", path)
+            jsonObject.put("startAddress", startPlaceName)
+            jsonObject.put("startLongitude", startPlaceX)
+            jsonObject.put("startLatitude", startPlaceY)
+            jsonObject.put("endAddress", endPlaceName)
+            jsonObject.put("endLongitude", endPlaceX)
+            jsonObject.put("endLatitude", endPlaceY)
 
 
-        if (mon.isSelected) weekdays.add(0)
-        if (tue.isSelected) weekdays.add(1)
-        if (wed.isSelected) weekdays.add(2)
-        if (thu.isSelected) weekdays.add(3)
-        if (fri.isSelected) weekdays.add(4)
-        if (sat.isSelected) weekdays.add(5)
-        if (sun.isSelected) weekdays.add(6)
-        jsonObject.put("weekdays", weekdays)
+            jsonObject.put("arriveCount", arriveCount)
+            jsonObject.put("noticeMin", noticeMin)
+            jsonObject.put("userIdx", 7)
 
-        val body = JsonParser().parse(jsonObject.toString()) as JsonObject
+            val gson = Gson()
+            val path = gson.toJson(path!!)
 
-        val callPostSchedule: Call<PostScheduleData> = EarlyBuddyServiceImpl.service.postSchedule(body)
+            jsonObject.put("path", path)
 
-        callPostSchedule.enqueue(object : Callback<PostScheduleData> {
-            override fun onFailure(call: Call<PostScheduleData>, t: Throwable) {
-                Log.e("error is ", t.toString())
-            }
 
-            override fun onResponse(call: Call<PostScheduleData>, response: Response<PostScheduleData>) {
-                if (response.isSuccessful) {
-                    Log.e("result is ", response.body().toString())
-                    scheduleIdx = response.body()!!.data
-                    Log.e("scheduleIdx", scheduleIdx.toString())
+            if (mon.isSelected) weekdays.add(0)
+            if (tue.isSelected) weekdays.add(1)
+            if (wed.isSelected) weekdays.add(2)
+            if (thu.isSelected) weekdays.add(3)
+            if (fri.isSelected) weekdays.add(4)
+            if (sat.isSelected) weekdays.add(5)
+            if (sun.isSelected) weekdays.add(6)
+            jsonObject.put("weekdays", weekdays)
 
-                    ScheduleDialogFragment(scheduleIdx) { finish() }.apply {
-                        show(supportFragmentManager, null)
-                        finish()
+            val body = JsonParser().parse(jsonObject.toString()) as JsonObject
+
+            val callPostSchedule: Call<PostScheduleData> =
+                EarlyBuddyServiceImpl.service.postSchedule(body)
+
+            callPostSchedule.enqueue(object : Callback<PostScheduleData> {
+                override fun onFailure(call: Call<PostScheduleData>, t: Throwable) {
+                    Log.e("error is ", t.toString())
+                }
+
+                override fun onResponse(
+                    call: Call<PostScheduleData>,
+                    response: Response<PostScheduleData>
+                ) {
+                    if (response.isSuccessful) {
+                        Log.e("result is ", response.body().toString())
+                        scheduleIdx = response.body()!!.data
+                        Log.e("scheduleIdx", scheduleIdx.toString())
+
+                        ScheduleDialogFragment(scheduleIdx) { finish() }.apply {
+                            show(supportFragmentManager, null)
+                            finish()
+                        }
+                    } else {
+                        Toast.makeText(this@ScheduleActivity, "네트워크를 확인해 주세요", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
-                else{
-                    Toast.makeText(this@ScheduleActivity, "네트워크를 확인해 주세요",Toast.LENGTH_SHORT).show()
-                }
-            }
-        })
+            })
 
+        }
     }
-}
-

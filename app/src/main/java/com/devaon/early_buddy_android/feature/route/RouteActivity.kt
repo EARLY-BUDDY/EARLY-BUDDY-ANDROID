@@ -77,7 +77,7 @@ class RouteActivity : AppCompatActivity() {
             }
         })*/
 
-        val subpath = ScheduleActivity.selectedPath.path.subPath
+        val subpath = ScheduleActivity.selectedPath.path!!.subPath
         routeAdapter.setRouteItem(subpath)
         routeAdapter.routeList[0].startName = ScheduleActivity.schedulePlace.startPlaceName
         routeAdapter.notifyDataSetChanged()

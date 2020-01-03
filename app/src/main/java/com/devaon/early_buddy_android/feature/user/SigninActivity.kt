@@ -9,6 +9,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.data.db.App
 import com.devaon.early_buddy_android.data.db.Information
 import com.devaon.early_buddy_android.data.login.Login
 import com.devaon.early_buddy_android.data.schedule.HomeScheduleResponse
@@ -130,6 +131,7 @@ class SigninActivity : AppCompatActivity() {
             body
         )
 
+        /*UserSigninData*/
         callSigninResponse.enqueue(object : Callback<UserSigninResponse> {
             override fun onFailure(call: Call<UserSigninResponse>, t: Throwable) {
                 Toast.makeText(this@SigninActivity, "아이디 또는 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
@@ -154,6 +156,10 @@ class SigninActivity : AppCompatActivity() {
                                 setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                                 finish()
                             }
+                        //App.prefs.jwt = signInUser.data.jwt
+                        //intent.putExtra("jwt", signInUser.data.jwt)
+
+
                         startActivity(intent)
                     }
 
