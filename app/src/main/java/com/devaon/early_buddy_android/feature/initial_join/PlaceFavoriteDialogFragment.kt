@@ -22,8 +22,11 @@ class PlaceFavoriteDialogFragment : DialogFragment1(){
     lateinit var school:ImageView
     lateinit var other:ImageView
     lateinit var cancel:ImageView
+/*
+    var flag:Boolean = true*/
 
-    var flag:Boolean = true
+    //icon idex 0: home, 1: office, 2: school, 3: other, default : 0
+    var selectedIdx  = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,10 +57,10 @@ class PlaceFavoriteDialogFragment : DialogFragment1(){
         this.listener = listener
     }
     interface OnDialogDismissedListener {
-        fun onDialogDismissed()
+        fun onDialogDismissed(selectedIdx : Int)
     }
     override fun dismiss() {
-        listener.onDialogDismissed()
+        listener.onDialogDismissed(selectedIdx)
         super.dismiss()
     }
 
@@ -77,6 +80,7 @@ class PlaceFavoriteDialogFragment : DialogFragment1(){
                 school.setSelected(false)
                 other.setSelected(false)
             }
+            selectedIdx = 0
         }
 
         office.setOnClickListener {
@@ -86,6 +90,7 @@ class PlaceFavoriteDialogFragment : DialogFragment1(){
                 school.setSelected(false)
                 other.setSelected(false)
             }
+            selectedIdx = 1
         }
 
         school.setOnClickListener {
@@ -95,6 +100,7 @@ class PlaceFavoriteDialogFragment : DialogFragment1(){
                 home.setSelected(false)
                 other.setSelected(false)
             }
+            selectedIdx = 2
         }
 
         other.setOnClickListener {
@@ -104,6 +110,7 @@ class PlaceFavoriteDialogFragment : DialogFragment1(){
                 school.setSelected(false)
                 home.setSelected(false)
             }
+            selectedIdx = 3
         }
 
 
