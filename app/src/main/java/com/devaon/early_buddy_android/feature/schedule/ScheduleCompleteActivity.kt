@@ -311,7 +311,6 @@ class ScheduleCompleteActivity: AppCompatActivity(){
                     walk4.visibility = View.GONE
                 }
 
-
                 if(getScheduleResponse.data.pathInfo.subPath.size > 3) {
                     val methodParam2 = method2.getLayoutParams() as LinearLayout.LayoutParams
                     methodParam2.weight = getScheduleResponse.data.pathInfo.subPath[3].sectionTime.toFloat()

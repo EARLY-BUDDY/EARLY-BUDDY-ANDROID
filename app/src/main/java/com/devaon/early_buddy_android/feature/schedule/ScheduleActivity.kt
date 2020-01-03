@@ -533,14 +533,15 @@ class ScheduleActivity : AppCompatActivity(){
 
         jsonObject.put("path", path)
 
+        if (sun.isSelected) weekdays.add(0)
+        if (mon.isSelected) weekdays.add(1)
+        if (tue.isSelected) weekdays.add(2)
+        if (wed.isSelected) weekdays.add(3)
+        if (thu.isSelected) weekdays.add(4)
+        if (fri.isSelected) weekdays.add(5)
+        if (sat.isSelected) weekdays.add(6)
 
-        if (mon.isSelected) weekdays.add(0)
-        if (tue.isSelected) weekdays.add(1)
-        if (wed.isSelected) weekdays.add(2)
-        if (thu.isSelected) weekdays.add(3)
-        if (fri.isSelected) weekdays.add(4)
-        if (sat.isSelected) weekdays.add(5)
-        if (sun.isSelected) weekdays.add(6)
+        Log.e("weekweekweeek이거다이거" , weekdays.toString())
         jsonObject.put("weekdays", weekdays)
 
         val body = JsonParser().parse(jsonObject.toString()) as JsonObject

@@ -134,6 +134,7 @@ class PlaceDirectionsActivity : AppCompatActivity() {
 
 
             // todo: flag로 어떤 text 타고 들어온 건지 검사해서 처리!
+
             if (startPlaceName == "") {
                 startPlaceName = placeName
                 startPlaceX = x
@@ -146,6 +147,7 @@ class PlaceDirectionsActivity : AppCompatActivity() {
                     placeSearchAdapter.notifyDataSetChanged()
                     showKeyboard()
                 }
+
             } else if (endPlaceName == "") {
                 endPlaceName = placeName
                 endPlaceX = x
