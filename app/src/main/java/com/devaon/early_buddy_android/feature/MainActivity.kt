@@ -1,8 +1,10 @@
 package com.devaon.early_buddy_android.feature
 
+import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.airbnb.lottie.LottieAnimationView
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.feature.home.HomeActivity
 import com.devaon.early_buddy_android.feature.initial_join.SetNicknameActivity
@@ -50,23 +52,23 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-//        val animationView = findViewById<LottieAnimationView>(R.id.animationView)
-//        animationView.setAnimation("testtt.json")
-//        animationView.loop(true)
-//        animationView.playAnimation()
-//        animationView.addAnimatorListener(object : Animator.AnimatorListener {
-//            override fun onAnimationStart(animation: Animator) {
-//            }
-//
-//            override fun onAnimationEnd(animation: Animator) {
-//            }
-//
-//            override fun onAnimationCancel(animation: Animator) {
-//            }
-//
-//            override fun onAnimationRepeat(animation: Animator) {
-//            }
-//        })
+        val animationView = findViewById<LottieAnimationView>(R.id.animationView)
+        animationView.setAnimation("roading.json")
+        animationView.loop(true)
+        animationView.playAnimation()
+        animationView.addAnimatorListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator) {
+            }
+
+            override fun onAnimationEnd(animation: Animator) {
+            }
+
+            override fun onAnimationCancel(animation: Animator) {
+            }
+
+            override fun onAnimationRepeat(animation: Animator) {
+            }
+        })
 
     }
 }

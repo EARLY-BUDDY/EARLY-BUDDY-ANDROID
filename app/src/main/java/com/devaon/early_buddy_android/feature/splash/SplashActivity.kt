@@ -15,7 +15,7 @@ import com.devaon.early_buddy_android.feature.user.SignupActivity
 
 class SplashActivity : AppCompatActivity() {
 
-    val SPLASH_TIME_OUT: Long = 25000
+    val SPLASH_TIME_OUT: Long = 2000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
