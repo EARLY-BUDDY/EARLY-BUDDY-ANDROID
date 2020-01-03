@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.db.Information
+import com.devaon.early_buddy_android.data.login.Login
 import com.devaon.early_buddy_android.data.user.NickNameResponse
 import com.devaon.early_buddy_android.data.user.UserResponse
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
@@ -37,7 +38,8 @@ class SetNicknameActivity : AppCompatActivity() {
     private fun makeController() {
 
         val id = act_set_nickname_et_id.text.toString()
-        postUserNicknameData(id)
+        val jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEyLCJpYXQiOjE1NzgwNDIxNDEsImV4cCI6MTU4MDYzNDE0MX0.GOgBIZJoAkyvuGEj25LP7OBhC_LgGRG3VrV_op0gwwQ"
+        postUserNicknameData(id, jwt)
 
 
         act_set_nickname_et_id.addTextChangedListener(object : TextWatcher {
@@ -68,6 +70,7 @@ class SetNicknameActivity : AppCompatActivity() {
             val patternNickName: Pattern = Pattern.compile("^[ㄱ-ㅣ가-힣]*$")
             val nickname = act_set_nickname_et_id.text.toString()
 
+
             if (patternNickName.matcher(nickname).matches() && nickname.length > 0) {
                 val intent = Intent(this@SetNicknameActivity, PlaceFavoriteActivity::class.java)
                 startActivity(intent)
@@ -83,10 +86,11 @@ class SetNicknameActivity : AppCompatActivity() {
 
     }
 
-    private fun postUserNicknameData(userName : String) {
+    private fun postUserNicknameData(userName : String, jwt : String) {
 
         var jsonObject = JSONObject()
         jsonObject.put("userName", userName)
+        jsonObject.put("jwt", jwt)
 
         val body = JsonParser().parse(jsonObject.toString()) as JsonObject
 
@@ -107,6 +111,7 @@ class SetNicknameActivity : AppCompatActivity() {
                     if(NicknameUser.nickName == null) {
                         Log.e("nickname is null", "!")
                     }else
+                        //Login.setNickName(this@SetNicknameActivity, NicknameUser.nickName)
                         Information.nickName = NicknameUser.nickName
                 }
             }

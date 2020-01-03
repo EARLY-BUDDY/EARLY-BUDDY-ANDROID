@@ -50,8 +50,10 @@ class SigninActivity : AppCompatActivity() {
         act_signin_iv_signup.setOnClickListener {
             if(act_signin_iv_signup.isSelected){
                 act_signin_iv_signup.setSelected(false)
+                act_signin_tv_signup.setTextColor(ContextCompat.getColor(this@SigninActivity, R.color.main_color))
             }else{
                 act_signin_iv_signup.setSelected(true)
+                act_signin_tv_signup.setTextColor(ContextCompat.getColor(this@SigninActivity, R.color.main_color))
             }
         }
 
@@ -86,6 +88,8 @@ class SigninActivity : AppCompatActivity() {
                         }
                     Log.d("testset", "3")
                     startActivity(intent)
+                }else{
+                    Toast.makeText(this, "아이디 또는 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()

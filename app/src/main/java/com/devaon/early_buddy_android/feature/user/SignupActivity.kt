@@ -43,7 +43,11 @@ class SignupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
+        Log.d("test", "signup activity : " )
+
         makeController()
+
+
     }
 
     private fun makeController() {
@@ -51,18 +55,21 @@ class SignupActivity : AppCompatActivity() {
         passwordCheck()
         passwordCorretCheck()
 
-        id = act_signup_et_id.text.toString()
-        pw = act_signup_et_pw.text.toString()
-        pwCheck = act_signup_et_pw_check.text.toString()
+
 
         act_signup_cl_join.setOnClickListener {
             Log.d("test", "눌려따ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ")
+            id = act_signup_et_id.text.toString()
+            pw = act_signup_et_pw.text.toString()
+            pwCheck = act_signup_et_pw_check.text.toString()
 
             signinDialog = SigninDialogFragment()
             signinDialog.setOnDialogDismissedListener(signInDialogFragmentDismissListener)
 
 
             Log.d("test", "id : " + id)
+            Log.d("test", "pw : " + pw)
+            Log.d("test", "pwCheck : " + pwCheck)
             Log.d("test", "idFlag : " + idFlag)
             Log.d("test", "pwFlag : " + pwFlag)
             Log.d("test", "pwCheckFlag : " + pwCheckFlag)
@@ -73,6 +80,7 @@ class SignupActivity : AppCompatActivity() {
             } else {
                 if (idFlag && pwFlag && pwCheckFlag) {
                     postUserData(id, pw)
+
                 }
             }
 
@@ -94,6 +102,9 @@ class SignupActivity : AppCompatActivity() {
         var jsonObject = JSONObject()
         jsonObject.put("userId", id)
         jsonObject.put("userPw", pw)
+
+        Log.d("test", "postUserData id : " + id)
+        Log.d("test", "postUserData pw : " + pw)
 
         val body = JsonParser().parse(jsonObject.toString()) as JsonObject
 
@@ -261,11 +272,11 @@ class SignupActivity : AppCompatActivity() {
                     act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_gray_full)
                     idFlag = false
                 }
-                if (idFlag && pwFlag && pwCheckFlag) {
+               /* if (idFlag && pwFlag && pwCheckFlag) {
                     act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_blue_full)
                 }else{
                     act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_gray_full)
-                }
+                }*/
             }
 
         })
@@ -306,11 +317,11 @@ class SignupActivity : AppCompatActivity() {
                     }
                     pwFlag = true
                 }
-                if (idFlag && pwFlag && pwCheckFlag) {
+                /*if (idFlag && pwFlag && pwCheckFlag) {
                     act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_blue_full)
                 }else{
                     act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_gray_full)
-                }
+                }*/
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -353,11 +364,11 @@ class SignupActivity : AppCompatActivity() {
                     act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_gray_full)
 
                 }
-                if (idFlag && pwFlag && pwCheckFlag) {
+                /*if (idFlag && pwFlag && pwCheckFlag) {
                     act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_blue_full)
                 }else{
                     act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_gray_full)
-                }
+                }*/
 
             }
         })
