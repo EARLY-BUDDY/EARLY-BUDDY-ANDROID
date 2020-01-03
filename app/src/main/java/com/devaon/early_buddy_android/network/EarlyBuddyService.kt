@@ -55,6 +55,7 @@ interface EarlyBuddyService {
 
     @POST("/users/setUserName")
     fun postNicknameUser(
+/*        @Header() jwt :*/
         @Body() body:JsonObject
     ): Call<NickNameResponse>
 

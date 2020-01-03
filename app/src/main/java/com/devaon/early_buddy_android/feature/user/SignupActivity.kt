@@ -283,10 +283,8 @@ class SignupActivity : AppCompatActivity() {
     private fun passwordCheck() {
         act_signup_et_pw.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                //if (p0!!.length > 0) {
 
                 if ((p0!!.length < 6) || !(pwdPattern.matcher(act_signup_et_pw.text.toString()).matches())) {
-                    //6글자 이상 입력해주세요 -예외처리 메시지 띄움
                     act_signup_tv_pw_ment.showOrInvisible(true)
 
                     act_signup_cl_pw.setBackgroundResource(R.drawable.act_signup_round_rect_red)
@@ -316,11 +314,6 @@ class SignupActivity : AppCompatActivity() {
                     }
                     pwFlag = true
                 }
-                /*if (idFlag && pwFlag && pwCheckFlag) {
-                    act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_blue_full)
-                }else{
-                    act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_gray_full)
-                }*/
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {

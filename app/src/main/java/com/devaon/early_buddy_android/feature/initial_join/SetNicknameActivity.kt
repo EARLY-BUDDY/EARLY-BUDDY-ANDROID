@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.data.db.App
 import com.devaon.early_buddy_android.data.db.Information
 import com.devaon.early_buddy_android.data.login.Login
 import com.devaon.early_buddy_android.data.user.NickNameResponse
@@ -88,9 +89,13 @@ class SetNicknameActivity : AppCompatActivity() {
 
     private fun postUserNicknameData(userName : String, jwt : String) {
 
+        //var jwt = App.prefs.jwt
+        //Log.d("test", "jwt : " + jwt)
+
+
         var jsonObject = JSONObject()
         jsonObject.put("userName", userName)
-        jsonObject.put("jwt", jwt)
+        //jsonObject.put("jwt", jwt)
 
         val body = JsonParser().parse(jsonObject.toString()) as JsonObject
 
