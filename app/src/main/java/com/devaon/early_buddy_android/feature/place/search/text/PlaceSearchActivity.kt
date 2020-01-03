@@ -25,12 +25,7 @@ import retrofit2.Response
 
 class PlaceSearchActivity : AppCompatActivity() {
 
-
     private lateinit var placeSearchAdapter: PlaceSearchAdapter
-    private var placeDataList = ArrayList<PlaceSearch>()
-
-    private lateinit var searchEdit: EditText
-    private  var clearButton: ImageView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,12 +33,6 @@ class PlaceSearchActivity : AppCompatActivity() {
 
         clearText()
         setRv()
-        //goToSearchStartPlaceActivity()
-//        act_place_search_iv_search.setOnClickListener {
-//           /* val intent = Intent(this@PlaceSearchActivity, PlaceSearchActivity::class.java)
-//            startActivity(intent)*/
-//            getPlaceSearch()
-//        }
 
         act_place_search_et_search.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
@@ -55,15 +44,10 @@ class PlaceSearchActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                /*getData()
-                Log.v(TAG, "글자 변경")*/
-
                 //통신
                 getPlaceSearch()
                 Log.d("testtest", "onTextChanged")
-
             }
-
         })
 
 
@@ -76,20 +60,6 @@ class PlaceSearchActivity : AppCompatActivity() {
         act_place_search_rv.layoutManager = LinearLayoutManager(this)
     }
 
-    /*private fun setData() {
-        //데이버 받아오는 함수
-        if (placeDataList.isNullOrEmpty()) {
-            act_place_search_iv_bird.visibility = View.VISIBLE
-            act_place_search_rv.visibility = View.GONE
-        } else {
-            act_place_search_iv_bird.visibility = View.GONE
-            act_place_search_rv.visibility = View.VISIBLE
-
-            //통신할 때 데이터 받아와야함  data =
-
-        }
-    }
-*/
 
     private fun clearText(){
         act_place_search_iv_delete.setOnClickListener {
@@ -125,19 +95,27 @@ class PlaceSearchActivity : AppCompatActivity() {
     var onPlaceClickListener
             = object : PlaceSearchAdapter.onPlaceClickListener {
         override fun onItemClick(placeName: String, x: Double, y: Double) {
-             if(PlaceFavoriteActivity.placeObject.firstFavoriteName == ""){
-                 PlaceFavoriteActivity.placeObject.firstFavoriteName = placeName
-                 PlaceFavoriteActivity.placeObject.firstX = x
-                 PlaceFavoriteActivity.placeObject.firstY = y
-             }else if(PlaceFavoriteActivity.placeObject.secondFavoriteName == ""){
+            var firstSearch : Int = intent.getIntExtra("firstSearch", -1)
+            var secondSearch : Int= intent.getIntExtra("secondSearch", -1)
+            var thirdSearch : Int = intent.getIntExtra("thirdSearch", -1)
+
+            if(firstSearch == 0){
+                PlaceFavoriteActivity.placeObject.firstFavoriteName = placeName
+                PlaceFavoriteActivity.placeObject.firstX = x
+                PlaceFavoriteActivity.placeObject.firstY = y
+                PlaceFavoriteActivity.placeObject.checkNum = 0
+            }else if(secondSearch == 1){
                 PlaceFavoriteActivity.placeObject.secondFavoriteName = placeName
                 PlaceFavoriteActivity.placeObject.secondX = x
                 PlaceFavoriteActivity.placeObject.secondY = y
-            }else if(PlaceFavoriteActivity.placeObject.thirdFavoriteName == ""){
-                 PlaceFavoriteActivity.placeObject.thirdFavoriteName = placeName
-                 PlaceFavoriteActivity.placeObject.thirdX = x
-                 PlaceFavoriteActivity.placeObject.thirdY = y
-             }
+                PlaceFavoriteActivity.placeObject.checkNum = 1
+            }else if(thirdSearch == 2){
+                PlaceFavoriteActivity.placeObject.thirdFavoriteName = placeName
+                PlaceFavoriteActivity.placeObject.thirdX = x
+                PlaceFavoriteActivity.placeObject.thirdY = y
+                PlaceFavoriteActivity.placeObject.checkNum = 2
+            }
+
             finish()
         }
     }

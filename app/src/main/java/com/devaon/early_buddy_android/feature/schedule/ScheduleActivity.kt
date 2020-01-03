@@ -17,6 +17,7 @@ import com.devaon.early_buddy_android.data.db.Information
 import com.devaon.early_buddy_android.data.route.Path
 import com.devaon.early_buddy_android.data.schedule.PostScheduleData
 import com.devaon.early_buddy_android.feature.place.search.route.PlaceSearchRouteActivity
+import com.devaon.early_buddy_android.feature.route.RouteActivity
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceName
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceX
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceY
@@ -29,10 +30,12 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_schdule.*
+import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.DayOfWeek
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -58,9 +61,6 @@ class ScheduleActivity : AppCompatActivity(){
     lateinit var time: TextView
     lateinit var method: TextView
 
-    lateinit var routeTime: TextView
-    lateinit var routeMethod: TextView
-
     lateinit var walk1 : RelativeLayout
     lateinit var walk2 : RelativeLayout
     lateinit var walk3 : RelativeLayout
@@ -74,7 +74,6 @@ class ScheduleActivity : AppCompatActivity(){
     lateinit var method2Img: ImageView
     lateinit var method3Img: ImageView
 
-    lateinit var walk1Tx: TextView
     lateinit var method1Tx: TextView
     lateinit var method2Tx: TextView
     lateinit var method3Tx: TextView
@@ -113,8 +112,6 @@ class ScheduleActivity : AppCompatActivity(){
 
         time = findViewById(R.id.act_schedule_route_time)
         method = findViewById(R.id.act_schedule_route_tv_method)
-        routeTime = findViewById(R.id.act_schedule_route_time)
-        routeMethod = findViewById(R.id.act_schedule_route_tv_method)
 
         walk1 = findViewById(R.id.act_schedule_route_rl_walk_1)
         walk2 = findViewById(R.id.act_schedule_route_rl_walk_2)
@@ -129,7 +126,6 @@ class ScheduleActivity : AppCompatActivity(){
         method2Img = findViewById(R.id.act_schedule_route_iv_method_2)
         method3Img = findViewById(R.id.act_schedule_route_iv_method_3)
 
-        walk1Tx = findViewById(R.id.act_schedule_route_tv_walk_1)
         method1Tx = findViewById(R.id.act_schedule_route_tv_method_1)
         method2Tx = findViewById(R.id.act_schedule_route_tv_method_2)
         method3Tx = findViewById(R.id.act_schedule_route_tv_method_3)
@@ -154,11 +150,12 @@ class ScheduleActivity : AppCompatActivity(){
         endPlaceName=""
         endPlaceX=0.0
         endPlaceY=0.0
+        RouteActivity.Route.isSelected=false
     }
 
     override fun onResume() {
         super.onResume()
-
+        RouteActivity.Route.isSelected=false
         if(path !=  null){
             act_schedule_tv_place_from_result.text = startPlaceName
             act_schedule_tv_place_from_result.setTextColor(Color.parseColor("#3e3e3e"))
@@ -307,9 +304,10 @@ class ScheduleActivity : AppCompatActivity(){
     }
 
     private fun searchRoute(){
-        val placeClick = findViewById<ConstraintLayout>(R.id.act_schedule_cl_place_click)
+        val placeClick = findViewById<ConstraintLayout>(R.id.act_schedule_cl_place)
 
         placeClick.setOnClickListener{
+            Log.e("click is ","sdasd")
             val intent = Intent(this@ScheduleActivity, PlaceSearchRouteActivity::class.java)
             intent.putExtra("scheduleDate",SimpleDateFormat("MM월 dd일").format(cal.time))
             intent.putExtra("scheduleDayOfWeek", cal.get(Calendar.DAY_OF_WEEK))
@@ -320,30 +318,6 @@ class ScheduleActivity : AppCompatActivity(){
     }
 
     private fun setRouteView() {
-
-        //경로 시간 표시
-        val routeHour = selectedPath.path!!.totalTime / 60
-        val routeMin = selectedPath.path!!.totalTime % 60
-        if(routeHour != 0){
-            if(routeMin != 0){
-                routeTime.text = String.format("%d시간 %d분", routeHour, routeMin)
-            }else{
-                routeTime.text = String.format("%d시간", routeHour)
-            }
-        } else {
-            if(routeMin != 0){
-                routeTime.text = String.format("%d분", routeMin)
-            }
-        }
-
-        //경로 메소드 표시
-        when(selectedPath.path!!.pathType){
-            1 -> { routeMethod.text = "지하철" }
-            2 -> { routeMethod.text = "버스" }
-            3 -> { routeMethod.text = "지하철 + 버스"}
-        }
-
-        //경로바 그리기
         var transText = arrayListOf<String>()
         var transColor = arrayListOf<String>()
 
@@ -440,9 +414,7 @@ class ScheduleActivity : AppCompatActivity(){
                         }
                     }
                     2 -> { // 일반
-//                        transText.add(selectedPath.path!!.subPath[i].lane.type.toString())
-                        val busNo = String.format("%s번", selectedPath.path!!.subPath[i].lane.busNo)
-                        transText.add(busNo)
+                        transText.add(selectedPath.path!!.subPath[i].lane.type.toString())
                         when (selectedPath.path!!.subPath[i].lane.type) {
                             1, 2, 11 -> transColor.add("#3469ec")
                             10, 12 -> transColor.add("#33c63c")
@@ -455,9 +427,6 @@ class ScheduleActivity : AppCompatActivity(){
             }
 
         }
-
-        val walk1Time = selectedPath.path!!.subPath[0].sectionTime
-        walk1Tx.text = String.format("%d분", walk1Time)
 
         val walkParam1 = walk1.layoutParams as LinearLayout.LayoutParams
         walkParam1.weight = selectedPath.path!!.subPath[0].sectionTime.toFloat()
@@ -527,6 +496,7 @@ class ScheduleActivity : AppCompatActivity(){
         }
     }
 
+
     private fun setPostButton(){
         act_schedule_tv_register.setOnClickListener {
 
@@ -535,13 +505,6 @@ class ScheduleActivity : AppCompatActivity(){
                 Toast.makeText(this, "내용을 모두 입력해주세요", Toast.LENGTH_SHORT).show()
             } else {
                 postSchedule(scheName)
-                path=null
-                startPlaceName =""
-                startPlaceX=0.0
-                startPlaceY=0.0
-                endPlaceName=""
-                endPlaceX=0.0
-                endPlaceY=0.0
             }
         }
     }
@@ -616,4 +579,3 @@ class ScheduleActivity : AppCompatActivity(){
         }
     }
 }
-
