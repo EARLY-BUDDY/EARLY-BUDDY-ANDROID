@@ -130,6 +130,7 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
                     Log.e("route사이즈다", routes.size.toString())
 
                     act_place_select_iv_bird.visibility = INVISIBLE
+                    act_place_select_iv_bird_no_route.visibility = INVISIBLE
                 }
                 else{
                     act_place_select_iv_bird.visibility = INVISIBLE
