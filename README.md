@@ -17,7 +17,7 @@
 <img width="500" src="https://user-images.githubusercontent.com/37479631/71730672-233e4400-2e86-11ea-83aa-e2661428e845.png" alt="img"/>
 
 
-## 1. 적용 라이브러리
+## 적용 라이브러리
 
 
     //리사이클러뷰 라이브러리
@@ -51,7 +51,7 @@
     implementation 'com.google.firebase:firebase-core:16.0.6'	// 애널리틱스(기본)
     implementation 'com.google.firebase:firebase-messaging:17.3.4'	// 클라우드 메시징
 
-## 2. 프로그램 구조
+## 프로그램 구조
 
  data,feature,network,util
 
@@ -83,7 +83,7 @@
 
 
 
-## 3.주요 기능 구현 방법 (현재까지 진행한 사항)
+## 주요 기능 (현재까지 진행한 사항)
 
 ### 0. 스플래쉬
 
