@@ -302,48 +302,48 @@ class ScheduleActivity : AppCompatActivity(){
         }
     }
 
-    private fun setRouteView(){
+    private fun setRouteView() {
         var transText = arrayListOf<String>()
         var transColor = arrayListOf<String>()
 
-        for(i in 1.. selectedPath.path!!.subPath.size-1) {
-            if(i % 2 != 0) { // 홀수만 처리
+        for (i in 1..selectedPath.path!!.subPath.size - 1) {
+            if (i % 2 != 0) { // 홀수만 처리
                 when (selectedPath.path!!.subPath[i].trafficType) {
                     1 -> { // 지하철
-                        when(selectedPath.path!!.subPath[i].lane.subwayCode){
-                            1-> {
+                        when (selectedPath.path!!.subPath[i].lane.subwayCode) {
+                            1 -> {
                                 transText.add("1호선")
                                 transColor.add("#243899")
                             }
-                            2->{
+                            2 -> {
                                 transText.add("2호선")
                                 transColor.add("#35b645")
                             }
-                            3->{
+                            3 -> {
                                 transText.add("3호선")
                                 transColor.add("#f36e00")
                             }
-                            4->{
+                            4 -> {
                                 transText.add("4호선")
                                 transColor.add("#219de2")
                             }
-                            5->{
+                            5 -> {
                                 transText.add("5호선")
                                 transColor.add("#8828e2")
                             }
-                            6->{
+                            6 -> {
                                 transText.add("6호선")
                                 transColor.add("#b75000")
                             }
-                            7->{
+                            7 -> {
                                 transText.add("7호선")
                                 transColor.add("#697305")
                             }
-                            8->{
+                            8 -> {
                                 transText.add("8호선")
                                 transColor.add("#e8146d")
                             }
-                            9->{
+                            9 -> {
                                 transText.add("9호선")
                                 transColor.add("#d2a715")
                             }
@@ -400,9 +400,9 @@ class ScheduleActivity : AppCompatActivity(){
                     }
                     2 -> { // 일반
                         transText.add(selectedPath.path!!.subPath[i].lane.type.toString())
-                        when(selectedPath.path!!.subPath[i].lane.type){
+                        when (selectedPath.path!!.subPath[i].lane.type) {
                             1, 2, 11 -> transColor.add("#3469ec")
-                            10,12 -> transColor.add("#33c63c")
+                            10, 12 -> transColor.add("#33c63c")
                             4, 14, 15 -> transColor.add("#ff574c")
                             5 -> transColor.add("#70b5e5")
                             else -> transColor.add("#85c900")
@@ -424,11 +424,11 @@ class ScheduleActivity : AppCompatActivity(){
         method1Tx.setTextColor(Color.parseColor(transColor[0]))
         method1Img.backgroundTintList = ColorStateList.valueOf(Color.parseColor(transColor[0]))
 
-        if(selectedPath.path!!.subPath.size > 2) {
+        if (selectedPath.path!!.subPath.size > 2) {
             val walkParam2 = walk2.layoutParams as LinearLayout.LayoutParams
             walkParam2.weight = selectedPath.path!!.subPath[2].sectionTime.toFloat()
             walk2.layoutParams = walkParam2
-        }else{
+        } else {
             walk2.visibility = View.GONE
             method2.visibility = View.GONE
             walk3.visibility = View.GONE
@@ -436,50 +436,50 @@ class ScheduleActivity : AppCompatActivity(){
             walk4.visibility = View.GONE
         }
 
-        if(selectedPath.path!!.subPath.size > 3) {
+        if (selectedPath.path!!.subPath.size > 3) {
             val methodParam2 = method2.layoutParams as LinearLayout.LayoutParams
             methodParam2.weight = selectedPath.path!!.subPath[3].sectionTime.toFloat()
             method2.layoutParams = methodParam2
             method2Tx.text = transText[1]
             method2Tx.setTextColor(Color.parseColor(transColor[1]))
             method2Img.backgroundTintList = ColorStateList.valueOf(Color.parseColor(transColor[1]))
-        }else{
+        } else {
             method2.visibility = View.GONE
             walk3.visibility = View.GONE
             method3.visibility = View.GONE
             walk4.visibility = View.GONE
         }
 
-        if(selectedPath.path!!.subPath.size > 4){
+        if (selectedPath.path!!.subPath.size > 4) {
             val walkParam3 = walk3.layoutParams as LinearLayout.LayoutParams
             walkParam3.weight = selectedPath.path!!.subPath[4].sectionTime.toFloat()
             walk3.layoutParams = walkParam3
-        }else{
+        } else {
             walk3.visibility = View.GONE
             method3.visibility = View.GONE
             walk4.visibility = View.GONE
         }
 
-        if(selectedPath.path!!.subPath.size > 5) {
+        if (selectedPath.path!!.subPath.size > 5) {
             val methodParam3 = method3.layoutParams as LinearLayout.LayoutParams
             methodParam3.weight = selectedPath.path!!.subPath[5].sectionTime.toFloat()
             method3.layoutParams = methodParam3
             method3Tx.text = transText[2]
             method3Tx.setTextColor(Color.parseColor(transColor[2]))
             method3Img.backgroundTintList = ColorStateList.valueOf(Color.parseColor(transColor[2]))
-        }else{
+        } else {
             method3.visibility = View.GONE
             walk4.visibility = View.GONE
         }
 
-        if(selectedPath.path!!.subPath.size > 6) {
+        if (selectedPath.path!!.subPath.size > 6) {
             val walkParam4 = walk4.layoutParams as LinearLayout.LayoutParams
             walkParam4.weight = selectedPath.path!!.subPath[6].sectionTime.toFloat()
             walk4.layoutParams = walkParam4
-        }else{
+        } else {
             walk4.visibility = View.GONE
         }
-
+    }
 
     private fun setPostButton(){
         act_schedule_tv_register.setOnClickListener {
