@@ -55,7 +55,7 @@ interface EarlyBuddyService {
 
     @POST("/users/setUserName")
     fun postNicknameUser(
-/*        @Header() jwt :*/
+        @Header("jwt") jwt : String,
         @Body() body:JsonObject
     ): Call<NickNameResponse>
 
@@ -73,4 +73,5 @@ interface EarlyBuddyService {
     fun getSchedule(
         @Query("scheduleIdx") scheduleIdx: Int
     ): Call<GetScheduleData>
+
 }
