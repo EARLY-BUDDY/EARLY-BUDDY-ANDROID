@@ -37,7 +37,7 @@ data class FirstTrans(
     @SerializedName("subwayLane")
     val subwayLane:Int?,
     @SerializedName("busNo")
-    val busNo:Int?,
+    val busNo:String?,
     @SerializedName("busType")
     val busType:Int?,
     @SerializedName("detailStartAddress")
