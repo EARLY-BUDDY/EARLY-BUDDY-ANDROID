@@ -7,6 +7,7 @@ import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.feature.home.HomeActivity
 import com.devaon.early_buddy_android.feature.initial_join.SetNicknameActivity
 import com.devaon.early_buddy_android.feature.place.search.route.PlaceSearchRouteActivity
+import com.devaon.early_buddy_android.feature.splash.SplashActivity
 import com.devaon.early_buddy_android.feature.route.RouteActivity
 import com.devaon.early_buddy_android.feature.user.SigninActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -43,6 +44,12 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, RouteActivity::class.java)
             startActivity(intent)
         }
+
+        splash.setOnClickListener {
+            val intent = Intent(this@MainActivity, SplashActivity::class.java)
+            startActivity(intent)
+        }
+
 //        val animationView = findViewById<LottieAnimationView>(R.id.animationView)
 //        animationView.setAnimation("testtt.json")
 //        animationView.loop(true)
