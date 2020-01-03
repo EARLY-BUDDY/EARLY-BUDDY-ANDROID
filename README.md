@@ -37,31 +37,41 @@
 
     //Lottie Library
     implementation 'com.airbnb.android:lottie:3.2.2'
+    
+    //google map
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+
+    implementation 'com.google.firebase:firebase-core:16.0.6'	// 애널리틱스(기본)
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'	// 클라우드 메시징
    
 ## 2.프로그램 구조
   
- data,feature,network 
+ data,feature,network,util
  
  #### 1. data
  - calendar     : 달력
- - login        : 회원
+ - db           : sharedPreference
  - place        : 주소
  - route        : 경로
- 
+ - schedule     : 일정
+ - user         : 회원
+
  #### 2. feature
  - calendar     : 달력
  - home         : 홈 화면
  - initial_join : 최초가입
+ - intercepter  : header 추가 intercepter
  - place        : 장소
    - search    : 장소 검색
    - select    : 장소 선택
  - route        : 세로 경로
  - schedule     : 일정
  - user         : 유저(로그인,회원가입)
- - intercepter  : header 추가 intercepter
- - util         : 애니메이션
  
  #### 3. network  : 통신
+ 
+ #### 4. util : 애니메이션
 
 ## 3.주요 기능 구현 방법 (현재까지 진행한 사항)
 
@@ -85,12 +95,16 @@ ex) 중복확인, 특정문자 제한, 글자수 제한, 활성화 비활성화 
 - 하나라도 입력하지 않은 항목이 있을 경우 Toast 메시지 띄우기
 
 ### 2. 세로 경로
-- 출발지에서 목적지로 가는 세로 경로를 보여주는 뷰 제작. 경유 정류장 표시하기 위해 리사이클러뷰 안에 리사이클러뷰 제작.
 
-- 지하철 경로(약 15개) 와 버스 경로(4개) 를 나타내기 위해 많은 분기를 사용. (람다식 사용)
+- 출발지에서 목적지로 가는 세로 경로를 보여주는 뷰 제작. 경유 정류장 표시하기 위해 리사이클러뷰 안에 리사이클러뷰 제작
+
+- 지하철 경로(18개) 와 버스 경로(10개) 의 다양한 경우의 수로 인한 internal constructor 생성
+
+- internal constructor 로 인한 코드 줄임
 
 - 세로 경로 뷰 서버와의 retroifit 라이브러리를 이용해  통신 완료
 
+- 두개의 data class 를 받는 두개의 adapter,viewHolder 생성
 
 
 ### 3. 가로경로
@@ -109,4 +123,21 @@ ex) 중복확인, 특정문자 제한, 글자수 제한, 활성화 비활성화 
 
   
 ### 4. 애니메이션
-- 숫자 올라가는 애니메이션 kotlin extension 을 이용하여 생성.
+
+- 숫자 올라가는 애니메이션 kotlin extension 을 이용하여 생성
+
+### 5. 일정표
+
+### 6. 맵 띄우기
+
+- google map api 적용
+
+- 경도 위도 좌표를 받아 구글맵에 16F zoom 으로 화면 표시
+
+### 7. 홈 화면
+
+- 가장 최근에 있는 일정에 맞춰 화면 적용
+
+- 일정에 대한 대중교통 알림이 시작되면 1대,2대,3대 이동중 에 따라 화면 변환
+
+- 
