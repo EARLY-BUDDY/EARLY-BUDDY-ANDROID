@@ -157,6 +157,43 @@
 
 - 두개의 data class 를 받는 두개의 adapter,viewHolder 생성
 
+- when 을 통한 람다식 적용
+
+```
+when (holder.itemViewType) {
+                    //지하철
+                    1 -> {
+                        holder.direction.text = String.format("%s 방면", routeList[position].way)
+                        holder.startingText.text =
+                            String.format("%s역", routeList[position].startName)
+                        holder.endText.text = String.format("%s역", routeList[position].endName)
+
+                    }
+                    //버스
+                    2 -> {
+                        holder.ridingNumber.text =
+                            String.format("%s", routeList[position].lane.busNo)
+                        holder.startingText.text =
+                            String.format("%s", routeList[position].startName)
+                        holder.endText.text = String.format("%s", routeList[position].endName)
+                        holder.direction.text = "방향을 주의하고 탑승하세요"
+                    }
+
+                }
+```
+
+- with 람다식 사용
+
+```
+//경로데이터 넣기
+    fun setRouteItem(newRouteList: ArrayList<SubPath>) {
+        with(routeList) {
+            clear()
+            addAll(newRouteList)
+        }
+        notifyDataSetChanged()
+    }
+```
 
 ### 3. 가로경로
 
@@ -230,7 +267,50 @@
 
 - 숫자 올라가는 애니메이션 kotlin extension 을 이용하여 생성
 
+```
+private fun TextView.setAnimInt(value: Int) {
+        startAnimation(TextViewIntAnimation(this, to = value))
+    }
+```
+
+- 시간이 줄어드는 애니메이션 kotlin extension 을 이용하여 생성
+
+```
+   private fun TextView.start(token: Int) { //타이머 스타트
+        var a = this
+        if (token == 0) {
+            timerTask = timer(period = 10) {
+                // period = 10 0.01초 , period = 1000 면 1초
+                time--
+
+                val min = (time / 6000) % 60 // 1분
+                runOnUiThread {
+                    // Ui 를 갱신 시킴.
+
+                    if (min < 10) { // 분
+                        minmin = "$min"
+                    } else {
+                        minmin = "$min"
+                    }
+
+                    a.text = String.format("%s", minmin)
+                    if (Integer.valueOf(minmin) <= 3) {
+                        act_home_tv_minute_number.visibility = View.INVISIBLE
+                        act_home_tv_before_minute.visibility = View.INVISIBLE
+                        act_home_tv_soon.visibility = View.VISIBLE
+                    }
+                }
+            }
+        }
+    }
+```
+    
 ### 5. 일정표
+- 커스텀 달력을 통한 일정 조회 및 등록
+
+- 오늘 날짜에 파란 마커 디폴트
+
+- 커스텀 달력 -> 뷰페이저와 리사이클러뷰 이용
 
 ### 6. 맵 띄우기
 
@@ -244,10 +324,23 @@
 
 - 일정에 대한 대중교통 알림이 시작되면 1대,2대,3대 이동중 에 따라 화면 변환
 
-- 
+- 대중교통 도착이 임박(3분 이내)가 되면 곧 도착 이라는 문구 표시
 
 ### 8. 일정 등록
 
 - datePicker와 timePicker로 날짜와 시간 선택
+```
+act_schedule_tv_date_click.setOnClickListener {
+            DatePickerDialog(this@ScheduleActivity, R.style.MyDatePickerDialogTheme,
+                DatePickerDialog.OnDateSetListener{ datePicker, year, monthOfYear, dayOfMonth ->
+                    cal.set(Calendar.YEAR, year)
+                    cal.set(Calendar.MONTH, monthOfYear)
+                    cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                    act_schedule_tv_date_click.text = SimpleDateFormat("yyyy.MM.dd").format(cal.time)
+
+                },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
+        }
+    }
+```
 
 - 장소 검색을 통해 받은 출발지와 도착지 좌표로 가로경로 표시
