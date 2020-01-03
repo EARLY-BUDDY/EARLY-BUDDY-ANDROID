@@ -6,9 +6,6 @@
     //리사이클러뷰 라이브러리
     implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha06'
     
-    //동그란 이미지 커스텀 뷰 라이브러리 : https://github.com/hdodenhof/CircleImageView
-    implementation 'de.hdodenhof:circleimageview:3.0.1'
-    
     //Retrofit 라이브러리 : https://github.com/square/retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.2'
     //Retrofit 라이브러리 응답으로 가짜 객체를 만들기 위해
@@ -23,17 +20,9 @@
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
     
-    //ODsay api : 대중교통 api 
-    implementation 'com.google.code.findbugs:jsr305:2.0.1'
-    
+    //constraint Layout 사용을 위한 라이브러리
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    
-    //카카오맵 라이브러리 적용
-    implementation files('libs\\libDaumMapAndroid.jar')
-
-
-    //FloationgActionButton
-    implementation 'com.github.clans:fab:1.6.4'
+   
     
     //Lottie Library
     implementation 'com.airbnb.android:lottie:3.2.2'
@@ -42,6 +31,7 @@
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     
+     // fcm - firebase를 이용해 알림 구현 라이브러리
     implementation 'com.google.firebase:firebase-core:16.0.6'	// 애널리틱스(기본)
     implementation 'com.google.firebase:firebase-messaging:17.3.4'	// 클라우드 메시징
 
@@ -66,7 +56,7 @@
  - intercepter  : header 추가 intercepter
  - place        : 장소
    - search    : 장소 검색
-   - select    : 장소 선택
+   - select    : 자주 가는 장소 선택
  - route        : 세로 경로
  - schedule     : 일정
  - user         : 유저(로그인,회원가입)
@@ -99,39 +89,86 @@
           app:lottie_fileName="splash.json"/>
   ```
 
-  - SplashActivity.kt
-
-  ```
-  Handler().postDelayed({
-              //아이디 있을 경우. 자동로그인인 경우
-              if (id.isNotEmpty()) {
-                  Log.d("test", "id : "+ id) //자동로그인 됨
-                  //통신
-                  if(nickName.isNotEmpty()){
-                      //홈
-                      goToHomeActivity()
-                      finish()
-                  }else{ //닉네임 설정
-                      goToSetNickNameActivity()
-                      finish()
-                  }
-              }
-              //아이디 없을 경우. 자동로그인 아닌 경우
-              else{//회원가입
-                  goToSigninActivity()
-                  finish()
-              }
-          }, SPLASH_TIME_OUT)
-  ```
-
   
 
 ### 1. 최초가입(로그인,회원가입,닉네임, 자주가는 장소 등록)
 
 - TextWatcher  사용해서 예외처리 및 버튼활성화.
   ex) 중복확인, 특정문자 제한, 글자수 제한, 활성화 비활성화 버튼색상 변경
+  
+  -PlaceSearchActivity.kt
+  ```
+ act_place_search_et_search.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
 
-- SharedPreference로 자동로그인 구현
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //통신
+                getPlaceSearch()
+                Log.d("testtest", "onTextChanged")
+            }
+        })
+
+```
+
+
+   -SignupActivity.kt 
+
+```
+private fun passwordCheck() {
+        act_signup_et_pw.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+
+                if ((p0!!.length < 6) || !(pwdPattern.matcher(act_signup_et_pw.text.toString()).matches())) {
+                    act_signup_tv_pw_ment.showOrInvisible(true)
+
+                    act_signup_cl_pw.setBackgroundResource(R.drawable.act_signup_round_rect_red)
+                    act_signup_et_pw.setTextColor(
+                        ContextCompat.getColor(
+                            this@SignupActivity,
+                            R.color.black
+                        )
+                    )
+                    act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_gray_full)
+                    pwFlag = false
+                } else {
+                    act_signup_tv_pw_ment.showOrInvisible(false)
+                    act_signup_cl_pw.setBackgroundResource(R.drawable.act_signup_round_rect_blue)
+                    act_signup_et_pw.setTextColor(
+                        ContextCompat.getColor(
+                            this@SignupActivity,
+                            R.color.black
+                        )
+                    )
+
+                    if(!act_signup_et_pw.text.toString().equals(act_signup_et_pw_check.text.toString())) {
+                        act_signup_tv_pw_check_ment.showOrInvisible(true)
+                        act_signup_cl_pw_check.setBackgroundResource(R.drawable.act_signup_round_rect_red)
+                        act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_gray_full)
+                        pwCheckFlag = false
+                    }
+                    pwFlag = true
+                }
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+        })
+    }
+
+```
+
+
 
 - ReCyclerView로 장소 검색 통신 전 더미데이터
 
