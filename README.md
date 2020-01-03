@@ -2,11 +2,13 @@
 
 ### 얼리버디 - 약속시간을 위한 나만의 대중교통 배차 알리미
 
-<img src="https://user-images.githubusercontent.com/37479631/71730558-d8bcc780-2e85-11ea-9e61-4a827e58558f.png" alt="img" style="width=100;" />
+<img width="300" src="https://user-images.githubusercontent.com/37479631/71730558-d8bcc780-2e85-11ea-9e61-4a827e58558f.png" alt="img" />
 
 ### workflow
 
-![img](file:///Users/jinee/Desktop/KakaoTalk_Photo_2020-01-03-23-29-42.png?lastModify=1578063559)
+
+<img width="500" src="https://user-images.githubusercontent.com/37479631/71730672-233e4400-2e86-11ea-83aa-e2661428e845.png" alt="img"/>
+
 
 ## 1. 적용 라이브러리
 
