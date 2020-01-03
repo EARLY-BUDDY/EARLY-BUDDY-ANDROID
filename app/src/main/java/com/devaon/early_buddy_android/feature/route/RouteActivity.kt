@@ -10,6 +10,7 @@ import com.devaon.early_buddy_android.data.schedule.GetScheduleData
 import com.devaon.early_buddy_android.data.schedule.PathInfo
 import com.devaon.early_buddy_android.feature.home.HomeRouteAdapter
 import com.devaon.early_buddy_android.feature.home.HomeRouteViewHolder
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
 import kotlinx.android.synthetic.main.activity_route.*
 import retrofit2.Call
@@ -20,6 +21,10 @@ class RouteActivity : AppCompatActivity() {
 
     private lateinit var routeRecyclerView: RecyclerView
     private lateinit var routeAdapter: RouteAdapter
+
+    object Route{
+        var isSelected = false
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,24 +46,19 @@ class RouteActivity : AppCompatActivity() {
         routeRecyclerView.adapter = routeAdapter
         makeListItem()
         intent()
+        setButton()
 
     }
 
     private fun makeListItem() {
+        /*
         val callRoute: Call<RouteResponse> = EarlyBuddyServiceImpl.service.getRoute(
-            127.069253,
-            37.540635,
-            127.072861,
-            37.625918,
+            ScheduleActivity.schedulePlace.startPlaceX,
+            ScheduleActivity.schedulePlace.startPlaceY,
+            ScheduleActivity.schedulePlace.endPlaceX,
+            ScheduleActivity.schedulePlace.endPlaceY,
             0
         )
-
-//        {
-//            "SX" : "127.08282465301149",
-//            "SY" : "37.62072502768881",
-//            "EX" : "127.03746391719882",
-//            "EY" : "37.4720040276288",
-//        }pathType
 
         callRoute.enqueue(object : Callback<RouteResponse> {
             override fun onFailure(call: Call<RouteResponse>, t: Throwable) {
@@ -70,17 +70,32 @@ class RouteActivity : AppCompatActivity() {
                     Log.e("result is ", response.body().toString())
                     val route = response.body()!!
                     routeAdapter.setRouteItem(route.data.path[0].subPath)
-                    routeAdapter.routeList[0].startName = "내집은 짹짹이!!"
+                    routeAdapter.routeList[0].startName = ScheduleActivity.schedulePlace.startPlaceName
                     routeAdapter.notifyDataSetChanged()
+                    routeAdapter.routeList[route.data.path[0].subPath.size-1].endName = ScheduleActivity.schedulePlace.endPlaceName
                 }
             }
-        })
+        })*/
+
+        val subpath = ScheduleActivity.selectedPath.path.subPath
+        routeAdapter.setRouteItem(subpath)
+        routeAdapter.routeList[0].startName = ScheduleActivity.schedulePlace.startPlaceName
+        routeAdapter.notifyDataSetChanged()
+        routeAdapter.routeList[subpath.size-1].endName = ScheduleActivity.schedulePlace.endPlaceName
     }
 
 
     private fun intent() {
         act_route_iv_back.setOnClickListener {
             finish()
+        }
+    }
+
+    private fun setButton(){
+        act_route_cv_submit.setOnClickListener{
+            Route.isSelected = true
+            finish()
+
         }
     }
 }

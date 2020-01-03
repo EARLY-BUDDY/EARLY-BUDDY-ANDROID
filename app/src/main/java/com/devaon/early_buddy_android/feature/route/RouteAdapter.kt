@@ -148,6 +148,10 @@ class RouteAdapter(
                     }
                     //마지막
                     routeList.size - 1 -> {
+
+                        holder.walkEndPoint.text =
+                            String.format("%s", routeList[position].endName)
+
                         when (getPreviousTrafficType(position)) {
                             1 -> {
                                 holder.walkStartPoint.text =

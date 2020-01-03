@@ -12,6 +12,7 @@ import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.route.Path
 import com.devaon.early_buddy_android.data.route.RouteResponse
 import com.devaon.early_buddy_android.feature.place.search.text.PlaceDirectionsActivity
+import com.devaon.early_buddy_android.feature.route.RouteActivity
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
 import com.google.gson.Gson
@@ -25,7 +26,7 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
     var placeSearchRouteRecyclerViewAdapter =  PlaceSearchRouteAdapter(this)
 
     private var searchPathType = 0
-    lateinit var routes : ArrayList<Path>
+    var routes  = arrayListOf<Path>()
 
     var date = ""
     var dayOfWeek = 0
@@ -46,6 +47,10 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
 
     override fun onResume() {
         super.onResume()
+
+        if(RouteActivity.Route.isSelected){
+            finish()
+        }
 
         if(ScheduleActivity.schedulePlace.startPlaceName != "" && ScheduleActivity.schedulePlace.endPlaceName != "") {
             getRouteResults(ScheduleActivity.schedulePlace.startPlaceX, ScheduleActivity.schedulePlace.startPlaceY,
@@ -122,10 +127,14 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
                     placeSearchRouteRecyclerViewAdapter.replaceAll(routes)
                     placeSearchRouteRecyclerViewAdapter.notifyDataSetChanged()
 
-                    if(routes.size > 0){
-                        act_place_select_iv_bird.visibility = INVISIBLE
-                    }else
-                        act_place_select_iv_bird.visibility = VISIBLE
+                    Log.e("route사이즈다", routes.size.toString())
+
+                    act_place_select_iv_bird.visibility = INVISIBLE
+                }
+                else{
+                    act_place_select_iv_bird.visibility = INVISIBLE
+                    act_place_select_iv_bird_no_route.visibility = VISIBLE
+
                 }
             }
         })
@@ -140,6 +149,10 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
             val path = gson.toJson(ScheduleActivity.selectedPath.path)
 
             Log.e("path", path)
+
+            val intent = Intent(this@PlaceSearchRouteActivity, RouteActivity::class.java)
+            startActivity(intent)
+
         }
     }
 

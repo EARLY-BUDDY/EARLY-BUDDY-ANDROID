@@ -29,7 +29,6 @@
             </intent-filter>
         </service>
 
-
         <activity android:name=".feature.user.MyPageActivity"></activity>
         <activity android:name=".feature.route.RouteActivity"></activity>
         <!--
