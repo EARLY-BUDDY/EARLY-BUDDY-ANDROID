@@ -362,6 +362,26 @@ private fun TextView.setAnimInt(value: Int) {
 - 일정에 대한 대중교통 알림이 시작되면 1대,2대,3대 이동중 에 따라 화면 변환
 
 - 대중교통 도착이 임박(3분 이내)가 되면 곧 도착 이라는 문구 표시
+- 다음 도착 대중교통 정보가 없으면 그 정보를 지우고 밑으로 붙여야하는데 여기서 ConstraintLayout의 서로 연결되는 속성을 사용해서 잘 해결함.
+
+```
+ var bottomParams = act_home_cl_middle_bar.layoutParams  as? ConstraintLayout.LayoutParams
+                            bottomParams?.topMargin = 90
+                            act_home_cl_middle_bar.layoutParams = bottomParams
+viewGone()
+```
+
+```
+private fun viewGone() {
+        act_home_tv_bus_number.visibility = View.GONE
+        act_home_tv_bus_current_location.visibility = View.GONE
+        act_home_tv_next_bus.visibility = View.GONE
+        act_home_tv_next_bus_var.visibility = View.GONE
+        act_homme_iv_reboot.visibility = View.GONE
+    }
+```
+
+
 
 ### 8. 일정 등록
 
