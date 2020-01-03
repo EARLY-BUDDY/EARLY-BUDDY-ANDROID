@@ -60,10 +60,21 @@
         app:layout_constraintTop_toBottomOf="@+id/act_schedule_route_cl_text"
         app:layout_constraintStart_toStartOf="@+id/act_schedule_route_cl_text">
 
+        <TextView
+            android:id="@+id/act_schedule_route_tv_walk_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="안뇽"
+            android:textSize="10sp"
+            android:fontFamily="@font/noto_sans_kr_bold"/>
+
         <RelativeLayout
             android:id="@+id/act_schedule_route_rl_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,7 +100,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/act_schedule__route_rl_method_1"
+                android:id="@+id/act_schedule_route_rl_method_1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="28">

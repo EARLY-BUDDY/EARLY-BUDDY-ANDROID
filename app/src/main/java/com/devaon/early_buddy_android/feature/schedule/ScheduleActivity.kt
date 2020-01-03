@@ -563,4 +563,3 @@ class ScheduleActivity : AppCompatActivity(){
         }
     }
 }
-
