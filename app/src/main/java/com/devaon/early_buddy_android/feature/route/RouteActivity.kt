@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.route.RouteResponse
+import com.devaon.early_buddy_android.data.schedule.GetScheduleData
+import com.devaon.early_buddy_android.data.schedule.PathInfo
+import com.devaon.early_buddy_android.feature.home.HomeRouteAdapter
+import com.devaon.early_buddy_android.feature.home.HomeRouteViewHolder
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
 import kotlinx.android.synthetic.main.activity_route.*
 import retrofit2.Call
@@ -72,6 +76,7 @@ class RouteActivity : AppCompatActivity() {
             }
         })
     }
+
 
     private fun intent() {
         act_route_iv_back.setOnClickListener {

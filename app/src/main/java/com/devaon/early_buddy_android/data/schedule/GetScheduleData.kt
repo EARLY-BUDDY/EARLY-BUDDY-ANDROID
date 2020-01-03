@@ -15,11 +15,7 @@ data class ScheduleData(
     @SerializedName("weekdayInfo")
     val weekdayInfo: Array<Int>,
     @SerializedName("path")
-<<<<<<< HEAD
-    val pathInfo: PathInfo
-=======
     val pathInfo:PathInfo
->>>>>>> 08588f9043b758428136e95a4a41d0dd0493dc88
 )
 
 data class ScheduleInfo(
@@ -75,9 +71,17 @@ data class SubPath(
     @SerializedName("stationCount")
     val stationCount: Int,
     @SerializedName("detailStartAddress")
-    val detailStartAddress: String,
+    var detailStartAddress: String,
+    @SerializedName("detailStartLongitude")
+    val detailStartLongitude: Double,
+    @SerializedName("detailStartLatitude")
+    val detailStartLatitude: Double,
     @SerializedName("detailEndAddress")
     val detailEndAddress: String,
+    @SerializedName("detailEndLongitude")
+    val detailEndLongitude: Double,
+    @SerializedName("detailEndLatitude")
+    val detailEndLatitude: Double,
     @SerializedName("subwayLane")
     val subwayLane: Int,
     @SerializedName("busNo")

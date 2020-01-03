@@ -1,6 +1,7 @@
 package com.devaon.early_buddy_android.feature.route
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.devaon.early_buddy_android.MapsActivity
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.route.PassThroughStation
 import com.devaon.early_buddy_android.data.route.SubPath
@@ -90,6 +92,13 @@ class RouteAdapter(
                 }
 
                 holder.bind(routeList[position])
+                holder.viewMap.setOnClickListener {
+                    val goToMap = Intent(context, MapsActivity::class.java)
+                    goToMap.putExtra("Longitude",routeList[position].startX)
+                    goToMap.putExtra("Latitude",routeList[position].startY)
+                    goToMap.putExtra("name",routeList[position].startName)
+                    context.startActivity(goToMap)
+                }
                 holder.dropDown.setOnClickListener {
                     if (routeList[position].clicked) {
                         holder.detailList.visibility = View.GONE

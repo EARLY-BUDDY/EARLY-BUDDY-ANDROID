@@ -22,7 +22,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".feature.route.SearchRouteActivity"></activity>
+        <activity android:name=".feature.route.RouteActivity"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -48,7 +48,7 @@
             android:name="com.kakao.sdk.AppKey"
             android:value="0b9ceccacfdc1656c985d747c241c30c" />
 
-        <activity android:name=".feature.route.RouteActivity" />
+        <activity android:name=".feature.home.HomeRouteActivity" />
         <activity android:name=".feature.home.HomeActivity" />
         <activity android:name=".feature.place.search.route.PlaceSearchRouteActivity" />
         <activity android:name=".feature.initial_join.PlaceFavoriteActivity" />

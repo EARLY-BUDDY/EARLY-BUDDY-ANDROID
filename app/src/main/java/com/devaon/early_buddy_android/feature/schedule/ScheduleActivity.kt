@@ -236,22 +236,9 @@ class ScheduleActivity : AppCompatActivity(){
         }
     }
 
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-
-<<<<<<< HEAD
-        val totalTime = 115.0
-        val firstWalkTime = 10.0
-        val secondWalkTime = 10.0
-        val thirdWalkTime = 5.0
-        val method1Time = 50.0
-        val method2Time = 20.0
-        val method3Time = 18.0
-
-
-
-=======
-
+//    override fun onWindowFocusChanged(hasFocus: Boolean) {
+//        super.onWindowFocusChanged(hasFocus)
+//
 //        val totalTime = 115.0
 //        val firstWalkTime = 10.0
 //        val secondWalkTime = 10.0
@@ -262,7 +249,6 @@ class ScheduleActivity : AppCompatActivity(){
 //
 //
 //
->>>>>>> 08588f9043b758428136e95a4a41d0dd0493dc88
 //        var totalPath = findViewById<ImageView>(R.id.act_schedule_route_iv_gray_line).width.toDouble()
 //        val method1 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_1)
 //        val method2 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_2)
@@ -297,9 +283,8 @@ class ScheduleActivity : AppCompatActivity(){
 //        method3Params.width = method3Len.toInt()
 //        method3Params.marginStart = method3Margin
 //        method3.layoutParams = method3Params
-<<<<<<< HEAD
 //    }
-
+//
 //    fun checkValue(){
 //
 //        act_schedule_tv_register.setOnClickListener {
@@ -355,68 +340,7 @@ class ScheduleActivity : AppCompatActivity(){
 //                }
 //            }
 //        })
-//
+
 //    }
-}}
-=======
-    }
-
-    fun checkValue(){
-
-        act_schedule_tv_register.setOnClickListener {
-            val scheName = findViewById<EditText>(R.id.act_schedule_et_name).text.toString()
-
-            if (scheName.isEmpty() == true) {
-                Toast.makeText(this, "내용을 모두 입력해주세요", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            } else {
-                postSchedule(scheName)
-                ScheduleDialogFragment {
-                    finish()
-                }.apply {
-                    show(supportFragmentManager, null)
-                }
-            }
-        }
-    }
-
-    private fun postSchedule(scheName: String){
-
-        var jsonObject = JSONObject()
-        jsonObject.put("scheduleName", scheName)
-        jsonObject.put("scheduleStartTime", SimpleDateFormat("HH:mm").format(cal.time))
-        jsonObject.put("scheduleStartDay", SimpleDateFormat("yyyy-MM-dd").format(cal.time))
-        jsonObject.put("arriveCount", arriveCount)
-        jsonObject.put("noticeMin", noticeMin)
-
-        if (mon.isSelected) weekdays.add(0)
-        if (tue.isSelected) weekdays.add(1)
-        if (wed.isSelected) weekdays.add(2)
-        if (thu.isSelected) weekdays.add(3)
-        if (fri.isSelected) weekdays.add(4)
-        if (sat.isSelected) weekdays.add(5)
-        if (sun.isSelected) weekdays.add(6)
-        jsonObject.put("weekdays", weekdays)
-
-        val body = JsonParser().parse(jsonObject.toString()) as JsonObject
-
-        Log.e("bodybodybodybody", body.toString())
-        val callPostSchedule: Call<PostScheduleData> = EarlyBuddyServiceImpl.service.postSchedule(body)
-
-        callPostSchedule.enqueue(object : Callback<PostScheduleData> {
-            override fun onFailure(call: Call<PostScheduleData>, t: Throwable) {
-                Log.e("error is ", t.toString())
-            }
-
-            override fun onResponse(call: Call<PostScheduleData>, response: Response<PostScheduleData>) {
-                if (response.isSuccessful) {
-                    Log.e("result is ", response.body().toString())
-                    val signupUser = response.body()!!
-//                    signinDialog.show(supportFragmentManager,"signin_fagment")
-                }
-            }
-        })
-
-    }
 }
->>>>>>> 08588f9043b758428136e95a4a41d0dd0493dc88
+

@@ -13,7 +13,6 @@ import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.schedule.HomeScheduleResponse
 import com.devaon.early_buddy_android.feature.calendar.CalendarActivity
-import com.devaon.early_buddy_android.feature.route.RouteActivity
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
 import com.devaon.early_buddy_android.util.TextViewIntAnimation
@@ -575,7 +574,10 @@ class HomeActivity : AppCompatActivity() {
 
     private fun intent() {
         act_home_iv_go_route.setSafeOnClickListener {
-            var goToRoute = Intent(this, RouteActivity::class.java)
+            var goToRoute = Intent(this, HomeRouteActivity::class.java)
+            goToRoute.putExtra("scheduleName",act_home_tv_first_promise.text)
+            goToRoute.putExtra("scheduleStartTime",act_home_tv_second_time.text)
+            goToRoute.putExtra("endAddress",act_home_tv_third_place.text)
             startActivity(goToRoute)
         }
 

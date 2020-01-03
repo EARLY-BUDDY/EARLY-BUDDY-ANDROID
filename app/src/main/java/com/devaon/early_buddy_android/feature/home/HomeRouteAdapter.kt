@@ -1,16 +1,19 @@
 package com.devaon.early_buddy_android.feature.home
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.view.menu.MenuView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.devaon.early_buddy_android.MapsActivity
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.schedule.SubPath
 import com.devaon.early_buddy_android.feature.route.GG
@@ -92,6 +95,13 @@ class HomeRouteAdapter(
                 }
 
                 holder.bind(routeList[position])
+                holder.viewMap.setOnClickListener {
+                    val goToMap = Intent(context,MapsActivity::class.java)
+                    goToMap.putExtra("Longitude",routeList[position].detailStartLongitude)
+                    goToMap.putExtra("Latitude",routeList[position].detailStartLatitude)
+                    goToMap.putExtra("name",routeList[position].detailStartAddress)
+                    context.startActivity(goToMap)
+                }
                 holder.dropDown.setOnClickListener {
                     if (routeList[position].clicked) {
                         holder.detailList.visibility = View.GONE

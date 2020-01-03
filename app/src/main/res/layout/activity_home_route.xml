@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.route.RouteActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/act_home_route_cl_gray"
+        android:layout_width="0dp"
+        android:layout_height="141dp"
+        android:background="@drawable/act_route_bottom_left_rounded"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/act_home_route_tv_promise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="-7sp"
+            android:text="SOPT 데모데이 "
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/act_home_route_iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="@+id/act_home_route_tv_promise"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/act_home_route_tv_promise" />
+
+        <ImageView
+            android:id="@+id/act_home_route_iv_time_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            android:src="@drawable/ic_time_white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/act_home_route_iv_location_img"
+            android:layout_marginBottom="9.5dp"/>
+
+        <TextView
+            android:id="@+id/act_home_route_tv_time_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="6sp"
+            android:text="오후 12:20"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/act_home_route_iv_time_img"
+            app:layout_constraintStart_toEndOf="@id/act_home_route_iv_time_img"
+            app:layout_constraintTop_toTopOf="@+id/act_home_route_iv_time_img" />
+
+        <TextView
+            android:id="@+id/act_home_route_tv_until"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="6sp"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/act_home_route_iv_time_img"
+            app:layout_constraintStart_toEndOf="@id/act_home_route_tv_time_value"
+            app:layout_constraintTop_toTopOf="@+id/act_home_route_iv_time_img"
+            tools:text="까지" />
+
+        <ImageView
+            android:id="@+id/act_home_route_iv_location_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9.5dp"
+            android:src="@drawable/ic_location_white"
+            app:layout_constraintEnd_toEndOf="@+id/act_home_route_iv_time_img"
+            app:layout_constraintStart_toStartOf="@+id/act_home_route_iv_time_img"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="19dp"
+            />
+
+        <TextView
+            android:id="@+id/act_home_route_tv_location_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="6sp"
+            android:text="오렌지팜 서초센터"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/act_home_route_iv_location_img"
+            app:layout_constraintStart_toStartOf="@+id/act_home_route_tv_time_value"
+            app:layout_constraintTop_toTopOf="@+id/act_home_route_iv_location_img" />
+
+        <TextView
+            android:id="@+id/act_home_route_riding_kind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="13sp"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/act_home_route_tv_until"
+            app:layout_constraintEnd_toEndOf="@+id/act_home_route_tv_time"
+            android:text="버스 + 지하철" />
+        <TextView
+            android:id="@+id/act_home_route_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="5sp"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/act_home_route_tv_location_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="1시간 30분" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/act_home_route_rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/act_home_route_cl_gray"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
