@@ -169,6 +169,11 @@ class PlaceSearchRouteAdapter(
 
         }
 
+        Log.e("왜 경로가 달라지는거야아아악", routeList.toString())
+
+        val walk1Tx = routeList[position].subPath[0].sectionTime
+        holder.walk1Tx.text = String.format("%d분", walk1Tx)
+
         val walkParam1 = holder.walk1.getLayoutParams() as LinearLayout.LayoutParams
         walkParam1.weight = routeList[position].subPath[0].sectionTime.toFloat()
         holder.walk1.setLayoutParams(walkParam1)
@@ -182,7 +187,7 @@ class PlaceSearchRouteAdapter(
 
         val walkParam2 = holder.walk2.getLayoutParams() as LinearLayout.LayoutParams
         walkParam2.weight =  routeList[position].subPath[2].sectionTime.toFloat()
-        holder.walk1.setLayoutParams(walkParam2)
+        holder.walk2.setLayoutParams(walkParam2)
 
         if(routeList[position].subPath.size > 3) {
             val methodParam2 = holder.method2.getLayoutParams() as LinearLayout.LayoutParams
@@ -246,22 +251,23 @@ class PlaceSearchRouteAdapter(
         val money: TextView = view.findViewById(R.id.li_place_search_route_tv_money)
         val best : TextView = view.findViewById(R.id.li_place_search_route_tv_best)
 
-        val walk1 : RelativeLayout = view.findViewById(R.id.act_schedule_route_rl_walk_1)
-        val walk2 : RelativeLayout = view.findViewById(R.id.act_schedule_route_rl_walk_2)
-        val walk3 : RelativeLayout = view.findViewById(R.id.act_schedule_route_rl_walk_3)
-        val walk4 : RelativeLayout = view.findViewById(R.id.act_schedule_route_rl_walk_4)
+        val walk1 : RelativeLayout = view.findViewById(R.id.li_place_search_route_rl_walk_1)
+        val walk2 : RelativeLayout = view.findViewById(R.id.li_place_search_route_rl_walk_2)
+        val walk3 : RelativeLayout = view.findViewById(R.id.li_place_search_route_rl_walk_3)
+        val walk4 : RelativeLayout = view.findViewById(R.id.li_place_search_route_rl_walk_4)
 
-        val method1: RelativeLayout = view.findViewById(R.id.act_schedule__route_rl_method_1)
-        val method2:RelativeLayout = view.findViewById(R.id.act_schedule_route_rl_method_2)
-        val method3: RelativeLayout = view.findViewById(R.id.act_schedule_route_rl_method_3)
+        val method1: RelativeLayout = view.findViewById(R.id.act_schedule_route_rl_method_1)
+        val method2:RelativeLayout = view.findViewById(R.id.li_place_search_route_rl_method_2)
+        val method3: RelativeLayout = view.findViewById(R.id.li_place_search_route_rl_method_3)
 
-        var method1Img: ImageView = view.findViewById(R.id.act_schedule_route_iv_method_1)
-        var method2Img: ImageView = view.findViewById(R.id.act_schedule_route_iv_method_2)
-        var method3Img: ImageView = view.findViewById(R.id.act_schedule_route_iv_method_3)
+        var method1Img: ImageView = view.findViewById(R.id.li_place_search_route_iv_method_1)
+        var method2Img: ImageView = view.findViewById(R.id.li_place_search_route_iv_method_2)
+        var method3Img: ImageView = view.findViewById(R.id.li_place_search_route_iv_method_3)
 
-        var method1Tx: TextView = view.findViewById(R.id.act_schedule_route_tv_method_1)
-        var method2Tx: TextView = view.findViewById(R.id.act_schedule_route_tv_method_2)
-        var method3Tx: TextView = view.findViewById(R.id.act_schedule_route_tv_method_3)
+        var walk1Tx: TextView = view.findViewById(R.id.li_place_search_route_tv_walk_1)
+        var method1Tx: TextView = view.findViewById(R.id.li_place_search_route_tv_method_1)
+        var method2Tx: TextView = view.findViewById(R.id.li_place_search_route_tv_method_2)
+        var method3Tx: TextView = view.findViewById(R.id.li_place_search_route_tv_method_3)
 
         fun bind(data: Path) {
             val hour = data.totalTime / 60

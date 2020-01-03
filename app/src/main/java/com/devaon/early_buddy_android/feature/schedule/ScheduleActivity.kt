@@ -28,12 +28,10 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_schdule.*
-import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.time.DayOfWeek
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -59,6 +57,9 @@ class ScheduleActivity : AppCompatActivity(){
     lateinit var time: TextView
     lateinit var method: TextView
 
+    lateinit var routeTime: TextView
+    lateinit var routeMethod: TextView
+
     lateinit var walk1 : RelativeLayout
     lateinit var walk2 : RelativeLayout
     lateinit var walk3 : RelativeLayout
@@ -72,6 +73,7 @@ class ScheduleActivity : AppCompatActivity(){
     lateinit var method2Img: ImageView
     lateinit var method3Img: ImageView
 
+    lateinit var walk1Tx: TextView
     lateinit var method1Tx: TextView
     lateinit var method2Tx: TextView
     lateinit var method3Tx: TextView
@@ -110,13 +112,15 @@ class ScheduleActivity : AppCompatActivity(){
 
         time = findViewById(R.id.act_schedule_route_time)
         method = findViewById(R.id.act_schedule_route_tv_method)
+        routeTime = findViewById(R.id.act_schedule_route_time)
+        routeMethod = findViewById(R.id.act_schedule_route_tv_method)
 
         walk1 = findViewById(R.id.act_schedule_route_rl_walk_1)
         walk2 = findViewById(R.id.act_schedule_route_rl_walk_2)
         walk3 = findViewById(R.id.act_schedule_route_rl_walk_3)
         walk4 = findViewById(R.id.act_schedule_route_rl_walk_4)
 
-        method1 = findViewById(R.id.act_schedule__route_rl_method_1)
+        method1 = findViewById(R.id.act_schedule_route_rl_method_1)
         method2 = findViewById(R.id.act_schedule_route_rl_method_2)
         method3 = findViewById(R.id.act_schedule_route_rl_method_3)
 
@@ -124,6 +128,7 @@ class ScheduleActivity : AppCompatActivity(){
         method2Img = findViewById(R.id.act_schedule_route_iv_method_2)
         method3Img = findViewById(R.id.act_schedule_route_iv_method_3)
 
+        walk1Tx = findViewById(R.id.act_schedule_route_tv_walk_1)
         method1Tx = findViewById(R.id.act_schedule_route_tv_method_1)
         method2Tx = findViewById(R.id.act_schedule_route_tv_method_2)
         method3Tx = findViewById(R.id.act_schedule_route_tv_method_3)
@@ -314,6 +319,30 @@ class ScheduleActivity : AppCompatActivity(){
     }
 
     private fun setRouteView() {
+
+        //경로 시간 표시
+        val routeHour = selectedPath.path!!.totalTime / 60
+        val routeMin = selectedPath.path!!.totalTime % 60
+        if(routeHour != 0){
+            if(routeMin != 0){
+                routeTime.text = String.format("%d시간 %d분", routeHour, routeMin)
+            }else{
+                routeTime.text = String.format("%d시간", routeHour)
+            }
+        } else {
+            if(routeMin != 0){
+                routeTime.text = String.format("%d분", routeMin)
+            }
+        }
+
+        //경로 메소드 표시
+        when(selectedPath.path!!.pathType){
+            1 -> { routeMethod.text = "지하철" }
+            2 -> { routeMethod.text = "버스" }
+            3 -> { routeMethod.text = "지하철 + 버스"}
+        }
+
+        //경로바 그리기
         var transText = arrayListOf<String>()
         var transColor = arrayListOf<String>()
 
@@ -425,6 +454,9 @@ class ScheduleActivity : AppCompatActivity(){
             }
 
         }
+
+        val walk1Time = selectedPath.path!!.subPath[0].sectionTime
+        walk1Tx.text = String.format("%d분", walk1Time)
 
         val walkParam1 = walk1.layoutParams as LinearLayout.LayoutParams
         walkParam1.weight = selectedPath.path!!.subPath[0].sectionTime.toFloat()
