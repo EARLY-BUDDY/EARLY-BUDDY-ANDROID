@@ -45,6 +45,18 @@ class SigninActivity : AppCompatActivity() {
         }*/
         makeController()
         Log.d("testset", "0")
+
+
+        act_signin_iv_signup.setOnClickListener {
+            if(act_signin_iv_signup.isSelected){
+                act_signin_iv_signup.setSelected(false)
+                act_signin_tv_signup.setTextColor(ContextCompat.getColor(this@SigninActivity, R.color.main_color))
+            }else{
+                act_signin_iv_signup.setSelected(true)
+                act_signin_tv_signup.setTextColor(ContextCompat.getColor(this@SigninActivity, R.color.main_color))
+            }
+        }
+
     }
 
 
@@ -56,7 +68,7 @@ class SigninActivity : AppCompatActivity() {
         act_signin_cl_login?.setOnClickListener{
             val id = act_signin_et_id?.text.toString()
             val pw = act_signin_et_pw?.text.toString()
-            val deviceToken = "eZuw-jawWGQ:APA91bHVmBqbWazVCE0rIGch2JCPCE-TA6qjA51RBryZWO1YsTF8zMDLbBIBGNhiKN-GPdeSxoOBr3On0jSvFCivJT23Yqm6cPhxir-WVkRhDjXEvANQaqZWUw_My-3UEeMmIEHO-ZUQ"
+            val deviceToken = "fyG5BOMVqFM:APA91bGGIEdk21i6sgXWTRNepyf-1f4Znmv1qOMxPwuYLlsz02ux7l7SKMdYjGRYDIRVhdITjDA8ZsjNmWrB-tYwuyA-kNgP6O0SqTwTat0dXR-vygExOfpHaxSg8Xcs3OJS25B8GGXS"
             if (id.isEmpty() || pw.isEmpty()) {
                 Toast.makeText(this, "아이디와 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -67,17 +79,17 @@ class SigninActivity : AppCompatActivity() {
                 postUserData(id, pw, deviceToken)
 
                 if(flag) {
-                    Log.d("testset", "flag true")
                     Login.setUser(this, id)
+                    Toast.makeText(this, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
                     val intent =
                         Intent(this@SigninActivity, SetNicknameActivity::class.java).apply {
-                            Log.d("testset", "2")
                             setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                             finish()
-                           /* startActivity(intent)*/
                         }
                     Log.d("testset", "3")
                     startActivity(intent)
+                }else{
+                    Toast.makeText(this, "아이디 또는 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
@@ -130,6 +142,7 @@ class SigninActivity : AppCompatActivity() {
                     val signinUser = response.body()!!
 
                     if(signinUser.userName != null)
+                        Information.idx = signinUser.Idx
                         Information.nickName = signinUser.userName
                 }
             }
@@ -172,6 +185,8 @@ class SigninActivity : AppCompatActivity() {
 
             }
         })
+
+
     }
 
     private fun pwBntActive() {
