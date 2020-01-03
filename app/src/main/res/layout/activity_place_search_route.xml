@@ -232,6 +232,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/act_place_search_route_cl_engine" />
 
+    <ImageView
+        android:id="@+id/act_place_select_iv_bird_no_route"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_result"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/act_place_search_route_cl_engine" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/act_place_search_route_rv"
         android:layout_width="match_parent"
