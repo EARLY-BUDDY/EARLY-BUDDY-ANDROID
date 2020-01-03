@@ -54,6 +54,9 @@ class ScheduleActivity : AppCompatActivity(){
     lateinit var sat: ImageView
     lateinit var sun: ImageView
 
+    lateinit var time: TextView
+    lateinit var method: TextView
+
 
     object schedulePlace {
         var startPlaceName = ""
@@ -83,6 +86,8 @@ class ScheduleActivity : AppCompatActivity(){
         sat = findViewById(R.id.act_schedule_iv_sat)
         sun = findViewById(R.id.act_schedule_iv_sun)
 
+        time = findViewById(R.id.act_schedule_route_time)
+        method = findViewById(R.id.act_schedule_route_tv_method)
 
         setCurrentDate()
         showDatePicker()
@@ -92,6 +97,7 @@ class ScheduleActivity : AppCompatActivity(){
         setWeekPressed()
         searchRoute()
         setPostButton()
+
 
         //장소 textView가 null이 아니라면 defaut 경로 부분을 안보이게 해줘야함
         //null이라면 default 경로가 보이게 해야함
@@ -261,19 +267,9 @@ class ScheduleActivity : AppCompatActivity(){
         }
     }
 
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-
-
-        val totalTime = 115.0
-        val firstWalkTime = 10.0
-        val secondWalkTime = 10.0
-        val thirdWalkTime = 5.0
-        val method1Time = 50.0
-        val method2Time = 20.0
-        val method3Time = 18.0
-
-
+//    override fun onWindowFocusChanged(hasFocus: Boolean) {
+//        super.onWindowFocusChanged(hasFocus)
+//
 //        val totalTime = 115.0
 //        val firstWalkTime = 10.0
 //        val secondWalkTime = 10.0
@@ -318,6 +314,7 @@ class ScheduleActivity : AppCompatActivity(){
 //        method3Params.width = method3Len.toInt()
 //        method3Params.marginStart = method3Margin
 //        method3.layoutParams = method3Params
+
     }
 
     private fun setPostButton(){
@@ -389,3 +386,4 @@ class ScheduleActivity : AppCompatActivity(){
 
     }
 }
+

@@ -9,18 +9,28 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_maps.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
+    var placeLongitude :Double = 0.0
+    var placeLatitude :Double = 0.0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
+        act_map_tv_place.text = intent.getStringExtra("name")
+        placeLongitude = intent.getDoubleExtra("Longitude",0.0)
+        placeLatitude = intent.getDoubleExtra("Latitude",0.0)
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        act_map_iv_back.setOnClickListener {
+            finish()
+        }
     }
 
     /**
@@ -36,8 +46,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(37.540635,127.069253)
-        mMap.addMarker(MarkerOptions().position(sydney).title("앱잼 화이팅"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 17F))
+        val place = LatLng(placeLatitude,placeLongitude)
+        mMap.addMarker(MarkerOptions().position(place).title(intent.getStringExtra("name")))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place, 17F))
     }
 }

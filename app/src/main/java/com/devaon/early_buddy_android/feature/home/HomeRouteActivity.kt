@@ -1,32 +1,29 @@
-package com.devaon.early_buddy_android.feature.route
+package com.devaon.early_buddy_android.feature.home
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.devaon.early_buddy_android.R
-import com.devaon.early_buddy_android.data.route.RouteResponse
 import com.devaon.early_buddy_android.data.schedule.GetScheduleData
-import com.devaon.early_buddy_android.data.schedule.PathInfo
-import com.devaon.early_buddy_android.feature.home.HomeRouteAdapter
-import com.devaon.early_buddy_android.feature.home.HomeRouteViewHolder
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
-import kotlinx.android.synthetic.main.activity_route.*
+import kotlinx.android.synthetic.main.activity_home_route.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RouteActivity : AppCompatActivity() {
+class HomeRouteActivity : AppCompatActivity() {
 
     private lateinit var routeRecyclerView: RecyclerView
-    private lateinit var routeAdapter: RouteAdapter
+    private lateinit var routeAdapter: HomeRouteAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_route)
+        setContentView(R.layout.activity_home_route)
 
-        routeRecyclerView = findViewById(R.id.act_route_rv_riding_info)
-        routeAdapter = RouteAdapter(this, object : RouteViewHolder.ItemClickListener {
+        intent()
+        routeRecyclerView = findViewById(R.id.act_home_route_rv)
+        routeAdapter = HomeRouteAdapter(this, object : HomeRouteViewHolder.ItemClickListener {
             override fun dropDownClick(position: Int) {
                 when (routeAdapter.getClicked(position)) {
                     false -> {
@@ -39,18 +36,15 @@ class RouteActivity : AppCompatActivity() {
             }
         })
         routeRecyclerView.adapter = routeAdapter
+
         makeListItem()
-        intent()
+
 
     }
 
     private fun makeListItem() {
-        val callRoute: Call<RouteResponse> = EarlyBuddyServiceImpl.service.getRoute(
-            127.069253,
-            37.540635,
-            127.072861,
-            37.625918,
-            0
+        val callRoute: Call<GetScheduleData> = EarlyBuddyServiceImpl.service.getHomeRoute(
+            81
         )
 
 //        {
@@ -60,27 +54,34 @@ class RouteActivity : AppCompatActivity() {
 //            "EY" : "37.4720040276288",
 //        }pathType
 
-        callRoute.enqueue(object : Callback<RouteResponse> {
-            override fun onFailure(call: Call<RouteResponse>, t: Throwable) {
+        callRoute.enqueue(object : Callback<GetScheduleData> {
+            override fun onFailure(call: Call<GetScheduleData>, t: Throwable) {
                 Log.e("error is ", t.toString())
             }
 
-            override fun onResponse(call: Call<RouteResponse>, response: Response<RouteResponse>) {
+            override fun onResponse(
+                call: Call<GetScheduleData>,
+                response: Response<GetScheduleData>
+            ) {
                 if (response.isSuccessful) {
                     Log.e("result is ", response.body().toString())
                     val route = response.body()!!
-                    routeAdapter.setRouteItem(route.data.path[0].subPath)
-                    routeAdapter.routeList[0].startName = "내집은 짹짹이!!"
+                    routeAdapter.setRouteItem(route.data.pathInfo.subPath)
+                    routeAdapter.routeList[0].detailStartAddress = String.format("출발지 : %s",route.data.scheduleInfo.startAddress)
+                    act_home_route_riding_kind.text = String.format("%d원",route.data.pathInfo.totalPay)
+                    act_home_route_tv_time.text = String.format("%d분",route.data.pathInfo.totalTime)
                     routeAdapter.notifyDataSetChanged()
                 }
             }
         })
     }
 
-
     private fun intent() {
-        act_route_iv_back.setOnClickListener {
+        act_home_route_iv_back.setOnClickListener {
             finish()
         }
+        act_home_route_tv_promise.text = intent.getStringExtra("scheduleName")
+        act_home_route_tv_time_value.text = intent.getStringExtra("scheduleStartTime")
+        act_home_route_tv_location_value.text = intent.getStringExtra("endAddress")
     }
 }

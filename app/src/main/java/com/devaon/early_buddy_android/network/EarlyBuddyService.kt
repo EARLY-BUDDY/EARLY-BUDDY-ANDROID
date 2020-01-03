@@ -5,9 +5,11 @@ import com.devaon.early_buddy_android.data.place.PlaceResponse
 import com.devaon.early_buddy_android.data.route.RouteResponse
 import com.devaon.early_buddy_android.data.schedule.GetScheduleData
 import com.devaon.early_buddy_android.data.schedule.HomeScheduleResponse
+import com.devaon.early_buddy_android.data.schedule.PathInfo
 import com.devaon.early_buddy_android.data.schedule.PostScheduleData
 import com.devaon.early_buddy_android.data.user.NickNameResponse
 import com.devaon.early_buddy_android.data.user.UserResponse
+import com.devaon.early_buddy_android.data.user.UserSigninResponse
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.http.*
@@ -22,6 +24,11 @@ interface EarlyBuddyService {
         @Query("EY") EY: Double,
         @Query("SearchPathType") SearchPathType: Int
     ): Call<RouteResponse>
+
+    @GET(value = "/schedules")
+    fun getHomeRoute(
+        @Query("scheduleIdx") scheduleIdx: Int
+    ): Call<GetScheduleData>
 
     @GET(value = "/home")
     fun getHomeSchedule(
@@ -44,7 +51,7 @@ interface EarlyBuddyService {
     @POST("/users/signin")
     fun postSigninUser(
         @Body() body:JsonObject
-    ): Call<UserResponse>
+    ): Call<UserSigninResponse>
 
     @POST("/users/setUserName")
     fun postNicknameUser(

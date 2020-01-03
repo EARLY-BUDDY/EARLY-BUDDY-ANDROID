@@ -87,4 +87,8 @@ dependencies {
     //google map
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
+
+    implementation 'com.google.firebase:firebase-core:16.0.6'	// 애널리틱스(기본)
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'	// 클라우드 메시징
 }
+apply plugin: 'com.google.gms.google-services'

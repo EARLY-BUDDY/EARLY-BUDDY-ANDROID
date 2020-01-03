@@ -12,8 +12,9 @@ import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.data.db.Information
 import com.devaon.early_buddy_android.data.login.Login
-import com.devaon.early_buddy_android.data.user.UserResponse
+import com.devaon.early_buddy_android.data.user.UserSigninResponse
 import com.devaon.early_buddy_android.feature.home.HomeActivity
 import com.devaon.early_buddy_android.feature.initial_join.SetNicknameActivity
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
@@ -30,6 +31,7 @@ class SigninActivity : AppCompatActivity() {
 
     private var idFlag: Boolean = false
     private var pwFlag: Boolean = false
+    private var flag: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +44,18 @@ class SigninActivity : AppCompatActivity() {
             finish()
         }*/
         makeController()
+        Log.d("testset", "0")
+
+
+        act_signin_iv_signup.setOnClickListener {
+            if(act_signin_iv_signup.isSelected){
+                act_signin_iv_signup.setSelected(false)
+                act_signin_tv_signup.setTextColor(ContextCompat.getColor(this@SigninActivity, R.color.main_color))
+            }else{
+                act_signin_iv_signup.setSelected(true)
+                act_signin_tv_signup.setTextColor(ContextCompat.getColor(this@SigninActivity, R.color.main_color))
+            }
+        }
 
     }
 
@@ -54,7 +68,7 @@ class SigninActivity : AppCompatActivity() {
         act_signin_cl_login?.setOnClickListener{
             val id = act_signin_et_id?.text.toString()
             val pw = act_signin_et_pw?.text.toString()
-
+            val deviceToken = "fyG5BOMVqFM:APA91bGGIEdk21i6sgXWTRNepyf-1f4Znmv1qOMxPwuYLlsz02ux7l7SKMdYjGRYDIRVhdITjDA8ZsjNmWrB-tYwuyA-kNgP6O0SqTwTat0dXR-vygExOfpHaxSg8Xcs3OJS25B8GGXS"
             if (id.isEmpty() || pw.isEmpty()) {
                 Toast.makeText(this, "아이디와 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -62,13 +76,21 @@ class SigninActivity : AppCompatActivity() {
 
             val response = requestLogin(id, pw)
             if (response) {
-                //postUserData(id, pw)
-                Login.setUser(this, id)
-                val intent = Intent(this@SigninActivity, SetNicknameActivity::class.java).apply {
-                    setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    finish()
+                postUserData(id, pw, deviceToken)
+
+                if(flag) {
+                    Login.setUser(this, id)
+                    Toast.makeText(this, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+                    val intent =
+                        Intent(this@SigninActivity, SetNicknameActivity::class.java).apply {
+                            setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            finish()
+                        }
+                    Log.d("testset", "3")
+                    startActivity(intent)
+                }else{
+                    Toast.makeText(this, "아이디 또는 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
                 }
-                startActivity(intent)
             } else {
                 Toast.makeText(this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
                 act_signin_et_id?.requestFocus()
@@ -85,27 +107,43 @@ class SigninActivity : AppCompatActivity() {
         return true
     }
 
-    private fun postUserData(id : String, pw : String) {
+    private fun postUserData(id : String, pw : String, deviceToken : String) {
+
+/*
+        data class UserSigninResponse(
+            @SerializedName("jwt")
+            val jwt: String,
+            @SerializedName("userIdx")
+            val Idx: Int,
+            @SerializedName("userName")
+            val userName: String
+        )*/
 
         var jsonObject = JSONObject()
         jsonObject.put("userId", id)
         jsonObject.put("userPw", pw)
+        jsonObject.put("deviceToken", deviceToken)
 
         val body = JsonParser().parse(jsonObject.toString()) as JsonObject
 
-        val callSigninResponse: Call<UserResponse> = EarlyBuddyServiceImpl.service.postSigninUser(
+        val callSigninResponse: Call<UserSigninResponse> = EarlyBuddyServiceImpl.service.postSigninUser(
             body
         )
 
-        callSigninResponse.enqueue(object : Callback<UserResponse> {
-            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+        callSigninResponse.enqueue(object : Callback<UserSigninResponse> {
+            override fun onFailure(call: Call<UserSigninResponse>, t: Throwable) {
                 Log.e("error is ", t.toString())
             }
 
-            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+            override fun onResponse(call: Call<UserSigninResponse>, response: Response<UserSigninResponse>) {
                 if (response.isSuccessful) {
+                    flag = true
                     Log.e("result is ", response.body().toString())
                     val signinUser = response.body()!!
+
+                    if(signinUser.userName != null)
+                        Information.idx = signinUser.Idx
+                        Information.nickName = signinUser.userName
                 }
             }
         })
@@ -147,6 +185,8 @@ class SigninActivity : AppCompatActivity() {
 
             }
         })
+
+
     }
 
     private fun pwBntActive() {
