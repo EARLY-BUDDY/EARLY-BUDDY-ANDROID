@@ -122,12 +122,12 @@ class PlaceDirectionsActivity: AppCompatActivity() {
 
 
             // todo: flag로 어떤 text 타고 들어온 건지 검사해서 처리!
-            if(startPlaceName == ""){
+            if(startPlaceName == ""){ //출발지를 선택 안했을 때
                 startPlaceName = placeName
                 startPlaceX = x
                 startPlaceY= y
 
-                if(endPlaceName == "") {
+                if(endPlaceName == "") { //도착지를 선택 안했을 때
                     act_place_select_start_tv_search_start.text = "도착 : "
                     act_place_select_direction_et.text.clear()
                     placeSearchAdapter.clearAll()
@@ -137,7 +137,7 @@ class PlaceDirectionsActivity: AppCompatActivity() {
                     finish()
 
                 }
-            }else {
+            }else { //출발지가 선택 되어있을 때
                 endPlaceName = placeName
                 endPlaceX = x
                 endPlaceY = y

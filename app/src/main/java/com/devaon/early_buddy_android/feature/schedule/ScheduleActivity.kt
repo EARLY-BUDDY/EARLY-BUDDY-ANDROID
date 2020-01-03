@@ -13,6 +13,7 @@ import com.devaon.early_buddy_android.R
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.devaon.early_buddy_android.data.db.Information
 import com.devaon.early_buddy_android.data.route.Path
 import com.devaon.early_buddy_android.data.schedule.PostScheduleData
 import com.devaon.early_buddy_android.feature.place.search.route.PlaceSearchRouteActivity
@@ -562,21 +563,22 @@ class ScheduleActivity : AppCompatActivity(){
 
         jsonObject.put("arriveCount", arriveCount)
         jsonObject.put("noticeMin", noticeMin)
-        jsonObject.put("userIdx", 7)
+        jsonObject.put("userIdx", Information.idx)
 
         val gson = Gson()
         val path = gson.toJson(path!!)
 
         jsonObject.put("path", path)
 
+        if (sun.isSelected) weekdays.add(0)
+        if (mon.isSelected) weekdays.add(1)
+        if (tue.isSelected) weekdays.add(2)
+        if (wed.isSelected) weekdays.add(3)
+        if (thu.isSelected) weekdays.add(4)
+        if (fri.isSelected) weekdays.add(5)
+        if (sat.isSelected) weekdays.add(6)
 
-        if (mon.isSelected) weekdays.add(0)
-        if (tue.isSelected) weekdays.add(1)
-        if (wed.isSelected) weekdays.add(2)
-        if (thu.isSelected) weekdays.add(3)
-        if (fri.isSelected) weekdays.add(4)
-        if (sat.isSelected) weekdays.add(5)
-        if (sun.isSelected) weekdays.add(6)
+        Log.e("weekweekweeek이거다이거" , weekdays.toString())
         jsonObject.put("weekdays", weekdays)
 
         val body = JsonParser().parse(jsonObject.toString()) as JsonObject
