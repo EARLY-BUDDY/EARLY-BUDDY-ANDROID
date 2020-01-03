@@ -271,7 +271,9 @@ class ScheduleCompleteActivity: AppCompatActivity(){
                                 }
                             }
                             2 -> { // 일반
-                                transText.add(getScheduleResponse.data.pathInfo.subPath[i].busNo.toString())
+//                                transText.add(getScheduleResponse.data.pathInfo.subPath[i].busNo.toString())
+                                val busNo = String.format("%d번", getScheduleResponse.data.pathInfo.subPath[i].busNo)
+                                transText.add(busNo)
                                 when(getScheduleResponse.data.pathInfo.subPath[i].busType){
                                     1, 2, 11 -> transColor.add("#3469ec")
                                     10,12 -> transColor.add("#33c63c")
