@@ -74,17 +74,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
+            <TextView
                 android:id="@+id/act_route_et_engine_from"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:background="@null"
                 android:ems="10"
-                android:hint="출발지 검색"
                 android:fontFamily="@font/noto_sans_kr_regular"
                 android:inputType="textPersonName"
-                android:textColor="@color/light_gray"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@+id/act_route_tv_engine_from"
                 app:layout_constraintStart_toEndOf="@+id/act_route_tv_engine_from"
@@ -131,7 +129,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
+            <TextView
                 android:id="@+id/act_route_et_engine_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,9 +137,7 @@
                 android:background="@null"
                 android:ems="10"
                 android:fontFamily="@font/noto_sans_kr_regular"
-                android:hint="도착지 검색"
                 android:inputType="textPersonName"
-                android:textColor="@color/light_gray"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@+id/act_route_tv_engine_to"
                 app:layout_constraintStart_toEndOf="@+id/act_route_tv_engine_to"
@@ -200,7 +196,6 @@
 
         <TextView
             android:id="@+id/act_place_search_route_tv_walk"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:letterSpacing="-0.05"

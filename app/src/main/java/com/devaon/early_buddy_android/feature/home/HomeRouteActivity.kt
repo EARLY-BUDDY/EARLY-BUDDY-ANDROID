@@ -66,7 +66,7 @@ class HomeRouteActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     Log.e("result is ", response.body().toString())
                     val route = response.body()!!
-                    routeAdapter.setRouteItem(route.data.pathInfo.subPath)
+                    routeAdapter.setRouteItem(route.data.pathInfo.subPath,route.data.scheduleInfo.endAddress)
                     routeAdapter.routeList[0].detailStartAddress = String.format("출발지 : %s",route.data.scheduleInfo.startAddress)
                     act_home_route_riding_kind.text = String.format("%d원",route.data.pathInfo.totalPay)
                     act_home_route_tv_time.text = String.format("%d분",route.data.pathInfo.totalTime)

@@ -16,6 +16,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.devaon.early_buddy_android.data.db.Information
 import com.devaon.early_buddy_android.data.route.Path
 import com.devaon.early_buddy_android.data.schedule.PostScheduleData
+import com.devaon.early_buddy_android.feature.calendar.CalendarActivity.getCalendarAcitivityObject.position
 import com.devaon.early_buddy_android.feature.place.search.route.PlaceSearchRouteActivity
 import com.devaon.early_buddy_android.feature.route.RouteActivity
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceName
@@ -512,6 +513,8 @@ class ScheduleActivity : AppCompatActivity(){
     private fun postSchedule(scheName: String){
 
         var jsonObject = JSONObject()
+        var weekArray = JSONArray()
+
         jsonObject.put("scheduleName", scheName)
         jsonObject.put("scheduleStartTime", SimpleDateFormat("HH:mm").format(cal.time))
         jsonObject.put("scheduleStartDay", SimpleDateFormat("yyyy-MM-dd").format(cal.time))
@@ -541,8 +544,14 @@ class ScheduleActivity : AppCompatActivity(){
         if (fri.isSelected) weekdays.add(5)
         if (sat.isSelected) weekdays.add(6)
 
+        for(i in 0..weekdays.size-1){
+            weekArray.put(weekdays.get(i))
+        }
+
         Log.e("weekweekweeek이거다이거" , weekdays.toString())
-        jsonObject.put("weekdays", weekdays)
+        jsonObject.put("weekdays", weekArray)
+        Log.e("weekweekweeek이거다이거22" , weekArray.toString())
+
 
         val body = JsonParser().parse(jsonObject.toString()) as JsonObject
 

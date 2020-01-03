@@ -149,9 +149,9 @@ class SigninActivity : AppCompatActivity() {
                 Toast.makeText(this@SigninActivity, "아이디 또는 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
                 Log.e("error is ", t.toString())
             }
-
             override fun onResponse(call: Call<UserSigninResponse>, response: Response<UserSigninResponse>) {
                 Log.e("result is ", response.body().toString())
+
 
                 if(response.isSuccessful){
                     val signInUser = response.body()!!

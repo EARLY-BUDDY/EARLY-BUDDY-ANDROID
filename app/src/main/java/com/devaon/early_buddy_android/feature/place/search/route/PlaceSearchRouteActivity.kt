@@ -130,6 +130,7 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
                     Log.e("route사이즈다", routes.size.toString())
 
                     act_place_select_iv_bird.visibility = INVISIBLE
+                    act_place_select_iv_bird_no_route.visibility = INVISIBLE
                 }
                 else{
                     placeSearchRouteRecyclerViewAdapter.clearAll()
@@ -153,6 +154,11 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
             Log.e("path", path)
 
             val intent = Intent(this@PlaceSearchRouteActivity, RouteActivity::class.java)
+            intent.putExtra("totalTime",routes[position].totalTime)
+            intent.putExtra("totalPay",routes[position].totalPay)
+            intent.putExtra("transitCount",routes[position].transitCount)
+            intent.putExtra("totalWalkTime",routes[position].totalWalkTime)
+            intent.putExtra("pathType",routes[position].pathType)
             startActivity(intent)
 
         }
