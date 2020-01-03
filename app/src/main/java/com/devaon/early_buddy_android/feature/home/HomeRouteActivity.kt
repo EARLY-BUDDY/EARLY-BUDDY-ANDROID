@@ -44,7 +44,7 @@ class HomeRouteActivity : AppCompatActivity() {
 
     private fun makeListItem() {
         val callRoute: Call<GetScheduleData> = EarlyBuddyServiceImpl.service.getHomeRoute(
-            81
+            intent.getIntExtra("scheduleIdx",0)
         )
 
 //        {

@@ -43,6 +43,13 @@ data class UserNickname(
 )
 
 data class UserSigninResponse(
+    @SerializedName("success")
+    val success: Boolean,
+    @SerializedName("data")
+    val data: UserSigninData
+)
+
+data class UserSigninData(
     @SerializedName("jwt")
     val jwt: String,
     @SerializedName("userIdx")
