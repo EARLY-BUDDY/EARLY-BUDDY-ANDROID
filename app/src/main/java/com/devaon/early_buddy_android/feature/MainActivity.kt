@@ -12,6 +12,7 @@ import com.devaon.early_buddy_android.feature.place.search.route.PlaceSearchRout
 import com.devaon.early_buddy_android.feature.splash.SplashActivity
 import com.devaon.early_buddy_android.feature.route.RouteActivity
 import com.devaon.early_buddy_android.feature.user.SigninActivity
+import com.devaon.early_buddy_android.feature.user.SignupActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -49,6 +50,11 @@ class MainActivity : AppCompatActivity() {
 
         splash.setOnClickListener {
             val intent = Intent(this@MainActivity, SplashActivity::class.java)
+            startActivity(intent)
+        }
+
+        signup.setOnClickListener {
+            val intent = Intent(this@MainActivity, SignupActivity::class.java)
             startActivity(intent)
         }
 

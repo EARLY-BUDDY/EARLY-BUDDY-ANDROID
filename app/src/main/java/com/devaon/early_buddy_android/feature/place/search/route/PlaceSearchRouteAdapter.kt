@@ -180,7 +180,7 @@ class PlaceSearchRouteAdapter(
 
         val walkParam2 = holder.walk2.getLayoutParams() as LinearLayout.LayoutParams
         walkParam2.weight =  routeList[position].subPath[2].sectionTime.toFloat()
-        holder.walk1.setLayoutParams(walkParam2)
+        holder.walk2.setLayoutParams(walkParam2)
 
         if(routeList[position].subPath.size > 3) {
             val methodParam2 = holder.method2.getLayoutParams() as LinearLayout.LayoutParams

@@ -137,33 +137,30 @@ class SigninActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<UserSigninResponse>, response: Response<UserSigninResponse>) {
-                    Log.e("result is ", response.body().toString())
-                    val signInUser = response.body()!!
+                Log.e("result is ", response.body().toString())
+                if(response.body() == null){
+                    Toast.makeText(this@SigninActivity, "아이디 또는 비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT)
+                    return
+                }
+                val signInUser = response.body()!!
 
+                Login.setToken(this@SigninActivity, signInUser.data.jwt)
 
-                    if(signInUser.data.userName !="") {
-                        Information.nickName = signInUser.data.userName
-                        Log.e("nickname",Information.nickName)
-                    }
-                    else{       //닉네임이 없을때 닉네임 설정으로 간다.
-                        flag = true
-                        Login.setUser(this@SigninActivity, id)
-                        Toast.makeText(this@SigninActivity, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
-                        val intent =
-                            Intent(this@SigninActivity, SetNicknameActivity::class.java).apply {
-                                setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                                finish()
-                            }
-                        startActivity(intent)
-                    }
+                if(signInUser.data.userName == ""){
+                    Log.e("Null", "이다 시발")
+                    flag = true
+                    Login.setUser(this@SigninActivity, id)
+                    Toast.makeText(this@SigninActivity, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@SigninActivity, SetNicknameActivity::class.java)
+                    startActivity(intent)
+                    finish()
 
-                    Information.idx = signInUser.data.Idx
-
-
-                getIntentToken()
+                }else {
+                    getIntentToken()
+                }
+                Information.idx = signInUser.data.Idx
             }
         })
-
     }
 
     private fun getIntentToken(){
@@ -245,10 +242,7 @@ class SigninActivity : AppCompatActivity() {
                 if (p0!!.length > 0) {
                     act_signin_cl_pw.setBackgroundResource(R.drawable.act_place_round_rect_blue)
                     act_signin_et_pw.setTextColor(
-                        ContextCompat.getColor(
-                            this@SigninActivity,
-                            R.color.black
-                        )
+                        ContextCompat.getColor(this@SigninActivity, R.color.black)
                     )
                     pwFlag = true
 

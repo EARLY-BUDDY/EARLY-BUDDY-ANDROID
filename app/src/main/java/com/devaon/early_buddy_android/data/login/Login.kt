@@ -7,6 +7,8 @@ object Login {
     private const val USER_KEY = "user"
     private const val USER_NICKNAME =""
 
+    private const val TOKEN = ""
+
     fun getUser(context: Context): String {
         val sharedPreferences = context.getSharedPreferences(LOGIN_KEY, Context.MODE_PRIVATE)
         return sharedPreferences.getString(USER_KEY, "") ?: ""
@@ -38,6 +40,19 @@ object Login {
         sharedPreferences
             .edit()
             .putString(USER_NICKNAME, nickname)
+            .apply()
+    }
+
+    fun getToken(context: Context) : String{
+        val sharedPreferences = context.getSharedPreferences(TOKEN, Context.MODE_PRIVATE)
+        return sharedPreferences.getString(TOKEN, "") ?: ""
+    }
+
+    fun setToken(context: Context, token: String){
+        val sharedPreferences = context.getSharedPreferences(TOKEN, Context.MODE_PRIVATE)
+        sharedPreferences
+            .edit()
+            .putString(TOKEN, token)
             .apply()
     }
 

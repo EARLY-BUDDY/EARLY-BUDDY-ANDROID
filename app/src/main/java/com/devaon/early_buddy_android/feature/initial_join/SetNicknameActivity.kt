@@ -31,15 +31,10 @@ class SetNicknameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_set_nickname)
 
-
         makeController()
     }
 
     private fun makeController() {
-
-        val id = act_set_nickname_et_id.text.toString()
-        val jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEyLCJpYXQiOjE1NzgwNDIxNDEsImV4cCI6MTU4MDYzNDE0MX0.GOgBIZJoAkyvuGEj25LP7OBhC_LgGRG3VrV_op0gwwQ"
-        postUserNicknameData(id, jwt)
 
 
         act_set_nickname_et_id.addTextChangedListener(object : TextWatcher {
@@ -80,45 +75,45 @@ class SetNicknameActivity : AppCompatActivity() {
             } else{
                 Toast.makeText(this@SetNicknameActivity, "한글만 입력해주세요", Toast.LENGTH_SHORT).show()
             }
+
+            val id = act_set_nickname_et_id.text.toString()
+            postUserNicknameData(id)
         }
-
-
-
     }
 
-    private fun postUserNicknameData(userName : String, jwt : String) {
+    private fun postUserNicknameData(userName : String) {
 
         var jsonObject = JSONObject()
         jsonObject.put("userName", userName)
-        jsonObject.put("jwt", jwt)
 
         val body = JsonParser().parse(jsonObject.toString()) as JsonObject
 
         val callUserNicknameResponse: Call<NickNameResponse> = EarlyBuddyServiceImpl.service.postNicknameUser(
-            body
+            Login.getToken(this@SetNicknameActivity), body
         )
 
         callUserNicknameResponse.enqueue(object : Callback<NickNameResponse> {
             override fun onFailure(call: Call<NickNameResponse>, t: Throwable) {
-                Log.e("error is ", t.toString())
+                Log.e("set nickname error is ", t.toString())
             }
 
             override fun onResponse(call: Call<NickNameResponse>, response: Response<NickNameResponse>) {
                 if (response.isSuccessful) {
-                    Log.e("result is ", response.body().toString())
+                    Log.e("set nickname result is ", response.body().toString())
                     val NicknameUser = response.body()!!
-                    Log.e("respnse message", response.message())
+                    Log.e("response message", response.message())
                     if(NicknameUser.nickName == null) {
                         Log.e("nickname is null", "!")
-                    }else
-                        //Login.setNickName(this@SetNicknameActivity, NicknameUser.nickName)
+                    }else {
+                        Login.setNickName(this@SetNicknameActivity, NicknameUser.nickName)
                         Information.nickName = NicknameUser.nickName
+                        Log.e("nickname", NicknameUser.nickName)
+                    }
+                }else{
+                    Log.e("setNickName response error", response.message() )
                 }
             }
         })
-
     }
-
-
 
 }

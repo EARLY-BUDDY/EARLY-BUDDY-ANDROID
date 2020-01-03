@@ -123,6 +123,8 @@ class SignupActivity : AppCompatActivity() {
                     val signupUser = response.body()!!
                     signinDialog.show(supportFragmentManager,"signin_fagment")
                     idFlag = true
+                }else{
+                    Log.e("fail message ", response.message())
                 }
             }
         })
