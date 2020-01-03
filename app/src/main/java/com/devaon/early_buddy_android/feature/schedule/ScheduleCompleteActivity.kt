@@ -7,17 +7,13 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.schedule.GetScheduleData
-import com.devaon.early_buddy_android.data.schedule.HomeScheduleResponse
-import com.devaon.early_buddy_android.data.schedule.PostScheduleData
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
-import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.view.View
 import android.view.View.VISIBLE
 import android.widget.*
-import com.devaon.early_buddy_android.feature.calendar.CalendarActivity.getCalendarAcitivityObject.position
 import kotlinx.android.synthetic.main.activity_schedule_complete.*
 
 
@@ -56,6 +52,7 @@ class ScheduleCompleteActivity: AppCompatActivity(){
     lateinit var method2Img: ImageView
     lateinit var method3Img: ImageView
 
+    lateinit var walk1Tx: TextView
     lateinit var method1Tx: TextView
     lateinit var method2Tx: TextView
     lateinit var method3Tx: TextView
@@ -90,7 +87,7 @@ class ScheduleCompleteActivity: AppCompatActivity(){
         walk3 = findViewById(R.id.act_schedule_route_rl_walk_3)
         walk4 = findViewById(R.id.act_schedule_route_rl_walk_4)
 
-        method1 = findViewById(R.id.act_schedule__route_rl_method_1)
+        method1 = findViewById(R.id.act_schedule_route_rl_method_1)
         method2 = findViewById(R.id.act_schedule_route_rl_method_2)
         method3 = findViewById(R.id.act_schedule_route_rl_method_3)
 
@@ -98,6 +95,7 @@ class ScheduleCompleteActivity: AppCompatActivity(){
         method2Img = findViewById(R.id.act_schedule_route_iv_method_2)
         method3Img = findViewById(R.id.act_schedule_route_iv_method_3)
 
+        walk1Tx = findViewById(R.id.act_schedule_route_tv_walk_1)
         method1Tx = findViewById(R.id.act_schedule_route_tv_method_1)
         method2Tx = findViewById(R.id.act_schedule_route_tv_method_2)
         method3Tx = findViewById(R.id.act_schedule_route_tv_method_3)
@@ -271,7 +269,9 @@ class ScheduleCompleteActivity: AppCompatActivity(){
                                 }
                             }
                             2 -> { // 일반
-                                transText.add(getScheduleResponse.data.pathInfo.subPath[i].busNo.toString())
+//                                transText.add(getScheduleResponse.data.pathInfo.subPath[i].busNo.toString())
+                                val busNo = String.format("%s번", getScheduleResponse.data.pathInfo.subPath[i].busNo)
+                                transText.add(busNo)
                                 when(getScheduleResponse.data.pathInfo.subPath[i].busType){
                                     1, 2, 11 -> transColor.add("#3469ec")
                                     10,12 -> transColor.add("#33c63c")
@@ -285,12 +285,15 @@ class ScheduleCompleteActivity: AppCompatActivity(){
 
                 }
 
+                val walk1Time = getScheduleResponse.data.pathInfo.subPath[0].sectionTime
+                walk1Tx.text = String.format("%d분", walk1Time)
+
                 val walkParam1 = walk1.getLayoutParams() as LinearLayout.LayoutParams
                 walkParam1.weight = getScheduleResponse.data.pathInfo.subPath[0].sectionTime.toFloat()
                 walk1.setLayoutParams(walkParam1)
 
                 val methodParam1 = method1.getLayoutParams() as LinearLayout.LayoutParams
-                walkParam1.weight = getScheduleResponse.data.pathInfo.subPath[1].sectionTime.toFloat()
+                methodParam1.weight = getScheduleResponse.data.pathInfo.subPath[1].sectionTime.toFloat()
                 method1.setLayoutParams(methodParam1)
                 method1Tx.text = transText[0]
                 method1Tx.setTextColor(Color.parseColor(transColor[0]))

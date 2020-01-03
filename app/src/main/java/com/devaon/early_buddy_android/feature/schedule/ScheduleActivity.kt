@@ -38,7 +38,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class ScheduleActivity : AppCompatActivity() {
+class ScheduleActivity : AppCompatActivity(){
     var cal = Calendar.getInstance()
     var arriveCount = 0
     var noticeMin = 0
@@ -47,7 +47,7 @@ class ScheduleActivity : AppCompatActivity() {
 
     lateinit var route: TextView
     lateinit var routeSelect: TextView
-
+  
     lateinit var mon: ImageView
     lateinit var tue: ImageView
     lateinit var wed: ImageView
@@ -59,10 +59,10 @@ class ScheduleActivity : AppCompatActivity() {
     lateinit var time: TextView
     lateinit var method: TextView
 
-    lateinit var walk1: RelativeLayout
-    lateinit var walk2: RelativeLayout
-    lateinit var walk3: RelativeLayout
-    lateinit var walk4: RelativeLayout
+    lateinit var walk1 : RelativeLayout
+    lateinit var walk2 : RelativeLayout
+    lateinit var walk3 : RelativeLayout
+    lateinit var walk4 : RelativeLayout
 
     lateinit var method1: RelativeLayout
     lateinit var method2: RelativeLayout
@@ -88,7 +88,7 @@ class ScheduleActivity : AppCompatActivity() {
     }
 
     object selectedPath {
-        var path: Path? = null
+         var path: Path? = null
     }
 
     var scheduleIdx = 0
@@ -142,7 +142,7 @@ class ScheduleActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        if (path != null) {
+        if(path !=  null){
             act_schedule_tv_place_from_result.text = startPlaceName
             act_schedule_tv_place_from_result.setTextColor(Color.parseColor("#3e3e3e"))
             act_schedule_tv_place_to_result.text = endPlaceName
@@ -154,7 +154,7 @@ class ScheduleActivity : AppCompatActivity() {
         }
     }
 
-    fun setCurrentDate() {
+    fun setCurrentDate(){
         val current = LocalDateTime.now()
         val dateFormat = DateTimeFormatter.ofPattern("yyyy.MM.dd")
         val dateFormatted = current.format(dateFormat)
@@ -165,23 +165,21 @@ class ScheduleActivity : AppCompatActivity() {
         act_schedule_tv_time_click.text = timeFormatted
     }
 
-    fun showDatePicker() {
+    fun showDatePicker(){
 
         act_schedule_tv_date_click.setOnClickListener {
             DatePickerDialog(this@ScheduleActivity, R.style.MyDatePickerDialogTheme,
-                DatePickerDialog.OnDateSetListener { datePicker, year, monthOfYear, dayOfMonth ->
+                DatePickerDialog.OnDateSetListener{ datePicker, year, monthOfYear, dayOfMonth ->
                     cal.set(Calendar.YEAR, year)
                     cal.set(Calendar.MONTH, monthOfYear)
                     cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                    act_schedule_tv_date_click.text =
-                        SimpleDateFormat("yyyy.MM.dd").format(cal.time)
+                    act_schedule_tv_date_click.text = SimpleDateFormat("yyyy.MM.dd").format(cal.time)
 
-                }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)
-            ).show()
+                },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
         }
     }
 
-    fun showTimePicker() {
+    fun showTimePicker(){
 
         act_schedule_tv_time_click.setOnClickListener {
             TimePickerDialog(this@ScheduleActivity, R.style.MyTimePickerDialogTheme,
@@ -189,31 +187,21 @@ class ScheduleActivity : AppCompatActivity() {
                     cal.set(Calendar.HOUR_OF_DAY, hour)
                     cal.set(Calendar.MINUTE, minute)
                     act_schedule_tv_time_click.text = SimpleDateFormat("a hh:mm").format(cal.time)
-                }, cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), false
-            ).show()
+                },cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), false).show()
         }
     }
 
-    fun setNotiSpinner() {
+    fun setNotiSpinner(){
         val notiSpinner: Spinner = findViewById(R.id.act_schedule_sp_noti)
-        ArrayAdapter.createFromResource(
-            this@ScheduleActivity,
-            R.array.noti_array,
-            android.R.layout.simple_spinner_item
-        )
-            .also { adapter ->
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        ArrayAdapter.createFromResource(this@ScheduleActivity, R.array.noti_array, android.R.layout.simple_spinner_item)
+            .also {
+                adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 notiSpinner.adapter = adapter
             }
-        notiSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
+        notiSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 var userNoti = notiSpinner.selectedItemPosition
-                when (userNoti) {
+                when(userNoti){
                     0 -> arriveCount = 1
                     1 -> arriveCount = 2
                     2 -> arriveCount = 3
@@ -221,103 +209,92 @@ class ScheduleActivity : AppCompatActivity() {
                 }
 
             }
-
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
     }
 
-    fun setNotiRangeSpinner() {
+    fun setNotiRangeSpinner(){
         val notiRangeSpinner: Spinner = findViewById(R.id.act_schedule_sp_noti_range)
-        ArrayAdapter.createFromResource(
-            this@ScheduleActivity,
-            R.array.noti_range_array,
-            android.R.layout.simple_spinner_item
-        )
-            .also { adapter ->
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        ArrayAdapter.createFromResource(this@ScheduleActivity, R.array.noti_range_array, android.R.layout.simple_spinner_item)
+            .also {
+                    adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 notiRangeSpinner.adapter = adapter
             }
-        notiRangeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
+        notiRangeSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 var userNotiRange = notiRangeSpinner.selectedItemPosition
-                when (userNotiRange) {
+                when(userNotiRange){
                     0 -> noticeMin = 5
                     1 -> noticeMin = 10
                     2 -> noticeMin = 20
                     3 -> noticeMin = 0
                 }
             }
-
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
     }
 
-    private fun setWeekPressed() {
+    private fun setWeekPressed(){
 
         mon.setOnClickListener {
-            if (mon.isSelected) {
+            if(mon.isSelected){
                 mon.isSelected = false
-            } else {
+            }else{
                 mon.isSelected = true
             }
         }
         tue.setOnClickListener {
-            if (tue.isSelected) {
+            if(tue.isSelected){
                 tue.isSelected = false
-            } else {
+            }else{
                 tue.isSelected = true
             }
         }
         wed.setOnClickListener {
-            if (wed.isSelected) {
+            if(wed.isSelected){
                 wed.isSelected = false
-            } else {
+            }else{
                 wed.isSelected = true
             }
         }
         thu.setOnClickListener {
-            if (thu.isSelected) {
+            if(thu.isSelected){
                 thu.isSelected = false
-            } else {
+            }else{
                 thu.isSelected = true
             }
         }
         fri.setOnClickListener {
-            if (fri.isSelected) {
+            if(fri.isSelected){
                 fri.isSelected = false
-            } else {
+            }else{
                 fri.isSelected = true
             }
         }
         sat.setOnClickListener {
-            if (sat.isSelected) {
+            if(sat.isSelected){
                 sat.isSelected = false
-            } else {
+            }else{
                 sat.isSelected = true
             }
         }
         sun.setOnClickListener {
-            if (sun.isSelected) {
+            if(sun.isSelected){
                 sun.isSelected = false
-            } else {
+            }else{
                 sun.isSelected = true
             }
         }
     }
 
-    private fun searchRoute() {
+    private fun searchRoute(){
         val placeClick = findViewById<ConstraintLayout>(R.id.act_schedule_cl_place_click)
 
-        placeClick.setOnClickListener {
+        placeClick.setOnClickListener{
             val intent = Intent(this@ScheduleActivity, PlaceSearchRouteActivity::class.java)
-            intent.putExtra("scheduleDate", SimpleDateFormat("MM월 dd일").format(cal.time))
+            intent.putExtra("scheduleDate",SimpleDateFormat("MM월 dd일").format(cal.time))
             intent.putExtra("scheduleDayOfWeek", cal.get(Calendar.DAY_OF_WEEK))
             intent.putExtra("scheduleTime", SimpleDateFormat("a hh:mm").format(cal.time))
             startActivity(intent)
@@ -502,84 +479,87 @@ class ScheduleActivity : AppCompatActivity() {
         } else {
             walk4.visibility = View.GONE
         }
-
     }
 
-        private fun setPostButton() {
-            act_schedule_tv_register.setOnClickListener {
 
-                val scheName = findViewById<EditText>(R.id.act_schedule_et_name).text.toString()
-                if (scheName.isEmpty()) {
-                    Toast.makeText(this, "내용을 모두 입력해주세요", Toast.LENGTH_SHORT).show()
-                } else {
-                    postSchedule(scheName)
-                }
+    private fun setPostButton(){
+        act_schedule_tv_register.setOnClickListener {
+
+            val scheName = findViewById<EditText>(R.id.act_schedule_et_name).text.toString()
+            if (scheName.isEmpty()) {
+                Toast.makeText(this, "내용을 모두 입력해주세요", Toast.LENGTH_SHORT).show()
+            } else {
+                postSchedule(scheName)
             }
         }
+    }
 
-        private fun postSchedule(scheName: String) {
+    private fun postSchedule(scheName: String){
 
-            var jsonObject = JSONObject()
-            jsonObject.put("scheduleName", scheName)
-            jsonObject.put("scheduleStartTime", SimpleDateFormat("HH:mm").format(cal.time))
-            jsonObject.put("scheduleStartDay", SimpleDateFormat("yyyy-MM-dd").format(cal.time))
+        var jsonObject = JSONObject()
+        jsonObject.put("scheduleName", scheName)
+        jsonObject.put("scheduleStartTime", SimpleDateFormat("HH:mm").format(cal.time))
+        jsonObject.put("scheduleStartDay", SimpleDateFormat("yyyy-MM-dd").format(cal.time))
 
-            jsonObject.put("startAddress", startPlaceName)
-            jsonObject.put("startLongitude", startPlaceX)
-            jsonObject.put("startLatitude", startPlaceY)
-            jsonObject.put("endAddress", endPlaceName)
-            jsonObject.put("endLongitude", endPlaceX)
-            jsonObject.put("endLatitude", endPlaceY)
-
-
-            jsonObject.put("arriveCount", arriveCount)
-            jsonObject.put("noticeMin", noticeMin)
-            jsonObject.put("userIdx", 7)
-
-            val gson = Gson()
-            val path = gson.toJson(path!!)
-
-            jsonObject.put("path", path)
+        jsonObject.put("startAddress", startPlaceName)
+        jsonObject.put("startLongitude", startPlaceX)
+        jsonObject.put("startLatitude", startPlaceY)
+        jsonObject.put("endAddress", endPlaceName)
+        jsonObject.put("endLongitude", endPlaceX)
+        jsonObject.put("endLatitude", endPlaceY)
 
 
-            if (mon.isSelected) weekdays.add(0)
-            if (tue.isSelected) weekdays.add(1)
-            if (wed.isSelected) weekdays.add(2)
-            if (thu.isSelected) weekdays.add(3)
-            if (fri.isSelected) weekdays.add(4)
-            if (sat.isSelected) weekdays.add(5)
-            if (sun.isSelected) weekdays.add(6)
-            jsonObject.put("weekdays", weekdays)
+        jsonObject.put("arriveCount", arriveCount)
+        jsonObject.put("noticeMin", noticeMin)
+        jsonObject.put("userIdx", 7)
 
-            val body = JsonParser().parse(jsonObject.toString()) as JsonObject
+        val gson = Gson()
+        val path = gson.toJson(path!!)
 
-            val callPostSchedule: Call<PostScheduleData> =
-                EarlyBuddyServiceImpl.service.postSchedule(body)
+        jsonObject.put("path", path)
 
-            callPostSchedule.enqueue(object : Callback<PostScheduleData> {
-                override fun onFailure(call: Call<PostScheduleData>, t: Throwable) {
-                    Log.e("error is ", t.toString())
+
+        if (mon.isSelected) weekdays.add(0)
+        if (tue.isSelected) weekdays.add(1)
+        if (wed.isSelected) weekdays.add(2)
+        if (thu.isSelected) weekdays.add(3)
+        if (fri.isSelected) weekdays.add(4)
+        if (sat.isSelected) weekdays.add(5)
+        if (sun.isSelected) weekdays.add(6)
+        jsonObject.put("weekdays", weekdays)
+
+        val body = JsonParser().parse(jsonObject.toString()) as JsonObject
+
+        val callPostSchedule: Call<PostScheduleData> = EarlyBuddyServiceImpl.service.postSchedule(body)
+
+        callPostSchedule.enqueue(object : Callback<PostScheduleData> {
+            override fun onFailure(call: Call<PostScheduleData>, t: Throwable) {
+                Log.e("error is ", t.toString())
+            }
+
+            override fun onResponse(call: Call<PostScheduleData>, response: Response<PostScheduleData>) {
+                if (response.isSuccessful) {
+                    Log.e("result is ", response.body().toString())
+                    scheduleIdx = response.body()!!.data
+                    Log.e("scheduleIdx", scheduleIdx.toString())
+
+                    var scheduleDialogFragment = ScheduleDialogFragment(scheduleIdx)
+                    scheduleDialogFragment.setOnDialogDismissedListener(onScheduleDialogFragmentDismissListener)
+                    scheduleDialogFragment.show(supportFragmentManager,"schedule_dialog_fragment")
                 }
-
-                override fun onResponse(
-                    call: Call<PostScheduleData>,
-                    response: Response<PostScheduleData>
-                ) {
-                    if (response.isSuccessful) {
-                        Log.e("result is ", response.body().toString())
-                        scheduleIdx = response.body()!!.data
-                        Log.e("scheduleIdx", scheduleIdx.toString())
-
-                        ScheduleDialogFragment(scheduleIdx) { finish() }.apply {
-                            show(supportFragmentManager, null)
-                            finish()
-                        }
-                    } else {
-                        Toast.makeText(this@ScheduleActivity, "네트워크를 확인해 주세요", Toast.LENGTH_SHORT)
-                            .show()
-                    }
+                else{
+                    Log.e("response", "fail")
+                    Toast.makeText(this@ScheduleActivity, "네트워크를 확인해 주세요",Toast.LENGTH_SHORT).show()
                 }
-            })
+            }
+        })
 
+    }
+
+    val onScheduleDialogFragmentDismissListener
+            = object : ScheduleDialogFragment.OnDialogDismissedListener{
+        override fun onDialogDismissed() {
+            finish()
         }
     }
+}
