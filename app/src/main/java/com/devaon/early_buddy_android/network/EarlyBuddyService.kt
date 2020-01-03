@@ -5,6 +5,7 @@ import com.devaon.early_buddy_android.data.place.PlaceResponse
 import com.devaon.early_buddy_android.data.route.RouteResponse
 import com.devaon.early_buddy_android.data.schedule.GetScheduleData
 import com.devaon.early_buddy_android.data.schedule.HomeScheduleResponse
+import com.devaon.early_buddy_android.data.schedule.PathInfo
 import com.devaon.early_buddy_android.data.schedule.PostScheduleData
 import com.devaon.early_buddy_android.data.user.NickNameResponse
 import com.devaon.early_buddy_android.data.user.UserResponse
@@ -23,6 +24,11 @@ interface EarlyBuddyService {
         @Query("EY") EY: Double,
         @Query("SearchPathType") SearchPathType: Int
     ): Call<RouteResponse>
+
+    @GET(value = "/schedules")
+    fun getHomeRoute(
+        @Query("scheduleIdx") scheduleIdx: Int
+    ): Call<GetScheduleData>
 
     @GET(value = "/home")
     fun getHomeSchedule(

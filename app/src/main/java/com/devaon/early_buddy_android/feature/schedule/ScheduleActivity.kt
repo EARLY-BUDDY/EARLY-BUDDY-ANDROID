@@ -81,7 +81,7 @@ class ScheduleActivity : AppCompatActivity(){
         setNotiRangeSpinner()
         setWeekPressed()
         searchRoute()
-        checkValue()
+//        checkValue()
 
         //장소 textView가 null이 아니라면 defaut 경로 부분을 안보이게 해줘야함
         //null이라면 default 경로가 보이게 해야함
@@ -236,10 +236,9 @@ class ScheduleActivity : AppCompatActivity(){
         }
     }
 
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-
-
+//    override fun onWindowFocusChanged(hasFocus: Boolean) {
+//        super.onWindowFocusChanged(hasFocus)
+//
 //        val totalTime = 115.0
 //        val firstWalkTime = 10.0
 //        val secondWalkTime = 10.0
@@ -284,63 +283,64 @@ class ScheduleActivity : AppCompatActivity(){
 //        method3Params.width = method3Len.toInt()
 //        method3Params.marginStart = method3Margin
 //        method3.layoutParams = method3Params
-    }
+//    }
+//
+//    fun checkValue(){
+//
+//        act_schedule_tv_register.setOnClickListener {
+//            val scheName = findViewById<EditText>(R.id.act_schedule_et_name).text.toString()
+//
+//            if (scheName.isEmpty() == true) {
+//                Toast.makeText(this, "내용을 모두 입력해주세요", Toast.LENGTH_SHORT).show()
+//                return@setOnClickListener
+//            } else {
+//                postSchedule(scheName)
+//                ScheduleDialogFragment {
+//                    finish()
+//                }.apply {
+//                    show(supportFragmentManager, null)
+//                }
+//            }
+//        }
+//    }
+//
+//    private fun postSchedule(scheName: String){
+//
+//        var jsonObject = JSONObject()
+//        jsonObject.put("scheduleName", scheName)
+//        jsonObject.put("scheduleStartTime", SimpleDateFormat("HH:mm").format(cal.time))
+//        jsonObject.put("scheduleStartDay", SimpleDateFormat("yyyy-MM-dd").format(cal.time))
+//        jsonObject.put("arriveCount", arriveCount)
+//        jsonObject.put("noticeMin", noticeMin)
+//
+//        if (mon.isSelected) weekdays.add(0)
+//        if (tue.isSelected) weekdays.add(1)
+//        if (wed.isSelected) weekdays.add(2)
+//        if (thu.isSelected) weekdays.add(3)
+//        if (fri.isSelected) weekdays.add(4)
+//        if (sat.isSelected) weekdays.add(5)
+//        if (sun.isSelected) weekdays.add(6)
+//        jsonObject.put("weekdays", weekdays)
+//
+//        val body = JsonParser().parse(jsonObject.toString()) as JsonObject
+//
+//        Log.e("bodybodybodybody", body.toString())
+//        val callPostSchedule: Call<PostScheduleData> = EarlyBuddyServiceImpl.service.postSchedule(body)
+//
+//        callPostSchedule.enqueue(object : Callback<PostScheduleData> {
+//            override fun onFailure(call: Call<PostScheduleData>, t: Throwable) {
+//                Log.e("error is ", t.toString())
+//            }
+//
+//            override fun onResponse(call: Call<PostScheduleData>, response: Response<PostScheduleData>) {
+//                if (response.isSuccessful) {
+//                    Log.e("result is ", response.body().toString())
+//                    val signupUser = response.body()!!
+////                    signinDialog.show(supportFragmentManager,"signin_fagment")
+//                }
+//            }
+//        })
 
-    fun checkValue(){
-
-        act_schedule_tv_register.setOnClickListener {
-            val scheName = findViewById<EditText>(R.id.act_schedule_et_name).text.toString()
-
-            if (scheName.isEmpty() == true) {
-                Toast.makeText(this, "내용을 모두 입력해주세요", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            } else {
-                postSchedule(scheName)
-                ScheduleDialogFragment {
-                    finish()
-                }.apply {
-                    show(supportFragmentManager, null)
-                }
-            }
-        }
-    }
-
-    private fun postSchedule(scheName: String){
-
-        var jsonObject = JSONObject()
-        jsonObject.put("scheduleName", scheName)
-        jsonObject.put("scheduleStartTime", SimpleDateFormat("HH:mm").format(cal.time))
-        jsonObject.put("scheduleStartDay", SimpleDateFormat("yyyy-MM-dd").format(cal.time))
-        jsonObject.put("arriveCount", arriveCount)
-        jsonObject.put("noticeMin", noticeMin)
-
-        if (mon.isSelected) weekdays.add(0)
-        if (tue.isSelected) weekdays.add(1)
-        if (wed.isSelected) weekdays.add(2)
-        if (thu.isSelected) weekdays.add(3)
-        if (fri.isSelected) weekdays.add(4)
-        if (sat.isSelected) weekdays.add(5)
-        if (sun.isSelected) weekdays.add(6)
-        jsonObject.put("weekdays", weekdays)
-
-        val body = JsonParser().parse(jsonObject.toString()) as JsonObject
-
-        Log.e("bodybodybodybody", body.toString())
-        val callPostSchedule: Call<PostScheduleData> = EarlyBuddyServiceImpl.service.postSchedule(body)
-
-        callPostSchedule.enqueue(object : Callback<PostScheduleData> {
-            override fun onFailure(call: Call<PostScheduleData>, t: Throwable) {
-                Log.e("error is ", t.toString())
-            }
-
-            override fun onResponse(call: Call<PostScheduleData>, response: Response<PostScheduleData>) {
-                if (response.isSuccessful) {
-                    Log.e("result is ", response.body().toString())
-                    val signupUser = response.body()!!
-//                    signinDialog.show(supportFragmentManager,"signin_fagment")
-                }
-            }
-        })
-
-    }
+//    }
 }
+
