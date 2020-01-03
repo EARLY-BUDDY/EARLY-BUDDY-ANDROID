@@ -3,6 +3,7 @@ package com.devaon.early_buddy_android.feature.place.search.route
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -46,8 +47,9 @@ class PlaceSearchRouteAdapter(
             3 -> { holder.method.text = "지하철 + 버스"}
         }
 
-        if(routeList[position].leastTotalTime != null)
+        if(routeList[position].leastTotalTime != null) {
             holder.best.text = "최단 시간"
+        }
         else if(routeList[position].leastTotalWalkTime != null)
             holder.best.text = "최소 보도"
         else if(routeList[position].leastTransitCount != null)
@@ -187,6 +189,7 @@ class PlaceSearchRouteAdapter(
             holder.method2Tx.text = transText[1]
             holder.method2Tx.setTextColor(Color.parseColor(transColor[1]))
             holder.method2Img.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(transColor[1])))
+            holder.transfer.text = "환승 1회"
         }else{
             holder.method2.visibility = GONE
             holder.walk3.visibility = GONE
@@ -211,6 +214,7 @@ class PlaceSearchRouteAdapter(
             holder.method3Tx.text = transText[2]
             holder.method3Tx.setTextColor(Color.parseColor(transColor[2]))
             holder.method3Img.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(transColor[2])))
+            holder.transfer.text = "환승 2회"
         }else{
             holder.method3.visibility = GONE
             holder.walk4.visibility = GONE
@@ -261,9 +265,11 @@ class PlaceSearchRouteAdapter(
             val hour = data.totalTime / 60
             val min = data.totalTime % 60
 
-            if(min != 0){
+            if(min != 0 && hour != 0){
                 time.text = String.format("%d시간 %d분", hour, min)
-            }else{
+            }else if(hour == 0){
+                time.text = String.format("%d분", min)
+            }else if(min == 0){
                 time.text = String.format("%d시간", hour)
             }
             transfer.text = String.format("환승 %d회", data.transitCount)

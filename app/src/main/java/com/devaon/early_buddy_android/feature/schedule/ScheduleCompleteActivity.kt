@@ -35,6 +35,8 @@ class ScheduleCompleteActivity: AppCompatActivity(){
     lateinit var sat: ImageView
     lateinit var sun: ImageView
 
+    var scheduleIdx = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule_complete)
@@ -55,7 +57,7 @@ class ScheduleCompleteActivity: AppCompatActivity(){
         sat = findViewById(R.id.act_schedule_complete_iv_sat)
         sun = findViewById(R.id.act_schedule_complete_iv_sun)
 
-        val scheduleIdx = intent.getIntExtra("scheduleIdx", 0)
+        scheduleIdx = intent.getIntExtra("scheduleIdx", 0)
         Log.e("schedule", scheduleIdx.toString())
 
         getSchedule()
@@ -63,7 +65,7 @@ class ScheduleCompleteActivity: AppCompatActivity(){
 
     private fun getSchedule(){
 
-        val callGetSchedule: Call<GetScheduleData> = EarlyBuddyServiceImpl.service.getSchedule(69)
+        val callGetSchedule: Call<GetScheduleData> = EarlyBuddyServiceImpl.service.getSchedule(scheduleIdx)
 
         callGetSchedule.enqueue(object : Callback<GetScheduleData>{
             override fun onFailure(call: Call<GetScheduleData>, t: Throwable) {

@@ -3,6 +3,7 @@ package com.devaon.early_buddy_android.feature.schedule
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
+import android.graphics.Color
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.util.Log
@@ -11,18 +12,29 @@ import com.devaon.early_buddy_android.R
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.devaon.early_buddy_android.data.route.Path
 import com.devaon.early_buddy_android.data.schedule.PostScheduleData
-import com.devaon.early_buddy_android.data.schedule.UserPath
+import com.devaon.early_buddy_android.feature.place.search.route.PlaceSearchRouteActivity
 import com.devaon.early_buddy_android.feature.place.search.text.PlaceDirectionsActivity
 import com.devaon.early_buddy_android.feature.place.search.text.PlaceSelectActivity
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceName
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceX
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceY
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.startPlaceName
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.startPlaceX
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.startPlaceY
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.selectedPath.path
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
+import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_schdule.*
+import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.DayOfWeek
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -47,14 +59,17 @@ class ScheduleActivity : AppCompatActivity(){
         var startPlaceName = ""
         var startPlaceX = 0.0
         var startPlaceY = 0.0
+
         var endPlaceName = ""
         var endPlaceX = 0.0
         var endPlaceY = 0.0
     }
 
-    object scheduleUserPath {
-        lateinit var userPath : UserPath
+    object selectedPath {
+        lateinit var path: Path
     }
+
+    var scheduleIdx = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,7 +91,7 @@ class ScheduleActivity : AppCompatActivity(){
         setNotiRangeSpinner()
         setWeekPressed()
         searchRoute()
-        checkValue()
+        setPostButton()
 
         //장소 textView가 null이 아니라면 defaut 경로 부분을 안보이게 해줘야함
         //null이라면 default 경로가 보이게 해야함
@@ -85,6 +100,17 @@ class ScheduleActivity : AppCompatActivity(){
         route.setVisibility(View.GONE)
         routeS.setVisibility(View.GONE)
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if(startPlaceName != "" && endPlaceName != ""){
+            act_schedule_tv_place_from_result.text = startPlaceName
+            act_schedule_tv_place_from_result.setTextColor(Color.parseColor("#3e3e3e"))
+            act_schedule_tv_place_to_result.text = endPlaceName
+            act_schedule_tv_place_to_result.setTextColor(Color.parseColor("#3e3e3e"))
+        }
     }
 
     fun setCurrentDate(){
@@ -135,10 +161,10 @@ class ScheduleActivity : AppCompatActivity(){
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 var userNoti = notiSpinner.selectedItemPosition
                 when(userNoti){
-                    0 -> arriveCount = 2
-                    1 -> arriveCount = 3
-                    2 -> arriveCount = 4
-                    3 -> arriveCount = 1
+                    0 -> arriveCount = 1
+                    1 -> arriveCount = 2
+                    2 -> arriveCount = 3
+                    3 -> arriveCount = 0
                 }
 
             }
@@ -226,8 +252,12 @@ class ScheduleActivity : AppCompatActivity(){
         val placeClick = findViewById<ConstraintLayout>(R.id.act_schedule_cl_place_click)
 
         placeClick.setOnClickListener{
-            val intent = Intent(this@ScheduleActivity, PlaceSelectActivity::class.java)
+            val intent = Intent(this@ScheduleActivity, PlaceSearchRouteActivity::class.java)
+            intent.putExtra("scheduleDate",SimpleDateFormat("MM월 dd일").format(cal.time))
+            intent.putExtra("scheduleDayOfWeek", cal.get(Calendar.DAY_OF_WEEK))
+            intent.putExtra("scheduleTime", SimpleDateFormat("a hh:mm").format(cal.time))
             startActivity(intent)
+
         }
     }
 
@@ -290,21 +320,14 @@ class ScheduleActivity : AppCompatActivity(){
 //        method3.layoutParams = method3Params
     }
 
-    fun checkValue(){
-
+    private fun setPostButton(){
         act_schedule_tv_register.setOnClickListener {
-            val scheName = findViewById<EditText>(R.id.act_schedule_et_name).text.toString()
 
-            if (scheName.isEmpty() == true) {
+            val scheName = findViewById<EditText>(R.id.act_schedule_et_name).text.toString()
+            if (scheName.isEmpty()) {
                 Toast.makeText(this, "내용을 모두 입력해주세요", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
             } else {
                 postSchedule(scheName)
-                ScheduleDialogFragment {
-                    finish()
-                }.apply {
-                    show(supportFragmentManager, null)
-                }
             }
         }
     }
@@ -315,8 +338,23 @@ class ScheduleActivity : AppCompatActivity(){
         jsonObject.put("scheduleName", scheName)
         jsonObject.put("scheduleStartTime", SimpleDateFormat("HH:mm").format(cal.time))
         jsonObject.put("scheduleStartDay", SimpleDateFormat("yyyy-MM-dd").format(cal.time))
+
+        jsonObject.put("startAddress", startPlaceName)
+        jsonObject.put("startLongitude", startPlaceX)
+        jsonObject.put("startLatitude", startPlaceY)
+        jsonObject.put("endAddress", endPlaceName)
+        jsonObject.put("endLongitude", endPlaceX)
+        jsonObject.put("endLatitude", endPlaceY)
+
+
         jsonObject.put("arriveCount", arriveCount)
         jsonObject.put("noticeMin", noticeMin)
+        jsonObject.put("userIdx", 7)
+
+        val gson = Gson()
+        val path = gson.toJson(path)
+
+        jsonObject.put("path", path)
 
         if (mon.isSelected) weekdays.add(0)
         if (tue.isSelected) weekdays.add(1)
@@ -329,7 +367,6 @@ class ScheduleActivity : AppCompatActivity(){
 
         val body = JsonParser().parse(jsonObject.toString()) as JsonObject
 
-        Log.e("bodybodybodybody", body.toString())
         val callPostSchedule: Call<PostScheduleData> = EarlyBuddyServiceImpl.service.postSchedule(body)
 
         callPostSchedule.enqueue(object : Callback<PostScheduleData> {
@@ -340,8 +377,12 @@ class ScheduleActivity : AppCompatActivity(){
             override fun onResponse(call: Call<PostScheduleData>, response: Response<PostScheduleData>) {
                 if (response.isSuccessful) {
                     Log.e("result is ", response.body().toString())
-                    val signupUser = response.body()!!
-//                    signinDialog.show(supportFragmentManager,"signin_fagment")
+                    scheduleIdx = response.body()!!.data
+                    Log.e("scheduleIdx", scheduleIdx.toString())
+
+                    ScheduleDialogFragment(scheduleIdx) { finish() }.apply {
+                        show(supportFragmentManager, null)
+                    }
                 }
             }
         })

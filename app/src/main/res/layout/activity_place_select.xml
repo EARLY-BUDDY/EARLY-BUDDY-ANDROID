@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".feature.place.search.text.PlaceSelectActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="#3092ff"
-        android:paddingVertical="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/btn_back"
+            android:layout_marginStart="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +32,8 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:gravity="center"
-            android:text="장소선택"
+            android:text="장소 선택"
+            android:fontFamily="@font/noto_sans_kr_bold"
             android:textColor="@color/white"
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -59,8 +61,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/act_place_round_rect_white_full"
             android:paddingStart="17dp"
-            android:paddingTop="6dp"
-            android:paddingBottom="8dp"
+            android:layout_marginTop="17dp"
+            android:paddingVertical="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -69,9 +71,10 @@
                 android:id="@+id/act_place_select_tv_department"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_regular"
                 android:text="출발 : "
                 android:textColor="@color/black"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -84,9 +87,10 @@
                 android:background="@null"
                 android:ems="10"
                 android:hint="출발지 검색"
+                android:fontFamily="@font/noto_sans_kr_regular"
                 android:inputType="textPersonName"
-                android:textColor="@color/light_gray"
-                android:textSize="16sp"
+                android:textColor="#aaaaaa"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@+id/act_place_select_tv_department"
                 app:layout_constraintStart_toEndOf="@+id/act_place_select_tv_department"
                 app:layout_constraintTop_toTopOf="@+id/act_place_select_tv_department"
@@ -97,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
-                android:src="@drawable/ic_delete"
+                android:src="@drawable/ic_cancel_start"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -110,11 +114,9 @@
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
-
             android:background="@drawable/act_place_round_rect_white_full"
             android:paddingStart="17dp"
-            android:paddingTop="6dp"
-            android:paddingBottom="8dp"
+            android:paddingVertical="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.492"
@@ -126,8 +128,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="도착 : "
+                android:fontFamily="@font/noto_sans_kr_regular"
                 android:textColor="@color/black"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -140,9 +143,10 @@
                 android:background="@null"
                 android:ems="10"
                 android:hint="도착지 검색"
+                android:fontFamily="@font/noto_sans_kr_regular"
                 android:inputType="textPersonName"
                 android:textColor="@color/light_gray"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@+id/act_place_select_tv_arrival"
                 app:layout_constraintStart_toEndOf="@+id/act_place_select_tv_arrival"
                 app:layout_constraintTop_toTopOf="@+id/act_place_select_tv_arrival" />
@@ -151,9 +155,8 @@
                 android:id="@+id/act_place_select_iv_arrival"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_marginEnd="12dp"
-                android:src="@drawable/ic_delete"
+                android:src="@drawable/ic_cancel_start"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
