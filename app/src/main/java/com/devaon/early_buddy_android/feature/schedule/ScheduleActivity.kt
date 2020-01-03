@@ -116,7 +116,7 @@ class ScheduleActivity : AppCompatActivity(){
         walk3 = findViewById(R.id.act_schedule_route_rl_walk_3)
         walk4 = findViewById(R.id.act_schedule_route_rl_walk_4)
 
-        method1 = findViewById(R.id.act_schedule__route_rl_method_1)
+        //method1 = findViewById(R.id.act_schedule__route_rl_method_1)
         method2 = findViewById(R.id.act_schedule_route_rl_method_2)
         method3 = findViewById(R.id.act_schedule_route_rl_method_3)
 

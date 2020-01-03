@@ -26,6 +26,11 @@ import retrofit2.Response
 class PlaceSearchActivity : AppCompatActivity() {
 
     private lateinit var placeSearchAdapter: PlaceSearchAdapter
+    //lateinit var placeResponse: ArrayList<PlaceSearch>
+
+     var placeNameString: String =""
+     var xDouble : Double = 0.0
+     var yDouble : Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,8 +54,6 @@ class PlaceSearchActivity : AppCompatActivity() {
                 Log.d("testtest", "onTextChanged")
             }
         })
-
-
     }
 
     private fun setRv(){
@@ -71,6 +74,7 @@ class PlaceSearchActivity : AppCompatActivity() {
     private fun getPlaceSearch() {
         val place = act_place_search_et_search.text.toString()
 
+
         val callPlace: Call<PlaceResponse> = EarlyBuddyServiceImpl.service.getSearchAddress(
             place
         )
@@ -83,13 +87,24 @@ class PlaceSearchActivity : AppCompatActivity() {
             override fun onResponse(call: Call<PlaceResponse>, response: Response<PlaceResponse>) {
                 if (response.isSuccessful) {
                     Log.e("result is ", response.body().toString())
-                    val place = response.body()!!.data
+                    var placeResponse = response.body()!!.data
 
-                    placeSearchAdapter.replaceAll(place)
+
+
+
+                    /*PlaceFavoriteActivity.placeObject.placeName = placeNameString
+                    PlaceFavoriteActivity.placeObject.x = xDouble
+                    PlaceFavoriteActivity.placeObject.y = yDouble  */
+
+                    placeSearchAdapter.replaceAll(placeResponse)
                     placeSearchAdapter.notifyDataSetChanged()
                 }
             }
+
         })
+       /* placeNameString = placeResponse[0].placeName
+        xDouble = placeResponse[0].x
+        yDouble = placeResponse[0].y*/
     }
 
     var onPlaceClickListener
@@ -115,6 +130,21 @@ class PlaceSearchActivity : AppCompatActivity() {
                 PlaceFavoriteActivity.placeObject.thirdY = y
                 PlaceFavoriteActivity.placeObject.checkNum = 2
             }
+
+            PlaceFavoriteActivity.placeObject.placeName = placeNameString
+            PlaceFavoriteActivity.placeObject.x = xDouble
+            PlaceFavoriteActivity.placeObject.y = yDouble
+
+            Log.d("test", "PlaceSearchActivity - onPlaceClickListener 의 placeNameString : " + placeNameString)
+            Log.d("test", "PlaceSearchActivity - onPlaceClickListener 의 PlaceFavoriteActivity.placeObject.placeName : " + PlaceFavoriteActivity.placeObject.placeName)
+            Log.d("test", "PlaceSearchActivity - onPlaceClickListener 의 xDouble : " + xDouble)
+            Log.d("test", "PlaceSearchActivity - onPlaceClickListener 의 PlaceFavoriteActivity.placeObject.x : " + PlaceFavoriteActivity.placeObject.x)
+            Log.d("test", "PlaceSearchActivity - onPlaceClickListener 의 yDouble : " + yDouble)
+            Log.d("test", "PlaceSearchActivity - onPlaceClickListener 의 PlaceFavoriteActivity.placeObject.y : " + PlaceFavoriteActivity.placeObject.y)
+
+            placeNameString = placeName
+            xDouble = x
+            yDouble = y
 
             finish()
         }
