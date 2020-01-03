@@ -76,7 +76,7 @@ class ScheduleActivity : AppCompatActivity(){
         setNotiRangeSpinner()
         setWeekPressed()
         searchRoute()
-        checkValue()
+//        checkValue()
 
         //장소 textView가 null이 아니라면 defaut 경로 부분을 안보이게 해줘야함
         //null이라면 default 경로가 보이게 해야함
@@ -244,97 +244,97 @@ class ScheduleActivity : AppCompatActivity(){
 
 
 
-        var totalPath = findViewById<ImageView>(R.id.act_schedule_route_iv_gray_line).width.toDouble()
-        val method1 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_1)
-        val method2 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_2)
-        val method3 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_3)
+//        var totalPath = findViewById<ImageView>(R.id.act_schedule_route_iv_gray_line).width.toDouble()
+//        val method1 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_1)
+//        val method2 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_2)
+//        val method3 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_3)
+//
+//
+//        val method1Len = totalPath / ((totalTime / method1Time).toFloat()) //totalPath에서 (totalTime / method1Time)만큼의 비율을 차지
+//        val method2Len = totalPath / ((totalTime / method2Time).toFloat())
+//        val method3Len = totalPath / ((totalTime / method3Time).toFloat())
+//
+//        Log.e("length", "total: $totalPath 1: $method1Len 2: $method2Len")
+//        Log.e("thidthisthis", (method1Time/totalTime).toFloat().toString())
+//        Log.e("plus2", (totalTime / (firstWalkTime+method1Time+secondWalkTime).toFloat()).toString())
+//
+//        val method1Margin = totalPath / (totalTime / firstWalkTime)
+//        val method2Margin = (totalPath / (totalTime / (firstWalkTime+method1Time+secondWalkTime).toFloat())).toInt()
+//        val method3Margin = (totalPath / (totalTime / (firstWalkTime+method1Time+secondWalkTime+method2Time+thirdWalkTime).toFloat())).toInt()
+//
+//        Log.e("length", "method1Margin: $method1Margin method2Margin: $method2Margin method3Margin: $method3Margin")
+//
+//        val method1Params = method1.layoutParams  as ConstraintLayout.LayoutParams
+//        method1Params.width = method1Len.toInt()
+//        method1Params.marginStart = method1Margin.toInt()
+//        method1.layoutParams = method1Params
+//
+//        val method2Params = method2.layoutParams  as ConstraintLayout.LayoutParams
+//        method2Params.width = method2Len.toInt()
+//        method2Params.marginStart = method2Margin
+//        method2.layoutParams = method2Params
+//
+//        val method3Params = method3.layoutParams  as ConstraintLayout.LayoutParams
+//        method3Params.width = method3Len.toInt()
+//        method3Params.marginStart = method3Margin
+//        method3.layoutParams = method3Params
+//    }
 
-
-        val method1Len = totalPath / ((totalTime / method1Time).toFloat()) //totalPath에서 (totalTime / method1Time)만큼의 비율을 차지
-        val method2Len = totalPath / ((totalTime / method2Time).toFloat())
-        val method3Len = totalPath / ((totalTime / method3Time).toFloat())
-
-        Log.e("length", "total: $totalPath 1: $method1Len 2: $method2Len")
-        Log.e("thidthisthis", (method1Time/totalTime).toFloat().toString())
-        Log.e("plus2", (totalTime / (firstWalkTime+method1Time+secondWalkTime).toFloat()).toString())
-
-        val method1Margin = totalPath / (totalTime / firstWalkTime)
-        val method2Margin = (totalPath / (totalTime / (firstWalkTime+method1Time+secondWalkTime).toFloat())).toInt()
-        val method3Margin = (totalPath / (totalTime / (firstWalkTime+method1Time+secondWalkTime+method2Time+thirdWalkTime).toFloat())).toInt()
-
-        Log.e("length", "method1Margin: $method1Margin method2Margin: $method2Margin method3Margin: $method3Margin")
-
-        val method1Params = method1.layoutParams  as ConstraintLayout.LayoutParams
-        method1Params.width = method1Len.toInt()
-        method1Params.marginStart = method1Margin.toInt()
-        method1.layoutParams = method1Params
-
-        val method2Params = method2.layoutParams  as ConstraintLayout.LayoutParams
-        method2Params.width = method2Len.toInt()
-        method2Params.marginStart = method2Margin
-        method2.layoutParams = method2Params
-
-        val method3Params = method3.layoutParams  as ConstraintLayout.LayoutParams
-        method3Params.width = method3Len.toInt()
-        method3Params.marginStart = method3Margin
-        method3.layoutParams = method3Params
-    }
-
-    fun checkValue(){
-
-        act_schedule_tv_register.setOnClickListener {
-            val scheName = findViewById<EditText>(R.id.act_schedule_et_name).text.toString()
-
-            if (scheName.isEmpty() == true) {
-                Toast.makeText(this, "내용을 모두 입력해주세요", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            } else {
-                postSchedule(scheName)
-                ScheduleDialogFragment {
-                    finish()
-                }.apply {
-                    show(supportFragmentManager, null)
-                }
-            }
-        }
-    }
-
-    private fun postSchedule(scheName: String){
-
-        var jsonObject = JSONObject()
-        jsonObject.put("scheduleName", scheName)
-        jsonObject.put("scheduleStartTime", SimpleDateFormat("HH:mm").format(cal.time))
-        jsonObject.put("scheduleStartDay", SimpleDateFormat("yyyy-MM-dd").format(cal.time))
-        jsonObject.put("arriveCount", arriveCount)
-        jsonObject.put("noticeMin", noticeMin)
-
-        if (mon.isSelected) weekdays.add(0)
-        if (tue.isSelected) weekdays.add(1)
-        if (wed.isSelected) weekdays.add(2)
-        if (thu.isSelected) weekdays.add(3)
-        if (fri.isSelected) weekdays.add(4)
-        if (sat.isSelected) weekdays.add(5)
-        if (sun.isSelected) weekdays.add(6)
-        jsonObject.put("weekdays", weekdays)
-
-        val body = JsonParser().parse(jsonObject.toString()) as JsonObject
-
-        Log.e("bodybodybodybody", body.toString())
-        val callPostSchedule: Call<PostScheduleData> = EarlyBuddyServiceImpl.service.postSchedule(body)
-
-        callPostSchedule.enqueue(object : Callback<PostScheduleData> {
-            override fun onFailure(call: Call<PostScheduleData>, t: Throwable) {
-                Log.e("error is ", t.toString())
-            }
-
-            override fun onResponse(call: Call<PostScheduleData>, response: Response<PostScheduleData>) {
-                if (response.isSuccessful) {
-                    Log.e("result is ", response.body().toString())
-                    val signupUser = response.body()!!
-//                    signinDialog.show(supportFragmentManager,"signin_fagment")
-                }
-            }
-        })
-
-    }
-}
+//    fun checkValue(){
+//
+//        act_schedule_tv_register.setOnClickListener {
+//            val scheName = findViewById<EditText>(R.id.act_schedule_et_name).text.toString()
+//
+//            if (scheName.isEmpty() == true) {
+//                Toast.makeText(this, "내용을 모두 입력해주세요", Toast.LENGTH_SHORT).show()
+//                return@setOnClickListener
+//            } else {
+//                postSchedule(scheName)
+//                ScheduleDialogFragment {
+//                    finish()
+//                }.apply {
+//                    show(supportFragmentManager, null)
+//                }
+//            }
+//        }
+//    }
+//
+//    private fun postSchedule(scheName: String){
+//
+//        var jsonObject = JSONObject()
+//        jsonObject.put("scheduleName", scheName)
+//        jsonObject.put("scheduleStartTime", SimpleDateFormat("HH:mm").format(cal.time))
+//        jsonObject.put("scheduleStartDay", SimpleDateFormat("yyyy-MM-dd").format(cal.time))
+//        jsonObject.put("arriveCount", arriveCount)
+//        jsonObject.put("noticeMin", noticeMin)
+//
+//        if (mon.isSelected) weekdays.add(0)
+//        if (tue.isSelected) weekdays.add(1)
+//        if (wed.isSelected) weekdays.add(2)
+//        if (thu.isSelected) weekdays.add(3)
+//        if (fri.isSelected) weekdays.add(4)
+//        if (sat.isSelected) weekdays.add(5)
+//        if (sun.isSelected) weekdays.add(6)
+//        jsonObject.put("weekdays", weekdays)
+//
+//        val body = JsonParser().parse(jsonObject.toString()) as JsonObject
+//
+//        Log.e("bodybodybodybody", body.toString())
+//        val callPostSchedule: Call<PostScheduleData> = EarlyBuddyServiceImpl.service.postSchedule(body)
+//
+//        callPostSchedule.enqueue(object : Callback<PostScheduleData> {
+//            override fun onFailure(call: Call<PostScheduleData>, t: Throwable) {
+//                Log.e("error is ", t.toString())
+//            }
+//
+//            override fun onResponse(call: Call<PostScheduleData>, response: Response<PostScheduleData>) {
+//                if (response.isSuccessful) {
+//                    Log.e("result is ", response.body().toString())
+//                    val signupUser = response.body()!!
+////                    signinDialog.show(supportFragmentManager,"signin_fagment")
+//                }
+//            }
+//        })
+//
+//    }
+}}

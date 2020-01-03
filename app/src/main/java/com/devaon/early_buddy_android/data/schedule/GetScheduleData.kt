@@ -4,71 +4,84 @@ import com.google.gson.annotations.SerializedName
 
 data class GetScheduleData(
     @SerializedName("success")
-    val success :Boolean,
+    val success: Boolean,
     @SerializedName("data")
-    val data :ScheduleData
+    val data: ScheduleData
 )
+
 data class ScheduleData(
     @SerializedName("scheduleInfo")
-    val scheduleInfo:ScheduleInfo,
+    val scheduleInfo: ScheduleInfo,
+    @SerializedName("weekdayInfo")
+    val weekdayInfo: Array<Int>,
     @SerializedName("path")
-    val pathInfo:PathInfo
+    val pathInfo: PathInfo
 )
+
 data class ScheduleInfo(
 
     @SerializedName("scheduleIdx")
-    val scheduleIdx :Int,
+    val scheduleIdx: Int,
     @SerializedName("scheduleName")
-    val scheduleName :String,
+    val scheduleName: String,
     @SerializedName("scheduleStartTime")
-    val scheduleStartTime :String,
+    val scheduleStartTime: String,
     @SerializedName("startAddress")
-    val startAddress :String,
+    val startAddress: String,
     @SerializedName("startLongitude")
-    val startLongitude :Double,
+    val startLongitude: Double,
     @SerializedName("endAddress")
-    val endAddress :String,
+    val endAddress: String,
     @SerializedName("endLongitude")
-    val endLongitude :Double,
+    val endLongitude: Double,
     @SerializedName("noticeMin")
-    val noticeMin :Int,
+    val noticeMin: Int,
     @SerializedName("arriveCount")
-    val arriveCount :Int,
+    val arriveCount: Int,
     @SerializedName("scheduleStartDay")
-    val scheduleStartDay :String
+    val scheduleStartDay: String
 )
+
 data class PathInfo(
     @SerializedName("pathIdx")
-    val pathIdx :Int,
+    val pathIdx: Int,
     @SerializedName("pathType")
-    val pathType :Int,
+    val pathType: Int,
     @SerializedName("totalTime")
-    val totalTime :Int,
+    val totalTime: Int,
     @SerializedName("totalPay")
-    val totalPay :Int,
+    val totalPay: Int,
     @SerializedName("totalWalkTime")
-    val totalWalkTime :Int,
+    val totalWalkTime: Int,
     @SerializedName("transitCount")
-    val transitCount :Int,
+    val transitCount: Int,
     @SerializedName("subPath")
-    val subPath:ArrayList<SubPath>
+    val subPath: ArrayList<SubPath>
 )
 
 data class SubPath(
     @SerializedName("detailIdx")
-    val detailIdx :Int,
+    val detailIdx: Int,
     @SerializedName("trafficType")
-    val trafficType :Int,
+    val trafficType: Int,
     @SerializedName("distance")
-    val distance :Int,
+    val distance: Int,
     @SerializedName("sectionTime")
-    val sectionTime :Int,
+    val sectionTime: Int,
+    @SerializedName("stationCount")
+    val stationCount: Int,
+    @SerializedName("detailStartAddress")
+    val detailStartAddress: String,
+    @SerializedName("detailEndAddress")
+    val detailEndAddress: String,
     @SerializedName("subwayLane")
-    val subwayLane : Int?,
+    val subwayLane: Int,
     @SerializedName("busNo")
-    val busNo :String?,
+    val busNo: String,
     @SerializedName("busType")
-    val busType :Int?,
+    val busType: Int,
+    @SerializedName("clicked")
+    var clicked : Boolean,
     @SerializedName("stops")
-    val stops :ArrayList<String>
+    val stops: ArrayList<String>
 )
