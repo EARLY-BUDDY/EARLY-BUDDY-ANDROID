@@ -107,6 +107,7 @@ class PlaceFavoriteActivity : AppCompatActivity() {
 
     }
 
+
     var PlaceFavoriteDialogFragmentDismissListener = object : PlaceFavoriteDialogFragment.OnDialogDismissedListener {
         override fun onDialogDismissed() {
             //dismiss일때 선택한 icon, 장소 PlaceFavoriteActivity 여기에 들어가도록

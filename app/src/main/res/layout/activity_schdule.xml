@@ -285,7 +285,10 @@
                         android:id="@+id/act_schedule_route_cl_route"
                         layout="@layout/activity_schedule_route"
                         android:layout_width="323dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_editor_absoluteY="0dp" />
 
                     <TextView
                         android:id="@+id/act_schedult_tv_route_selected"
