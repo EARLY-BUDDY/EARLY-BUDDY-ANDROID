@@ -2,7 +2,7 @@
 
 ### 얼리버디 - 약속시간을 위한 나만의 대중교통 배차 알리미
 
-<img src="file:///Users/jinee/Desktop/KakaoTalk_Photo_2020-01-03-23-36-59.png?lastModify=1578063559" alt="img" style="zoom:20%;" />
+<img src="https://user-images.githubusercontent.com/37479631/71730558-d8bcc780-2e85-11ea-9e61-4a827e58558f.png" alt="img" style="zoom:20%;" />
 
 ### workflow
 
