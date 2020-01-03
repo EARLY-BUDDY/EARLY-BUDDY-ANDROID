@@ -3,6 +3,7 @@ package com.devaon.early_buddy_android.feature.schedule
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
@@ -37,14 +38,16 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-
-
 class ScheduleActivity : AppCompatActivity(){
     var cal = Calendar.getInstance()
     var arriveCount = 0
     var noticeMin = 0
     var weekdays = arrayListOf<Int>()
 
+
+    lateinit var route: TextView
+    lateinit var routeSelect: TextView
+  
     lateinit var mon: ImageView
     lateinit var tue: ImageView
     lateinit var wed: ImageView
@@ -55,6 +58,23 @@ class ScheduleActivity : AppCompatActivity(){
 
     lateinit var time: TextView
     lateinit var method: TextView
+
+    lateinit var walk1 : RelativeLayout
+    lateinit var walk2 : RelativeLayout
+    lateinit var walk3 : RelativeLayout
+    lateinit var walk4 : RelativeLayout
+
+    lateinit var method1: RelativeLayout
+    lateinit var method2: RelativeLayout
+    lateinit var method3: RelativeLayout
+
+    lateinit var method1Img: ImageView
+    lateinit var method2Img: ImageView
+    lateinit var method3Img: ImageView
+
+    lateinit var method1Tx: TextView
+    lateinit var method2Tx: TextView
+    lateinit var method3Tx: TextView
 
 
     object schedulePlace {
@@ -68,7 +88,7 @@ class ScheduleActivity : AppCompatActivity(){
     }
 
     object selectedPath {
-        lateinit var path: Path
+         var path: Path? = null
     }
 
     var scheduleIdx = 0
@@ -76,6 +96,9 @@ class ScheduleActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schdule)
+
+        route = findViewById(R.id.act_schedule_tv_route)
+        routeSelect = findViewById(R.id.act_schedult_tv_route_selected)
 
         mon = findViewById(R.id.act_schedule_iv_mon)
         tue = findViewById(R.id.act_schedule_iv_tue)
@@ -88,6 +111,23 @@ class ScheduleActivity : AppCompatActivity(){
         time = findViewById(R.id.act_schedule_route_time)
         method = findViewById(R.id.act_schedule_route_tv_method)
 
+        walk1 = findViewById(R.id.act_schedule_route_rl_walk_1)
+        walk2 = findViewById(R.id.act_schedule_route_rl_walk_2)
+        walk3 = findViewById(R.id.act_schedule_route_rl_walk_3)
+        walk4 = findViewById(R.id.act_schedule_route_rl_walk_4)
+
+        method1 = findViewById(R.id.act_schedule__route_rl_method_1)
+        method2 = findViewById(R.id.act_schedule_route_rl_method_2)
+        method3 = findViewById(R.id.act_schedule_route_rl_method_3)
+
+        method1Img = findViewById(R.id.act_schedule_route_iv_method_1)
+        method2Img = findViewById(R.id.act_schedule_route_iv_method_2)
+        method3Img = findViewById(R.id.act_schedule_route_iv_method_3)
+
+        method1Tx = findViewById(R.id.act_schedule_route_tv_method_1)
+        method2Tx = findViewById(R.id.act_schedule_route_tv_method_2)
+        method3Tx = findViewById(R.id.act_schedule_route_tv_method_3)
+
         setCurrentDate()
         showDatePicker()
         showTimePicker()
@@ -97,24 +137,20 @@ class ScheduleActivity : AppCompatActivity(){
         searchRoute()
         setPostButton()
 
-
-        //장소 textView가 null이 아니라면 defaut 경로 부분을 안보이게 해줘야함
-        //null이라면 default 경로가 보이게 해야함
-        val route:TextView = findViewById(R.id.act_schedule_tv_route)
-        val routeS:TextView = findViewById(R.id.act_schedult_tv_route_selected)
-        route.setVisibility(View.GONE)
-        routeS.setVisibility(View.GONE)
-
     }
 
     override fun onResume() {
         super.onResume()
 
-        if(startPlaceName != "" && endPlaceName != ""){
+        if(path !=  null){
             act_schedule_tv_place_from_result.text = startPlaceName
             act_schedule_tv_place_from_result.setTextColor(Color.parseColor("#3e3e3e"))
             act_schedule_tv_place_to_result.text = endPlaceName
             act_schedule_tv_place_to_result.setTextColor(Color.parseColor("#3e3e3e"))
+            route.visibility = View.GONE
+            routeSelect.visibility = View.GONE
+
+            setRouteView()
         }
     }
 
@@ -125,8 +161,8 @@ class ScheduleActivity : AppCompatActivity(){
         val timeFormat = DateTimeFormatter.ofPattern("a hh:mm")
         val timeFormatted = current.format(timeFormat)
 
-        act_schedule_tv_date_click.setText(dateFormatted)
-        act_schedule_tv_time_click.setText(timeFormatted)
+        act_schedule_tv_date_click.text = dateFormatted
+        act_schedule_tv_time_click.text = timeFormatted
     }
 
     fun showDatePicker(){
@@ -200,60 +236,60 @@ class ScheduleActivity : AppCompatActivity(){
         }
     }
 
-    fun setWeekPressed(){
+    private fun setWeekPressed(){
 
         mon.setOnClickListener {
             if(mon.isSelected){
-                mon.setSelected(false)
+                mon.isSelected = false
             }else{
-                mon.setSelected(true)
+                mon.isSelected = true
             }
         }
         tue.setOnClickListener {
             if(tue.isSelected){
-                tue.setSelected(false)
+                tue.isSelected = false
             }else{
-                tue.setSelected(true)
+                tue.isSelected = true
             }
         }
         wed.setOnClickListener {
             if(wed.isSelected){
-                wed.setSelected(false)
+                wed.isSelected = false
             }else{
-                wed.setSelected(true)
+                wed.isSelected = true
             }
         }
         thu.setOnClickListener {
             if(thu.isSelected){
-                thu.setSelected(false)
+                thu.isSelected = false
             }else{
-                thu.setSelected(true)
+                thu.isSelected = true
             }
         }
         fri.setOnClickListener {
             if(fri.isSelected){
-                fri.setSelected(false)
+                fri.isSelected = false
             }else{
-                fri.setSelected(true)
+                fri.isSelected = true
             }
         }
         sat.setOnClickListener {
             if(sat.isSelected){
-                sat.setSelected(false)
+                sat.isSelected = false
             }else{
-                sat.setSelected(true)
+                sat.isSelected = true
             }
         }
         sun.setOnClickListener {
             if(sun.isSelected){
-                sun.setSelected(false)
+                sun.isSelected = false
             }else{
-                sun.setSelected(true)
+                sun.isSelected = true
             }
         }
     }
 
-    fun searchRoute(){
+    private fun searchRoute(){
         val placeClick = findViewById<ConstraintLayout>(R.id.act_schedule_cl_place_click)
 
         placeClick.setOnClickListener{
@@ -266,53 +302,183 @@ class ScheduleActivity : AppCompatActivity(){
         }
     }
 
-//    override fun onWindowFocusChanged(hasFocus: Boolean) {
-//        super.onWindowFocusChanged(hasFocus)
-//
-//        val totalTime = 115.0
-//        val firstWalkTime = 10.0
-//        val secondWalkTime = 10.0
-//        val thirdWalkTime = 5.0
-//        val method1Time = 50.0
-//        val method2Time = 20.0
-//        val method3Time = 18.0
-//
-//
-//
-//        var totalPath = findViewById<ImageView>(R.id.act_schedule_route_iv_gray_line).width.toDouble()
-//        val method1 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_1)
-//        val method2 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_2)
-//        val method3 = findViewById<ConstraintLayout>(R.id.act_schedule_route_cl_method_3)
-//
-//
-//        val method1Len = totalPath / ((totalTime / method1Time).toFloat()) //totalPath에서 (totalTime / method1Time)만큼의 비율을 차지
-//        val method2Len = totalPath / ((totalTime / method2Time).toFloat())
-//        val method3Len = totalPath / ((totalTime / method3Time).toFloat())
-//
-//        Log.e("length", "total: $totalPath 1: $method1Len 2: $method2Len")
-//        Log.e("thidthisthis", (method1Time/totalTime).toFloat().toString())
-//        Log.e("plus2", (totalTime / (firstWalkTime+method1Time+secondWalkTime).toFloat()).toString())
-//
-//        val method1Margin = totalPath / (totalTime / firstWalkTime)
-//        val method2Margin = (totalPath / (totalTime / (firstWalkTime+method1Time+secondWalkTime).toFloat())).toInt()
-//        val method3Margin = (totalPath / (totalTime / (firstWalkTime+method1Time+secondWalkTime+method2Time+thirdWalkTime).toFloat())).toInt()
-//
-//        Log.e("length", "method1Margin: $method1Margin method2Margin: $method2Margin method3Margin: $method3Margin")
-//
-//        val method1Params = method1.layoutParams  as ConstraintLayout.LayoutParams
-//        method1Params.width = method1Len.toInt()
-//        method1Params.marginStart = method1Margin.toInt()
-//        method1.layoutParams = method1Params
-//
-//        val method2Params = method2.layoutParams  as ConstraintLayout.LayoutParams
-//        method2Params.width = method2Len.toInt()
-//        method2Params.marginStart = method2Margin
-//        method2.layoutParams = method2Params
-//
-//        val method3Params = method3.layoutParams  as ConstraintLayout.LayoutParams
-//        method3Params.width = method3Len.toInt()
-//        method3Params.marginStart = method3Margin
-//        method3.layoutParams = method3Params
+    private fun setRouteView(){
+        var transText = arrayListOf<String>()
+        var transColor = arrayListOf<String>()
+
+        for(i in 1.. selectedPath.path!!.subPath.size-1) {
+            if(i % 2 != 0) { // 홀수만 처리
+                when (selectedPath.path!!.subPath[i].trafficType) {
+                    1 -> { // 지하철
+                        when(selectedPath.path!!.subPath[i].lane.subwayCode){
+                            1-> {
+                                transText.add("1호선")
+                                transColor.add("#243899")
+                            }
+                            2->{
+                                transText.add("2호선")
+                                transColor.add("#35b645")
+                            }
+                            3->{
+                                transText.add("3호선")
+                                transColor.add("#f36e00")
+                            }
+                            4->{
+                                transText.add("4호선")
+                                transColor.add("#219de2")
+                            }
+                            5->{
+                                transText.add("5호선")
+                                transColor.add("#8828e2")
+                            }
+                            6->{
+                                transText.add("6호선")
+                                transColor.add("#b75000")
+                            }
+                            7->{
+                                transText.add("7호선")
+                                transColor.add("#697305")
+                            }
+                            8->{
+                                transText.add("8호선")
+                                transColor.add("#e8146d")
+                            }
+                            9->{
+                                transText.add("9호선")
+                                transColor.add("#d2a715")
+                            }
+
+                            100 -> {
+                                transText.add("분당선")
+                                transColor.add("#eeaa00")
+                            }
+                            101 -> {
+                                transText.add("공항철도")
+                                transColor.add("#70b5e6")
+                            }
+                            104 -> {
+                                transText.add("경의중앙선")
+                                transColor.add("#7ac6a4")
+                            }
+                            107 -> {
+                                transText.add("에버라인")
+                                transColor.add("#75c56e")
+                            }
+                            108 -> {
+                                transText.add("경춘선")
+                                transColor.add("#00b07a")
+                            }
+                            102 -> {
+                                transText.add("자기부상철도")
+                                transColor.add("#f08d41")
+                            }
+                            109 -> {
+                                transText.add("신분당선")
+                                transColor.add("#a71b2c")
+                            }
+                            110 -> {
+                                transText.add("의정부경전철")
+                                transColor.add("#ff9f00")
+                            }
+                            111 -> {
+                                transText.add("수인선")
+                                transColor.add("#eeaa00")
+                            }
+                            112 -> {
+                                transText.add("경강선")
+                                transColor.add("#1e6ff7")
+                            }
+                            113 -> {
+                                transText.add("우이신설선")
+                                transColor.add("#c7c300")
+                            }
+                            114 -> {
+                                transText.add("서해선")
+                                transColor.add("#8ac832")
+                            }
+                        }
+                    }
+                    2 -> { // 일반
+                        transText.add(selectedPath.path!!.subPath[i].lane.type.toString())
+                        when(selectedPath.path!!.subPath[i].lane.type){
+                            1, 2, 11 -> transColor.add("#3469ec")
+                            10,12 -> transColor.add("#33c63c")
+                            4, 14, 15 -> transColor.add("#ff574c")
+                            5 -> transColor.add("#70b5e5")
+                            else -> transColor.add("#85c900")
+                        }
+                    }
+                }
+            }
+
+        }
+
+        val walkParam1 = walk1.layoutParams as LinearLayout.LayoutParams
+        walkParam1.weight = selectedPath.path!!.subPath[0].sectionTime.toFloat()
+        walk1.layoutParams = walkParam1
+
+        val methodParam1 = method1.layoutParams as LinearLayout.LayoutParams
+        methodParam1.weight = selectedPath.path!!.subPath[1].sectionTime.toFloat()
+        method1.layoutParams = methodParam1
+        method1Tx.text = transText[0]
+        method1Tx.setTextColor(Color.parseColor(transColor[0]))
+        method1Img.backgroundTintList = ColorStateList.valueOf(Color.parseColor(transColor[0]))
+
+        if(selectedPath.path!!.subPath.size > 2) {
+            val walkParam2 = walk2.layoutParams as LinearLayout.LayoutParams
+            walkParam2.weight = selectedPath.path!!.subPath[2].sectionTime.toFloat()
+            walk2.layoutParams = walkParam2
+        }else{
+            walk2.visibility = View.GONE
+            method2.visibility = View.GONE
+            walk3.visibility = View.GONE
+            method3.visibility = View.GONE
+            walk4.visibility = View.GONE
+        }
+
+        if(selectedPath.path!!.subPath.size > 3) {
+            val methodParam2 = method2.layoutParams as LinearLayout.LayoutParams
+            methodParam2.weight = selectedPath.path!!.subPath[3].sectionTime.toFloat()
+            method2.layoutParams = methodParam2
+            method2Tx.text = transText[1]
+            method2Tx.setTextColor(Color.parseColor(transColor[1]))
+            method2Img.backgroundTintList = ColorStateList.valueOf(Color.parseColor(transColor[1]))
+        }else{
+            method2.visibility = View.GONE
+            walk3.visibility = View.GONE
+            method3.visibility = View.GONE
+            walk4.visibility = View.GONE
+        }
+
+        if(selectedPath.path!!.subPath.size > 4){
+            val walkParam3 = walk3.layoutParams as LinearLayout.LayoutParams
+            walkParam3.weight = selectedPath.path!!.subPath[4].sectionTime.toFloat()
+            walk3.layoutParams = walkParam3
+        }else{
+            walk3.visibility = View.GONE
+            method3.visibility = View.GONE
+            walk4.visibility = View.GONE
+        }
+
+        if(selectedPath.path!!.subPath.size > 5) {
+            val methodParam3 = method3.layoutParams as LinearLayout.LayoutParams
+            methodParam3.weight = selectedPath.path!!.subPath[5].sectionTime.toFloat()
+            method3.layoutParams = methodParam3
+            method3Tx.text = transText[2]
+            method3Tx.setTextColor(Color.parseColor(transColor[2]))
+            method3Img.backgroundTintList = ColorStateList.valueOf(Color.parseColor(transColor[2]))
+        }else{
+            method3.visibility = View.GONE
+            walk4.visibility = View.GONE
+        }
+
+        if(selectedPath.path!!.subPath.size > 6) {
+            val walkParam4 = walk4.layoutParams as LinearLayout.LayoutParams
+            walkParam4.weight = selectedPath.path!!.subPath[6].sectionTime.toFloat()
+            walk4.layoutParams = walkParam4
+        }else{
+            walk4.visibility = View.GONE
+        }
 
 
     private fun setPostButton(){
@@ -347,7 +513,7 @@ class ScheduleActivity : AppCompatActivity(){
         jsonObject.put("userIdx", 7)
 
         val gson = Gson()
-        val path = gson.toJson(path)
+        val path = gson.toJson(path!!)
 
         jsonObject.put("path", path)
 

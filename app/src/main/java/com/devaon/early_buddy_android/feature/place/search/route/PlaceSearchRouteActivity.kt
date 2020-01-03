@@ -26,7 +26,7 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
     var placeSearchRouteRecyclerViewAdapter =  PlaceSearchRouteAdapter(this)
 
     private var searchPathType = 0
-    lateinit var routes : ArrayList<Path>
+    var routes  = arrayListOf<Path>()
 
     var date = ""
     var dayOfWeek = 0
@@ -127,10 +127,14 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
                     placeSearchRouteRecyclerViewAdapter.replaceAll(routes)
                     placeSearchRouteRecyclerViewAdapter.notifyDataSetChanged()
 
-                    if(routes.size > 0){
-                        act_place_select_iv_bird.visibility = INVISIBLE
-                    }else
-                        act_place_select_iv_bird.visibility = VISIBLE
+                    Log.e("route사이즈다", routes.size.toString())
+
+                    act_place_select_iv_bird.visibility = INVISIBLE
+                }
+                else{
+                    act_place_select_iv_bird.visibility = INVISIBLE
+                    act_place_select_iv_bird_no_route.visibility = VISIBLE
+
                 }
             }
         })
