@@ -48,6 +48,8 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        act_home_tv_soon.visibility=View.INVISIBLE
+        act_home_tv_move.visibility=View.INVISIBLE
         homeNetwork()
     }
     private fun homeNetwork() {

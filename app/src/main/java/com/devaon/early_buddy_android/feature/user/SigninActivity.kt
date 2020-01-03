@@ -150,7 +150,7 @@ class SigninActivity : AppCompatActivity() {
                     .show()
                 Log.e("error is ", t.toString())
             }
-            
+
             override fun onResponse(call: Call<UserSigninResponse>, response: Response<UserSigninResponse>) {
                 Log.e("result is ", response.body().toString())
                 if(response.body() == null){
