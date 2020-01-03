@@ -33,29 +33,29 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/set_complete_cl_start"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="49dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="51dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/act_place_round_rect_blue_full"
-        android:paddingHorizontal="132dp"
-        android:paddingVertical="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
         <TextView
             android:id="@+id/set_complete_bt_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/notosans_medium"
             android:gravity="center"
             android:text="시작하기"
             android:textColor="@color/white"
             android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/notosans_medium" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
