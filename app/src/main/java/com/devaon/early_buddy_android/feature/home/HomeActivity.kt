@@ -46,6 +46,10 @@ class HomeActivity : AppCompatActivity() {
         homeNetwork()
     }
 
+    override fun onResume() {
+        super.onResume()
+        homeNetwork()
+    }
     private fun homeNetwork() {
 
         val callRoute: Call<HomeScheduleResponse> = EarlyBuddyServiceImpl.service.getHomeSchedule(Information.idx)
