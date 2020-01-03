@@ -122,7 +122,6 @@ class SignupActivity : AppCompatActivity() {
                     Log.e("result is ", response.body().toString())
                     val signupUser = response.body()!!
                     signinDialog.show(supportFragmentManager,"signin_fagment")
-                    Information.idx = signupUser.idx
                     idFlag = true
                 }
             }

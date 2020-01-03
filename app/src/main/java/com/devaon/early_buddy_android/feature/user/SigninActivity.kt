@@ -6,22 +6,20 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.View
-import android.widget.CheckBox
-import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.db.Information
 import com.devaon.early_buddy_android.data.login.Login
+import com.devaon.early_buddy_android.data.schedule.HomeScheduleResponse
 import com.devaon.early_buddy_android.data.user.UserSigninResponse
 import com.devaon.early_buddy_android.feature.home.HomeActivity
+import com.devaon.early_buddy_android.feature.home.NoScheduleActivity
 import com.devaon.early_buddy_android.feature.initial_join.SetNicknameActivity
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_signin.*
-import kotlinx.android.synthetic.main.activity_signup.*
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,6 +30,7 @@ class SigninActivity : AppCompatActivity() {
     private var idFlag: Boolean = false
     private var pwFlag: Boolean = false
     private var flag: Boolean = false
+    private var intentFlag: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,20 +76,21 @@ class SigninActivity : AppCompatActivity() {
             val response = requestLogin(id, pw)
             if (response) {
                 postUserData(id, pw, deviceToken)
-
-                if(flag) {
-                    Login.setUser(this, id)
-                    Toast.makeText(this, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
-                    val intent =
-                        Intent(this@SigninActivity, SetNicknameActivity::class.java).apply {
-                            setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                            finish()
-                        }
-                    Log.d("testset", "3")
-                    startActivity(intent)
-                }else{
-                    Toast.makeText(this, "아이디 또는 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
-                }
+//                if(flag) {
+//
+//                }else{
+//                    if(intentFlag){
+//
+//                    }
+//                    else{
+//                        val goYesSchedule =
+//                            Intent(this@SigninActivity, HomeActivity::class.java).apply {
+//                                setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+//                                finish()
+//                            }
+//                        startActivity(goYesSchedule)
+//                    }
+//                }
             } else {
                 Toast.makeText(this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
                 act_signin_et_id?.requestFocus()
@@ -132,24 +132,74 @@ class SigninActivity : AppCompatActivity() {
 
         callSigninResponse.enqueue(object : Callback<UserSigninResponse> {
             override fun onFailure(call: Call<UserSigninResponse>, t: Throwable) {
+                Toast.makeText(this@SigninActivity, "아이디 또는 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
                 Log.e("error is ", t.toString())
             }
 
             override fun onResponse(call: Call<UserSigninResponse>, response: Response<UserSigninResponse>) {
-                if (response.isSuccessful) {
-                    flag = true
                     Log.e("result is ", response.body().toString())
-                    val signinUser = response.body()!!
+                    val signInUser = response.body()!!
 
-                    if(signinUser.userName != null)
-                        Information.idx = signinUser.Idx
-                        Information.nickName = signinUser.userName
-                }
+
+                    if(signInUser.data.userName !="") {
+                        Information.nickName = signInUser.data.userName
+                        Log.e("nickname",Information.nickName)
+                    }
+                    else{       //닉네임이 없을때 닉네임 설정으로 간다.
+                        flag = true
+                        Login.setUser(this@SigninActivity, id)
+                        Toast.makeText(this@SigninActivity, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+                        val intent =
+                            Intent(this@SigninActivity, SetNicknameActivity::class.java).apply {
+                                setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                                finish()
+                            }
+                        startActivity(intent)
+                    }
+
+                    Information.idx = signInUser.data.Idx
+
+
+                getIntentToken()
             }
         })
 
     }
 
+    private fun getIntentToken(){
+        val callRoute: Call<HomeScheduleResponse> = EarlyBuddyServiceImpl.service.getHomeSchedule(Information.idx)
+
+        callRoute.enqueue(object :Callback<HomeScheduleResponse>{
+            override fun onFailure(call: Call<HomeScheduleResponse>, t: Throwable) {
+                Log.e("error is ", t.message)
+            }
+
+            override fun onResponse(
+                call: Call<HomeScheduleResponse>,
+                response: Response<HomeScheduleResponse>
+            ) {
+                Log.e("ggggg is ", response.body()!!.toString())
+
+                if(response.body()!!.message == "홈 화면에 보여줄 일정이 없습니다"){
+                    intentFlag = true
+                    val goNoSchedule =
+                        Intent(this@SigninActivity, NoScheduleActivity::class.java).apply {
+                            setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            finish()
+                        }
+                    startActivity(goNoSchedule)
+                }else{
+                    val goYesSchedule =
+                        Intent(this@SigninActivity, HomeActivity::class.java).apply {
+                            setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            finish()
+                        }
+                    startActivity(goYesSchedule)
+                }
+
+            }
+        })
+    }
     private fun goToHomeActivity(id: String) {
         val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra("login", id)
