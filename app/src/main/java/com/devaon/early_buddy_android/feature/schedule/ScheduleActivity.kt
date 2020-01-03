@@ -15,8 +15,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.devaon.early_buddy_android.data.route.Path
 import com.devaon.early_buddy_android.data.schedule.PostScheduleData
 import com.devaon.early_buddy_android.feature.place.search.route.PlaceSearchRouteActivity
-import com.devaon.early_buddy_android.feature.place.search.text.PlaceDirectionsActivity
-import com.devaon.early_buddy_android.feature.place.search.text.PlaceSelectActivity
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceName
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceX
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceY
@@ -46,6 +44,7 @@ class ScheduleActivity : AppCompatActivity(){
     var arriveCount = 0
     var noticeMin = 0
     var weekdays = arrayListOf<Int>()
+
     lateinit var mon: ImageView
     lateinit var tue: ImageView
     lateinit var wed: ImageView
@@ -315,7 +314,6 @@ class ScheduleActivity : AppCompatActivity(){
 //        method3Params.marginStart = method3Margin
 //        method3.layoutParams = method3Params
 
-    }
 
     private fun setPostButton(){
         act_schedule_tv_register.setOnClickListener {
@@ -353,6 +351,7 @@ class ScheduleActivity : AppCompatActivity(){
 
         jsonObject.put("path", path)
 
+
         if (mon.isSelected) weekdays.add(0)
         if (tue.isSelected) weekdays.add(1)
         if (wed.isSelected) weekdays.add(2)
@@ -379,7 +378,11 @@ class ScheduleActivity : AppCompatActivity(){
 
                     ScheduleDialogFragment(scheduleIdx) { finish() }.apply {
                         show(supportFragmentManager, null)
+                        finish()
                     }
+                }
+                else{
+                    Toast.makeText(this@ScheduleActivity, "네트워크를 확인해 주세요",Toast.LENGTH_SHORT).show()
                 }
             }
         })
