@@ -29,6 +29,11 @@ class PlaceSearchRouteAdapter(
         routeList.addAll(list)
     }
 
+    fun clearAll(){
+        routeList.clear()
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int {
         return routeList.size
     }
@@ -170,6 +175,7 @@ class PlaceSearchRouteAdapter(
         }
 
         Log.e("경로 개수 내놔라", routeList[position].subPath.size.toString())
+
 
         val walk1Tx = routeList[position].subPath[0].sectionTime
         holder.walk1Tx.text = String.format("%d분", walk1Tx)
