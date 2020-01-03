@@ -130,6 +130,7 @@ class SigninActivity : AppCompatActivity() {
                     val signinUser = response.body()!!
 
                     if(signinUser.userName != null)
+                        Information.idx = signinUser.Idx
                         Information.nickName = signinUser.userName
                 }
             }
