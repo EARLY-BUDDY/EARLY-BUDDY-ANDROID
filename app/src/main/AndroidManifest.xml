@@ -29,10 +29,7 @@
             </intent-filter>
         </service>
 
-<<<<<<< HEAD
         <activity android:name=".feature.user.MyPageActivity"></activity>
-=======
->>>>>>> e948ceaa09b4ab4206124dc3d521aa316e0b292f
         <activity android:name=".feature.route.RouteActivity"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
