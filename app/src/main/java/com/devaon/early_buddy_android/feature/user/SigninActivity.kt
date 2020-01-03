@@ -146,34 +146,35 @@ class SigninActivity : AppCompatActivity() {
         /*UserSigninData*/
         callSigninResponse.enqueue(object : Callback<UserSigninResponse> {
             override fun onFailure(call: Call<UserSigninResponse>, t: Throwable) {
-                Toast.makeText(this@SigninActivity, "아이디 또는 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this@SigninActivity, "아이디 또는 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
                 Log.e("error is ", t.toString())
             }
 
             override fun onResponse(call: Call<UserSigninResponse>, response: Response<UserSigninResponse>) {
                 Log.e("result is ", response.body().toString())
-                if(response.body() == null){
-                    Toast.makeText(this@SigninActivity, "아이디 또는 비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT)
-                    return
+
+
+                if(response.isSuccessful){
+                    val signInUser = response.body()!!
+                    Login.setToken(this@SigninActivity, signInUser.data.jwt)
+                    Information.idx = signInUser.data.Idx
+
+                    if(signInUser.data.userName == ""){
+                        flag = true
+                        Login.setUser(this@SigninActivity, id)
+                        Toast.makeText(this@SigninActivity, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@SigninActivity, SetNicknameActivity::class.java)
+                        startActivity(intent)
+                        finish()
+
+                    }else {
+                        getIntentToken()
+                    }
+
+                }else{
+                    Toast.makeText(this@SigninActivity, "아이디 또는 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show()
                 }
-                val signInUser = response.body()!!
 
-                Login.setToken(this@SigninActivity, signInUser.data.jwt)
-
-
-                if(signInUser.data.userName == ""){
-                    flag = true
-                    Login.setUser(this@SigninActivity, id)
-                    Toast.makeText(this@SigninActivity, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this@SigninActivity, SetNicknameActivity::class.java)
-                    startActivity(intent)
-                    finish()
-
-                }else {
-                    getIntentToken()
-                }
-                Information.idx = signInUser.data.Idx
             }
         })
     }

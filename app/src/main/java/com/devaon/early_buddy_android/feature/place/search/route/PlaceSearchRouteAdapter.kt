@@ -29,6 +29,11 @@ class PlaceSearchRouteAdapter(
         routeList.addAll(list)
     }
 
+    fun clearAll(){
+        routeList.clear()
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int {
         return routeList.size
     }
@@ -169,7 +174,8 @@ class PlaceSearchRouteAdapter(
 
         }
 
-        Log.e("왜 경로가 달라지는거야아아악", routeList.toString())
+        Log.e("경로 개수 내놔라", routeList[position].subPath.size.toString())
+
 
         val walk1Tx = routeList[position].subPath[0].sectionTime
         holder.walk1Tx.text = String.format("%d분", walk1Tx)
@@ -185,9 +191,17 @@ class PlaceSearchRouteAdapter(
         holder.method1Tx.setTextColor(Color.parseColor(transColor[0]))
         holder.method1Img.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(transColor[0])))
 
-        val walkParam2 = holder.walk2.getLayoutParams() as LinearLayout.LayoutParams
-        walkParam2.weight =  routeList[position].subPath[2].sectionTime.toFloat()
-        holder.walk2.setLayoutParams(walkParam2)
+        if(routeList[position].subPath.size > 2) {
+            val walkParam2 = holder.walk2.getLayoutParams() as LinearLayout.LayoutParams
+            walkParam2.weight = routeList[position].subPath[2].sectionTime.toFloat()
+            holder.walk2.setLayoutParams(walkParam2)
+        }else{
+            holder.walk2.visibility = View.GONE
+            holder.method2.visibility = View.GONE
+            holder.walk3.visibility = View.GONE
+            holder.method3.visibility = View.GONE
+            holder.walk4.visibility = View.GONE
+        }
 
         if(routeList[position].subPath.size > 3) {
             val methodParam2 = holder.method2.getLayoutParams() as LinearLayout.LayoutParams

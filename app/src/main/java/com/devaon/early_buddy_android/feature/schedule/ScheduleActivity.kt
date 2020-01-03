@@ -13,9 +13,12 @@ import com.devaon.early_buddy_android.R
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.devaon.early_buddy_android.data.db.Information
 import com.devaon.early_buddy_android.data.route.Path
 import com.devaon.early_buddy_android.data.schedule.PostScheduleData
+import com.devaon.early_buddy_android.feature.calendar.CalendarActivity.getCalendarAcitivityObject.position
 import com.devaon.early_buddy_android.feature.place.search.route.PlaceSearchRouteActivity
+import com.devaon.early_buddy_android.feature.route.RouteActivity
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceName
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceX
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceY
@@ -116,7 +119,8 @@ class ScheduleActivity : AppCompatActivity(){
         walk3 = findViewById(R.id.act_schedule_route_rl_walk_3)
         walk4 = findViewById(R.id.act_schedule_route_rl_walk_4)
 
-        //method1 = findViewById(R.id.act_schedule__route_rl_method_1)
+        method1 = findViewById(R.id.act_schedule_route_rl_method_1)
+
         method2 = findViewById(R.id.act_schedule_route_rl_method_2)
         method3 = findViewById(R.id.act_schedule_route_rl_method_3)
 
@@ -139,9 +143,21 @@ class ScheduleActivity : AppCompatActivity(){
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        path=null
+        startPlaceName =""
+        startPlaceX=0.0
+        startPlaceY=0.0
+        endPlaceName=""
+        endPlaceX=0.0
+        endPlaceY=0.0
+        RouteActivity.Route.isSelected=false
+    }
+
     override fun onResume() {
         super.onResume()
-
+        RouteActivity.Route.isSelected=false
         if(path !=  null){
             act_schedule_tv_place_from_result.text = startPlaceName
             act_schedule_tv_place_from_result.setTextColor(Color.parseColor("#3e3e3e"))
@@ -290,9 +306,10 @@ class ScheduleActivity : AppCompatActivity(){
     }
 
     private fun searchRoute(){
-        val placeClick = findViewById<ConstraintLayout>(R.id.act_schedule_cl_place_click)
+        val placeClick = findViewById<ConstraintLayout>(R.id.act_schedule_cl_place)
 
         placeClick.setOnClickListener{
+            Log.e("click is ","sdasd")
             val intent = Intent(this@ScheduleActivity, PlaceSearchRouteActivity::class.java)
             intent.putExtra("scheduleDate",SimpleDateFormat("MM월 dd일").format(cal.time))
             intent.putExtra("scheduleDayOfWeek", cal.get(Calendar.DAY_OF_WEEK))
@@ -497,6 +514,8 @@ class ScheduleActivity : AppCompatActivity(){
     private fun postSchedule(scheName: String){
 
         var jsonObject = JSONObject()
+        var weekArray = JSONArray()
+
         jsonObject.put("scheduleName", scheName)
         jsonObject.put("scheduleStartTime", SimpleDateFormat("HH:mm").format(cal.time))
         jsonObject.put("scheduleStartDay", SimpleDateFormat("yyyy-MM-dd").format(cal.time))
@@ -511,22 +530,29 @@ class ScheduleActivity : AppCompatActivity(){
 
         jsonObject.put("arriveCount", arriveCount)
         jsonObject.put("noticeMin", noticeMin)
-        jsonObject.put("userIdx", 7)
+        jsonObject.put("userIdx", Information.idx)
 
         val gson = Gson()
         val path = gson.toJson(path!!)
 
         jsonObject.put("path", path)
 
+        if (sun.isSelected) weekdays.add(0)
+        if (mon.isSelected) weekdays.add(1)
+        if (tue.isSelected) weekdays.add(2)
+        if (wed.isSelected) weekdays.add(3)
+        if (thu.isSelected) weekdays.add(4)
+        if (fri.isSelected) weekdays.add(5)
+        if (sat.isSelected) weekdays.add(6)
 
-        if (mon.isSelected) weekdays.add(0)
-        if (tue.isSelected) weekdays.add(1)
-        if (wed.isSelected) weekdays.add(2)
-        if (thu.isSelected) weekdays.add(3)
-        if (fri.isSelected) weekdays.add(4)
-        if (sat.isSelected) weekdays.add(5)
-        if (sun.isSelected) weekdays.add(6)
-        jsonObject.put("weekdays", weekdays)
+        for(i in 0..weekdays.size-1){
+            weekArray.put(weekdays.get(i))
+        }
+
+        Log.e("weekweekweeek이거다이거" , weekdays.toString())
+        jsonObject.put("weekdays", weekArray)
+        Log.e("weekweekweeek이거다이거22" , weekArray.toString())
+
 
         val body = JsonParser().parse(jsonObject.toString()) as JsonObject
 
@@ -548,8 +574,8 @@ class ScheduleActivity : AppCompatActivity(){
                     scheduleDialogFragment.show(supportFragmentManager,"schedule_dialog_fragment")
                 }
                 else{
-                    Log.e("response", "fail")
-                    Toast.makeText(this@ScheduleActivity, "네트워크를 확인해 주세요",Toast.LENGTH_SHORT).show()
+                    Log.e("schedule 등록 response", response.message())
+                    Toast.makeText(this@ScheduleActivity, "일정을 등록할 수 없습니다",Toast.LENGTH_SHORT).show()
                 }
             }
         })

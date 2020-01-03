@@ -11,6 +11,8 @@ import com.devaon.early_buddy_android.data.schedule.PathInfo
 import com.devaon.early_buddy_android.feature.home.HomeRouteAdapter
 import com.devaon.early_buddy_android.feature.home.HomeRouteViewHolder
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceName
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.startPlaceName
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
 import kotlinx.android.synthetic.main.activity_route.*
 import retrofit2.Call
@@ -30,6 +32,25 @@ class RouteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_route)
 
+        var min = intent.getIntExtra("totalTime",0)%60
+        var hour = intent.getIntExtra("totalTime",0)/60
+        act_place_search_route_tv_time.text = String.format("%d시간 %d분",hour,min)
+        act_place_search_route_tv_traslate.text =String.format("환승 %d회",intent.getIntExtra("transitCount",0))
+        act_place_search_route_tv_walk.text =String.format("도보 %d분",intent.getIntExtra("totalWalkTime",0))
+        act_place_search_route_tv_money.text =String.format("%d원",intent.getIntExtra("totalPay",0))
+        when(intent.getIntExtra("pathType",-1)){
+            3 -> {
+                act_place_search_route_tv_riding_kind.text = "지하철 + 버스"
+            }
+            1 -> {
+                act_place_search_route_tv_riding_kind.text = "지하철"
+            }
+            2 -> {
+                act_place_search_route_tv_riding_kind.text = "버스"
+            }
+        }
+        act_route_et_engine_from.text = startPlaceName
+        act_route_et_engine_to.text = endPlaceName
         routeRecyclerView = findViewById(R.id.act_route_rv_riding_info)
         routeAdapter = RouteAdapter(this, object : RouteViewHolder.ItemClickListener {
             override fun dropDownClick(position: Int) {
