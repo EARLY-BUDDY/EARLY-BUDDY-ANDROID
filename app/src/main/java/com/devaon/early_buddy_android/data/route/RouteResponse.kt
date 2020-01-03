@@ -60,6 +60,8 @@ data class SubPath(
     val endY: Double,
     @SerializedName("way")
     val way: String,
+    @SerializedName("wayCode")
+    val wayCode : Int,
     @SerializedName("endExitNo")
     val endExitNo: Int,
     @SerializedName("passStopList")
@@ -88,5 +90,7 @@ data class Station(
     @SerializedName("index")
     val index: Int,
     @SerializedName("stationName")
-    val stationName: String
+    val stationName: String,
+    @SerializedName("stationID")
+    val stationID: Int
 )

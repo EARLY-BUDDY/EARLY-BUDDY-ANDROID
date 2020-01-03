@@ -59,7 +59,9 @@
 
         <activity android:name=".feature.home.HomeRouteActivity" />
         <activity android:name=".feature.home.HomeActivity" />
-        <activity android:name=".feature.place.search.route.PlaceSearchRouteActivity" />
+        <activity android:name=".feature.place.search.route.PlaceSearchRouteActivity"
+            android:theme="@style/AppTheme.StatusBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".feature.initial_join.PlaceFavoriteActivity" />
         <activity
             android:name=".feature.initial_join.SetCompleteActivity"
