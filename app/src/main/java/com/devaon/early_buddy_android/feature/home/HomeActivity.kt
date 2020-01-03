@@ -15,6 +15,7 @@ import com.devaon.early_buddy_android.data.db.Information
 import com.devaon.early_buddy_android.data.schedule.HomeScheduleResponse
 import com.devaon.early_buddy_android.feature.calendar.CalendarActivity
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity
+import com.devaon.early_buddy_android.feature.user.MyPageActivity
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
 import com.devaon.early_buddy_android.util.TextViewIntAnimation
 import com.devaon.early_buddy_android.util.view.setSafeOnClickListener
@@ -595,6 +596,11 @@ class HomeActivity : AppCompatActivity() {
                 var goToAddSchedule = Intent(this, ScheduleActivity::class.java)
                 startActivity(goToAddSchedule)
             }
+
+        act_home_iv_mine.setOnClickListener {
+            var goToMyPage = Intent(this, MyPageActivity::class.java)
+            startActivity(goToMyPage)
+        }
 
     }
 

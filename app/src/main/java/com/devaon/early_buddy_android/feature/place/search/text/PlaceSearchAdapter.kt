@@ -31,6 +31,10 @@ class PlaceSearchAdapter(
         data.addAll(list)
     }
 
+    fun clearAll(){
+        data.clear()
+    }
+
     override fun getItemCount(): Int {
         return data.size
     }
@@ -42,7 +46,6 @@ class PlaceSearchAdapter(
         holder.roadAddressName.text = data[position].roadAddressName
 
         holder.container.setOnClickListener {
-            Log.d("testest","onBindViewHolder의 container")
             listener.onItemClick(data[position].placeName, data[position].x, data[position].y)
         }
     }

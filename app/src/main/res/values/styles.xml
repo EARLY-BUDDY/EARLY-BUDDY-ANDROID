@@ -35,6 +35,10 @@
         <item name="colorControlActivated">@color/main_color</item>
     </style>
 
+    <style name="settingSwitch" parent="Theme.AppCompat">
+        <item name="android:thumb">@drawable/selector_thumb</item>
+    </style>
+
 
     <style name="AppTheme.StatusBar" parent="AppTheme">
         <item name="android:statusBarColor">@color/main_color</item>

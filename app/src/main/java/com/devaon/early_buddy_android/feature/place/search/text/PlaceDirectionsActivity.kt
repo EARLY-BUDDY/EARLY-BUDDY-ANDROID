@@ -1,13 +1,24 @@
 package com.devaon.early_buddy_android.feature.place.search.text
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.place.PlaceResponse
+import com.devaon.early_buddy_android.feature.place.search.route.PlaceSearchRouteActivity
+import com.devaon.early_buddy_android.feature.place.search.route.PlaceSearchRouteAdapter
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceName
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceX
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceY
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.startPlaceName
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.startPlaceX
+import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.startPlaceY
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
 import kotlinx.android.synthetic.main.activity_place_search.*
 import kotlinx.android.synthetic.main.activity_place_select_direction.*
@@ -16,7 +27,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class PlaceDirectionsActivity : AppCompatActivity() {
+class PlaceDirectionsActivity: AppCompatActivity() {
+
     private lateinit var placeSearchAdapter: PlaceSearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,51 +37,41 @@ class PlaceDirectionsActivity : AppCompatActivity() {
 
         clearText()
         setRv()
-
-        act_place_search_et_search.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                /*getData()
-                Log.v(TAG, "글자 변경")*/
-
-                //통신
-                getPlaceSearch()
-                Log.d("testtest", "onTextChanged")
-
-            }
-
-        })
+        setButton()
+        showKeyboard()
 
     }
 
     private fun setRv(){
         placeSearchAdapter = PlaceSearchAdapter(this)
-       // placeSearchAdapter.setOnPlaceClickListener(onPlaceClickListener)
+        placeSearchAdapter.setOnPlaceClickListener(onPlaceClickListener)
         act_place_select_direction_rv.adapter = placeSearchAdapter
         act_place_select_direction_rv.layoutManager = LinearLayoutManager(this)
     }
 
-
-    /*private fun setData() {
-        //데이터 받아오는 함수
-        if (placeDataList.isNullOrEmpty()) {
-            act_place_search_iv_bird.visibility = View.VISIBLE
-            act_place_search_rv.visibility = View.GONE
-        } else {
-            act_place_search_iv_bird.visibility = View.GONE
-            act_place_search_rv.visibility = View.VISIBLE
-
-            //통신할 때 데이터 받아와야함  data =
-
+    private fun setButton(){
+        act_place_select_start_iv_back.setOnClickListener {
+            hideKeyboard()
+            finish()
         }
-    }*/
+
+        act_place_select_direction_et.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                getPlaceSearch() //통신
+            }
+
+        })
+
+        act_place_select_start_ns.setOnScrollChangeListener { v: NestedScrollView?, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int ->
+            hideKeyboard()
+        }
+    }
 
     private fun clearText(){
         act_place_select_direction_iv_delete.setOnClickListener {
@@ -77,14 +79,10 @@ class PlaceDirectionsActivity : AppCompatActivity() {
         }
     }
 
-
     private fun getPlaceSearch() {
-        Log.d("testtest", "getPlaceSearch")
         val place = act_place_select_direction_et.text.toString()
 
-        val callPlace: Call<PlaceResponse> = EarlyBuddyServiceImpl.service.getSearchAddress(
-            place
-        )
+        val callPlace: Call<PlaceResponse> = EarlyBuddyServiceImpl.service.getSearchAddress(place)
 
         callPlace.enqueue(object : Callback<PlaceResponse> {
             override fun onFailure(call: Call<PlaceResponse>, t: Throwable) {
@@ -121,8 +119,53 @@ class PlaceDirectionsActivity : AppCompatActivity() {
                 PlaceFavoriteActivity.placeObject.thirdX = x
                 PlaceFavoriteActivity.placeObject.thirdY = y
             }*/
-            finish()
+
+
+            // todo: flag로 어떤 text 타고 들어온 건지 검사해서 처리!
+            if(startPlaceName == ""){
+                startPlaceName = placeName
+                startPlaceX = x
+                startPlaceY= y
+
+                if(endPlaceName == "") {
+                    act_place_select_start_tv_search_start.text = "도착 : "
+                    act_place_select_direction_et.text.clear()
+                    placeSearchAdapter.clearAll()
+                    placeSearchAdapter.notifyDataSetChanged()
+                }else{
+                    hideKeyboard()
+                    finish()
+
+                }
+            }else {
+                endPlaceName = placeName
+                endPlaceX = x
+                endPlaceY = y
+
+                if(startPlaceName == "") {
+                    act_place_select_start_tv_search_start.text = "출발 : "
+                    act_place_select_direction_et.text.clear()
+                    placeSearchAdapter.clearAll()
+                    placeSearchAdapter.notifyDataSetChanged()
+                    showKeyboard()
+                }else{
+                    hideKeyboard()
+                    finish()
+
+                }
+            }
         }
+    }
+
+    private fun showKeyboard(){
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
+
+    }
+
+    private fun hideKeyboard(){
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
     }
 
 
