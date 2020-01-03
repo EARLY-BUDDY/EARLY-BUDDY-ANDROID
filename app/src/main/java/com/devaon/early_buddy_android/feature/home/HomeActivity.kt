@@ -500,7 +500,6 @@ class HomeActivity : AppCompatActivity() {
                                         if (firstArriveTime.minusMinutes(nowDate.minute.toLong()).minute > 3) {
                                             act_home_tv_minute_number.setAnimInt(60 + (firstArriveTime.minute - nowDate.minute))
                                         }
-                                        Log.e("sasssesxzzx","asdasd")
                                         act_home_tv_minute_number.start(token++)
                                         act_home_tv_before_minute.text = "분 전"
                                     }
@@ -510,7 +509,11 @@ class HomeActivity : AppCompatActivity() {
                                     }
                                 }
                                 else{
-                                    act_home_tv_minute_number.setAnimInt(firstArriveTime.minusMinutes(nowDate.minute.toLong()).minute)
+                                    if(firstArriveTime.minusMinutes(nowDate.minute.toLong()).minute <= 3){
+                                    }
+                                    else{
+                                        act_home_tv_minute_number.setAnimInt(firstArriveTime.minusMinutes(nowDate.minute.toLong()).minute)
+                                    }
                                     act_home_tv_minute_number.start(token++)
                                     act_home_tv_before_minute.text = "분 전"
                                 }
