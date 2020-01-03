@@ -88,17 +88,7 @@ class HomeActivity : AppCompatActivity() {
 
                             viewGone()
 
-                            if (promiseTime.minusHours(nowDate.hour.toLong()).hour == 0) {
-                                act_home_tv_minute_number.setAnimInt(
-                                    promiseTime.minusMinutes(
-                                        nowDate.minute.toLong()
-                                    ).minute
-                                )
-                                act_home_tv_before_minute.text = "분 전"
-                            } else {
-                                act_home_tv_minute_number.setAnimInt(promiseTime.minusHours(nowDate.hour.toLong()).hour)
-                                act_home_tv_before_minute.text = "시간 전"
-                            }
+
 
                             if (homeScheduleResponse.homeSchedule.isGoing == 1) {     //가는 중일 때
                                 act_home_tv_move.visibility = View.VISIBLE
@@ -121,6 +111,19 @@ class HomeActivity : AppCompatActivity() {
                                 act_home_iv_text.setImageResource(R.drawable.text_move)
                                 act_home_iv_bottom_img.setImageResource(R.drawable.img_going)
                             } else {       //가는 중이 아닐 때
+
+                                if (promiseTime.minusHours(nowDate.hour.toLong()).hour == 0) {
+                                    act_home_tv_minute_number.setAnimInt(
+                                        promiseTime.minusMinutes(
+                                            nowDate.minute.toLong()
+                                        ).minute
+                                    )
+                                    act_home_tv_before_minute.text = "분 전"
+                                } else {
+                                    act_home_tv_minute_number.setAnimInt(promiseTime.minusHours(nowDate.hour.toLong()).hour)
+                                    act_home_tv_before_minute.text = "시간 전"
+                                }
+
                                 act_home_iv_text.setImageResource(R.drawable.text_daily)
                                 act_home_iv_bottom_img.setImageResource(R.drawable.img_late_bg)
                             }
@@ -497,6 +500,7 @@ class HomeActivity : AppCompatActivity() {
                                         if (firstArriveTime.minusMinutes(nowDate.minute.toLong()).minute > 3) {
                                             act_home_tv_minute_number.setAnimInt(60 + (firstArriveTime.minute - nowDate.minute))
                                         }
+                                        Log.e("sasssesxzzx","asdasd")
                                         act_home_tv_minute_number.start(token++)
                                         act_home_tv_before_minute.text = "분 전"
                                     }
@@ -507,6 +511,7 @@ class HomeActivity : AppCompatActivity() {
                                 }
                                 else{
                                     act_home_tv_minute_number.setAnimInt(firstArriveTime.minusMinutes(nowDate.minute.toLong()).minute)
+                                    act_home_tv_minute_number.start(token++)
                                     act_home_tv_before_minute.text = "분 전"
                                 }
                             }else{
