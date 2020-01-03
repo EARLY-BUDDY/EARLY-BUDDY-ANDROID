@@ -11,9 +11,21 @@ import com.devaon.early_buddy_android.R
 import kotlinx.android.synthetic.main.dialog_fragment_schedule_pop_up.*
 
 class ScheduleDialogFragment(
-    val scheduleIdx : Int,
-    val listener: () -> Unit = {}
+    val scheduleIdx : Int
 ) : DialogFragment() {
+
+    lateinit var listener : OnDialogDismissedListener
+
+    fun setOnDialogDismissedListener(listener: OnDialogDismissedListener) {
+        this.listener = listener
+    }
+    interface OnDialogDismissedListener {
+        fun onDialogDismissed()
+    }
+    override fun dismiss() {
+        listener.onDialogDismissed()
+        super.dismiss()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +50,7 @@ class ScheduleDialogFragment(
             startActivity(goToCheck)
         }
         dialog_fragment_sche_pop_up_tv_home.setOnClickListener {
-            listener()
+            dismiss()
         }
     }
 }

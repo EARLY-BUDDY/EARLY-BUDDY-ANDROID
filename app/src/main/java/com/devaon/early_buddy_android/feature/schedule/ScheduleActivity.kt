@@ -543,17 +543,24 @@ class ScheduleActivity : AppCompatActivity(){
                     scheduleIdx = response.body()!!.data
                     Log.e("scheduleIdx", scheduleIdx.toString())
 
-                    ScheduleDialogFragment(scheduleIdx) { finish() }.apply {
-                        show(supportFragmentManager, null)
-                        finish()
-                    }
+                    var scheduleDialogFragment = ScheduleDialogFragment(scheduleIdx)
+                    scheduleDialogFragment.setOnDialogDismissedListener(onScheduleDialogFragmentDismissListener)
+                    scheduleDialogFragment.show(supportFragmentManager,"schedule_dialog_fragment")
                 }
                 else{
+                    Log.e("response", "fail")
                     Toast.makeText(this@ScheduleActivity, "네트워크를 확인해 주세요",Toast.LENGTH_SHORT).show()
                 }
             }
         })
 
+    }
+
+    val onScheduleDialogFragmentDismissListener
+            = object : ScheduleDialogFragment.OnDialogDismissedListener{
+        override fun onDialogDismissed() {
+            finish()
+        }
     }
 }
 
