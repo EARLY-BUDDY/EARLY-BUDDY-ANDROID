@@ -143,8 +143,8 @@
 
     <ImageView
         android:id="@+id/act_place_favorite_iv_select_one"
-        android:layout_width="78dp"
-        android:layout_height="80dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_marginStart="41dp"
         android:cropToPadding="true"
         android:paddingLeft="0dp"
@@ -154,12 +154,12 @@
         app:layout_constraintBottom_toBottomOf="@+id/act_place_favorite_cl_register_first"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/act_place_favorite_cl_register_first"
-        app:srcCompat="@drawable/ic_choice" />
+        app:srcCompat="@drawable/ic_plus" />
 
     <ImageView
         android:id="@+id/act_place_favorite_iv_select_two"
-        android:layout_width="78dp"
-        android:layout_height="80dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_marginStart="41dp"
         android:cropToPadding="true"
         android:paddingLeft="0dp"
@@ -169,12 +169,12 @@
         app:layout_constraintBottom_toBottomOf="@+id/act_place_favorite_cl_register_second"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/act_place_favorite_cl_register_second"
-        app:srcCompat="@drawable/ic_choice" />
+        app:srcCompat="@drawable/ic_plus" />
 
     <ImageView
         android:id="@+id/act_place_favorite_iv_select_three"
-        android:layout_width="78dp"
-        android:layout_height="80dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_marginStart="41dp"
         android:cropToPadding="true"
         android:paddingLeft="0dp"
@@ -184,7 +184,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/act_place_favorite_cl_register_third"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/act_place_favorite_cl_register_third"
-        app:srcCompat="@drawable/ic_choice" />
+        app:srcCompat="@drawable/ic_plus" />
 
     <ImageView
         android:id="@+id/act_place_favorite_iv_background"

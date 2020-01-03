@@ -10,26 +10,34 @@
         android:id="@+id/act_place_search_cl_ment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:background="#3092ff"
-        android:paddingHorizontal="111dp"
         android:paddingVertical="16dp"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/act_place_search_iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/act_place_search_tv_ment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="18sp"
             android:text="자주 가는 장소"
-            android:textColor="@color/white"
+            android:textColor="#ffffff"
+            android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,19 +54,21 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/act_place_search_cl_search"
             android:layout_width="340dp"
-            android:layout_height="wrap_content"
+            android:layout_height="38dp"
             android:background="@drawable/act_place_round_rect_white_full"
             android:paddingStart="17dp"
             android:paddingTop="6dp"
             android:paddingBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
             <EditText
                 android:id="@+id/act_place_search_et_search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="270dp"
+                android:layout_height="28dp"
                 android:background="@null"
                 android:ems="10"
                 android:hint="장소검색"
@@ -71,10 +81,10 @@
 
             <ImageView
                 android:id="@+id/act_place_search_iv_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:layout_marginEnd="13dp"
-                android:src="@drawable/ic_delete"
+                android:src="@drawable/ic_cancel"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
