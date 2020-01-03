@@ -11,6 +11,7 @@ import com.devaon.early_buddy_android.R
 import kotlinx.android.synthetic.main.dialog_fragment_schedule_pop_up.*
 
 class ScheduleDialogFragment(
+    val scheduleIdx : Int,
     val listener: () -> Unit = {}
 ) : DialogFragment() {
 
@@ -32,6 +33,7 @@ class ScheduleDialogFragment(
         super.onViewCreated(view, savedInstanceState)
         dialog_fragment_sche_pop_up_tv_check.setOnClickListener {
             var goToCheck = Intent(this@ScheduleDialogFragment.context, ScheduleCompleteActivity::class.java)
+            goToCheck.putExtra("scheduleIdx", scheduleIdx)
             dismiss()
             startActivity(goToCheck)
         }

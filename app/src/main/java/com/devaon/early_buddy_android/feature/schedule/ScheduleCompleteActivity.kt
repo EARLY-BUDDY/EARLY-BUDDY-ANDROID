@@ -37,6 +37,8 @@ class ScheduleCompleteActivity: AppCompatActivity(){
     lateinit var sat: ImageView
     lateinit var sun: ImageView
 
+
+    var scheduleIdx = 0
     lateinit var routeTime: TextView
     lateinit var routeMethod: TextView
     lateinit var walk1 : RelativeLayout
@@ -78,6 +80,7 @@ class ScheduleCompleteActivity: AppCompatActivity(){
         sat = findViewById(R.id.act_schedule_complete_iv_sat)
         sun = findViewById(R.id.act_schedule_complete_iv_sun)
 
+        scheduleIdx = intent.getIntExtra("scheduleIdx", 0)
         walk1 = findViewById(R.id.act_schedule_route_rl_walk_1)
         walk2 = findViewById(R.id.act_schedule_route_rl_walk_2)
         walk3 = findViewById(R.id.act_schedule_route_rl_walk_3)
@@ -103,7 +106,7 @@ class ScheduleCompleteActivity: AppCompatActivity(){
 
     private fun getSchedule(){
 
-        val callGetSchedule: Call<GetScheduleData> = EarlyBuddyServiceImpl.service.getSchedule(69)
+        val callGetSchedule: Call<GetScheduleData> = EarlyBuddyServiceImpl.service.getSchedule(scheduleIdx)
 
         callGetSchedule.enqueue(object : Callback<GetScheduleData>{
             override fun onFailure(call: Call<GetScheduleData>, t: Throwable) {
