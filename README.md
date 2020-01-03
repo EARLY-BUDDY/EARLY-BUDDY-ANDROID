@@ -1,5 +1,13 @@
 #  🐥 we are EARLY-BUDDY-ANDROID
 
+### 얼리버디 - 약속시간을 위한 나만의 대중교통 배차 알리미
+
+<img src="file:///Users/jinee/Desktop/KakaoTalk_Photo_2020-01-03-23-36-59.png?lastModify=1578063559" alt="img" style="zoom:20%;" />
+
+### workflow
+
+![img](file:///Users/jinee/Desktop/KakaoTalk_Photo_2020-01-03-23-29-42.png?lastModify=1578063559)
+
 ## 1. 적용 라이브러리
 
 
@@ -22,7 +30,6 @@
     
     //constraint Layout 사용을 위한 라이브러리
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-   
     
     //Lottie Library
     implementation 'com.airbnb.android:lottie:3.2.2'
@@ -31,7 +38,7 @@
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     
-     // fcm - firebase를 이용해 알림 구현 라이브러리
+    // fcm - firebase를 이용해 알림 구현 라이브러리
     implementation 'com.google.firebase:firebase-core:16.0.6'	// 애널리틱스(기본)
     implementation 'com.google.firebase:firebase-messaging:17.3.4'	// 클라우드 메시징
 
@@ -95,7 +102,81 @@
 
 - TextWatcher  사용해서 예외처리 및 버튼활성화.
   ex) 중복확인, 특정문자 제한, 글자수 제한, 활성화 비활성화 버튼색상 변경
+
+  - PlaceSearchActivity.kt
+
+  ```
+   act_place_search_et_search.addTextChangedListener(object : TextWatcher {
+          override fun afterTextChanged(p0: Editable?) {
   
+          }
+  
+          override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+  
+          }
+  
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //통신
+                getPlaceSearch()
+                Log.d("testtest", "onTextChanged")
+            }
+        })
+  ```
+
+- 회원가입
+
+  - SignupActivity
+
+  ```
+  private fun passwordCheck() {
+        act_signup_et_pw.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                if ((p0!!.length < 6) || !(pwdPattern.matcher(act_signup_et_pw.text.toString()).matches())) {
+                    act_signup_tv_pw_ment.showOrInvisible(true)
+    
+                    act_signup_cl_pw.setBackgroundResource(R.drawable.act_signup_round_rect_red)
+                    act_signup_et_pw.setTextColor(
+                        ContextCompat.getColor(
+                            this@SignupActivity,
+                            R.color.black
+                        )
+                    )
+                    act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_gray_full)
+                    pwFlag = false
+                } else {
+                    act_signup_tv_pw_ment.showOrInvisible(false)
+                    act_signup_cl_pw.setBackgroundResource(R.drawable.act_signup_round_rect_blue)
+                    act_signup_et_pw.setTextColor(
+                        ContextCompat.getColor(
+                            this@SignupActivity,
+                            R.color.black
+                        )
+                    )
+    
+                    if(!act_signup_et_pw.text.toString().equals(act_signup_et_pw_check.text.toString())) {
+                        act_signup_tv_pw_check_ment.showOrInvisible(true)
+                        act_signup_cl_pw_check.setBackgroundResource(R.drawable.act_signup_round_rect_red)
+                        act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_gray_full)
+                        pwCheckFlag = false
+                    }
+                    pwFlag = true
+                }
+            }
+    
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+    
+            }
+    
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+    
+            }
+        })
+    }
+  
+  ```
+
+
+
 - ReCyclerView로 장소 검색 통신 전 더미데이터
 
 - Custom dialog를 직접 구현하여 사용자가 선택한 사항을 뷰에 반영
@@ -141,7 +222,7 @@ when (holder.itemViewType) {
                         holder.endText.text = String.format("%s", routeList[position].endName)
                         holder.direction.text = "방향을 주의하고 탑승하세요"
                     }
-
+    
                 }
 ```
 
@@ -174,12 +255,12 @@ when (holder.itemViewType) {
 
   - Item_list_place_search_route.xml
 
-  ```
+```
   <RelativeLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginTop="20dp">
-  
+
           <RelativeLayout
               android:id="@+id/act_schedule_route_rl_gray"
               android:layout_width="match_parent"
@@ -188,15 +269,15 @@ when (holder.itemViewType) {
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:background="@drawable/img_gray_line"/>
-  
+      
           </RelativeLayout>
-  
+      
           <LinearLayout
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginHorizontal="18dp"
               android:orientation="horizontal">
-  
+      
               <RelativeLayout
                   android:id="@+id/act_schedule_route_rl_walk_1"
                   android:layout_width="0dp"
@@ -222,7 +303,7 @@ when (holder.itemViewType) {
               
           </LinearLayout>
       </RelativeLayout>
-  ```
+```
 
   
 
@@ -235,6 +316,7 @@ private fun TextView.setAnimInt(value: Int) {
         startAnimation(TextViewIntAnimation(this, to = value))
     }
 ```
+
 
 - 시간이 줄어드는 애니메이션 kotlin extension 을 이용하여 생성
 
@@ -249,13 +331,13 @@ private fun TextView.setAnimInt(value: Int) {
                 val min = (time / 6000) % 60 // 1분
                 runOnUiThread {
                     // Ui 를 갱신 시킴.
-
+    
                     if (min < 10) { // 분
                         minmin = "$min"
                     } else {
                         minmin = "$min"
                     }
-
+    
                     a.text = String.format("%s", minmin)
                     if (Integer.valueOf(minmin) <= 3) {
                         act_home_tv_minute_number.visibility = View.INVISIBLE
@@ -267,8 +349,9 @@ private fun TextView.setAnimInt(value: Int) {
         }
     }
 ```
-    
+
 ### 5. 일정표
+
 - 커스텀 달력을 통한 일정 조회 및 등록
 
 - 오늘 날짜에 파란 마커 디폴트
@@ -312,6 +395,7 @@ private fun viewGone() {
 ### 8. 일정 등록
 
 - datePicker와 timePicker로 날짜와 시간 선택
+
 ```
 act_schedule_tv_date_click.setOnClickListener {
             DatePickerDialog(this@ScheduleActivity, R.style.MyDatePickerDialogTheme,
@@ -327,3 +411,7 @@ act_schedule_tv_date_click.setOnClickListener {
 ```
 
 - 장소 검색을 통해 받은 출발지와 도착지 좌표로 가로경로 표시
+
+```
+
+```
