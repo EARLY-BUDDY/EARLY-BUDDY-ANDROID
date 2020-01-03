@@ -250,7 +250,7 @@
         app:layout_constraintTop_toBottomOf="@+id/act_signup_cl_pw_check">
 
         <TextView
-            android:id="@+id/act_signup_bt_join"
+            android:id="@+id/act_signup_tv_join"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
