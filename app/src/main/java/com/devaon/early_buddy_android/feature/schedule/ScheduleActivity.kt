@@ -13,9 +13,11 @@ import com.devaon.early_buddy_android.R
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.devaon.early_buddy_android.data.db.Information
 import com.devaon.early_buddy_android.data.route.Path
 import com.devaon.early_buddy_android.data.schedule.PostScheduleData
 import com.devaon.early_buddy_android.feature.place.search.route.PlaceSearchRouteActivity
+import com.devaon.early_buddy_android.feature.route.RouteActivity
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceName
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceX
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceY
@@ -116,7 +118,7 @@ class ScheduleActivity : AppCompatActivity(){
         walk3 = findViewById(R.id.act_schedule_route_rl_walk_3)
         walk4 = findViewById(R.id.act_schedule_route_rl_walk_4)
 
-        method1 = findViewById(R.id.act_schedule__route_rl_method_1)
+        method1 = findViewById(R.id.act_schedule_route_rl_method_1)
         method2 = findViewById(R.id.act_schedule_route_rl_method_2)
         method3 = findViewById(R.id.act_schedule_route_rl_method_3)
 
@@ -139,9 +141,21 @@ class ScheduleActivity : AppCompatActivity(){
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        path=null
+        startPlaceName =""
+        startPlaceX=0.0
+        startPlaceY=0.0
+        endPlaceName=""
+        endPlaceX=0.0
+        endPlaceY=0.0
+        RouteActivity.Route.isSelected=false
+    }
+
     override fun onResume() {
         super.onResume()
-
+        RouteActivity.Route.isSelected=false
         if(path !=  null){
             act_schedule_tv_place_from_result.text = startPlaceName
             act_schedule_tv_place_from_result.setTextColor(Color.parseColor("#3e3e3e"))
@@ -290,9 +304,10 @@ class ScheduleActivity : AppCompatActivity(){
     }
 
     private fun searchRoute(){
-        val placeClick = findViewById<ConstraintLayout>(R.id.act_schedule_cl_place_click)
+        val placeClick = findViewById<ConstraintLayout>(R.id.act_schedule_cl_place)
 
         placeClick.setOnClickListener{
+            Log.e("click is ","sdasd")
             val intent = Intent(this@ScheduleActivity, PlaceSearchRouteActivity::class.java)
             intent.putExtra("scheduleDate",SimpleDateFormat("MM월 dd일").format(cal.time))
             intent.putExtra("scheduleDayOfWeek", cal.get(Calendar.DAY_OF_WEEK))
@@ -511,7 +526,7 @@ class ScheduleActivity : AppCompatActivity(){
 
         jsonObject.put("arriveCount", arriveCount)
         jsonObject.put("noticeMin", noticeMin)
-        jsonObject.put("userIdx", 7)
+        jsonObject.put("userIdx", Information.idx)
 
         val gson = Gson()
         val path = gson.toJson(path!!)

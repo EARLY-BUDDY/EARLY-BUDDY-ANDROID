@@ -171,42 +171,75 @@
         app:layout_constraintTop_toBottomOf="@+id/act_route_cl_engine">
 
         <TextView
-            android:id="@+id/act_route_tv_sche_day"
+            android:id="@+id/act_place_search_route_tv_riding_kind"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/gray"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="17sp"
+            tools:text="지하철 + 버스"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="16dp"
             android:layout_marginTop="14dp"
-            android:text="일정 날짜"
-            android:fontFamily="@font/noto_sans_kr_medium"
-            android:textColor="@color/gray"
+            />
+
+        <TextView
+            android:id="@+id/act_place_search_route_tv_traslate"
+            app:layout_constraintStart_toStartOf="@id/act_place_search_route_tv_riding_kind"
+            app:layout_constraintTop_toBottomOf="@id/act_place_search_route_tv_riding_kind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="#8e8e93"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="19sp"
+            tools:text="환승 1회"
+            />
 
         <TextView
-            android:id="@+id/act_route_tv_sche_time"
+            android:id="@+id/act_place_search_route_tv_walk"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="일정 시간"
-            android:fontFamily="@font/noto_sans_kr_medium"
-            android:textColor="@color/main_color"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/act_route_tv_sche_day"
-            app:layout_constraintTop_toBottomOf="@+id/act_route_tv_sche_day" />
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="19sp"
+            android:textColor="#8e8e93"
+            android:textSize="12sp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/act_place_search_route_tv_traslate"
+            app:layout_constraintStart_toEndOf="@+id/act_place_search_route_tv_traslate"
+            tools:text="도보 9분" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/act_place_search_route_tv_money"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="도착"
-            android:fontFamily="@font/noto_sans_kr_medium"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="19sp"
+            android:textColor="#8e8e93"
+            android:textSize="12sp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/act_place_search_route_tv_traslate"
+            app:layout_constraintStart_toEndOf="@+id/act_place_search_route_tv_walk"
+            tools:text="1,200원" />
+
+        <TextView
+            android:id="@+id/act_place_search_route_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:gravity="end"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="17sp"
             android:textColor="@color/gray"
             android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/act_route_tv_sche_time"
-            app:layout_constraintTop_toTopOf="@id/act_route_tv_sche_time" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1시간 30분" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
