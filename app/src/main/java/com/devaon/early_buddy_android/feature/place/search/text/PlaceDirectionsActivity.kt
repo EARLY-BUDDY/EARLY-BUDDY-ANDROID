@@ -11,8 +11,6 @@ import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.place.PlaceResponse
-import com.devaon.early_buddy_android.feature.place.search.route.PlaceSearchRouteActivity
-import com.devaon.early_buddy_android.feature.place.search.route.PlaceSearchRouteAdapter
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceName
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceX
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.endPlaceY
@@ -20,17 +18,16 @@ import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedule
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.startPlaceX
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity.schedulePlace.startPlaceY
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
-import kotlinx.android.synthetic.main.activity_place_search.*
 import kotlinx.android.synthetic.main.activity_place_select_direction.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class PlaceDirectionsActivity: AppCompatActivity() {
+class PlaceDirectionsActivity : AppCompatActivity() {
 
     private lateinit var placeSearchAdapter: PlaceSearchAdapter
-
+    var flag = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place_select_direction)
@@ -40,16 +37,30 @@ class PlaceDirectionsActivity: AppCompatActivity() {
         setButton()
         showKeyboard()
 
+        flag = intent.getStringExtra("click")
+
+        if(flag == "from"){
+            act_place_select_direction_et.text.clear()
+            placeSearchAdapter.clearAll()
+            placeSearchAdapter.notifyDataSetChanged()
+            showKeyboard()
+        }else{
+            act_place_select_start_tv_search_start.text = "도착 : "
+            act_place_select_direction_et.text.clear()
+            placeSearchAdapter.clearAll()
+            placeSearchAdapter.notifyDataSetChanged()
+            showKeyboard()
+        }
     }
 
-    private fun setRv(){
+    private fun setRv() {
         placeSearchAdapter = PlaceSearchAdapter(this)
         placeSearchAdapter.setOnPlaceClickListener(onPlaceClickListener)
         act_place_select_direction_rv.adapter = placeSearchAdapter
         act_place_select_direction_rv.layoutManager = LinearLayoutManager(this)
     }
 
-    private fun setButton(){
+    private fun setButton() {
         act_place_select_start_iv_back.setOnClickListener {
             hideKeyboard()
             finish()
@@ -59,9 +70,11 @@ class PlaceDirectionsActivity: AppCompatActivity() {
             override fun afterTextChanged(p0: Editable?) {
 
             }
+
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
             }
+
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 getPlaceSearch() //통신
             }
@@ -73,7 +86,7 @@ class PlaceDirectionsActivity: AppCompatActivity() {
         }
     }
 
-    private fun clearText(){
+    private fun clearText() {
         act_place_select_direction_iv_delete.setOnClickListener {
             act_place_select_direction_et.text.clear()
         }
@@ -101,69 +114,56 @@ class PlaceDirectionsActivity: AppCompatActivity() {
         })
     }
 
-    var onPlaceClickListener
-            = object : PlaceSearchAdapter.onPlaceClickListener {
+    var onPlaceClickListener = object : PlaceSearchAdapter.onPlaceClickListener {
         override fun onItemClick(placeName: String, x: Double, y: Double) {
 
-
-           /* if(PlaceFavoriteActivity.placeObject.firstFavoriteName == ""){
-                PlaceFavoriteActivity.placeObject.firstFavoriteName = placeName
-                PlaceFavoriteActivity.placeObject.firstX = x
-                PlaceFavoriteActivity.placeObject.firstY = y
-            }else if(PlaceFavoriteActivity.placeObject.secondFavoriteName == ""){
-                PlaceFavoriteActivity.placeObject.secondFavoriteName = placeName
-                PlaceFavoriteActivity.placeObject.secondX = x
-                PlaceFavoriteActivity.placeObject.secondY = y
-            }else if(PlaceFavoriteActivity.placeObject.thirdFavoriteName == ""){
-                PlaceFavoriteActivity.placeObject.thirdFavoriteName = placeName
-                PlaceFavoriteActivity.placeObject.thirdX = x
-                PlaceFavoriteActivity.placeObject.thirdY = y
-            }*/
-
-
             // todo: flag로 어떤 text 타고 들어온 건지 검사해서 처리!
-            if(startPlaceName == ""){
+
+            if (startPlaceName == "") {
                 startPlaceName = placeName
                 startPlaceX = x
-                startPlaceY= y
+                startPlaceY = y
 
-                if(endPlaceName == "") {
+                if (endPlaceName == "") {
                     act_place_select_start_tv_search_start.text = "도착 : "
                     act_place_select_direction_et.text.clear()
                     placeSearchAdapter.clearAll()
                     placeSearchAdapter.notifyDataSetChanged()
-                }else{
-                    hideKeyboard()
-                    finish()
-
+                    showKeyboard()
                 }
-            }else {
+
+            } else if (endPlaceName == "") {
                 endPlaceName = placeName
                 endPlaceX = x
                 endPlaceY = y
-
-                if(startPlaceName == "") {
-                    act_place_select_start_tv_search_start.text = "출발 : "
-                    act_place_select_direction_et.text.clear()
-                    placeSearchAdapter.clearAll()
-                    placeSearchAdapter.notifyDataSetChanged()
-                    showKeyboard()
-                }else{
-                    hideKeyboard()
+                finish()
+                hideKeyboard()
+            } else {
+                Log.e("token is ", flag.toString())
+                if (flag == "from") {
+                    startPlaceName = placeName
+                    startPlaceX = x
+                    startPlaceY = y
                     finish()
-
+                    hideKeyboard()
+                } else {
+                    endPlaceName = placeName
+                    endPlaceX = x
+                    endPlaceY = y
+                    finish()
+                    hideKeyboard()
                 }
             }
         }
     }
 
-    private fun showKeyboard(){
+    private fun showKeyboard() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
 
     }
 
-    private fun hideKeyboard(){
+    private fun hideKeyboard() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
     }

@@ -18,6 +18,7 @@ import androidx.viewpager.widget.ViewPager
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.calendar.CalendarResponse
 import com.devaon.early_buddy_android.data.calendar.Schedule
+import com.devaon.early_buddy_android.data.db.Information
 import com.devaon.early_buddy_android.feature.calendar.CalendarActivity.getCalendarAcitivityObject.position
 import com.devaon.early_buddy_android.feature.schedule.ScheduleActivity
 import com.devaon.early_buddy_android.feature.schedule.ScheduleCompleteActivity
@@ -50,7 +51,7 @@ class CalendarActivity : AppCompatActivity() {
         act_calendar_cl_header.bringToFront()
 
         setCalendarVp()
-        getScheduleList(8)
+        getScheduleList(Information.idx)
         setButton()
 
     }

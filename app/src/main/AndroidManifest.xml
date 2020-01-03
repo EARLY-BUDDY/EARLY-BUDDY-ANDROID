@@ -47,7 +47,7 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".feature.schedule.ScheduleCompleteActivity" />
-        <activity android:name=".feature.splash.SplashActivity" />
+        <activity android:name=".feature.MainActivity" />
         <activity android:name=".feature.user.SignupActivity" />
         <activity android:name=".feature.home.NoScheduleActivity" />
         <activity android:name=".feature.user.SigninActivity" />
@@ -83,7 +83,7 @@
             android:theme="@style/AppTheme.StatusBar"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".feature.schedule.ScheduleActivity" />
-        <activity android:name=".feature.MainActivity">
+        <activity android:name=".feature.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
