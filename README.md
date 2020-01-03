@@ -4,8 +4,7 @@
 
 <img width="300" src="https://user-images.githubusercontent.com/37479631/71730558-d8bcc780-2e85-11ea-9e61-4a827e58558f.png" alt="img" />
 
-### workflow
-
+### Workflow
 
 <img width="500" src="https://user-images.githubusercontent.com/37479631/71730672-233e4400-2e86-11ea-83aa-e2661428e845.png" alt="img"/>
 
