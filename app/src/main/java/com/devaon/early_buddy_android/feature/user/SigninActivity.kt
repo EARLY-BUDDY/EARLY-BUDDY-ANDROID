@@ -45,6 +45,16 @@ class SigninActivity : AppCompatActivity() {
         }*/
         makeController()
         Log.d("testset", "0")
+
+
+        act_signin_iv_signup.setOnClickListener {
+            if(act_signin_iv_signup.isSelected){
+                act_signin_iv_signup.setSelected(false)
+            }else{
+                act_signin_iv_signup.setSelected(true)
+            }
+        }
+
     }
 
 
