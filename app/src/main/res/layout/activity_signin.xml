@@ -152,18 +152,7 @@
             android:visibility="invisible" />
     </LinearLayout>
 
-    <CheckBox
-        android:id="@+id/act_signin_auto_checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="4dp"
-        android:button="@drawable/ic_login_activated"
-        android:checked="true"
 
-        android:text="자동 로그인"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/act_signin_cl_pw" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/act_signin_cl_login"
@@ -205,6 +194,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/act_signin_cl_login" />
+
+    <ImageView
+        android:id="@+id/act_signin_iv_signup"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/act_signin_cl_pw"
+        app:srcCompat="@drawable/selector_act_signin_checkbox" />
+
+    <TextView
+        android:id="@+id/act_signin_tv_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="자동로그인"
+        android:textSize="14sp"
+        android:textColor="@color/gray"
+        app:layout_constraintStart_toEndOf="@+id/act_signin_iv_signup"
+        app:layout_constraintTop_toBottomOf="@+id/act_signin_cl_pw" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
