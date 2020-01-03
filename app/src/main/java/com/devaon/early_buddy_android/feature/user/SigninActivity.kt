@@ -45,6 +45,16 @@ class SigninActivity : AppCompatActivity() {
         }*/
         makeController()
         Log.d("testset", "0")
+
+
+        act_signin_iv_signup.setOnClickListener {
+            if(act_signin_iv_signup.isSelected){
+                act_signin_iv_signup.setSelected(false)
+            }else{
+                act_signin_iv_signup.setSelected(true)
+            }
+        }
+
     }
 
 
@@ -67,14 +77,12 @@ class SigninActivity : AppCompatActivity() {
                 postUserData(id, pw, deviceToken)
 
                 if(flag) {
-                    Log.d("testset", "flag true")
                     Login.setUser(this, id)
+                    Toast.makeText(this, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
                     val intent =
                         Intent(this@SigninActivity, SetNicknameActivity::class.java).apply {
-                            Log.d("testset", "2")
                             setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                             finish()
-                           /* startActivity(intent)*/
                         }
                     Log.d("testset", "3")
                     startActivity(intent)
@@ -173,6 +181,8 @@ class SigninActivity : AppCompatActivity() {
 
             }
         })
+
+
     }
 
     private fun pwBntActive() {
