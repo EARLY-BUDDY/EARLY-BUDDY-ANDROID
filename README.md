@@ -1,8 +1,14 @@
 #  🐥 we are EARLY-BUDDY-ANDROID
 
-### 얼리버디 - 약속시간을 위한 나만의 대중교통 배차 알리미
+
 
 <img width="300" src="https://user-images.githubusercontent.com/37479631/71730558-d8bcc780-2e85-11ea-9e61-4a827e58558f.png" alt="img" />
+
+###얼리버디 - 약속시간을 위한 나만의 대중교통 배차 알리미
+
+> SOPT 25기 Appjam '얼리버디'
+> 프로젝트 기간 2019.12 ~ 진행중
+> 김예진 김찬영 최예원
 
 ### Workflow
 
