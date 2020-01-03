@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "72581229659",
-    "firebase_url": "https://fcm-practice-e0090.firebaseio.com",
-    "project_id": "fcm-practice-e0090",
-    "storage_bucket": "fcm-practice-e0090.appspot.com"
+    "project_number": "222053867856",
+    "firebase_url": "https://early-buddy-server.firebaseio.com",
+    "project_id": "early-buddy-server",
+    "storage_bucket": "early-buddy-server.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:72581229659:android:f9e3ebab29bfb5c597e37e",
+        "mobilesdk_app_id": "1:222053867856:android:c1531501f8b0ce490d0c55",
         "android_client_info": {
           "package_name": "com.devaon.early_buddy_android"
         }
       },
       "oauth_client": [
         {
-          "client_id": "72581229659-vmqkmvi2md4hcqmuqu96lja7urc2tkor.apps.googleusercontent.com",
+          "client_id": "222053867856-jv6rjt4s92ff1mfel80c226g4c2umifb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDamS9_JUSOv8r-j_HB4-a5vJLEyXQBsY0"
+          "current_key": "AIzaSyB9horXysyMg7XSqU_u3GOPZGShFP3c8BE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "72581229659-vmqkmvi2md4hcqmuqu96lja7urc2tkor.apps.googleusercontent.com",
+              "client_id": "222053867856-jv6rjt4s92ff1mfel80c226g4c2umifb.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

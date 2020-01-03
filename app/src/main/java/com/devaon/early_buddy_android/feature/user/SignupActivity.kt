@@ -32,6 +32,9 @@ class SignupActivity : AppCompatActivity() {
 
     lateinit var signinDialog : SigninDialogFragment
     val pwdPattern = Pattern.compile("^[a-zA-Z0-9]+$", Pattern.CASE_INSENSITIVE)
+    val id = act_signup_et_id.text.toString()
+    val pw = act_signup_et_pw.text.toString()
+    val pwCheck = act_signup_et_pw_check.text.toString()
 
     var idFlag: Boolean = false
     var pwFlag: Boolean = false
@@ -53,12 +56,6 @@ class SignupActivity : AppCompatActivity() {
 
             signinDialog = SigninDialogFragment()
             signinDialog.setOnDialogDismissedListener(signInDialogFragmentDismissListener)
-
-
-            val id = act_signup_et_id.text.toString()
-            val pw = act_signup_et_pw.text.toString()
-            val pwCheck = act_signup_et_pw_check.text.toString()
-
 
             if (id.isEmpty() || pw.isEmpty() || pwCheck.isEmpty()) {
                 Toast.makeText(this, "아이디와 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
@@ -83,6 +80,7 @@ class SignupActivity : AppCompatActivity() {
 
     private fun postUserData(id : String, pw : String) {
 
+        //body
         var jsonObject = JSONObject()
         jsonObject.put("userId", id)
         jsonObject.put("userPw", pw)
@@ -104,6 +102,11 @@ class SignupActivity : AppCompatActivity() {
                     val signupUser = response.body()!!
                     signinDialog.show(supportFragmentManager,"signin_fagment")
                     Information.idx = signupUser.idx
+                    signupUser.message
+                    if(signupUser.message.equals("이미 사용중인 아이디입니다.")){
+                        idFlag = false
+                    }
+                    idFlag = true
                 }
             }
         })
@@ -115,8 +118,14 @@ class SignupActivity : AppCompatActivity() {
         act_signup_et_id.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 if (p0!!.length > 0) {
+                    postUserData(id,pw)
+
+                    if(idFlag){ //성공
+
+                    }
                     /*화면 터치시 화면내려감
                     이때 서버와 통신
+                    postUserData(id,pw)
                         통신했는데 중복된 아이디일 경우
                                 act_signup_tv_id_ment.showOrInvisible(true) //중복된 아이디입니다. 경고메시지 보여줌
                                 act_signup_cl_id.setBackgroundResource(R.drawable.act_signup_round_rect_red)

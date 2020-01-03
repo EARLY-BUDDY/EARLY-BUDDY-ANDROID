@@ -2,11 +2,16 @@ package com.devaon.early_buddy_android.data.user
 
 import com.google.gson.annotations.SerializedName
 
+//회원가입 응답메시지
+//1) 회원가입 성공 true data 1
+//2) 중복아이디 실패 false message
 data class UserResponse(
     @SerializedName("success")
     val success: Boolean,
     @SerializedName("data")
-    val idx: Int
+    val idx: Int,
+    @SerializedName("message")
+    val message: String
 )
 
 data class NickNameResponse(
@@ -39,6 +44,12 @@ data class UserNickname(
 
 data class UserSigninResponse(
     @SerializedName("jwt")
-    val jwt: String
+    val jwt: String,
+    @SerializedName("userIdx")
+    val Idx: Int,
+    @SerializedName("userName")
+    val userName: String
 )
+
+
 
