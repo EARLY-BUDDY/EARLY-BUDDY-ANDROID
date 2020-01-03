@@ -154,7 +154,7 @@ class PlaceSearchRouteAdapter(
                     }
                     2 -> { // 일반
 //                        transText.add(routeList[position].subPath[i].lane.busNo)
-                        val busNo = String.format("%d번", routeList[position].subPath[i].lane.busNo)
+                        val busNo = String.format("%s번", routeList[position].subPath[i].lane.busNo)
                         transText.add(busNo)
                         when(routeList[position].subPath[i].lane.type){
                             1, 2, 11 -> transColor.add("#3469ec")
