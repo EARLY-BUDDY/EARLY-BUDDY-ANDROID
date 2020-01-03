@@ -400,7 +400,7 @@ class ScheduleActivity : AppCompatActivity(){
                     }
                     2 -> { // 일반
 //                        transText.add(selectedPath.path!!.subPath[i].lane.type.toString())
-                        val busNo = String.format("%d번", selectedPath.path!!.subPath[i].lane.busNo)
+                        val busNo = String.format("%s번", selectedPath.path!!.subPath[i].lane.busNo)
                         transText.add(busNo)
                         when (selectedPath.path!!.subPath[i].lane.type) {
                             1, 2, 11 -> transColor.add("#3469ec")
@@ -491,6 +491,13 @@ class ScheduleActivity : AppCompatActivity(){
                 Toast.makeText(this, "내용을 모두 입력해주세요", Toast.LENGTH_SHORT).show()
             } else {
                 postSchedule(scheName)
+                path=null
+                startPlaceName =""
+                startPlaceX=0.0
+                startPlaceY=0.0
+                endPlaceName=""
+                endPlaceX=0.0
+                endPlaceY=0.0
             }
         }
     }
