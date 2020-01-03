@@ -139,6 +139,17 @@ class ScheduleActivity : AppCompatActivity(){
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        path=null
+        startPlaceName =""
+        startPlaceX=0.0
+        startPlaceY=0.0
+        endPlaceName=""
+        endPlaceX=0.0
+        endPlaceY=0.0
+    }
+
     override fun onResume() {
         super.onResume()
 
