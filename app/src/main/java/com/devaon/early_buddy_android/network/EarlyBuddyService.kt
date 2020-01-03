@@ -9,6 +9,7 @@ import com.devaon.early_buddy_android.data.schedule.PathInfo
 import com.devaon.early_buddy_android.data.schedule.PostScheduleData
 import com.devaon.early_buddy_android.data.user.NickNameResponse
 import com.devaon.early_buddy_android.data.user.UserResponse
+import com.devaon.early_buddy_android.data.user.UserSigninResponse
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.http.*
@@ -50,7 +51,7 @@ interface EarlyBuddyService {
     @POST("/users/signin")
     fun postSigninUser(
         @Body() body:JsonObject
-    ): Call<UserResponse>
+    ): Call<UserSigninResponse>
 
     @POST("/users/setUserName")
     fun postNicknameUser(

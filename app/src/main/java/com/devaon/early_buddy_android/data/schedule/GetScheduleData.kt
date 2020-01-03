@@ -15,7 +15,11 @@ data class ScheduleData(
     @SerializedName("weekdayInfo")
     val weekdayInfo: Array<Int>,
     @SerializedName("path")
+<<<<<<< HEAD
     val pathInfo: PathInfo
+=======
+    val pathInfo:PathInfo
+>>>>>>> 08588f9043b758428136e95a4a41d0dd0493dc88
 )
 
 data class ScheduleInfo(

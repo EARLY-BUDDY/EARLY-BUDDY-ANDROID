@@ -48,6 +48,7 @@ class SetNicknameActivity : AppCompatActivity() {
                     act_set_nickname_bt_join.setTextColor(ContextCompat.getColor(this@SetNicknameActivity, R.color.white))
                     act_set_nickname_et_id.setTextColor(ContextCompat.getColor(this@SetNicknameActivity, R.color.black))
                 }else {
+                    //비활성화 - 초기 비활성화 상태와 똑같이 만들어줌
                     act_set_nickname_cl_id.setBackgroundResource(R.drawable.act_place_round_rect_gray)
                     act_set_nickname_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_gray_full)
                     act_set_nickname_bt_join.setTextColor(ContextCompat.getColor(this@SetNicknameActivity, R.color.gray))
@@ -65,12 +66,15 @@ class SetNicknameActivity : AppCompatActivity() {
 
         act_set_nickname_cl_join?.setOnClickListener {
             val patternNickName: Pattern = Pattern.compile("^[ㄱ-ㅣ가-힣]*$")
+            val nickname = act_set_nickname_et_id.text.toString()
 
-            if (patternNickName.matcher(act_set_nickname_et_id.text.toString()).matches()) {
+            if (patternNickName.matcher(nickname).matches() && nickname.length > 0) {
                 val intent = Intent(this@SetNicknameActivity, PlaceFavoriteActivity::class.java)
                 startActivity(intent)
                 finish()
-            }else{
+            }else if(nickname.length == 0){
+                Toast.makeText(this@SetNicknameActivity, "닉네임을 입력해주세요", Toast.LENGTH_SHORT).show()
+            } else{
                 Toast.makeText(this@SetNicknameActivity, "한글만 입력해주세요", Toast.LENGTH_SHORT).show()
             }
         }
@@ -99,7 +103,11 @@ class SetNicknameActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     Log.e("result is ", response.body().toString())
                     val NicknameUser = response.body()!!
-                    Information.nickName = NicknameUser.nickName
+                    Log.e("respnse message", response.message())
+                    if(NicknameUser.nickName == null) {
+                        Log.e("nickname is null", "!")
+                    }else
+                        Information.nickName = NicknameUser.nickName
                 }
             }
         })

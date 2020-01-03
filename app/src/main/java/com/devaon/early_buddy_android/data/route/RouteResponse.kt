@@ -26,7 +26,13 @@ data class Path(
     @SerializedName("totalWalkTime")
     val totalWalkTime: Int,
     @SerializedName("subPath")
-    val subPath: ArrayList<SubPath>
+    val subPath: ArrayList<SubPath>,
+    @SerializedName("leastTotalTime")
+    val leastTotalTime : Int?,
+    @SerializedName("leastTransitCount")
+    val leastTransitCount : Int?,
+    @SerializedName("leastTotalWalkTime")
+    val leastTotalWalkTime : Int?
 )
 
 data class SubPath(
