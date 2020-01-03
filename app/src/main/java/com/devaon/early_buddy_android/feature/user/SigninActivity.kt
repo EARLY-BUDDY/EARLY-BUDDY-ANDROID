@@ -56,7 +56,7 @@ class SigninActivity : AppCompatActivity() {
         act_signin_cl_login?.setOnClickListener{
             val id = act_signin_et_id?.text.toString()
             val pw = act_signin_et_pw?.text.toString()
-            val deviceToken = "eZuw-jawWGQ:APA91bHVmBqbWazVCE0rIGch2JCPCE-TA6qjA51RBryZWO1YsTF8zMDLbBIBGNhiKN-GPdeSxoOBr3On0jSvFCivJT23Yqm6cPhxir-WVkRhDjXEvANQaqZWUw_My-3UEeMmIEHO-ZUQ"
+            val deviceToken = "fyG5BOMVqFM:APA91bGGIEdk21i6sgXWTRNepyf-1f4Znmv1qOMxPwuYLlsz02ux7l7SKMdYjGRYDIRVhdITjDA8ZsjNmWrB-tYwuyA-kNgP6O0SqTwTat0dXR-vygExOfpHaxSg8Xcs3OJS25B8GGXS"
             if (id.isEmpty() || pw.isEmpty()) {
                 Toast.makeText(this, "아이디와 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
