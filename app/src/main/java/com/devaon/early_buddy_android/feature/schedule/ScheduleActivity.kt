@@ -481,7 +481,6 @@ class ScheduleActivity : AppCompatActivity(){
         }
     }
 
-
     private fun setPostButton(){
         act_schedule_tv_register.setOnClickListener {
 

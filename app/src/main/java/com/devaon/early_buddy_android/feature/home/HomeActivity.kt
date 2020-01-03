@@ -46,6 +46,30 @@ class HomeActivity : AppCompatActivity() {
         homeNetwork()
     }
 
+    private fun getIntentToken(){
+        val callRoute: Call<HomeScheduleResponse> = EarlyBuddyServiceImpl.service.getHomeSchedule(Information.idx)
+
+        callRoute.enqueue(object :Callback<HomeScheduleResponse>{
+            override fun onFailure(call: Call<HomeScheduleResponse>, t: Throwable) {
+                Log.e("error is ", t.message)
+            }
+
+            override fun onResponse(
+                call: Call<HomeScheduleResponse>,
+                response: Response<HomeScheduleResponse>
+            ) {
+
+                    if(response.body()!!.message == "홈 화면에 보여줄 일정이 없습니다"){
+                        val goNoSchedule =
+                            Intent(this@HomeActivity, NoScheduleActivity::class.java).apply {
+                                setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                                finish()
+                            }
+                        startActivity(goNoSchedule)
+                    }
+            }
+        })
+    }
     private fun homeNetwork() {
 
         val callRoute: Call<HomeScheduleResponse> = EarlyBuddyServiceImpl.service.getHomeSchedule(Information.idx)
