@@ -15,8 +15,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.view.View
+import android.view.View.VISIBLE
 import android.widget.*
 import com.devaon.early_buddy_android.feature.calendar.CalendarActivity.getCalendarAcitivityObject.position
+import kotlinx.android.synthetic.main.activity_schedule_complete.*
 
 
 class ScheduleCompleteActivity: AppCompatActivity(){
@@ -61,6 +63,8 @@ class ScheduleCompleteActivity: AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule_complete)
+
+        setButton()
 
         scheName = findViewById(R.id.act_schedule_complete_tv_sche_name)
         scheDay = findViewById(R.id.act_schedule_complete_tv_sche_day)
@@ -292,13 +296,22 @@ class ScheduleCompleteActivity: AppCompatActivity(){
                 method1Tx.setTextColor(Color.parseColor(transColor[0]))
                 method1Img.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(transColor[0])))
 
-                val walkParam2 = walk2.getLayoutParams() as LinearLayout.LayoutParams
-                walkParam1.weight = getScheduleResponse.data.pathInfo.subPath[2].sectionTime.toFloat()
-                walk1.setLayoutParams(walkParam2)
+                if(getScheduleResponse.data.pathInfo.subPath.size > 2) {
+                    val walkParam2 = walk2.getLayoutParams() as LinearLayout.LayoutParams
+                    walkParam2.weight = getScheduleResponse.data.pathInfo.subPath[2].sectionTime.toFloat()
+                    walk2.setLayoutParams(walkParam2)
+                }else{
+                    walk2.visibility = View.GONE
+                    method2.visibility = View.GONE
+                    walk3.visibility = View.GONE
+                    method3.visibility = View.GONE
+                    walk4.visibility = View.GONE
+                }
+
 
                 if(getScheduleResponse.data.pathInfo.subPath.size > 3) {
                     val methodParam2 = method2.getLayoutParams() as LinearLayout.LayoutParams
-                    walkParam1.weight = getScheduleResponse.data.pathInfo.subPath[3].sectionTime.toFloat()
+                    methodParam2.weight = getScheduleResponse.data.pathInfo.subPath[3].sectionTime.toFloat()
                     method2.setLayoutParams(methodParam2)
                     method2Tx.text = transText[1]
                     method2Tx.setTextColor(Color.parseColor(transColor[1]))
@@ -312,7 +325,7 @@ class ScheduleCompleteActivity: AppCompatActivity(){
 
                 if(getScheduleResponse.data.pathInfo.subPath.size > 4){
                     val walkParam3 = walk3.getLayoutParams() as LinearLayout.LayoutParams
-                    walkParam1.weight = getScheduleResponse.data.pathInfo.subPath[4].sectionTime.toFloat()
+                    walkParam3.weight = getScheduleResponse.data.pathInfo.subPath[4].sectionTime.toFloat()
                     walk3.setLayoutParams(walkParam3)
                 }else{
                     walk3.visibility = View.GONE
@@ -322,7 +335,7 @@ class ScheduleCompleteActivity: AppCompatActivity(){
 
                 if(getScheduleResponse.data.pathInfo.subPath.size > 5) {
                     val methodParam3 = method3.getLayoutParams() as LinearLayout.LayoutParams
-                    walkParam1.weight = getScheduleResponse.data.pathInfo.subPath[5].sectionTime.toFloat()
+                    methodParam3.weight = getScheduleResponse.data.pathInfo.subPath[5].sectionTime.toFloat()
                     method3.setLayoutParams(methodParam3)
                     method3Tx.text = transText[2]
                     method3Tx.setTextColor(Color.parseColor(transColor[2]))
@@ -334,7 +347,7 @@ class ScheduleCompleteActivity: AppCompatActivity(){
 
                 if(getScheduleResponse.data.pathInfo.subPath.size > 6) {
                     val walkParam4 = walk4.getLayoutParams() as LinearLayout.LayoutParams
-                    walkParam1.weight = getScheduleResponse.data.pathInfo.subPath[6].sectionTime.toFloat()
+                    walkParam4.weight = getScheduleResponse.data.pathInfo.subPath[6].sectionTime.toFloat()
                     walk4.setLayoutParams(walkParam4)
                 }else{
                     walk4.visibility = View.GONE
@@ -356,24 +369,28 @@ class ScheduleCompleteActivity: AppCompatActivity(){
 
                 //알림반복 표시
                 var weekArray = getScheduleResponse.data.weekdayInfo
-                if (weekArray.contains(0))
-                    mon.visibility = View.VISIBLE
-                if (weekArray.contains(1) == true)
-                    tue.visibility = View.VISIBLE
-                if (weekArray.contains(2) == true)
-                    wed.visibility = View.VISIBLE
-                if (weekArray.contains(3) == true)
-                    thu.visibility = View.VISIBLE
-                if (weekArray.contains(4) == true)
-                    fri.visibility = View.VISIBLE
-                if (weekArray.contains(5) == true)
-                    sat.visibility = View.VISIBLE
-                if (weekArray.contains(6) == true)
-                    sun.visibility = View.VISIBLE
+
+                for(i in 0..weekArray.size -1){
+                    when(weekArray[i]){
+                        0-> sun.visibility = VISIBLE
+                        1-> mon.visibility = VISIBLE
+                        2-> tue.visibility = VISIBLE
+                        3-> wed.visibility = VISIBLE
+                        4-> thu.visibility = VISIBLE
+                        5-> fri.visibility = VISIBLE
+                        6-> sat.visibility = VISIBLE
+                    }
+                }
 
             }
 
         })
 
+    }
+
+    fun setButton(){
+        act_schedule_complete_iv_back.setOnClickListener {
+            finish()
+        }
     }
 }

@@ -53,7 +53,7 @@ data class SubPath(
     @SerializedName("startY")
     val startY: Double,
     @SerializedName("endName")
-    val endName: String,
+    var endName: String,
     @SerializedName("endX")
     val endX: Double,
     @SerializedName("endY")
