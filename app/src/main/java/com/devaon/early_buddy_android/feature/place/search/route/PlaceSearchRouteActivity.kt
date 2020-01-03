@@ -133,6 +133,8 @@ class PlaceSearchRouteActivity : AppCompatActivity(){
                     act_place_select_iv_bird_no_route.visibility = INVISIBLE
                 }
                 else{
+                    placeSearchRouteRecyclerViewAdapter.clearAll()
+                    Log.e("sucess 냐?", response.message())
                     act_place_select_iv_bird.visibility = INVISIBLE
                     act_place_select_iv_bird_no_route.visibility = VISIBLE
 

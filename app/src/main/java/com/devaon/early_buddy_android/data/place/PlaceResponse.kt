@@ -21,3 +21,19 @@ data class PlaceSearch(
     @SerializedName("y")
     val y: Double
 )
+
+data class FavoritePlaceResponse(
+    @SerializedName("favoriteArr")
+    val favoriteArr: ArrayList<FavoritePlace>
+)
+
+data class FavoritePlace(
+    @SerializedName("favoriteInfo")
+    val favoriteInfo: String,
+    @SerializedName("favoriteCategory")
+    val favoriteCategory: Int,
+    @SerializedName("favoriteLongitude")
+    val favoriteLongitude: Double,
+    @SerializedName("favoriteLatitude")
+    val favoriteLatitude: Double
+)

@@ -120,6 +120,7 @@ class ScheduleActivity : AppCompatActivity(){
         walk4 = findViewById(R.id.act_schedule_route_rl_walk_4)
 
         method1 = findViewById(R.id.act_schedule_route_rl_method_1)
+
         method2 = findViewById(R.id.act_schedule_route_rl_method_2)
         method3 = findViewById(R.id.act_schedule_route_rl_method_3)
 
@@ -573,8 +574,8 @@ class ScheduleActivity : AppCompatActivity(){
                     scheduleDialogFragment.show(supportFragmentManager,"schedule_dialog_fragment")
                 }
                 else{
-                    Log.e("response", "fail")
-                    Toast.makeText(this@ScheduleActivity, "네트워크를 확인해 주세요",Toast.LENGTH_SHORT).show()
+                    Log.e("schedule 등록 response", response.message())
+                    Toast.makeText(this@ScheduleActivity, "일정을 등록할 수 없습니다",Toast.LENGTH_SHORT).show()
                 }
             }
         })

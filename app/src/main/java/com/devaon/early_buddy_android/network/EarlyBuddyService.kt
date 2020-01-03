@@ -1,6 +1,7 @@
 package com.devaon.early_buddy_android.network
 
 import com.devaon.early_buddy_android.data.calendar.CalendarResponse
+import com.devaon.early_buddy_android.data.place.FavoritePlaceResponse
 import com.devaon.early_buddy_android.data.place.PlaceResponse
 import com.devaon.early_buddy_android.data.route.RouteResponse
 import com.devaon.early_buddy_android.data.schedule.GetScheduleData
@@ -73,5 +74,12 @@ interface EarlyBuddyService {
     fun getSchedule(
         @Query("scheduleIdx") scheduleIdx: Int
     ): Call<GetScheduleData>
+
+
+    @POST("/users/setFavorite")
+    fun postFavoritePlace(
+        @Header("jwt") jwt : String,
+        @Body() body:JsonObject
+    ): Call<FavoritePlaceResponse>
 
 }

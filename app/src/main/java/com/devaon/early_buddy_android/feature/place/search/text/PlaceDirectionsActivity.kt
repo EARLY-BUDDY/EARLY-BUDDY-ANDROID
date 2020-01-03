@@ -117,22 +117,6 @@ class PlaceDirectionsActivity : AppCompatActivity() {
     var onPlaceClickListener = object : PlaceSearchAdapter.onPlaceClickListener {
         override fun onItemClick(placeName: String, x: Double, y: Double) {
 
-
-            /* if(PlaceFavoriteActivity.placeObject.firstFavoriteName == ""){
-                 PlaceFavoriteActivity.placeObject.firstFavoriteName = placeName
-                 PlaceFavoriteActivity.placeObject.firstX = x
-                 PlaceFavoriteActivity.placeObject.firstY = y
-             }else if(PlaceFavoriteActivity.placeObject.secondFavoriteName == ""){
-                 PlaceFavoriteActivity.placeObject.secondFavoriteName = placeName
-                 PlaceFavoriteActivity.placeObject.secondX = x
-                 PlaceFavoriteActivity.placeObject.secondY = y
-             }else if(PlaceFavoriteActivity.placeObject.thirdFavoriteName == ""){
-                 PlaceFavoriteActivity.placeObject.thirdFavoriteName = placeName
-                 PlaceFavoriteActivity.placeObject.thirdX = x
-                 PlaceFavoriteActivity.placeObject.thirdY = y
-             }*/
-
-
             // todo: flag로 어떤 text 타고 들어온 건지 검사해서 처리!
 
             if (startPlaceName == "") {
