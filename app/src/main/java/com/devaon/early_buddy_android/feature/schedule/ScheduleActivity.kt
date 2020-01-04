@@ -420,7 +420,8 @@ class ScheduleActivity : AppCompatActivity(){
                         }
                     }
                     2 -> { // 일반
-                        transText.add(selectedPath.path!!.subPath[i].lane.type.toString())
+                        val busNo = String.format("%s번", selectedPath.path!!.subPath[i].lane.busNo)
+                        transText.add(busNo)
                         when (selectedPath.path!!.subPath[i].lane.type) {
                             1, 2, 11 -> transColor.add("#3469ec")
                             10, 12 -> transColor.add("#33c63c")
