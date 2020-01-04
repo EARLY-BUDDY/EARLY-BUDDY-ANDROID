@@ -357,16 +357,16 @@ class ScheduleCompleteActivity: AppCompatActivity(){
 
                 //알림 표시
                 when(getScheduleResponse.data.scheduleInfo.noticeMin) {
-                    5,10,20 -> scheNoti.text = String.format("배차 %d분 ", getScheduleResponse.data.scheduleInfo.noticeMin)
+                    5,10,20 -> scheNoti.text = String.format("배차 %d분 전", getScheduleResponse.data.scheduleInfo.noticeMin)
                     0 -> scheNoti.text = "알림 없음"
                 }
 
                 //알림 범위 표시
                 when(getScheduleResponse.data.scheduleInfo.arriveCount) {
-                    1 -> scheNotiRange.text = "마지막 배차만"
-                    2 -> scheNotiRange.text = "1대 전 배차부터"
-                    3 -> scheNotiRange.text = "2대 전 배차부터"
-                    4 -> scheNotiRange.text = "3대 전 배차부터"
+                    0 -> scheNotiRange.text = "마지막 배차만"
+                    1 -> scheNotiRange.text = "1대 전 배차부터"
+                    2 -> scheNotiRange.text = "2대 전 배차부터"
+                    3 -> scheNotiRange.text = "3대 전 배차부터"
                 }
 
                 //알림반복 표시
@@ -383,11 +383,8 @@ class ScheduleCompleteActivity: AppCompatActivity(){
                         6-> sat.visibility = VISIBLE
                     }
                 }
-
             }
-
         })
-
     }
 
     fun setButton(){
