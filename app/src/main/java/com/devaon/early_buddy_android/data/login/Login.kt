@@ -8,6 +8,7 @@ object Login {
     private const val USER_NICKNAME =""
 
     private const val TOKEN = ""
+    private const val FIREBASE_DEVICETOKEN = ""
 
     fun getUser(context: Context): String {
         val sharedPreferences = context.getSharedPreferences(LOGIN_KEY, Context.MODE_PRIVATE)
@@ -53,6 +54,19 @@ object Login {
         sharedPreferences
             .edit()
             .putString(TOKEN, token)
+            .apply()
+    }
+
+    fun getDeviceToken(context: Context) : String{
+        val sharedPreferences = context.getSharedPreferences(FIREBASE_DEVICETOKEN, Context.MODE_PRIVATE)
+        return sharedPreferences.getString(FIREBASE_DEVICETOKEN, "") ?: ""
+    }
+
+    fun setDeviceToken(context: Context, token: String){
+        val sharedPreferences = context.getSharedPreferences(FIREBASE_DEVICETOKEN, Context.MODE_PRIVATE)
+        sharedPreferences
+            .edit()
+            .putString(FIREBASE_DEVICETOKEN, token)
             .apply()
     }
 
