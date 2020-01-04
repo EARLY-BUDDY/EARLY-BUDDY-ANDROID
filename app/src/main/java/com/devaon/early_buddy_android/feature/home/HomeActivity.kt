@@ -48,6 +48,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        Log.e("onResume!!","onResume")
         act_home_tv_soon.visibility=View.INVISIBLE
         act_home_tv_move.visibility=View.INVISIBLE
         homeNetwork()
@@ -418,7 +419,7 @@ class HomeActivity : AppCompatActivity() {
                                             act_home_iv_bottom_img.setImageResource(R.drawable.img_bg_twobus)
                                             act_home_iv_text.setImageResource(R.drawable.text_two)
                                         }
-                                        3 -> {
+                                        4 -> {
                                             act_home_iv_bottom_img.setImageResource(R.drawable.img_bg_threebus)
                                             act_home_iv_text.setImageResource(R.drawable.text_three)
                                         }
@@ -642,7 +643,7 @@ class HomeActivity : AppCompatActivity() {
 //                    act_home_tv_minute_number.text = String.format("%s", minmin)
 
                     a.text = String.format("%s", minmin)
-                    if (Integer.valueOf(minmin) <= 3) {
+                    if (Integer.valueOf(minmin) <= 3) {5
                         act_home_tv_minute_number.visibility = View.INVISIBLE
                         act_home_tv_before_minute.visibility = View.INVISIBLE
                         act_home_tv_soon.visibility = View.VISIBLE
