@@ -75,6 +75,7 @@ class ScheduleActivity : AppCompatActivity(){
     lateinit var method2Img: ImageView
     lateinit var method3Img: ImageView
 
+    lateinit var walk1Tx: TextView
     lateinit var method1Tx: TextView
     lateinit var method2Tx: TextView
     lateinit var method3Tx: TextView
@@ -127,6 +128,7 @@ class ScheduleActivity : AppCompatActivity(){
         method2Img = findViewById(R.id.act_schedule_route_iv_method_2)
         method3Img = findViewById(R.id.act_schedule_route_iv_method_3)
 
+        walk1Tx = findViewById(R.id.act_schedule_route_tv_walk_1)
         method1Tx = findViewById(R.id.act_schedule_route_tv_method_1)
         method2Tx = findViewById(R.id.act_schedule_route_tv_method_2)
         method3Tx = findViewById(R.id.act_schedule_route_tv_method_3)
@@ -215,6 +217,7 @@ class ScheduleActivity : AppCompatActivity(){
             }
         notiSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+//                Log.e("알림배차몇분?!!!!!?!?!?!??!", position.toString())
                 var userNoti = notiSpinner.selectedItemPosition
                 when(userNoti){
                     0 -> arriveCount = 1
@@ -239,6 +242,7 @@ class ScheduleActivity : AppCompatActivity(){
         notiRangeSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 var userNotiRange = notiRangeSpinner.selectedItemPosition
+//                Log.e("알림 몇대전부터?!?!??!!!!!?!?!?!??!", position.toString())
                 when(userNotiRange){
                     0 -> noticeMin = 5
                     1 -> noticeMin = 10
@@ -426,8 +430,10 @@ class ScheduleActivity : AppCompatActivity(){
                     }
                 }
             }
-
         }
+
+        val walk1Time = selectedPath.path!!.subPath[0].sectionTime
+        walk1Tx.text = String.format("%d분", walk1Time)
 
         val walkParam1 = walk1.layoutParams as LinearLayout.LayoutParams
         walkParam1.weight = selectedPath.path!!.subPath[0].sectionTime.toFloat()
@@ -548,6 +554,8 @@ class ScheduleActivity : AppCompatActivity(){
             weekArray.put(weekdays.get(i))
         }
 
+        Log.e("알림몇분?!?!", noticeMin.toString())
+        Log.e("알림범위 몇대전배차", arriveCount.toString())
         Log.e("weekweekweeek이거다이거" , weekdays.toString())
         jsonObject.put("weekdays", weekArray)
         Log.e("weekweekweeek이거다이거22" , weekArray.toString())
