@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.devaon.early_buddy_android.data.calendar.Date
+import com.devaon.early_buddy_android.data.calendar.Schedule
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -12,6 +14,9 @@ class CalendarPagerAdapter (fm: FragmentManager): FragmentPagerAdapter(fm){
     val frgMap: HashMap<Int, CalendarPageFragment>
     private val listMonthByMillis = ArrayList<Long>()
     private var numOfMonth: Int = 0
+
+    var dataList = arrayListOf<Date>()
+    //var scheduleList = arrayListOf<Schedule>()
 
     init {
         clearPrevFragments(fm)
@@ -41,6 +46,7 @@ class CalendarPagerAdapter (fm: FragmentManager): FragmentPagerAdapter(fm){
         }
         if (frg == null) {
             frg = CalendarPageFragment.newInstance(position)
+            //(frg as CalendarPageFragment).setSchedules(dataList)
             frgMap[position] = frg
         }
         frg.setTimeByMillis(listMonthByMillis[position])
@@ -140,4 +146,11 @@ class CalendarPagerAdapter (fm: FragmentManager): FragmentPagerAdapter(fm){
         return year
 
     }
+    /*
+
+    private fun setHasSchedule(){
+        for(i in 0.. scheduleList.size-1){
+
+        }
+    }*/
 }

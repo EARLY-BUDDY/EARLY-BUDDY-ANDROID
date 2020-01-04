@@ -31,6 +31,7 @@ class BaseCalendar(timeByMillis: Long) {
     val dayFormat = SimpleDateFormat("dd", Locale.KOREA)
 
     var data = arrayListOf<Date>()
+    var tempData = arrayListOf<Date>()
 
     init {
         calendar.time = Date(timeByMillis)
