@@ -55,6 +55,13 @@ class SignupActivity : AppCompatActivity() {
         passwordCheck()
         passwordCorretCheck()
 
+        /*Log.d("Test")*/
+        if (idFlag && pwFlag && pwCheckFlag) {
+            //postUserData(id, pw)
+            /*Log.d("test", "flag all ok")*/
+            act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_blue_full)
+        }
+
 
 
         act_signup_cl_join.setOnClickListener {
@@ -75,12 +82,14 @@ class SignupActivity : AppCompatActivity() {
             Log.d("test", "pwCheckFlag : " + pwCheckFlag)
 
             if (id.isEmpty() || pw.isEmpty() || pwCheck.isEmpty()) {
+                act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_gray_full)
                 Toast.makeText(this, "아이디와 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
                 if (idFlag && pwFlag && pwCheckFlag) {
                     postUserData(id, pw)
-
+                    Log.d("test", "flag all ok")
+                    act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_blue_full)
                 }
             }
 
@@ -112,6 +121,7 @@ class SignupActivity : AppCompatActivity() {
             body
         )
 
+        Log.d("test", "1")
         callSignUpResponse.enqueue(object : Callback<UserResponse> {
             override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                 Log.e("error is ", t.toString())
@@ -122,7 +132,11 @@ class SignupActivity : AppCompatActivity() {
                     Log.e("result is ", response.body().toString())
                     val signupUser = response.body()!!
                     signinDialog.show(supportFragmentManager,"signin_fagment")
-                    idFlag = true
+                    //idFlag = true
+                    //if (idFlag && pwFlag && pwCheckFlag) {
+                    //    act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_blue_full)
+                    //}
+//                    finish()
                 }else{
                     Log.e("fail message ", response.message())
                 }
@@ -130,7 +144,7 @@ class SignupActivity : AppCompatActivity() {
         })
     }
 
-    private fun getDuplicatedCheck(id : String) {
+   /* private fun getDuplicatedCheck(id : String) {
 
         //body
         var jsonObject = JSONObject()
@@ -162,7 +176,7 @@ class SignupActivity : AppCompatActivity() {
             }
         })
     }
-
+*/
 
 
 
@@ -247,6 +261,15 @@ class SignupActivity : AppCompatActivity() {
                     //getDuplicatedCheck(id)
                     Log.d("testtest", "duplicated")
 
+                    act_signup_cl_id.setBackgroundResource(R.drawable.act_signup_round_rect_blue)
+                    act_signup_et_id.setTextColor(
+                        ContextCompat.getColor(
+                            this@SignupActivity,
+                            R.color.black
+                        )
+                    )
+
+
                     /*if (duplicatedFlag) { //중복아님. 즉 성공
                         Log.d("testtest", "성공")
                         act_signup_tv_id_ment.showOrInvisible(false)
@@ -269,8 +292,18 @@ class SignupActivity : AppCompatActivity() {
                         )
                     }*/
                     idFlag = true
+                    if (idFlag && pwFlag && pwCheckFlag) {
+                        act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_blue_full)
+                    }
                 } else {
                     act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_gray_full)
+                    act_signup_cl_id.setBackgroundResource(R.drawable.act_signup_round_rect_gray)
+                    act_signup_et_id.setTextColor(
+                        ContextCompat.getColor(
+                            this@SignupActivity,
+                            R.color.light_gray
+                        )
+                    )
                     idFlag = false
                 }
                /* if (idFlag && pwFlag && pwCheckFlag) {
@@ -315,6 +348,9 @@ class SignupActivity : AppCompatActivity() {
                         pwCheckFlag = false
                     }
                     pwFlag = true
+                    if (idFlag && pwFlag && pwCheckFlag) {
+                        act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_blue_full)
+                    }
                 }
             }
 
@@ -349,6 +385,9 @@ class SignupActivity : AppCompatActivity() {
                         )
                     )
                     pwCheckFlag = true
+                    if (idFlag && pwFlag && pwCheckFlag) {
+                        act_signup_cl_join.setBackgroundResource(R.drawable.act_place_round_rect_blue_full)
+                    }
 
 
                 }else{

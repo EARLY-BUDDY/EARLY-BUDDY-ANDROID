@@ -59,28 +59,28 @@
         <activity android:name=".feature.home.HomeRouteActivity" />
         <activity android:name=".feature.home.HomeActivity" />
         <activity android:name=".feature.place.search.route.PlaceSearchRouteActivity"
-            android:theme="@style/AppTheme.StatusBar"
+
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".feature.initial_join.PlaceFavoriteActivity" />
         <activity
             android:name=".feature.initial_join.SetCompleteActivity"
-            android:theme="@style/AppTheme.StatusBar" />
+            />
         <activity
             android:name=".feature.initial_join.SetNicknameActivity"
-            android:theme="@style/AppTheme.StatusBar" />
+             />
         <activity
             android:name=".feature.place.search.text.PlaceSelectActivity"
-            android:theme="@style/AppTheme.StatusBar" />
+            />
         <activity
             android:name=".feature.place.search.text.PlaceSelectStartActivity"
-            android:theme="@style/AppTheme.StatusBar" />
+             />
         <activity
             android:name=".feature.place.search.text.PlaceSearchActivity"
-            android:theme="@style/AppTheme.StatusBar"
+
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".feature.place.search.text.PlaceDirectionsActivity"
-            android:theme="@style/AppTheme.StatusBar"
+
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".feature.schedule.ScheduleActivity" />
         <activity android:name=".feature.splash.SplashActivity">

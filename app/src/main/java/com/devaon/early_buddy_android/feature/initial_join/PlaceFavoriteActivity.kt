@@ -1,11 +1,9 @@
 package com.devaon.early_buddy_android.feature.initial_join
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.login.Login
 import com.devaon.early_buddy_android.data.place.FavoritePlace
@@ -22,9 +20,7 @@ import com.devaon.early_buddy_android.feature.initial_join.PlaceFavoriteActivity
 import com.devaon.early_buddy_android.feature.initial_join.PlaceFavoriteActivity.placeObject.thirdX
 import com.devaon.early_buddy_android.feature.initial_join.PlaceFavoriteActivity.placeObject.thirdY
 import com.devaon.early_buddy_android.feature.place.search.text.PlaceSearchActivity
-import com.devaon.early_buddy_android.feature.user.SigninActivity
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
-import com.github.clans.fab.FloatingActionMenu
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_place_favorite.*
@@ -33,6 +29,7 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class PlaceFavoriteActivity : AppCompatActivity() {
 
@@ -85,7 +82,7 @@ class PlaceFavoriteActivity : AppCompatActivity() {
 
         if(placeObject.checkNum == 0){
             act_place_favorite_tv_first.text = placeObject.firstFavoriteName
-            
+
             favoriteArr.add(FavoritePlace(firstFavoriteName, firstCategory, firstX, firstY))
         }else if(placeObject.checkNum == 1){
             act_place_favorite_tv_second.text = placeObject.secondFavoriteName
@@ -110,9 +107,10 @@ class PlaceFavoriteActivity : AppCompatActivity() {
         }
 
         act_place_favorite_tv.setOnClickListener {
-            //자주가는 장소 등록 통신!
-            postFavoroteData(favoriteArr)
+            //Log.d("test", "ddddddddddddddddddddddd2")
 
+            //자주가는 장소 등록 통신!
+           // postFavoroteData(favoriteArr)
 
             val intent = Intent(this@PlaceFavoriteActivity, SetCompleteActivity::class.java)
             startActivity(intent)
@@ -223,18 +221,30 @@ class PlaceFavoriteActivity : AppCompatActivity() {
 
 
     private fun postFavoroteData(array: ArrayList<FavoritePlace>) {
-
+        Log.d("test", "ddddddddddddddddddddddd11")
         var jsonArray = JSONArray()
-
         var jsons = ArrayList<JSONObject>()
 
-        for(i in 0.. array.size-1){
+        /*for(i in 0.. array.size-1){
+            Log.d("test", array[i].favoriteInfo)
             jsons[i].put("favoriteInfo", array[i].favoriteInfo)
             jsons[i].put("favoriteCategory", array[i].favoriteCategory)
             jsons[i].put("favoriteLongitude", array[i].favoriteLongitude)
             jsons[i].put("favoriteLatitude", array[i].favoriteLatitude)
+        }*/
 
+        for(i in 0.. array.size-1){
+            Log.d("test", "ddddddddddddddddddddddd5")
+            /*Log.d("test", array[i].favoriteInfo)*/
+            var jsonObject = JSONObject()
+
+            jsonObject.put("favoriteInfo", array[i].favoriteInfo)
+            jsonObject.put("favoriteCategory", array[i].favoriteCategory)
+            jsonObject.put("favoriteLongitude", array[i].favoriteLongitude)
+            jsonObject.put("favoriteLatitude", array[i].favoriteLatitude)
+            jsons.add(jsonObject)
         }
+
 
         val body = JsonParser().parse(jsons.toString()) as JsonObject
 

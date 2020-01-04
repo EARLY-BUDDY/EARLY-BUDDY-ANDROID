@@ -89,8 +89,9 @@ class PlaceSearchActivity : AppCompatActivity() {
                     Log.e("result is ", response.body().toString())
                     var placeResponse = response.body()!!.data
 
+                    /*if(placeResponse[0].placeName == ""){
 
-
+                    }*/
 
                     /*PlaceFavoriteActivity.placeObject.placeName = placeNameString
                     PlaceFavoriteActivity.placeObject.x = xDouble

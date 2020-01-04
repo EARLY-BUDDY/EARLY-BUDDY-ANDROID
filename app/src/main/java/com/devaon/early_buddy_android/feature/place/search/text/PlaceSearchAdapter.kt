@@ -52,10 +52,18 @@ class PlaceSearchAdapter(
 
     inner class PlaceSearchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val placeName: TextView = view.findViewById(R.id.li_place_search_address)
+        var placeName: TextView = view.findViewById(R.id.li_place_search_address)
         val addressName : TextView = view.findViewById(R.id.li_place_search_address_detail)
         val roadAddressName : TextView = view.findViewById(R.id.li_place_search_load_address)
         val container : ConstraintLayout = view.findViewById(R.id.li_place_search_container)
+
+
+        //var i :TextView = view.fi
+        var str : String = placeName.text.toString()
+
+       /* if(str == ""){
+            placeName = addressName
+        }*/
 
         fun onBind(placedata: PlaceSearch ) {
             itemView.setOnClickListener {
