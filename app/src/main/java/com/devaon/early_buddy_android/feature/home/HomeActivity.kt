@@ -49,9 +49,16 @@ class HomeActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Log.e("onResume!!","onResume")
+        act_home_tv_minute_number.visibility = View.VISIBLE
+        act_home_tv_before_minute.visibility = View.VISIBLE
         act_home_tv_soon.visibility=View.INVISIBLE
         act_home_tv_move.visibility=View.INVISIBLE
+        var bottomParams =
+            act_home_cl_middle_bar.layoutParams  as? ConstraintLayout.LayoutParams
+        bottomParams?.topMargin = 51
+        act_home_cl_middle_bar.layoutParams = bottomParams
         homeNetwork()
+        viewBack()
     }
     private fun homeNetwork() {
 
@@ -197,7 +204,7 @@ class HomeActivity : AppCompatActivity() {
                                             act_home_iv_text.setImageResource(R.drawable.text_subway_three)
                                         }
                                     }
-                                    when (homeScheduleResponse.homeSchedule.firstTrans.trafficType) {
+                                    when (homeScheduleResponse.homeSchedule.firstTrans.subwayLane) {
                                         1 -> {
                                             when (val background =
                                                 act_home_tv_bus_number.getBackground()) {
@@ -643,7 +650,7 @@ class HomeActivity : AppCompatActivity() {
 //                    act_home_tv_minute_number.text = String.format("%s", minmin)
 
                     a.text = String.format("%s", minmin)
-                    if (Integer.valueOf(minmin) <= 3) {5
+                    if (Integer.valueOf(minmin) <= 3) {
                         act_home_tv_minute_number.visibility = View.INVISIBLE
                         act_home_tv_before_minute.visibility = View.INVISIBLE
                         act_home_tv_soon.visibility = View.VISIBLE
@@ -661,5 +668,13 @@ class HomeActivity : AppCompatActivity() {
         act_home_tv_next_bus.visibility = View.GONE
         act_home_tv_next_bus_var.visibility = View.GONE
         act_homme_iv_reboot.visibility = View.GONE
+    }
+
+    private fun viewBack() {
+        act_home_tv_bus_number.visibility = View.VISIBLE
+        act_home_tv_bus_current_location.visibility = View.VISIBLE
+        act_home_tv_next_bus.visibility = View.VISIBLE
+        act_home_tv_next_bus_var.visibility = View.VISIBLE
+        act_homme_iv_reboot.visibility = View.VISIBLE
     }
 }
