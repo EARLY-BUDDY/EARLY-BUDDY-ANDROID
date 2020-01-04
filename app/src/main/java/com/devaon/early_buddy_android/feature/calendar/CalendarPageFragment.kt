@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.data.calendar.Date
 import com.devaon.early_buddy_android.util.view.NonScrollGridLayoutManager
 import kotlinx.android.synthetic.main.fragment_calendar_page.*
 
@@ -13,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_calendar_page.*
 class CalendarPageFragment : Fragment(){
 
     private var timeByMillis: Long = 0
+    //lateinit var scheduleList : ArrayList<Date>
 
     lateinit var calendarPageRecyclerViewAdapter: CalendarPageRecyclerViewAdapter
     var fragmentPosition = 0
@@ -48,7 +50,6 @@ class CalendarPageFragment : Fragment(){
     }
 
     companion object {
-
         fun newInstance(position: Int): CalendarPageFragment {
             val frg = CalendarPageFragment()
             val bundle = Bundle()
@@ -63,4 +64,10 @@ class CalendarPageFragment : Fragment(){
             (activity as CalendarActivity).setScheduleRv(date)
         }
     }
+    /*
+
+    fun setSchedules(list: ArrayList<Date>){
+        scheduleList.clear()
+        scheduleList.addAll(list)
+    }*/
 }

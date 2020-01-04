@@ -25,5 +25,6 @@ data class Schedule(
     @SerializedName("scheduleStartTime")
     val scheduleStartTime: String,
     @SerializedName("endAddress")
-    val endAddress: String
+    val endAddress: String,
+    var date : Date
 )

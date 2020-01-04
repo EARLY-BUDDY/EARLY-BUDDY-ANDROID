@@ -138,7 +138,9 @@ class CalendarActivity : AppCompatActivity() {
         var list :ArrayList<Schedule> = ArrayList()
 
         for(i in  0..scheduleListInstance.size-1){
-            if(scheduleListInstance[i].scheduleStartTime.substring(8,10).equals(date)) {
+            if(scheduleListInstance[i].scheduleStartTime.substring(8,10).equals(date) &&
+                scheduleListInstance[i].scheduleStartTime.substring(5,7).equals(getCalendarAcitivityObject.calendarPagerAdapter.getMonth(getCalendarAcitivityObject.position)) &&
+                scheduleListInstance[i].scheduleStartTime.substring(0,4).equals(getCalendarAcitivityObject.calendarPagerAdapter.getYear(getCalendarAcitivityObject.position))) {
                 list.add(scheduleListInstance[i])
             }
         }
