@@ -134,7 +134,7 @@ class SigninActivity : AppCompatActivity() {
         var jsonObject = JSONObject()
         jsonObject.put("userId", id)
         jsonObject.put("userPw", pw)
-        jsonObject.put("deviceToken", deviceToken)
+        jsonObject.put("deviceToken", Login.getDeviceToken(this))
 
         val body = JsonParser().parse(jsonObject.toString()) as JsonObject
 

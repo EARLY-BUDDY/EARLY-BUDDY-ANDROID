@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.devaon.early_buddy_android.R
 import com.devaon.early_buddy_android.data.db.Information
+import com.devaon.early_buddy_android.data.login.Login
 import com.devaon.early_buddy_android.data.user.UserResponse
 import com.devaon.early_buddy_android.feature.initial_join.SetNicknameActivity
 import com.devaon.early_buddy_android.network.EarlyBuddyServiceImpl
@@ -102,6 +103,7 @@ class SignupActivity : AppCompatActivity() {
         var jsonObject = JSONObject()
         jsonObject.put("userId", id)
         jsonObject.put("userPw", pw)
+        jsonObject.put("deviceToken", Login.getDeviceToken(this))
 
         Log.d("test", "postUserData id : " + id)
         Log.d("test", "postUserData pw : " + pw)
