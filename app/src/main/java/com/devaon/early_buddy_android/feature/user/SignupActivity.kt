@@ -112,7 +112,7 @@ class SignupActivity : AppCompatActivity() {
         var jsonObject = JSONObject()
         jsonObject.put("userId", id)
         jsonObject.put("userPw", pw)
-        jsonObject.put("deviceToken", Login.getDeviceToken(this))
+       // jsonObject.put("deviceToken", Login.getDeviceToken(this))
 
         Log.d("test", "postUserData id : " + id)
         Log.d("test", "postUserData pw : " + pw)
