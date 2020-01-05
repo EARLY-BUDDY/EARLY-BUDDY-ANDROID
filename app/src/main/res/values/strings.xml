@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">EARLY-BUDDY-ANDROID</string>
+    <string name="app_name">얼리버디</string>
     <string name="until">까지</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

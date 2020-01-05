@@ -1,109 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlaceFavoriteActivity">
+    tools:context=".feature.initial_join.PlaceFavoriteActivity">
 
 
     <TextView
         android:id="@+id/act_place_favorite_tv_ment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="61dp"
-        android:letterSpacing="-1.2"
+        android:layout_width="206dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="56dp"
         android:lineSpacingExtra="8sp"
+        android:text="자주 가는 장소를\n등록해주세요."
         android:textColor="@color/black"
+
+
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="자주 가는 장소를\n등록해주세요." />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/act_place_favorite_cl_register_first"
         android:layout_width="match_parent"
-        android:layout_height="49dp"
+        android:layout_height="45dp"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="52dp"
+
         android:background="@drawable/act_place_favorite_round_rect_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/act_place_favorite_tv_ment">
 
-
-
         <TextView
-            android:id="@+id/act_place_favorite_tv_register_first"
+            android:id="@+id/act_place_favorite_tv_first"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center"
             android:hint="장소를 등록해주세요."
-            android:textSize="15sp"
             android:textColor="@color/gray"
-            app:layout_constraintBottom_toBottomOf="parent"
+
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/act_place_favorite_cl_register_second"
-
         android:layout_width="match_parent"
-        android:layout_height="49dp"
+        android:layout_height="45dp"
         android:layout_marginStart="52dp"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="52dp"
         android:background="@drawable/act_place_favorite_round_rect_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_place_favorite_cl_register_third">
-
-        <TextView
-            android:id="@+id/act_place_favorite_tv_second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="장소를 등록해주세요."
-            android:textColor="@color/gray"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/act_place_favorite_cl_register_third"
-        android:layout_width="match_parent"
-        android:layout_height="49dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="52dp"
-        android:background="@drawable/act_place_favorite_round_rect_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/act_place_favorite_cl_register_first">
 
         <TextView
-            android:id="@+id/act_place_favorite_tv_third"
+            android:id="@+id/act_place_favorite_tv_second"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:gravity="center"
             android:hint="장소를 등록해주세요."
-            android:textSize="15sp"
             android:textColor="@color/gray"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -112,97 +81,120 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/act_place_favorite_cl_register"
+        android:id="@+id/act_place_favorite_cl_register_third"
         android:layout_width="match_parent"
-        android:layout_height="49dp"
+        android:layout_height="45dp"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="34dp"
         android:layout_marginEnd="52dp"
-        android:background="@drawable/act_place_round_rect_gray_full"
+        android:background="@drawable/act_place_favorite_round_rect_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/act_place_favorite_cl_register_second">
 
         <TextView
-            android:id="@+id/act_place_favorite_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/act_place_favorite_tv_third"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
             android:gravity="center"
-            android:text="등록하기"
-            android:textSize="16sp"
-            android:textColor="@color/white"
+            android:hint="장소를 등록해주세요."
+            android:textColor="@color/gray"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/act_place_favorite_tv"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="54dp"
+        android:layout_marginEnd="38dp"
+        android:background="@drawable/act_place_round_rect_gray_full"
+        android:fontFamily="@font/notosans_medium"
+        android:gravity="center"
+        android:text="등록하기"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/act_place_favorite_cl_register_third" />
+
 
     <TextView
         android:id="@+id/act_place_favorite_tv_skip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="73dp"
+        android:layout_height="37dp"
         android:layout_marginTop="12dp"
-        android:textSize="13sp"
+        android:gravity="center"
         android:text="건너뛰기"
         android:textColor="@color/gray"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_place_favorite_cl_register" />
+        app:layout_constraintTop_toBottomOf="@+id/act_place_favorite_tv" />
 
-    <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/act_place_favorite_floating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:padding="8dp"
+    <ImageView
+        android:id="@+id/act_place_favorite_iv_select_one"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="41dp"
+        android:cropToPadding="true"
+        android:paddingLeft="0dp"
+        android:paddingTop="0dp"
+        android:paddingRight="0dp"
+        android:paddingBottom="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/act_place_favorite_cl_register_first"
         app:layout_constraintStart_toStartOf="parent"
-        fab:layout_constraintHorizontal_bias="0.206"
-        fab:layout_constraintVertical_bias="0.3"
-        fab:menu_animationDelayPerItem="55"
-        fab:menu_buttonSpacing="0dp"
-        fab:menu_colorNormal="@color/main_color"
-        fab:menu_colorPressed="@color/main_color"
-        fab:menu_colorRipple="@color/main_color"
-        fab:menu_fab_size="normal"
-        fab:menu_icon="@drawable/ic_choice"
-        fab:menu_openDirection="down"
-        fab:menu_showShadow="true"
-        tools:layout_editor_absoluteY="158dp">
+        app:layout_constraintTop_toTopOf="@+id/act_place_favorite_cl_register_first"
+        app:srcCompat="@drawable/ic_plus" />
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fabChoice11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_reboot"
-            fab:fab_size="normal"
-            fab:menu_colorNormal="@color/main_color"
-            fab:menu_colorPressed="@color/main_color"
-            fab:menu_colorRipple="@color/main_color" />
+    <ImageView
+        android:id="@+id/act_place_favorite_iv_select_two"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="41dp"
+        android:cropToPadding="true"
+        android:paddingLeft="0dp"
+        android:paddingTop="0dp"
+        android:paddingRight="0dp"
+        android:paddingBottom="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/act_place_favorite_cl_register_second"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/act_place_favorite_cl_register_second"
+        app:srcCompat="@drawable/ic_plus" />
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fabChoice22"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_time"
-            fab:fab_size="normal" />
+    <ImageView
+        android:id="@+id/act_place_favorite_iv_select_three"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="41dp"
+        android:cropToPadding="true"
+        android:paddingLeft="0dp"
+        android:paddingTop="0dp"
+        android:paddingRight="0dp"
+        android:paddingBottom="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/act_place_favorite_cl_register_third"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/act_place_favorite_cl_register_third"
+        app:srcCompat="@drawable/ic_plus" />
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fabChoice33"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_delete"
-            fab:fab_size="normal" />
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fabChoice44"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_detail"
-            fab:fab_size="normal" />
-
-
-    </com.github.clans.fab.FloatingActionMenu>
-
+    <ImageView
+        android:id="@+id/act_place_favorite_iv_background"
+        android:layout_width="485dp"
+        android:layout_height="224dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_place"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,19 +4,25 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.devaon.early_buddy_android.data.calendar.Date
+import com.devaon.early_buddy_android.data.calendar.Schedule
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 class CalendarPagerAdapter (fm: FragmentManager): FragmentPagerAdapter(fm){
-    private val frgMap: HashMap<Int, CalendarPageFragment>
+    val frgMap: HashMap<Int, CalendarPageFragment>
     private val listMonthByMillis = ArrayList<Long>()
     private var numOfMonth: Int = 0
+
+    var dataList = arrayListOf<Date>()
+    //var scheduleList = arrayListOf<Schedule>()
 
     init {
         clearPrevFragments(fm)
         frgMap = HashMap()
     }
+
 
     fun clearPrevFragments(fm: FragmentManager) {
         val listFragment = fm.fragments
@@ -40,12 +46,16 @@ class CalendarPagerAdapter (fm: FragmentManager): FragmentPagerAdapter(fm){
         }
         if (frg == null) {
             frg = CalendarPageFragment.newInstance(position)
+            //(frg as CalendarPageFragment).setSchedules(dataList)
             frgMap[position] = frg
         }
         frg.setTimeByMillis(listMonthByMillis[position])
-        Log.e("timeByMillis", listMonthByMillis[position].toString())
 
         return frg
+    }
+
+    override fun getItemPosition(`object`: Any): Int {
+        return super.getItemPosition(`object`)
     }
 
     override fun getCount(): Int {
@@ -110,4 +120,37 @@ class CalendarPagerAdapter (fm: FragmentManager): FragmentPagerAdapter(fm){
 
         return "${year}년 ${month}월"
     }
+
+    fun getMonth(position: Int) : String {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = listMonthByMillis[position]
+        val monthFormat = SimpleDateFormat("MM", Locale.KOREA)
+
+        val date = Date()
+        date.time = listMonthByMillis[position]
+        val month = monthFormat.format(date).toString()
+
+        return month
+
+    }
+
+    fun getYear(position: Int) : String {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = listMonthByMillis[position]
+        val yearFormat = SimpleDateFormat("yyyy", Locale.KOREA)
+
+        val date = Date()
+        date.time = listMonthByMillis[position]
+        val year = yearFormat.format(date).toString()
+
+        return year
+
+    }
+    /*
+
+    private fun setHasSchedule(){
+        for(i in 0.. scheduleList.size-1){
+
+        }
+    }*/
 }

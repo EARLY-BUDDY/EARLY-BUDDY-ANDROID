@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/li_place_search_route_ll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    android:paddingTop="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/li_place_search_route_tv_best"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosans_bold"
+        android:text="최적"
+        android:textColor="@color/main_color"
+        android:textSize="12sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/li_place_search_route_tv_best"
+        app:layout_constraintTop_toBottomOf="@+id/li_place_search_route_tv_best">
+
+        <TextView
+            android:id="@+id/li_place_search_route_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_sans_kr_bold"
+            android:text="걸리는 시간"
+            android:textSize="20sp"
+            android:textColor="#3c3c43"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/li_place_search_route_tv_method"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/noto_sans_kr_bold"
+            android:text="교통수단"
+            android:textColor="@color/light_gray"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/li_place_search_route_tv_time"
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_time"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_arrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/li_place_search_route_cl_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/li_place_search_route_tv_transfer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/gray"
+            android:text="환승 1회"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/li_place_search_route_tv_walk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textSize="12sp"
+            android:textColor="@color/gray"
+            android:text="도보 3분"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_transfer"/>
+
+        <TextView
+            android:id="@+id/li_place_search_route_tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textSize="12sp"
+            android:textColor="@color/gray"
+            android:text="1,200원"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/li_place_search_route_tv_walk"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/li_place_search_route_tv_walk_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="2분"
+            android:textSize="10sp"
+            android:fontFamily="@font/noto_sans_kr_bold"/>
+
+        <RelativeLayout
+            android:id="@+id/li_place_search_route_rl_gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_gray_line"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/li_place_search_route_rl_walk_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="100dp"
+                android:layout_weight="3">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/act_schedule_route_rl_method_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="28">
+                <ImageView
+                    android:id="@+id/li_place_search_route_iv_method_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/img_line_five"/>
+                <TextView
+                    android:id="@+id/li_place_search_route_tv_method_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5호선"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="10sp"
+                    android:textColor="@color/seoul_line_five"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/noto_sans_kr_bold"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/li_place_search_route_rl_walk_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/li_place_search_route_rl_method_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="10">
+                <ImageView
+                    android:id="@+id/li_place_search_route_iv_method_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/img_line_everline"/>
+                <TextView
+                    android:id="@+id/li_place_search_route_tv_method_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5호선"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="10sp"
+                    android:textColor="@color/seoul_line_ever"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/noto_sans_kr_bold"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/li_place_search_route_rl_walk_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/li_place_search_route_rl_method_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="10">
+                <ImageView
+                    android:id="@+id/li_place_search_route_iv_method_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/img_line_bundang"/>
+                <TextView
+                    android:id="@+id/li_place_search_route_tv_method_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5호선"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="10sp"
+                    android:textColor="@color/seoul_line_bunDang"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/noto_sans_kr_bold"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/li_place_search_route_rl_walk_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!--
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/li_place_search_route_cl_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@id/li_place_search_route_cl_text"
+        app:layout_constraintStart_toStartOf="@id/li_place_search_route_cl_text"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/li_place_search_route_iv_gray_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/img_path_gray_all"
+            app:layout_constraintTop_toTopOf="@id/li_place_search_route_cl_bar"
+            app:layout_constraintStart_toStartOf="@id/li_place_search_route_cl_bar"
+            app:layout_constraintEnd_toEndOf="@id/li_place_search_route_cl_bar"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="5분"
+            app:layout_constraintTop_toBottomOf="@id/li_place_search_route_iv_gray_line"
+            app:layout_constraintStart_toStartOf="@id/li_place_search_route_iv_gray_line"
+            app:layout_constraintEnd_toStartOf="@id/li_place_search_route_cl_method_1"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/li_place_search_route_cl_method_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/li_place_search_route_cl_bar"
+            app:layout_constraintTop_toTopOf="@+id/li_place_search_route_cl_bar"
+            app:layout_constraintBottom_toBottomOf="@id/li_place_search_route_cl_bar">
+
+            <ImageView
+                android:id="@+id/li_place_search_route_iv_method_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_line_one"
+                app:layout_constraintTop_toTopOf="@+id/li_place_search_route_cl_method_1"
+                app:layout_constraintStart_toStartOf="@+id/li_place_search_route_cl_method_1"
+                app:layout_constraintEnd_toEndOf="@+id/li_place_search_route_cl_method_1"/>
+            <TextView
+                android:id="@+id/li_place_search_route_tv_method_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosans_bold"
+                android:textColor="@color/seoul_line_one"
+                android:text="경로1"
+                app:layout_constraintStart_toStartOf="@+id/li_place_search_route_cl_method_1"
+                app:layout_constraintEnd_toEndOf="@+id/li_place_search_route_cl_method_1"
+                app:layout_constraintTop_toBottomOf="@id/li_place_search_route_iv_method_1"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/li_place_search_route_cl_method_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/li_place_search_route_cl_bar"
+            app:layout_constraintTop_toTopOf="@+id/li_place_search_route_cl_bar"
+            app:layout_constraintBottom_toBottomOf="@id/li_place_search_route_cl_bar">
+
+            <ImageView
+                android:id="@+id/li_place_search_route_iv_method_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_line_two"
+                app:layout_constraintTop_toTopOf="@+id/li_place_search_route_cl_method_2"
+                app:layout_constraintStart_toStartOf="@+id/li_place_search_route_cl_method_2"
+                app:layout_constraintEnd_toEndOf="@+id/li_place_search_route_cl_method_2"/>
+            <TextView
+                android:id="@+id/li_place_search_route_tv_method_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosans_bold"
+                android:textColor="@color/seoul_line_two"
+                android:text="경로2"
+                app:layout_constraintStart_toStartOf="@+id/li_place_search_route_cl_method_2"
+                app:layout_constraintEnd_toEndOf="@+id/li_place_search_route_cl_method_2"
+                app:layout_constraintTop_toBottomOf="@id/li_place_search_route_iv_method_2"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/li_place_search_route_cl_method_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/li_place_search_route_cl_bar"
+            app:layout_constraintTop_toTopOf="@+id/li_place_search_route_cl_bar"
+            app:layout_constraintBottom_toBottomOf="@id/li_place_search_route_cl_bar">
+
+            <ImageView
+                android:id="@+id/li_place_search_route_iv_method_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_line_five"
+                app:layout_constraintTop_toTopOf="@+id/li_place_search_route_cl_method_3"
+                app:layout_constraintStart_toStartOf="@+id/li_place_search_route_cl_method_3"
+                app:layout_constraintEnd_toEndOf="@+id/li_place_search_route_cl_method_3"/>
+            <TextView
+                android:id="@+id/li_place_search_route_tv_method_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosans_bold"
+                android:textColor="@color/seoul_line_five"
+                android:text="경로3"
+                app:layout_constraintStart_toStartOf="@+id/li_place_search_route_cl_method_3"
+                app:layout_constraintEnd_toEndOf="@+id/li_place_search_route_cl_method_3"
+                app:layout_constraintTop_toBottomOf="@id/li_place_search_route_iv_method_3"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    -->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/gray" />
+
+</LinearLayout>

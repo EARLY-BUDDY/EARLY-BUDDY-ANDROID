@@ -6,17 +6,42 @@
 
     </style>
 
-    <style name="MyDatePickerDialogStyle" parent="@style/ThemeOverlay.AppCompat.Dialog.Alert">
-        <item name="showTitle">false</item>
-        <item name="colorControlActivated">#ffea00</item>
-        <item name="android:selectableItemBackgroundBorderless">@color/main_color</item>
-        <item name="colorControlHighlight">#c51162</item>
-        <item name="android:headerBackground">#00c853</item>
+<!--    <style name="MyDatePickerDialogStyle" parent="@style/ThemeOverlay.AppCompat.Dialog.Alert">-->
+<!--        <item name="showTitle">false</item>-->
+<!--        <item name="colorControlActivated">#ffea00</item>-->
+<!--        <item name="android:selectableItemBackgroundBorderless">@color/main_color</item>-->
+<!--        <item name="colorControlHighlight">#c51162</item>-->
+<!--        <item name="android:headerBackground">#00c853</item>-->
+<!--    </style>-->
+
+<!--    <style name="MyAppThemeTwo" parent="Theme.AppCompat.Light">-->
+<!--        <item name="android:datePickerDialogTheme">@style/MyDatePickerDialogStyle</item>-->
+<!--    </style>-->
+
+    <style name="datePickerTheme" parent="android:Theme.Material.Light">
+        <item name="android:datePickerDialogTheme">@style/MyDatePickerDialogTheme</item>
     </style>
+
+    <style name="MyDatePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">
+        <item name="android:colorAccent">@color/main_color</item>
+    </style>
+
+    <style name="timePickerTheme" parent="android:Theme.Material.Light">
+        <item name="android:timePickerDialogTheme">@style/MyTimePickerDialogTheme</item>
+    </style>
+
+    <style name="MyTimePickerDialogTheme" parent="@style/ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:colorAccent">@color/main_color</item>
+        <item name="colorControlActivated">@color/main_color</item>
+    </style>
+
+    <style name="settingSwitch" parent="Theme.AppCompat">
+        <item name="android:thumb">@drawable/selector_thumb</item>
+    </style>
+
 
     <style name="AppTheme.StatusBar" parent="AppTheme">
         <item name="android:statusBarColor">@color/main_color</item>
        <!-- <item name="android:statusBarColor">@color/white</item>-->
     </style>
-
 </resources>

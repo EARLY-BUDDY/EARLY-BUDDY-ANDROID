@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.devaon.early_buddy_android.R
+import com.devaon.early_buddy_android.data.calendar.Date
 import com.devaon.early_buddy_android.util.view.NonScrollGridLayoutManager
 import kotlinx.android.synthetic.main.fragment_calendar_page.*
 
@@ -13,8 +14,10 @@ import kotlinx.android.synthetic.main.fragment_calendar_page.*
 class CalendarPageFragment : Fragment(){
 
     private var timeByMillis: Long = 0
+    //lateinit var scheduleList : ArrayList<Date>
 
     lateinit var calendarPageRecyclerViewAdapter: CalendarPageRecyclerViewAdapter
+    var fragmentPosition = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -24,6 +27,7 @@ class CalendarPageFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        fragmentPosition = arguments!!.getInt("position")
         setCalendarRv()
 
     }
@@ -33,9 +37,11 @@ class CalendarPageFragment : Fragment(){
         val baseCalendar = BaseCalendar(timeByMillis)
 
         calendarPageRecyclerViewAdapter = CalendarPageRecyclerViewAdapter(baseCalendar, this)
+        calendarPageRecyclerViewAdapter.setOnDateClickListener(onDateClickListener)
         frag_calendar_rv.run{
             adapter = calendarPageRecyclerViewAdapter
-            layoutManager = NonScrollGridLayoutManager(activity!!, 7)
+            layoutManager =
+                NonScrollGridLayoutManager(activity!!, 7)
         }
     }
 
@@ -44,7 +50,6 @@ class CalendarPageFragment : Fragment(){
     }
 
     companion object {
-
         fun newInstance(position: Int): CalendarPageFragment {
             val frg = CalendarPageFragment()
             val bundle = Bundle()
@@ -53,4 +58,16 @@ class CalendarPageFragment : Fragment(){
             return frg
         }
     }
+
+    var onDateClickListener = object : CalendarPageRecyclerViewAdapter.onDateClickListener{
+        override fun onItemClick(date: String) {
+            (activity as CalendarActivity).setScheduleRv(date)
+        }
+    }
+    /*
+
+    fun setSchedules(list: ArrayList<Date>){
+        scheduleList.clear()
+        scheduleList.addAll(list)
+    }*/
 }

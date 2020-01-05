@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/act_route_iv_walk_human"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="42dp"
+        android:src="@drawable/img_walking"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/act_route_tv_walk_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="6sp"
+        android:textColor="#5a5a5a"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@+id/act_route_iv_walk_human"
+        app:layout_constraintStart_toStartOf="@id/act_route_iv_walk_human"
+        app:layout_constraintTop_toBottomOf="@id/act_route_iv_walk_human"
+        tools:text="약 3분" />
+
+    <ImageView
+        android:id="@+id/act_route_iv_walk_top_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/act_route_iv_walk_line"
+        app:layout_constraintStart_toStartOf="@id/act_route_iv_walk_line"
+        app:layout_constraintTop_toTopOf="@id/act_route_iv_walk_line" />
+
+    <ImageView
+        android:id="@+id/act_route_iv_walk_bottom_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/act_route_iv_walk_line"
+        app:layout_constraintEnd_toEndOf="@+id/act_route_iv_walk_line"
+        app:layout_constraintStart_toStartOf="@id/act_route_iv_walk_line" />
+
+    <ImageView
+        android:id="@+id/act_route_iv_walk_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="53.5dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/img_walk_line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/act_route_tv_walk_start_point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="6sp"
+        android:text="집 : 서울특별시 광진구 아차산로 463-4"
+        android:ellipsize = "end"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/act_route_iv_walk_top_center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/act_route_iv_walk_top_center" />
+
+    <TextView
+        android:id="@+id/act_route_tv_walk_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="6sp"
+        android:text="도보 642m"
+        android:textColor="@color/light_gray"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/act_route_iv_walk_line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/act_route_iv_walk_line" />
+
+    <ImageView
+        android:id="@+id/act_route_iv_walk_horizon_line"
+        android:layout_width="0dp"
+        android:layout_height="0.25dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="12.5dp"
+        android:layout_marginEnd="15.5dp"
+        android:background="#707070"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/act_route_tv_walk_end_point" />
+
+    <TextView
+        android:id="@+id/act_route_tv_walk_end_point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="6sp"
+        android:ellipsize = "end"
+        android:text="집 : 서울특별시 광진구 아차산로 463-4"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/act_route_iv_walk_bottom_center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/act_route_iv_walk_bottom_center" />
+</androidx.constraintlayout.widget.ConstraintLayout>

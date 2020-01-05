@@ -1,6 +1,7 @@
 package com.devaon.early_buddy_android.feature.calendar
 
 import android.graphics.Color
+import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ class CalendarPageRecyclerViewAdapter(
 ) : RecyclerView.Adapter<CalendarPageRecyclerViewAdapter.Holder>() {
 
     private var mSelectedItems : SparseBooleanArray = SparseBooleanArray(0)
+    private lateinit var listener : onDateClickListener
 
     init{
         baseCalendar.initBaseCalendar {
@@ -35,35 +37,56 @@ class CalendarPageRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
 
+        // 일요일, 토요일 색상 지정
         if(position % BaseCalendar.DAYS_OF_WEEK == 0)
             holder.date.setTextColor(Color.parseColor("#ff1200"))
-        else if(position % BaseCalendar.DAYS_OF_WEEK == 6)
-            holder.date.setTextColor(Color.parseColor("#3092ff"))
         else
             holder.date.setTextColor(Color.parseColor("#676d6e"))
 
+        // 전, 다음 달 처리
         if (position < baseCalendar.prevMonthTailOffset
             || position >= baseCalendar.prevMonthTailOffset + baseCalendar.currentMonthMaxDate) {
             holder.date.alpha = 0.3f
-            holder.container.isClickable = false
         } else {
             holder.date.alpha = 1f
         }
 
+        // 스케쥴 visibility 설정
         if(baseCalendar.data[position].hasSchedule){
             holder.schedule.visibility = View.VISIBLE
         }
 
-        holder.date.text = baseCalendar.data[position].date
+        if(baseCalendar.data[position].date[0] == '0'){
+            holder.date.text = baseCalendar.data[position].date[1].toString()
+        }else{
+            holder.date.text = baseCalendar.data[position].date
+        }
+
+
         if(baseCalendar.data[position].isToDay){
             holder.container.setBackgroundResource(R.drawable.circle_c3c3c3)
             holder.date.setTextColor(Color.parseColor("#ffffff"))
             holder.schedule.visibility = View.INVISIBLE
         }
 
+
+        // 날짜 클릭
         holder.container.setOnClickListener {
-            clearSelectedItem()
-            toggleItemSelected(position)
+
+            if (!(position < baseCalendar.prevMonthTailOffset)
+                && !(position >= baseCalendar.prevMonthTailOffset + baseCalendar.currentMonthMaxDate)) {
+
+                var fragmentPosition = calendarFragment.fragmentPosition
+
+                CalendarActivity.getCalendarAcitivityObject.calendarPagerAdapter.frgMap[fragmentPosition - 1]?.calendarPageRecyclerViewAdapter?.clearSelectedItem()
+                CalendarActivity.getCalendarAcitivityObject.calendarPagerAdapter.frgMap[fragmentPosition + 1]?.calendarPageRecyclerViewAdapter?.clearSelectedItem()
+                clearSelectedItem()
+                toggleItemSelected(position)
+
+                listener.onItemClick(baseCalendar.data[position].date)
+
+            }
+
         }
 
         if(isItemSelected(position)){
@@ -85,6 +108,7 @@ class CalendarPageRecyclerViewAdapter(
         var container = itemView.findViewById(R.id.item_calendar_date_container) as ConstraintLayout
         var date = itemView.findViewById(R.id.item_calendar_date_tv) as TextView
         var schedule = itemView.findViewById(R.id.item_Calendar_date_iv_schedule) as ImageView
+
     }
 
     private fun toggleItemSelected(position: Int){
@@ -101,7 +125,7 @@ class CalendarPageRecyclerViewAdapter(
         return mSelectedItems.get(position, false)
     }
 
-    private fun clearSelectedItem(){
+    fun clearSelectedItem(){
         var position = 0
 
         for(i in  0..mSelectedItems.size()-1){
@@ -110,10 +134,6 @@ class CalendarPageRecyclerViewAdapter(
             notifyItemChanged(position)
         }
         mSelectedItems.clear()
-
-    }
-
-    private fun getPrevMonth(){
 
     }
 
@@ -131,5 +151,13 @@ class CalendarPageRecyclerViewAdapter(
 
     private fun refreshView(calendar: Calendar) {
         notifyDataSetChanged()
+    }
+
+    interface onDateClickListener{
+        fun onItemClick(date: String)
+    }
+
+    fun setOnDateClickListener(listener: onDateClickListener){
+        this.listener = listener
     }
 }

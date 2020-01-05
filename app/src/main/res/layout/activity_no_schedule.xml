@@ -4,8 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.NoScheduleActivity">
+    tools:context=".feature.home.NoScheduleActivity">
 
+    <ImageView
+        android:id="@+id/act_no_iv_bg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/img_bg_none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/act_no_cl_top_bar"
         android:layout_width="match_parent"
@@ -49,27 +59,31 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+<ImageView
+    android:id="@+id/act_no_iv_text"
+    android:layout_width="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_marginTop="200dp"
+    android:src="@drawable/text_add"
+    android:layout_height="wrap_content"/>
+
     <TextView
-        android:id="@+id/act_no_tv_text"
+        android:id="@+id/act_no_tv_add_sch"
+        android:background="@drawable/act_no_round_go_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="76dp"
         android:gravity="center_horizontal"
         android:letterSpacing="-0.05"
-        android:lineSpacingExtra="14sp"
-        android:textColor="#313131"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="일정이 없어서 \n이비가 할 일이 없짹…" />
+        android:lineSpacingExtra="27sp"
+        android:textColor="#3092ff"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/act_no_iv_text"
+        app:layout_constraintStart_toStartOf="@+id/act_no_iv_text"
+        app:layout_constraintTop_toBottomOf="@+id/act_no_iv_text"
+        android:text="일정 추가하러 가기" />
 
-    <ImageView
-        android:id="@+id/act_no_iv_bird"
-        android:layout_width="match_parent"
-        android:layout_height="272dp"
-        android:src="@drawable/img_graphic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

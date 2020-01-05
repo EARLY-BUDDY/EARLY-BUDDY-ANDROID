@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/item_pass_riding_tv_riding_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="15.5dp"
+        android:background="@drawable/item_pass_through_riding_number_round"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="28sp"
+        android:text="2224"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/item_pass_riding_iv_riding_line"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/item_pass_riding_tv_starting_point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="8sp"
+        android:text="테크노마트앞. 강변역"
+        android:ellipsize = "end"
+        android:textColor="#5a5a5a"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/item_pass_riding_tv_riding_number"
+        app:layout_constraintStart_toEndOf="@+id/item_pass_riding_tv_riding_number"
+        app:layout_constraintTop_toTopOf="@+id/item_pass_riding_tv_riding_number" />
+
+    <TextView
+        android:id="@+id/item_pass_riding_tv_view_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/item_pass_through_view_map"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="5sp"
+        android:text="지도보기"
+        android:textColor="@color/light_gray"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/item_pass_riding_tv_starting_point"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/item_pass_riding_tv_starting_point" />
+
+    <ImageView
+        android:id="@+id/item_pass_riding_iv_top_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/item_pass_riding_tv_riding_number"
+        app:layout_constraintStart_toEndOf="@id/item_pass_riding_tv_view_map"
+        app:layout_constraintTop_toTopOf="@+id/item_pass_riding_tv_riding_number" />
+
+    <ImageView
+        android:id="@+id/item_pass_riding_iv_riding_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/img_bus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_pass_riding_tv_riding_number" />
+
+    <TextView
+        android:id="@+id/item_pass_riding_tv_travel_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2.9dp"
+        android:gravity="center_horizontal"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="6sp"
+        android:textColor="#5a5a5a"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/item_pass_riding_iv_riding_img"
+        app:layout_constraintStart_toStartOf="@+id/item_pass_riding_iv_riding_img"
+        app:layout_constraintTop_toBottomOf="@id/item_pass_riding_iv_riding_img"
+        tools:text="약 3분" />
+
+    <ImageView
+        android:id="@+id/item_pass_riding_iv_riding_line"
+        android:layout_width="3dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="56dp"
+        android:src="#33c63c"
+        app:layout_constraintBottom_toBottomOf="@+id/item_pass_riding_iv_bottom_center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/item_pass_riding_iv_top_center" />
+
+    <TextView
+        android:id="@+id/item_pass_riding_tv_direction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="6sp"
+        android:text="배차간격 매일 6 - 20분"
+        android:textColor="@color/light_gray"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/item_pass_riding_tv_riding_number"
+        app:layout_constraintTop_toBottomOf="@id/item_pass_riding_tv_riding_number" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_pass_riding_cl_drop_down_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1.5dp"
+        android:paddingBottom="4dp"
+        android:paddingEnd="30dp"
+        app:layout_constraintStart_toStartOf="@id/item_pass_riding_tv_riding_number"
+        app:layout_constraintTop_toBottomOf="@id/item_pass_riding_tv_direction">
+
+        <TextView
+            android:id="@+id/item_pass_riding_tv_stop_station_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="6sp"
+            android:text="14개 정류장"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/item_pass_riding_iv_drop_down_up_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6.8dp"
+            android:src="@drawable/ic_dropbox_down"
+            app:layout_constraintBottom_toBottomOf="@+id/item_pass_riding_tv_stop_station_count"
+            app:layout_constraintStart_toEndOf="@id/item_pass_riding_tv_stop_station_count"
+            app:layout_constraintTop_toTopOf="@+id/item_pass_riding_tv_stop_station_count" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/item_pass_riding_tv_quit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        app:layout_constraintStart_toStartOf="@id/item_pass_riding_tv_riding_number"
+        app:layout_constraintTop_toBottomOf="@id/item_pass_riding_rv_riding_info_detail" />
+
+    <TextView
+        android:id="@+id/item_pass_riding_tv_end_point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="2dp"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="8sp"
+        android:text="강변역"
+        android:ellipsize = "end"
+        android:textColor="#5a5a5a"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/item_pass_riding_tv_quit"
+        app:layout_constraintStart_toEndOf="@id/item_pass_riding_tv_quit"
+        app:layout_constraintTop_toTopOf="@+id/item_pass_riding_tv_quit" />
+
+    <ImageView
+        android:id="@+id/item_pass_riding_iv_bottom_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/item_pass_riding_tv_quit"
+        app:layout_constraintStart_toStartOf="@id/item_pass_riding_iv_top_center"
+        app:layout_constraintTop_toTopOf="@+id/item_pass_riding_tv_quit" />
+
+    <ImageView
+        android:id="@+id/item_pass_riding_iv_top_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_green_dot"
+        app:layout_constraintBottom_toBottomOf="@+id/item_pass_riding_iv_top_center"
+        app:layout_constraintEnd_toEndOf="@+id/item_pass_riding_iv_riding_line"
+        app:layout_constraintStart_toStartOf="@+id/item_pass_riding_iv_riding_line"
+        app:layout_constraintTop_toTopOf="@+id/item_pass_riding_iv_top_center" />
+
+    <ImageView
+        android:id="@+id/item_pass_riding_iv_bottom_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_green_dot"
+        app:layout_constraintBottom_toBottomOf="@+id/item_pass_riding_iv_bottom_center"
+        app:layout_constraintEnd_toEndOf="@+id/item_pass_riding_iv_riding_line"
+        app:layout_constraintStart_toStartOf="@+id/item_pass_riding_iv_riding_line"
+        app:layout_constraintTop_toTopOf="@+id/item_pass_riding_iv_bottom_center" />
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0.25dp"
+        android:layout_marginTop="16.5dp"
+        android:layout_marginEnd="15.5dp"
+        android:background="#707070"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="61dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_pass_riding_tv_quit" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/item_pass_riding_rv_riding_info_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/item_pass_riding_tv_quit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_pass_riding_cl_drop_down_up"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

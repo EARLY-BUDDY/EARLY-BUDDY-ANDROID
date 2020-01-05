@@ -1,6 +1,7 @@
 package com.devaon.early_buddy_android.feature.calendar
 
-import com.devaon.early_buddy_android.data.place.calendar.Date
+import android.util.Log
+import com.devaon.early_buddy_android.data.calendar.Date
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -30,6 +31,7 @@ class BaseCalendar(timeByMillis: Long) {
     val dayFormat = SimpleDateFormat("dd", Locale.KOREA)
 
     var data = arrayListOf<Date>()
+    var tempData = arrayListOf<Date>()
 
     init {
         calendar.time = Date(timeByMillis)
@@ -95,25 +97,24 @@ class BaseCalendar(timeByMillis: Long) {
 
         if(month == Calendar.JANUARY) {
             for (i in 1..prevMonthTailOffset) {
+
                 data.add(Date(
                     (year - 1).toString(),
                     (Calendar.DECEMBER).toString(),
-                    (++maxOffsetDate).toString(),
+                    String.format("%02d", ++maxOffsetDate),
                     false,
                     false
                 ))
             }
         }else{
             for (i in 1..prevMonthTailOffset) {
-                data.add(
-                    Date(
+                data.add(Date(
                     year.toString(),
                     month.toString(),
-                    (++maxOffsetDate).toString(),
+                    String.format("%02d", ++maxOffsetDate),
                     false,
                     false
-                )
-                )
+                ))
             }
         }
     }
@@ -128,7 +129,7 @@ class BaseCalendar(timeByMillis: Long) {
                 data.add(Date(
                     (year + 1).toString(),
                     (Calendar.JANUARY).toString(),
-                    (date++).toString(),
+                    String.format("%02d", date++),
                     false,
                     false
                 ))
@@ -138,7 +139,7 @@ class BaseCalendar(timeByMillis: Long) {
                 data.add(Date(
                     year.toString(),
                     month.toString(),
-                    (date++).toString(),
+                    String.format("%02d", date++),
                     false,
                     false
                 ))
@@ -155,7 +156,7 @@ class BaseCalendar(timeByMillis: Long) {
                     Date(
                         year.toString(),
                         month.toString(),
-                        i.toString(),
+                        String.format("%02d", i),
                         true,
                         false
                     )
@@ -165,7 +166,7 @@ class BaseCalendar(timeByMillis: Long) {
                     Date(
                         year.toString(),
                         month.toString(),
-                        i.toString(),
+                        String.format("%02d", i),
                         false,
                         false
                     )
