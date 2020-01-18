@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_maps.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
+    //맵 보여주기
     private lateinit var mMap: GoogleMap
     var placeLongitude :Double = 0.0
     var placeLatitude :Double = 0.0
